@@ -89,6 +89,306 @@
       "image": "images/Jeu_NainJaune.jpg",
       "description": "Club de jeux de société",
       "instagram": "@lenainjaune_marseille"
+    },
+    {
+      "id": 10,
+      "nom": "La Friche la Belle de Mai",
+      "categorie": "art",
+      "latitude": 43.29520,
+      "longitude": 5.38650,
+      "image": "images/Art_Friche.jpg",
+      "description": "Friche culturelle et artistique",
+      "instagram": "@lafriche"
+    },
+    {
+      "id": 11,
+      "nom": "Le Café Julien",
+      "categorie": "bars",
+      "latitude": 43.29445,
+      "longitude": 5.38380,
+      "image": "images/Bar_CafeJulien.jpg",
+      "description": "Bar traditionnel emblématique",
+      "instagram": "@cafejulien13"
+    },
+    {
+      "id": 12,
+      "nom": "La Caravelle",
+      "categorie": "bars",
+      "latitude": 43.29355,
+      "longitude": 5.38420,
+      "image": "images/Bar_Caravelle.jpg",
+      "description": "Bar de nuit festif",
+      "instagram": "@lacaravelle_marseille"
+    },
+    {
+      "id": 13,
+      "nom": "Le Vieux Moulin",
+      "categorie": "restaurants",
+      "latitude": 43.29380,
+      "longitude": 5.38350,
+      "image": "images/Restaurant_VieuxMoulin.jpg",
+      "description": "Cuisine provençale authentique",
+      "instagram": "@vieuxmoulin13"
+    },
+    {
+      "id": 14,
+      "nom": "Chez Madie",
+      "categorie": "restaurants",
+      "latitude": 43.29465,
+      "longitude": 5.38290,
+      "image": "images/Restaurant_ChezMadie.jpg",
+      "description": "Poissons et fruits de mer",
+      "instagram": "@chezmadie"
+    },
+    {
+      "id": 15,
+      "nom": "Le Bistrot de la Plaine",
+      "categorie": "restaurants",
+      "latitude": 43.29325,
+      "longitude": 5.38395,
+      "image": "images/Restaurant_BistrotPlaine.jpg",
+      "description": "Brasserie familiale conviviale",
+      "instagram": "@bistrotdelaplaine"
+    },
+    {
+      "id": 16,
+      "nom": "Pizza Capri",
+      "categorie": "snacks",
+      "latitude": 43.29415,
+      "longitude": 5.38445,
+      "image": "images/Snack_PizzaCapri.jpg",
+      "description": "Pizzeria napolitaine",
+      "instagram": "@pizzacapri_marseille"
+    },
+    {
+      "id": 17,
+      "nom": "Le Sandwich Marseillais",
+      "categorie": "snacks",
+      "latitude": 43.29395,
+      "longitude": 5.38315,
+      "image": "images/Snack_Sandwich.jpg",
+      "description": "Sandwichs et paninis maison",
+      "instagram": null
+    },
+    {
+      "id": 18,
+      "nom": "Book in Bar",
+      "categorie": "livres",
+      "latitude": 43.29450,
+      "longitude": 5.38520,
+      "image": "images/Livre_BookInBar.jpg",
+      "description": "Librairie-bar à vin",
+      "instagram": "@bookinbar"
+    },
+    {
+      "id": 19,
+      "nom": "Librairie Maupetit",
+      "categorie": "livres",
+      "latitude": 43.29475,
+      "longitude": 5.38340,
+      "image": "images/Livre_Maupetit.jpg",
+      "description": "Librairie indépendante",
+      "instagram": "@maupetit_livres"
+    },
+    {
+      "id": 20,
+      "nom": "Vinyl Paradise",
+      "categorie": "musique",
+      "latitude": 43.29430,
+      "longitude": 5.38570,
+      "image": "images/Musique_VinylParadise.jpg",
+      "description": "Disquaire vinyles neufs et occasion",
+      "instagram": "@vinylparadise13"
+    },
+    {
+      "id": 21,
+      "nom": "La Machine à Coudre",
+      "categorie": "concerts",
+      "latitude": 43.29500,
+      "longitude": 5.38280,
+      "image": "images/Concert_Machine.jpg",
+      "description": "Salle de concerts rock et électro",
+      "instagram": "@lamachineacoudre"
+    },
+    {
+      "id": 22,
+      "nom": "Le Moulin",
+      "categorie": "concerts",
+      "latitude": 43.29365,
+      "longitude": 5.38470,
+      "image": "images/Concert_Moulin.jpg",
+      "description": "Club et concerts live",
+      "instagram": "@lemoulin_marseille"
+    },
+    {
+      "id": 23,
+      "nom": "Galerie Eurêka",
+      "categorie": "art",
+      "latitude": 43.29440,
+      "longitude": 5.38260,
+      "image": "images/Art_Eureka.jpg",
+      "description": "Galerie d'art contemporain",
+      "instagram": "@galerie_eureka"
+    },
+    {
+      "id": 24,
+      "nom": "Atelier des Artistes",
+      "categorie": "art",
+      "latitude": 43.29490,
+      "longitude": 5.38600,
+      "image": "images/Art_AtelierArtistes.jpg",
+      "description": "Espace de création partagé",
+      "instagram": "@ateliersartistes13"
+    },
+    {
+      "id": 25,
+      "nom": "Le Cosy Corner",
+      "categorie": "bars",
+      "latitude": 43.29370,
+      "longitude": 5.38540,
+      "image": "images/Bar_CosyCorner.jpg",
+      "description": "Bar cosy avec terrasse",
+      "instagram": "@cosycorner_marseille"
+    },
+    {
+      "id": 26,
+      "nom": "L'Épicerie du Cours",
+      "categorie": "commerces",
+      "latitude": 43.29420,
+      "longitude": 5.38410,
+      "image": "images/Commerce_Epicerie.jpg",
+      "description": "Épicerie fine et produits locaux",
+      "instagram": "@epicerie_cours"
+    },
+    {
+      "id": 27,
+      "nom": "Friperie La Belle Époque",
+      "categorie": "fringues",
+      "latitude": 43.29455,
+      "longitude": 5.38330,
+      "image": "images/Fringue_BelleEpoque.jpg",
+      "description": "Vêtements vintage et rétro",
+      "instagram": "@labelleepoque_fripe"
+    },
+    {
+      "id": 28,
+      "nom": "Urban Style",
+      "categorie": "fringues",
+      "latitude": 43.29385,
+      "longitude": 5.38490,
+      "image": "images/Fringue_UrbanStyle.jpg",
+      "description": "Streetwear et sneakers",
+      "instagram": "@urbanstyle13"
+    },
+    {
+      "id": 29,
+      "nom": "Théâtre Toursky",
+      "categorie": "théâtre",
+      "latitude": 43.29510,
+      "longitude": 5.38450,
+      "image": "images/Theatre_Toursky.jpg",
+      "description": "Théâtre contemporain",
+      "instagram": "@theatre_toursky"
+    },
+    {
+      "id": 30,
+      "nom": "Le Petit Théâtre",
+      "categorie": "théâtre",
+      "latitude": 43.29345,
+      "longitude": 5.38360,
+      "image": "images/Theatre_Petit.jpg",
+      "description": "Théâtre intimiste et café-théâtre",
+      "instagram": "@petittheatre13"
+    },
+    {
+      "id": 31,
+      "nom": "La Ludothèque",
+      "categorie": "jeux",
+      "latitude": 43.29460,
+      "longitude": 5.38580,
+      "image": "images/Jeu_Ludotheque.jpg",
+      "description": "Prêt de jeux et animations",
+      "instagram": "@ludotheque_coursju"
+    },
+    {
+      "id": 32,
+      "nom": "L'Atelier des Mômes",
+      "categorie": "kids",
+      "latitude": 43.29425,
+      "longitude": 5.38270,
+      "image": "images/Kids_AtelierMomes.jpg",
+      "description": "Activités créatives pour enfants",
+      "instagram": "@atelierdesmomes"
+    },
+    {
+      "id": 33,
+      "nom": "Petit Bazar",
+      "categorie": "kids",
+      "latitude": 43.29480,
+      "longitude": 5.38380,
+      "image": "images/Kids_PetitBazar.jpg",
+      "description": "Jouets et loisirs créatifs",
+      "instagram": "@petitbazar13"
+    },
+    {
+      "id": 34,
+      "nom": "La Cantine Solidaire",
+      "categorie": "social",
+      "latitude": 43.29405,
+      "longitude": 5.38435,
+      "image": "images/Social_Cantine.jpg",
+      "description": "Restaurant solidaire et participatif",
+      "instagram": "@cantinesolidaire13"
+    },
+    {
+      "id": 35,
+      "nom": "L'Escale",
+      "categorie": "social",
+      "latitude": 43.29470,
+      "longitude": 5.38510,
+      "image": "images/Social_Escale.jpg",
+      "description": "Espace de coworking associatif",
+      "instagram": "@lescale_marseille"
+    },
+    {
+      "id": 36,
+      "nom": "Le Tacos du Cours",
+      "categorie": "snacks",
+      "latitude": 43.29350,
+      "longitude": 5.38440,
+      "image": "images/Snack_Tacos.jpg",
+      "description": "Tacos et kebabs",
+      "instagram": "@tacos_coursju"
+    },
+    {
+      "id": 37,
+      "nom": "Sushi Zen",
+      "categorie": "restaurants",
+      "latitude": 43.29435,
+      "longitude": 5.38620,
+      "image": "images/Restaurant_SushiZen.jpg",
+      "description": "Restaurant japonais",
+      "instagram": "@sushizen_marseille"
+    },
+    {
+      "id": 38,
+      "nom": "Le Comptoir du Cours",
+      "categorie": "bars",
+      "latitude": 43.29390,
+      "longitude": 5.38375,
+      "image": "images/Bar_Comptoir.jpg",
+      "description": "Bar à bières artisanales",
+      "instagram": "@comptoirducours"
+    },
+    {
+      "id": 39,
+      "nom": "Vintage Records",
+      "categorie": "musique",
+      "latitude": 43.29495,
+      "longitude": 5.38395,
+      "image": "images/Musique_VintageRecords.jpg",
+      "description": "Vinyles collectors et raretés",
+      "instagram": "@vintagerecords13"
     }
   ],
   "categories": {
