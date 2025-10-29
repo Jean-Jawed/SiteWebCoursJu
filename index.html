@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours Ju - Plaine | Notre-Dame-du-Mont</title>
+    <meta name="description" content="Découvrez le quartier vibrant du Cours Julien et de la Plaine à Marseille : art, culture, bars et vie nocturne">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <img src="images/Hero.jpg" alt="Quartier Cours Julien - Plaine" class="hero-image">
+        <div class="hero-content">
+            <img src="images/Logo.jpg" alt="Logo du quartier" class="hero-logo">
+            <h1 class="hero-title">Cours Ju - Plaine</h1>
+            <p class="hero-subtitle">Notre-Dame-du-Mont</p>
+            <p class="hero-description">Le cœur battant de la culture marseillaise</p>
+            <button class="hero-cta" onclick="scrollToMap()">Découvrir le quartier</button>
+        </div>
+    </section>
+
+    <!-- Header avec filtres -->
+    <header class="main-header">
+        <div class="container">
+            <h2 class="section-title">Explorer par catégorie</h2>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-category="all">
+                    <span class="filter-icon">🗺️</span>
+                    <span class="filter-label">Tout voir</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Carte -->
+    <section class="map-section">
+        <div id="map"></div>
+        <div class="map-legend">
+            <button class="legend-toggle" id="legendToggle">
+                <span>Légende</span>
+                <span class="toggle-icon">▼</span>
+            </button>
+            <div class="legend-content" id="legendContent">
+                <h3>Catégories</h3>
+                <div id="legendItems"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour agrandir les images -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cours Ju - Plaine</h3>
+                    <p>Le quartier artistique et culturel de Marseille</p>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <p>Ce site présente les lieux emblématiques du quartier Notre-Dame-du-Mont, également connu sous les noms de Cours Julien et La Plaine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Pour ajouter votre lieu sur la carte, contactez-nous !</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cours Ju - Plaine. Fait avec ❤️ à Marseille</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

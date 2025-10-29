@@ -1,0 +1,110 @@
+{
+  "lieux": [
+    {
+      "id": 1,
+      "nom": "Agent Troublant",
+      "categorie": "art",
+      "latitude": 43.29406422914654,
+      "longitude": 5.384314986380538,
+      "image": "images/Art_Agent.jpg",
+      "description": "Galerie et fanzinerie",
+      "instagram": "@agent_troublant"
+    },
+    {
+      "id": 2,
+      "nom": "Soma",
+      "categorie": "art",
+      "latitude": 43.29397310560985,
+      "longitude": 5.383739137355782,
+      "image": "images/Art_Soma.jpg",
+      "description": "Lieu d'art et de recherche",
+      "instagram": "@_______soma__"
+    },
+    {
+      "id": 3,
+      "nom": "Asabiya",
+      "categorie": "bars",
+      "latitude": 43.29424749800166,
+      "longitude": 5.383007902212267,
+      "image": "images/Bar_Asabiya.jpg",
+      "description": "Bar à mezzé",
+      "instagram": "@asabiya_"
+    },
+    {
+      "id": 4,
+      "nom": "ID Fixe",
+      "categorie": "bars",
+      "latitude": 43.29387084828215,
+      "longitude": 5.382958585280809,
+      "image": "images/Bar_IdFix.jpg",
+      "description": "Bar à cocktails et terrasse",
+      "instagram": "@idfixe13"
+    },
+    {
+      "id": 5,
+      "nom": "Pulse",
+      "categorie": "bars",
+      "latitude": 43.29340701509396,
+      "longitude": 5.383211459402823,
+      "image": "images/Bar_Pulse.jpg",
+      "description": "Bar chaleureux",
+      "instagram": "@lepulsebar_"
+    },
+    {
+      "id": 6,
+      "nom": "Le Vidéodrome2",
+      "categorie": "cinéma",
+      "latitude": 43.2941518140071,
+      "longitude": 5.383630723886155,
+      "image": "images/Cinéma_Videodrome.jpg",
+      "description": "Cinéma associatif et solidaire",
+      "instagram": "@videodrome2"
+    },
+    {
+      "id": 7,
+      "nom": "Atelier 5",
+      "categorie": "commerces",
+      "latitude": 43.29484110304563,
+      "longitude": 5.38280232202731,
+      "image": "images/Commerce_Atelier5.jpg",
+      "description": "Magasin d'antiquités et curiosités",
+      "instagram": null
+    },
+    {
+      "id": 8,
+      "nom": "L'Intermediaire Live",
+      "categorie": "concerts",
+      "latitude": 43.2943412452945,
+      "longitude": 5.386448255681242,
+      "image": "images/Concert_Intermediaire.jpg",
+      "description": "Salle locale de concerts quotidiens",
+      "instagram": "@l_intermediaire"
+    },
+    {
+      "id": 9,
+      "nom": "Le Nain Jaune",
+      "categorie": "jeux",
+      "latitude": 43.29410451854394,
+      "longitude": 5.386925155702906,
+      "image": "images/Jeu_NainJaune.jpg",
+      "description": "Club de jeux de société",
+      "instagram": "@lenainjaune_marseille"
+    }
+  ],
+  "categories": {
+    "art": { "nom": "Art", "couleur": "#E63946", "icon": "🎨" },
+    "bars": { "nom": "Bars", "couleur": "#F77F00", "icon": "🍸" },
+    "concerts": { "nom": "Concerts", "couleur": "#9B59B6", "icon": "🎵" },
+    "commerces": { "nom": "Commerces", "couleur": "#06A77D", "icon": "🛍️" },
+    "fringues": { "nom": "Fringues", "couleur": "#3498DB", "icon": "👕" },
+    "jeux": { "nom": "Jeux", "couleur": "#E74C3C", "icon": "🎲" },
+    "kids": { "nom": "Kids", "couleur": "#F39C12", "icon": "🧸" },
+    "livres": { "nom": "Livres", "couleur": "#8E44AD", "icon": "📚" },
+    "musique": { "nom": "Musique", "couleur": "#16A085", "icon": "🎸" },
+    "restaurants": { "nom": "Restaurants", "couleur": "#D35400", "icon": "🍽️" },
+    "snacks": { "nom": "Snacks", "couleur": "#F1C40F", "icon": "🍕" },
+    "social": { "nom": "Social", "couleur": "#27AE60", "icon": "🤝" },
+    "théâtre": { "nom": "Théâtre", "couleur": "#C0392B", "icon": "🎭" },
+    "cinéma": { "nom": "Cinéma", "couleur": "#2C3E50", "icon": "🎬" }
+  }
+}
