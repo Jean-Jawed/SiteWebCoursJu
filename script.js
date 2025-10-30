@@ -84,6 +84,10 @@ function createFilters() {
             filtersContainer.appendChild(btn);
         }
     });
+    const toutVoirBtn = document.querySelector('[data-category="all"]');
+    if (toutVoirBtn) {
+        toutVoirBtn.addEventListener('click', () => filterByCategory('all'));
+    }
 }
 
 // =====================
