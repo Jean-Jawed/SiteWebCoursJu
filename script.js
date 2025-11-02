@@ -60,7 +60,10 @@ function createFilters() {
     const filtersContainer = document.getElementById('filters');
     
     // Obtenir toutes les catégories uniques des lieux existants
-    const categoriesUtilisees = new Set(data.lieux.map(lieu => lieu.categorie));
+    const categoriesUtilisees = new Set();
+    data.lieux.forEach(lieu => {
+        lieu.categories.forEach(cat => categoriesUtilisees.add(cat));
+    });
     
     // Trier les catégories alphabétiquement
     const categoriesTries = Array.from(categoriesUtilisees).sort((a, b) => {
@@ -84,6 +87,8 @@ function createFilters() {
             filtersContainer.appendChild(btn);
         }
     });
+    
+    // Attacher l'event listener au bouton "Tout voir" existant
     const toutVoirBtn = document.querySelector('[data-category="all"]');
     if (toutVoirBtn) {
         toutVoirBtn.addEventListener('click', () => filterByCategory('all'));
@@ -107,7 +112,7 @@ function filterByCategory(category) {
     
     // Filtrer les markers
     markers.forEach(markerObj => {
-        const shouldShow = category === 'all' || markerObj.category === category;
+        const shouldShow = category === 'all' || markerObj.categories.includes(category);
         if (shouldShow) {
             markerObj.marker.addTo(map);
         } else {
@@ -121,7 +126,9 @@ function filterByCategory(category) {
 // =====================
 function addMarkers(lieux) {
     lieux.forEach(lieu => {
-        const catInfo = data.categories[lieu.categorie];
+        // Utiliser la première catégorie pour la couleur du marker
+        const primaryCategory = lieu.categories[0];
+        const catInfo = data.categories[primaryCategory];
         if (!catInfo) return;
         
         // Créer une icône HTML personnalisée
@@ -137,7 +144,7 @@ function addMarkers(lieux) {
         const marker = L.marker([lieu.latitude, lieu.longitude], { icon: icon });
         
         // Créer le contenu du popup
-        const popupContent = createPopupContent(lieu, catInfo);
+        const popupContent = createPopupContent(lieu);
         
         // Bind popup avec options
         marker.bindPopup(popupContent, {
@@ -148,7 +155,7 @@ function addMarkers(lieux) {
         // Ajouter au tableau de markers
         markers.push({
             marker: marker,
-            category: lieu.categorie,
+            categories: lieu.categories,
             lieu: lieu
         });
         
@@ -160,12 +167,21 @@ function addMarkers(lieux) {
 // =====================
 // Création du contenu du popup
 // =====================
-function createPopupContent(lieu, catInfo) {
+function createPopupContent(lieu) {
     const instagramLink = lieu.instagram 
         ? `<a href="https://instagram.com/${lieu.instagram.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="popup-instagram">
             📸 ${lieu.instagram}
            </a>`
         : '';
+    
+    // Créer les badges pour toutes les catégories
+    const categoryBadges = lieu.categories.map(cat => {
+        const catInfo = data.categories[cat];
+        if (!catInfo) return '';
+        return `<span class="popup-category" style="background-color: ${catInfo.couleur};">
+            ${catInfo.icon} ${catInfo.nom}
+        </span>`;
+    }).join(' ');
     
     return `
         <div class="popup-content">
@@ -175,9 +191,9 @@ function createPopupContent(lieu, catInfo) {
                  onclick="openLightbox('${lieu.image}', '${lieu.nom}')">
             <div class="popup-body">
                 <h3 class="popup-title">${lieu.nom}</h3>
-                <span class="popup-category" style="background-color: ${catInfo.couleur};">
-                    ${catInfo.icon} ${catInfo.nom}
-                </span>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
+                    ${categoryBadges}
+                </div>
                 <p class="popup-description">${lieu.description}</p>
                 ${instagramLink}
             </div>
@@ -192,7 +208,10 @@ function createLegend() {
     const legendItems = document.getElementById('legendItems');
     
     // Obtenir les catégories utilisées
-    const categoriesUtilisees = new Set(data.lieux.map(lieu => lieu.categorie));
+    const categoriesUtilisees = new Set();
+    data.lieux.forEach(lieu => {
+        lieu.categories.forEach(cat => categoriesUtilisees.add(cat));
+    });
     
     // Trier les catégories
     const categoriesTries = Array.from(categoriesUtilisees).sort((a, b) => {
@@ -277,10 +296,11 @@ function ajouterLieu(lieu) {
     // Ajouter le lieu aux données
     data.lieux.push(lieu);
     
-    // Créer le marker
-    const catInfo = data.categories[lieu.categorie];
+    // Créer le marker avec la première catégorie
+    const primaryCategory = lieu.categories[0];
+    const catInfo = data.categories[primaryCategory];
     if (!catInfo) {
-        console.error('Catégorie inconnue:', lieu.categorie);
+        console.error('Catégorie inconnue:', primaryCategory);
         return;
     }
     
@@ -293,7 +313,7 @@ function ajouterLieu(lieu) {
     });
     
     const marker = L.marker([lieu.latitude, lieu.longitude], { icon: icon });
-    const popupContent = createPopupContent(lieu, catInfo);
+    const popupContent = createPopupContent(lieu);
     marker.bindPopup(popupContent, {
         maxWidth: 300,
         className: 'custom-popup'
@@ -301,12 +321,12 @@ function ajouterLieu(lieu) {
     
     markers.push({
         marker: marker,
-        category: lieu.categorie,
+        categories: lieu.categories,
         lieu: lieu
     });
     
     // Appliquer le filtre actuel
-    if (currentFilter === 'all' || currentFilter === lieu.categorie) {
+    if (currentFilter === 'all' || lieu.categories.includes(currentFilter)) {
         marker.addTo(map);
     }
     
