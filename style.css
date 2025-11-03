@@ -547,6 +547,41 @@ h1, h2, h3 {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Section intro */
+.intro-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.intro-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.intro-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Pour le h2 visuellement caché mais accessible aux lecteurs d'écran */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 /* =====================
    Responsive Design
    ===================== */

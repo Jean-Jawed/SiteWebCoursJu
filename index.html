@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours Ju - Plaine | Notre-Dame-du-Mont</title>
+    <title>Cours Ju - Plaine | Notre-Dame-du-Mont - Marseille</title>
     <meta name="description" content="Découvrez le quartier vibrant du Cours Julien et de la Plaine à Marseille : art, culture, bars et vie nocturne">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://cours-julien.fr/">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="Cours Ju - Plaine | Notre-Dame-du-Mont - Marseille">
+    <meta property="og:description" content="Découvrez le quartier vibrant du Cours Julien et de la Plaine à Marseille : art, culture, bars et vie nocturne">
+    <meta property="og:image" content="https://cours-julien.fr/images/Hero.jpg">
+    <meta property="og:url" content="https://cours-julien.fr">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cours Ju - Plaine | Notre-Dame-du-Mont">
+    <meta name="twitter:description" content="Découvrez le quartier vibrant du Cours Julien et de la Plaine à Marseille">
+    <meta name="twitter:image" content="https://cours-julien.fr/images/Hero.jpg">
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="FR-13">
+    <meta name="geo.placename" content="Marseille">
+    <meta name="geo.position" content="43.2965;5.3698">
+    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
@@ -21,13 +46,23 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-overlay"></div>
-        <img src="images/Hero.jpg" alt="Quartier Cours Julien - Plaine" class="hero-image">
+        <img src="images/Hero.jpg" alt="Street art coloré et cafés animés du quartier Cours Julien à Marseille" class="hero-image">
         <div class="hero-content">
-            <img src="images/Logo.jpg" alt="Logo du quartier" class="hero-logo">
+            <img src="images/Logo.jpg" alt="Logo du quartier Cours Julien - Plaine" class="hero-logo" loading="eager">
             <h1 class="hero-title">Cours Ju - Plaine</h1>
             <p class="hero-subtitle">Notre-Dame-du-Mont</p>
             <p class="hero-description">Le cœur battant de la culture marseillaise</p>
             <button class="hero-cta" onclick="scrollToMap()">Découvrir le quartier</button>
+        </div>
+    </section>
+
+    <!-- Section Introduction (nouveau pour le SEO) -->
+    <section class="intro-section">
+        <div class="container">
+            <h2>Le quartier Cours Julien - Plaine à Marseille</h2>
+            <p>Situé dans le 6ème arrondissement de Marseille, le quartier du <strong>Cours Julien</strong>, aussi appelé Cours Ju, et de <strong>La Plaine</strong> est le cœur artistique et culturel de la cité phocéenne. Célèbre pour ses fresques murales colorées, ses bars animés et sa vie nocturne vibrante, ce quartier emblématique attire les amateurs d'art de rue, de musique et de culture alternative.</p>
+            
+            <p>Le Cours Julien est connu pour son marché aux livres, ses boutiques vintage et ses cafés bohèmes. La place Jean-Jaurès (La Plaine) accueille un marché quotidien et devient le point de ralliement des noctambules marseillais. Le quartier <strong>Notre-Dame-du-Mont</strong> offre une atmosphère unique où se mêlent street art, gastronomie méditerranéenne et convivialité marseillaise.</p>
         </div>
     </section>
 
@@ -46,9 +81,10 @@
 
     <!-- Section Carte -->
     <section class="map-section">
-        <div id="map"></div>
+        <h2 class="visually-hidden">Carte interactive du quartier Cours Julien - Plaine</h2>
+        <div id="map" role="application" aria-label="Carte interactive des lieux du quartier"></div>
         <div class="map-legend">
-            <button class="legend-toggle" id="legendToggle">
+            <button class="legend-toggle" id="legendToggle" aria-expanded="false" aria-controls="legendContent">
                 <span>Légende</span>
                 <span class="toggle-icon">▼</span>
             </button>
@@ -60,11 +96,11 @@
     </section>
 
     <!-- Modal pour agrandir les images -->
-    <div class="lightbox" id="lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="lightbox-overlay" onclick="closeLightbox()"></div>
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <img src="" alt="" id="lightboxImage">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">&times;</button>
+            <img src="" alt="" id="lightboxImage" loading="lazy">
             <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
@@ -83,11 +119,11 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Pour ajouter votre lieu sur la carte, contactez-nous ! -> <a href="mailto:jawed_tahir@yahoo.fr">jawed_tahir@yahoo.fr</a></p>
+                    <p>Pour ajouter votre lieu sur la carte, contactez-nous ! → <a href="mailto:jawed_tahir@yahoo.fr">jawed_tahir@yahoo.fr</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Cours Ju - Plaine. Fait à Marseille par Javed. Visitez le site : <a href="https://javed.fr">javed.fr</a></p>
+                <p>&copy; 2025 Cours Ju - Plaine. Fait à Marseille par Javed. Visitez le site : <a href="https://javed.fr" target="_blank" rel="noopener">javed.fr</a></p>
             </div>
         </div>
     </footer>
@@ -97,5 +133,34 @@
     
     <!-- Custom JS -->
     <script src="script.js"></script>
+    
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": "Cours Julien - La Plaine",
+      "alternateName": ["Cours Ju", "Notre-Dame-du-Mont"],
+      "description": "Quartier artistique et culturel de Marseille, célèbre pour son street art, ses cafés bohèmes et sa vie nocturne animée",
+      "image": "https://cours-julien.fr/images/Hero.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cours Julien",
+        "addressLocality": "Marseille",
+        "postalCode": "13006",
+        "addressRegion": "Provence-Alpes-Côte d'Azur",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.2965",
+        "longitude": "5.3698"
+      },
+      "url": "https://cours-julien.fr",
+      "sameAs": [
+        "https://fr.wikipedia.org/wiki/Cours_Julien"
+      ]
+    }
+    </script>
 </body>
 </html>
