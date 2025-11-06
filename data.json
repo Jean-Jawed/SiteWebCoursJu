@@ -123,7 +123,7 @@
     {
       "id": 13,
       "nom": "La Maison hantée",
-      "categories": ["bars", "concerts", "restaurants"],
+      "categories": ["bars", "concerts"],
       "latitude": 43.29507903521873,
       "longitude": 5.383781588355656,
       "image": "images/Bar_MaisonHantee.jpg",
