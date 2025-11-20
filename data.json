@@ -283,7 +283,7 @@
     {
       "id": 29,
       "nom": "Le Nucléaire",
-      "categories": ["snack","nuit"],
+      "categories": ["snacks","nuit"],
       "latitude": 43.293974375870185,
       "longitude": 5.385407928835575,
       "image": "images/Theatre_Toursky.jpg",

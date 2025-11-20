@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Initialiser le toggle de la légende
         initLegendToggle();
         
+        // Initialiser les contrôles audio vidéo
+        initVideoControls();
+        
     } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
     }
@@ -250,6 +253,44 @@ function initLegendToggle() {
 }
 
 // =====================
+// Contrôles audio vidéo hero
+// =====================
+function initVideoControls() {
+    const video = document.querySelector('.hero-video');
+    const volumeBtn = document.getElementById('volumeBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    
+    if (video && volumeBtn && volumeSlider) {
+        // Gérer le clic sur le bouton son
+        volumeBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                video.volume = volumeSlider.value / 100;
+                volumeBtn.textContent = video.volume > 0.5 ? '🔊' : '🔉';
+            } else {
+                video.muted = true;
+                volumeBtn.textContent = '🔇';
+            }
+        });
+        
+        // Gérer le slider de volume
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            video.volume = volume;
+            video.muted = false;
+            
+            if (volume === 0) {
+                volumeBtn.textContent = '🔇';
+            } else if (volume > 0.5) {
+                volumeBtn.textContent = '🔊';
+            } else {
+                volumeBtn.textContent = '🔉';
+            }
+        });
+    }
+}
+
+// =====================
 // Lightbox
 // =====================
 function openLightbox(imageSrc, caption) {
@@ -291,12 +332,9 @@ function scrollToMap() {
 // =====================
 // Fonction utilitaire pour ajouter facilement de nouveaux lieux
 // =====================
-// Cette fonction peut être utilisée dans la console pour tester l'ajout de lieux
 function ajouterLieu(lieu) {
-    // Ajouter le lieu aux données
     data.lieux.push(lieu);
     
-    // Créer le marker avec la première catégorie
     const primaryCategory = lieu.categories[0];
     const catInfo = data.categories[primaryCategory];
     if (!catInfo) {
@@ -325,7 +363,6 @@ function ajouterLieu(lieu) {
         lieu: lieu
     });
     
-    // Appliquer le filtre actuel
     if (currentFilter === 'all' || lieu.categories.includes(currentFilter)) {
         marker.addTo(map);
     }
