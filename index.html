@@ -36,14 +36,19 @@
     </section>
 
     <!-- Header avec filtres -->
-    <header class="main-header">
-        <div class="container">
-            <h2 class="section-title">Explorer par catégorie</h2>
-            <div class="filters" id="filters">
-                <button class="filter-btn active" data-category="all">
-                    <span class="filter-icon">🗺️</span>
-                    <span class="filter-label">Tout voir</span>
-                </button>
+    <header class="main-header" id="mainHeader">
+        <button class="header-toggle" id="headerToggle" title="Masquer/Afficher les filtres">
+            <span class="toggle-icon">▲</span>
+        </button>
+        <div class="header-content" id="headerContent">
+            <div class="container">
+                <h2 class="section-title">Explorer par catégorie</h2>
+                <div class="filters" id="filters">
+                    <button class="filter-btn active" data-category="all">
+                        <span class="filter-icon">🗺️</span>
+                        <span class="filter-label">Tout voir</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -122,7 +127,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Cours Ju - Plaine. Fait avec ❤️ à Marseille par <strong><a href="https://javed.fr">Jawed</a></strong></p>
+                <p>&copy; 2025 Cours Ju - Plaine. Fait avec ❤️ à Marseille</p>
             </div>
         </div>
     </footer>

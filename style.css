@@ -205,12 +205,77 @@ h1, h2, h3 {
    ===================== */
 .main-header {
     background-color: white;
-    padding: 3rem 0;
     box-shadow: 0 4px 20px var(--shadow);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: var(--transition);
 }
+
+.header-toggle {
+    position: absolute;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 101;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(230, 57, 70, 0.3);
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-toggle:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.5);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.main-header.collapsed .toggle-icon {
+    transform: rotate(-180deg);
+}
+
+.main-header.collapsed .header-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    transform: none;
+}
+
+.main-header.collapsed .header-toggle:hover {
+    transform: scale(1.1);
+}
+
+.header-content {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding: 3rem 0;
+}
+
+.main-header.collapsed .header-content {
+    max-height: 0;
+    padding: 0;
+}
+
+.main-header.collapsed {
+    padding: 0;
+}
+
 
 .container {
     max-width: 1400px;
@@ -710,8 +775,31 @@ h1, h2, h3 {
         width: 60px;
     }
 
-    .main-header {
+    .header-content {
         padding: 2rem 0;
+    }
+
+    .header-toggle {
+        bottom: -18px;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .header-toggle:hover {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .main-header.collapsed .header-toggle {
+        top: 8px;
+        right: 15px;
+        bottom: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .main-header.collapsed .header-toggle:hover {
+        transform: scale(1.1);
     }
 
     .container {

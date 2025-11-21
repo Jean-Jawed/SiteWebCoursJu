@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Initialiser le toggle de la légende
         initLegendToggle();
         
+        // Initialiser le toggle du header
+        initHeaderToggle();
+        
         // Initialiser les contrôles audio vidéo
         initVideoControls();
         
@@ -249,6 +252,26 @@ function initLegendToggle() {
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
         content.classList.toggle('open');
+    });
+}
+
+// =====================
+// Toggle du header
+// =====================
+function initHeaderToggle() {
+    const header = document.getElementById('mainHeader');
+    const toggleBtn = document.getElementById('headerToggle');
+    
+    // Charger l'état sauvegardé
+    const isCollapsed = localStorage.getItem('headerCollapsed') === 'true';
+    if (isCollapsed) {
+        header.classList.add('collapsed');
+    }
+    
+    toggleBtn.addEventListener('click', () => {
+        header.classList.toggle('collapsed');
+        const collapsed = header.classList.contains('collapsed');
+        localStorage.setItem('headerCollapsed', collapsed);
     });
 }
 
