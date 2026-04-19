@@ -1499,3 +1499,58 @@ h3 {
         padding: 1.5rem;
     }
 }
+
+
+/* Classe utilitaire : caché visuellement mais accessible aux lecteurs d'écran et moteurs */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Section intro éditoriale (page d'accueil) */
+.intro-section {
+    padding: 4rem 1rem 2rem;
+    background: white;
+}
+
+.intro-section .section-title {
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    max-width: 780px;
+    margin: 0 auto;
+    color: #444;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.intro-text p {
+    margin: 0 0 1rem;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-text strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 2.5rem 1rem 1rem;
+    }
+
+    .intro-text {
+        font-size: 0.97rem;
+    }
+}

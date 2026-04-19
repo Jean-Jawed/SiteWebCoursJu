@@ -4,9 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours Ju - Plaine | Notre-Dame-du-Mont</title>
+
+    <!-- SEO : titre et description -->
+    <title>Cours Julien et La Plaine à Marseille : bars, concerts, galeries, restaurants</title>
     <meta name="description"
-        content="Le quartier Cours Julien et La Plaine à Marseille : bars, concerts, galeries, vie de quartier.">
+        content="Découvre le Cours Julien, La Plaine et Notre-Dame-du-Mont à Marseille (6ème). Bars, concerts, galeries d'art, restaurants, librairies : tous les lieux du quartier sur une carte.">
+    <meta name="keywords"
+        content="cours julien, la plaine, notre-dame-du-mont, marseille, 6ème arrondissement, bars marseille, concerts marseille, sortir marseille, quartier marseille">
+    <link rel="canonical" href="https://cours-julien.fr/">
+
+    <!-- Open Graph / Facebook / WhatsApp / iMessage -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cours-julien.fr/">
+    <meta property="og:title" content="Cours Julien et La Plaine à Marseille : tous les lieux du quartier">
+    <meta property="og:description"
+        content="Bars, concerts, galeries, restaurants : découvre les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont sur une carte interactive.">
+    <meta property="og:image" content="https://cours-julien.fr/images/Logo.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Cours Ju — Plaine">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cours Julien et La Plaine à Marseille : tous les lieux du quartier">
+    <meta name="twitter:description"
+        content="Bars, concerts, galeries, restaurants : découvre les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont.">
+    <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
+
+    <!-- Favicon (à ajouter si tu n'en as pas déjà) -->
+    <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+
+    <!-- Données structurées Schema.org : TouristAttraction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "Cours Julien et La Plaine",
+        "alternateName": ["Cours Ju", "Notre-Dame-du-Mont", "La Plaine"],
+        "description": "Quartier culturel et festif de Marseille, connu pour ses bars, concerts, galeries d'art, street art, restaurants et sa vie de nuit. Situé dans le 6ème arrondissement.",
+        "url": "https://cours-julien.fr/",
+        "image": "https://cours-julien.fr/images/Logo.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Marseille",
+            "addressRegion": "Provence-Alpes-Côte d'Azur",
+            "postalCode": "13006",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 43.29398,
+            "longitude": 5.3843
+        }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,11 +104,31 @@
             <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="0">
         </div>
         <div class="hero-content">
-            <img src="images/Logo.jpg" alt="Logo du quartier" class="hero-logo">
-            <h1 class="hero-title">Cours Ju - Plaine</h1>
-            <p class="hero-subtitle">Notre-Dame-du-Mont</p>
+            <img src="images/Logo.jpg" alt="Logo du quartier Cours Julien - La Plaine à Marseille" class="hero-logo">
+            <h1 class="hero-title">Cours Julien &amp; La Plaine</h1>
+            <p class="hero-subtitle">Notre-Dame-du-Mont · Marseille 6ᵉ</p>
             <p class="hero-description">Un quartier qui vit au rythme de ses habitants</p>
             <a href="lieux.html" class="hero-cta">Découvrir les lieux</a>
+        </div>
+    </section>
+
+    <!-- ==== Intro éditoriale (SEO) ==== -->
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title">Le quartier Cours Julien - La Plaine</h2>
+            <div class="intro-text">
+                <p>
+                    Entre le <strong>Cours Julien</strong>, <strong>La Plaine</strong> (place Jean-Jaurès) et
+                    <strong>Notre-Dame-du-Mont</strong>, le 6ème arrondissement de Marseille concentre une grande
+                    partie de la vie culturelle et nocturne de la ville. Galeries d'art, street art, bars à cocktails,
+                    salles de concerts, librairies indépendantes, restaurants, cinéma associatif : le quartier mêle
+                    les genres et les publics.
+                </p>
+                <p>
+                    Ce site recense les lieux du quartier. L'objectif : trouver rapidement où aller ce soir,
+                    découvrir un nouvel endroit, ou simplement se balader en mode exploration.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -84,7 +154,7 @@
     <!-- ==== Événements ==== -->
     <section class="events-section">
         <div class="container">
-            <h2 class="section-title">Événements</h2>
+            <h2 class="section-title">Agendas et événements à Marseille</h2>
             <div class="events-grid">
                 <a href="https://www.vortexfrommars.org/" target="_blank" rel="noopener noreferrer" class="event-card">
                     <h3 class="event-title">Le Vortex</h3>
@@ -110,8 +180,8 @@
         <div class="container">
             <h2 class="section-title">Balade dans le quartier</h2>
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/_yiAcFII65Q?si=Uo67WNuGH8hkThw6" title="YouTube video player"
-                    frameborder="0"
+                <iframe src="https://www.youtube.com/embed/_yiAcFII65Q?si=Uo67WNuGH8hkThw6"
+                    title="Balade vidéo dans le quartier Cours Julien et La Plaine à Marseille" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
@@ -124,7 +194,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Cours Ju — Plaine</h3>
-                    <p>Bars, concerts, galeries et vie de quartier.</p>
+                    <p>Bars, concerts, galeries et vie de quartier, à Marseille dans le 6ᵉ arrondissement.</p>
                 </div>
                 <div class="footer-section">
                     <h3>À propos</h3>
