@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration — Cours Ju Plaine</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Leaflet CSS (pour le sélecteur de coordonnées) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+         ÉCRAN DE CONNEXION
+         ===================================== -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <h1>Administration</h1>
+            <p class="login-subtitle">Cours Ju — Plaine</p>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required autocomplete="current-password">
+                </div>
+                <div id="loginError" class="login-error" hidden></div>
+                <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
+            </form>
+
+            <a href="index.html" class="login-back">← Retour au site</a>
+        </div>
+    </div>
+
+    <!-- =====================================
+         INTERFACE ADMIN (cachée jusqu'au login)
+         ===================================== -->
+    <div id="adminApp" class="admin-app" hidden>
+
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-header-left">
+                <h1>Administration</h1>
+                <a href="index.html" target="_blank" class="admin-link-site">Voir le site ↗</a>
+            </div>
+            <div class="admin-header-right">
+                <span id="userEmail" class="admin-user"></span>
+                <button id="logoutBtn" class="btn btn-secondary">Déconnexion</button>
+            </div>
+        </header>
+
+        <!-- Onglets -->
+        <nav class="admin-tabs">
+            <button class="tab-btn active" data-tab="lieux">📍 Lieux</button>
+            <button class="tab-btn" data-tab="categories">🏷️ Catégories</button>
+        </nav>
+
+        <!-- ===== ONGLET LIEUX ===== -->
+        <section id="tabLieux" class="tab-content active">
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="🔍 Rechercher un lieu..." class="search-input">
+                <select id="filterCategory" class="filter-select">
+                    <option value="">Toutes les catégories</option>
+                </select>
+                <button id="addLieuBtn" class="btn btn-primary">+ Ajouter un lieu</button>
+            </div>
+
+            <div id="lieuxCount" class="count-info"></div>
+
+            <div class="table-wrapper">
+                <table id="lieuxTable" class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Catégories</th>
+                            <th>Description</th>
+                            <th>Instagram</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lieuxTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== ONGLET CATÉGORIES ===== -->
+        <section id="tabCategories" class="tab-content">
+            <div class="toolbar">
+                <button id="addCategorieBtn" class="btn btn-primary">+ Ajouter une catégorie</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Clé (id)</th>
+                            <th>Nom</th>
+                            <th>Icône</th>
+                            <th>Couleur</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categoriesTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- =====================================
+         MODAL ÉDITION LIEU
+         ===================================== -->
+    <div id="lieuModal" class="modal" hidden>
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content modal-large">
+            <header class="modal-header">
+                <h2 id="lieuModalTitle">Ajouter un lieu</h2>
+                <button class="modal-close" data-close-modal>&times;</button>
+            </header>
+
+            <form id="lieuForm" class="modal-body">
+                <input type="hidden" id="lieuId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lieuNom">Nom *</label>
+                        <input type="text" id="lieuNom" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Catégories * <small>(cocher une ou plusieurs)</small></label>
+                        <div id="lieuCategories" class="checkbox-grid"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lieuDescription">Description</label>
+                        <textarea id="lieuDescription" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-split">
+                    <div class="form-group">
+                        <label for="lieuImage">Nom du fichier image</label>
+                        <input type="text" id="lieuImage" placeholder="images/MonLieu.jpg">
+                        <small>Chemin relatif, ex: <code>images/MonLieu.jpg</code></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="lieuInstagram">Instagram</label>
+                        <input type="text" id="lieuInstagram" placeholder="@mon_lieu">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Position sur la carte * <small>(clique pour déplacer le repère)</small></label>
+                        <div id="lieuMiniMap" class="mini-map"></div>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-split">
+                    <div class="form-group">
+                        <label for="lieuLat">Latitude *</label>
+                        <input type="number" id="lieuLat" step="0.000001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lieuLng">Longitude *</label>
+                        <input type="number" id="lieuLng" step="0.000001" required>
+                    </div>
+                </div>
+
+                <div id="lieuFormError" class="form-error" hidden></div>
+            </form>
+
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal>Annuler</button>
+                <button type="submit" form="lieuForm" id="lieuSubmitBtn" class="btn btn-primary">Enregistrer</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- =====================================
+         MODAL ÉDITION CATÉGORIE
+         ===================================== -->
+    <div id="categorieModal" class="modal" hidden>
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="categorieModalTitle">Ajouter une catégorie</h2>
+                <button class="modal-close" data-close-modal>&times;</button>
+            </header>
+
+            <form id="categorieForm" class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categorieCle">Clé (identifiant) *</label>
+                        <input type="text" id="categorieCle" required
+                            pattern="[a-z0-9_\-éèêàâîïôöûüç]+"
+                            placeholder="ex: art, bars, restaurants">
+                        <small>Minuscules, sans espaces. Non modifiable après création.</small>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-split">
+                    <div class="form-group">
+                        <label for="categorieNom">Nom affiché *</label>
+                        <input type="text" id="categorieNom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categorieIcon">Icône (emoji) *</label>
+                        <input type="text" id="categorieIcon" required maxlength="4" placeholder="🎨">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categorieCouleur">Couleur *</label>
+                        <input type="color" id="categorieCouleur" required>
+                    </div>
+                </div>
+
+                <div id="categorieFormError" class="form-error" hidden></div>
+            </form>
+
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal>Annuler</button>
+                <button type="submit" form="categorieForm" class="btn btn-primary">Enregistrer</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- =====================================
+         MODAL CONFIRMATION SUPPRESSION
+         ===================================== -->
+    <div id="confirmModal" class="modal" hidden>
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content modal-small">
+            <header class="modal-header">
+                <h2>Confirmer la suppression</h2>
+            </header>
+            <div class="modal-body">
+                <p id="confirmMessage"></p>
+            </div>
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal>Annuler</button>
+                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Supprimer</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Notification toast -->
+    <div id="toast" class="toast" hidden></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Admin JS -->
+    <script type="module" src="admin.js"></script>
+</body>
+
+</html>
