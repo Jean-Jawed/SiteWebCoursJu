@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours Ju - Plaine | Notre-Dame-du-Mont</title>
     <meta name="description"
-        content="Découvrez le quartier vibrant du Cours Julien et de la Plaine à Marseille : art, culture, bars et vie nocturne">
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        content="Le quartier Cours Julien et La Plaine à Marseille : bars, concerts, galeries, vie de quartier.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,19 +17,35 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-YW9E56RSRF');
     </script>
 </head>
 
 <body>
-    <!-- Hero Section -->
+
+    <!-- ==== Navigation ==== -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Cours Ju — Plaine</a>
+            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Accueil</a></li>
+                <li><a href="lieux.html" class="nav-link">Lieux</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==== Hero ==== -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <video src="videos/coursju.mp4" class="hero-video" autoplay loop muted playsinline></video>
@@ -44,45 +57,31 @@
             <img src="images/Logo.jpg" alt="Logo du quartier" class="hero-logo">
             <h1 class="hero-title">Cours Ju - Plaine</h1>
             <p class="hero-subtitle">Notre-Dame-du-Mont</p>
-            <p class="hero-description">Le cœur battant de la culture marseillaise</p>
-            <button class="hero-cta" onclick="scrollToMap()">Découvrir le quartier</button>
+            <p class="hero-description">Un quartier qui vit au rythme de ses habitants</p>
+            <a href="lieux.html" class="hero-cta">Découvrir les lieux</a>
         </div>
     </section>
 
-    <!-- Header avec filtres -->
-    <header class="main-header" id="mainHeader">
-        <button class="header-toggle" id="headerToggle" title="Masquer/Afficher les filtres">
-            <span class="toggle-icon">▲</span>
-        </button>
-        <div class="header-content" id="headerContent">
-            <div class="container">
-                <h2 class="section-title">Explorer par catégorie</h2>
-                <div class="filters" id="filters">
-                    <button class="filter-btn active" data-category="all">
-                        <span class="filter-icon">🗺️</span>
-                        <span class="filter-label">Tout voir</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Section Carte -->
-    <section class="map-section">
-        <div id="map"></div>
-        <div class="map-legend">
-            <button class="legend-toggle" id="legendToggle">
-                <span>Légende</span>
-                <span class="toggle-icon">▼</span>
-            </button>
-            <div class="legend-content" id="legendContent">
-                <h3>Catégories</h3>
-                <div id="legendItems"></div>
-            </div>
+    <!-- ==== Gros CTA vers la page lieux (remplace la carte) ==== -->
+    <section class="discover-section">
+        <div class="container">
+            <h2 class="section-title">Explorer le quartier</h2>
+            <p class="discover-text">
+                Bars, concerts, galeries, restaurants, cinéma, théâtre, librairies…
+                Une carte interactive et une liste pour découvrir tous les lieux du quartier.
+            </p>
+            <a href="lieux.html" class="discover-cta">
+                <span class="discover-cta-icon">🗺️</span>
+                <span class="discover-cta-text">
+                    <strong>Voir tous les lieux</strong>
+                    <small>Carte et liste</small>
+                </span>
+                <span class="discover-cta-arrow">→</span>
+            </a>
         </div>
     </section>
 
-    <!-- Section Événements -->
+    <!-- ==== Événements ==== -->
     <section class="events-section">
         <div class="container">
             <h2 class="section-title">Événements</h2>
@@ -106,10 +105,10 @@
         </div>
     </section>
 
-    <!-- Section Vidéo YouTube -->
+    <!-- ==== Vidéo YouTube ==== -->
     <section class="video-section">
         <div class="container">
-            <h2 class="section-title">Ballade dans le quartier</h2>
+            <h2 class="section-title">Balade dans le quartier</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/_yiAcFII65Q?si=Uo67WNuGH8hkThw6" title="YouTube video player"
                     frameborder="0"
@@ -119,51 +118,36 @@
         </div>
     </section>
 
-    <!-- Modal pour agrandir les images -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <img src="" alt="" id="lightboxImage">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- ==== Footer ==== -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Cours Ju - Plaine</h3>
-                    <p>Le quartier artistique et culturel de Marseille</p>
+                    <h3>Cours Ju — Plaine</h3>
+                    <p>Bars, concerts, galeries et vie de quartier.</p>
                 </div>
                 <div class="footer-section">
                     <h3>À propos</h3>
-                    <p>Ce site présente les lieux emblématiques du quartier Notre-Dame-du-Mont, également connu sous les
-                        noms de Cours Julien et La Plaine.</p>
+                    <p>Ce site recense les lieux du quartier Notre-Dame-du-Mont, également connu sous les noms
+                        de Cours Julien et La Plaine.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Pour ajouter votre lieu sur la carte,<br>contactez-nous !<br><b
-                            style="color:#ff4500;">jawed_tahir@yahoo.fr</b></p>
+                    <p>Une question, un lieu à proposer ?<br>
+                        <a href="contact.html" class="footer-link">Formulaire de contact →</a>
+                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>
-                    &copy; 2025 Cours Ju - Plaine. Fait avec ❤️ à Marseille par
-                    <a href="https://javed.fr" style="font-weight:600; color:#ff4500; text-decoration:none;">Jawed
-                        Tahir</a>
-                    <a href="admin.html" style="margin-left: 1rem; color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.8rem;" title="Administration">·</a>
+                    &copy; 2025 Cours Ju — Plaine. Fait avec ❤️ à Marseille.
+                    <a href="admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
                 </p>
-
             </div>
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- Custom JS (module pour les imports Firebase) -->
+    <!-- Custom JS -->
     <script type="module" src="script.js"></script>
 </body>
 

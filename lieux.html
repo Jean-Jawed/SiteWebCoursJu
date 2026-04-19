@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les lieux | Cours Ju - Plaine</title>
+    <meta name="description"
+        content="Tous les lieux du quartier Cours Julien et La Plaine : bars, concerts, galeries, restaurants.">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YW9E56RSRF');
+    </script>
+</head>
+
+<body class="page-lieux">
+
+    <!-- ==== Navigation ==== -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Cours Ju — Plaine</a>
+            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="lieux.html" class="nav-link active">Lieux</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==== Barre d'outils : toggle + filtres ==== -->
+    <header class="lieux-toolbar">
+        <div class="container">
+            <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
+                <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
+                    <span class="view-icon">🗂️</span>
+                    <span>Liste</span>
+                </button>
+                <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
+                    <span class="view-icon">🗺️</span>
+                    <span>Carte</span>
+                </button>
+            </div>
+
+            <div class="filters-wrap">
+                <div class="filters" id="filters">
+                    <button class="filter-btn active" data-category="all">
+                        <span class="filter-icon">🗺️</span>
+                        <span class="filter-label">Tout</span>
+                    </button>
+                    <!-- Les autres boutons sont injectés par JS -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==== Vue LISTE ==== -->
+    <section class="view-list" id="viewList">
+        <div class="container">
+            <p id="listCount" class="list-count"></p>
+            <div id="cardsGrid" class="cards-grid"></div>
+            <div id="listEmpty" class="list-empty" hidden>
+                Aucun lieu ne correspond à ce filtre.
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== Vue CARTE ==== -->
+    <section class="view-map" id="viewMap" hidden>
+        <div id="map"></div>
+        <div class="map-legend">
+            <button class="legend-toggle" id="legendToggle">
+                <span>Légende</span>
+                <span class="toggle-icon">▼</span>
+            </button>
+            <div class="legend-content" id="legendContent">
+                <h3>Catégories</h3>
+                <div id="legendItems"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== Lightbox ==== -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- ==== Footer simplifié ==== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Cours Ju — Plaine. Fait avec ❤️ à Marseille.
+                    <a href="admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script type="module" src="lieux.js"></script>
+</body>
+
+</html>

@@ -31,7 +31,9 @@ body {
     background-color: var(--light);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     line-height: 1.2;
@@ -140,6 +142,7 @@ h1, h2, h3 {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -567,8 +570,13 @@ h1, h2, h3 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .lightbox-overlay {
@@ -594,6 +602,7 @@ h1, h2, h3 {
         transform: scale(0.8);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -688,7 +697,8 @@ h1, h2, h3 {
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -889,4 +899,603 @@ h1, h2, h3 {
 .lightbox-close:focus {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
+}
+
+
+/* =============== NAVIGATION =============== */
+.site-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.nav-brand:hover {
+    color: #ff4500;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.15s;
+}
+
+.nav-link:hover {
+    color: #ff4500;
+    background: rgba(255, 69, 0, 0.08);
+}
+
+.nav-link.active {
+    color: #ff4500;
+    font-weight: 700;
+}
+
+.nav-burger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: all 0.25s;
+}
+
+.nav-burger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.nav-burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-burger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .nav-burger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: white;
+        gap: 0;
+        padding: 0.5rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.2s;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* =============== LIEN ADMIN (cadenas) =============== */
+.footer-admin {
+    margin-left: 0.8rem;
+    color: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.footer-admin:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-link {
+    color: #ff4500;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* =============== CTA "Explorer le quartier" (index) =============== */
+.discover-section {
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, #fff 0%, #fef6f2 100%);
+    text-align: center;
+}
+
+.discover-text {
+    max-width: 650px;
+    margin: 0 auto 2rem;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.discover-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.3rem 2rem;
+    background: linear-gradient(135deg, #ff4500 0%, #ff7730 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3);
+    transition: all 0.2s;
+    max-width: 100%;
+}
+
+.discover-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 69, 0, 0.4);
+}
+
+.discover-cta-icon {
+    font-size: 2rem;
+}
+
+.discover-cta-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.3;
+}
+
+.discover-cta-text strong {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.discover-cta-text small {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 0.1rem;
+}
+
+.discover-cta-arrow {
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+/* =============== PAGE LIEUX : barre d'outils =============== */
+.page-lieux {
+    background: #fafafa;
+}
+
+.lieux-toolbar {
+    background: white;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ebee;
+    position: sticky;
+    top: 57px;
+    /* hauteur de la nav */
+    z-index: 900;
+}
+
+.lieux-toolbar .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Toggle Liste / Carte */
+.view-toggle {
+    display: inline-flex;
+    gap: 0;
+    background: #f0f2f5;
+    border-radius: 10px;
+    padding: 4px;
+    align-self: flex-start;
+}
+
+.view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.3rem;
+    border: none;
+    background: transparent;
+    color: #7f8c8d;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.15s;
+}
+
+.view-btn:hover:not(.active) {
+    color: #2c3e50;
+}
+
+.view-btn.active {
+    background: white;
+    color: #ff4500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.view-icon {
+    font-size: 1.05rem;
+}
+
+/* Filtres (réutilise ton CSS existant des .filter-btn, on ne fait que wrapper) */
+.filters-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* =============== VUE LISTE =============== */
+.view-list {
+    padding: 2rem 1rem 4rem;
+}
+
+.list-count {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.lieu-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.lieu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+    background: #eef0f2;
+}
+
+.card-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #bfc5cb;
+    cursor: default;
+}
+
+.card-body {
+    padding: 1.1rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.card-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 10px;
+    font-size: 0.72rem;
+    color: white;
+    font-weight: 500;
+}
+
+.card-description {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f0f1f3;
+}
+
+.card-instagram {
+    color: #e1306c;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.card-instagram:hover {
+    text-decoration: underline;
+}
+
+.card-map-link {
+    background: none;
+    border: 1px solid #ff4500;
+    color: #ff4500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-left: auto;
+}
+
+.card-map-link:hover {
+    background: #ff4500;
+    color: white;
+}
+
+.list-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #95a5a6;
+    font-size: 1rem;
+}
+
+/* =============== VUE CARTE (page lieux) =============== */
+.view-map {
+    position: relative;
+    height: calc(100vh - 57px - 140px);
+    /* moins nav + toolbar */
+    min-height: 500px;
+}
+
+.view-map[hidden] {
+    display: none;
+}
+
+.view-map #map {
+    height: 100%;
+    width: 100%;
+}
+
+.view-list[hidden],
+.list-empty[hidden] {
+    display: none;
+}
+
+/* =============== PAGE CONTACT =============== */
+.contact-section {
+    min-height: calc(100vh - 57px - 80px);
+    padding: 3rem 1rem 4rem;
+    background: linear-gradient(135deg, #fff 0%, #fef6f2 100%);
+}
+
+.contact-container {
+    max-width: 600px;
+}
+
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.6rem;
+    text-align: center;
+}
+
+.contact-intro {
+    color: #555;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #2c3e50;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #d5d8dd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #ff4500;
+    box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.1);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.contact-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 0.5rem;
+}
+
+.contact-submit:hover:not(:disabled) {
+    background: #e63e00;
+    transform: translateY(-1px);
+}
+
+.contact-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contact-status {
+    margin-top: 1.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.contact-status.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.contact-status.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.contact-status[hidden] {
+    display: none;
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 768px) {
+    .discover-cta {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .discover-cta-arrow {
+        margin-left: 0;
+    }
+
+    .discover-cta-text {
+        align-items: center;
+    }
+
+    .lieux-toolbar {
+        top: 57px;
+    }
+
+    .view-btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .view-map {
+        height: calc(100vh - 57px - 130px);
+    }
+
+    .contact-title {
+        font-size: 1.7rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
 }
