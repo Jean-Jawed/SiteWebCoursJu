@@ -23,7 +23,6 @@ let mapInitialized = false;
 document.addEventListener('DOMContentLoaded', async () => {
     initNavBurger();
     initViewToggle();
-    initLegendToggle();
 
     try {
         ({ lieux, categories } = await chargerDonnees());
@@ -250,7 +249,6 @@ function initMap() {
     }).addTo(map);
 
     addMarkers();
-    createLegend();
     applyFilterOnMap();
 
     // Firefox/Safari ont besoin d'un invalidateSize après l'affichage
@@ -272,7 +270,7 @@ function addMarkers() {
         });
 
         const marker = L.marker([lieu.latitude, lieu.longitude], { icon });
-        marker.bindPopup(popupHTML(lieu), { maxWidth: 300, className: 'custom-popup', autoPan: false });
+        marker.bindPopup(popupHTML(lieu), { maxWidth: 500, className: 'custom-popup', autoPan: false });
 
         markers.push({ id: lieu.id, marker, categories: lieu.categories || [], lieu });
     });
@@ -291,12 +289,16 @@ function popupHTML(lieu) {
         return `<span class="popup-category" style="background-color: ${cat.couleur};">${cat.icon} ${escapeHtml(cat.nom)}</span>`;
     }).join(' ');
 
+    const image = lieu.image
+        ? `<img src="${escapeAttr(lieu.image)}"
+                alt="${escapeAttr(lieu.nom)}"
+                class="popup-image"
+                onclick="openLightbox('${escapeAttr(lieu.image)}', '${escapeAttr(lieu.nom)}')">`
+        : '<div class="popup-image card-image-placeholder">📍</div>';
+
     return `
         <div class="popup-content">
-            <img src="${escapeAttr(lieu.image || '')}"
-                 alt="${escapeAttr(lieu.nom)}"
-                 class="popup-image"
-                 onclick="openLightbox('${escapeAttr(lieu.image || '')}', '${escapeAttr(lieu.nom)}')">
+            ${image}
             <div class="popup-body">
                 <h3 class="popup-title">${escapeHtml(lieu.nom)}</h3>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem;">
@@ -334,43 +336,7 @@ function goToLieuOnMap(id) {
     }, 150);
 }
 
-// =====================
-// Légende
-// =====================
-function createLegend() {
-    const container = document.getElementById('legendItems');
 
-    const used = new Set();
-    lieux.forEach(l => (l.categories || []).forEach(c => used.add(c)));
-    const sorted = Array.from(used).sort((a, b) => {
-        const na = categories[a]?.nom || a;
-        const nb = categories[b]?.nom || b;
-        return na.localeCompare(nb);
-    });
-
-    sorted.forEach(cle => {
-        const cat = categories[cle];
-        if (!cat) return;
-        const item = document.createElement('div');
-        item.className = 'legend-item';
-        item.innerHTML = `
-            <div class="legend-color" style="background-color: ${cat.couleur};">${cat.icon}</div>
-            <span class="legend-label">${escapeHtml(cat.nom)}</span>
-        `;
-        container.appendChild(item);
-    });
-}
-
-function initLegendToggle() {
-    const toggle = document.getElementById('legendToggle');
-    const content = document.getElementById('legendContent');
-    if (!toggle || !content) return;
-
-    toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        content.classList.toggle('open');
-    });
-}
 
 // =====================
 // Lightbox (exposée globalement, appelée depuis onclick inline des popups)
