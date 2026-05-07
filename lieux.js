@@ -241,7 +241,7 @@ function initMap() {
     const centerLat = 43.29398;
     const centerLng = 5.3843;
 
-    map = L.map('map').setView([centerLat, centerLng], 16);
+    map = L.map('map', { gestureHandling: true }).setView([centerLat, centerLng], 16);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -272,7 +272,7 @@ function addMarkers() {
         });
 
         const marker = L.marker([lieu.latitude, lieu.longitude], { icon });
-        marker.bindPopup(popupHTML(lieu), { maxWidth: 300, className: 'custom-popup' });
+        marker.bindPopup(popupHTML(lieu), { maxWidth: 300, className: 'custom-popup', autoPan: false });
 
         markers.push({ id: lieu.id, marker, categories: lieu.categories || [], lieu });
     });

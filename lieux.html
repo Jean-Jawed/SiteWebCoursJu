@@ -35,6 +35,7 @@
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,56 +76,58 @@
     <!-- H1 visuellement caché (accessibilité + SEO) -->
     <h1 class="visually-hidden">Les lieux du quartier Cours Julien et La Plaine à Marseille</h1>
 
-    <!-- ==== Barre d'outils : toggle + filtres ==== -->
-    <header class="lieux-toolbar">
-        <div class="container">
-            <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
-                <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
-                    <span class="view-icon">🗂️</span>
-                    <span>Liste</span>
-                </button>
-                <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
-                    <span class="view-icon">🗺️</span>
-                    <span>Carte</span>
-                </button>
-            </div>
-
-            <div class="filters-wrap">
-                <div class="filters" id="filters">
-                    <button class="filter-btn active" data-category="all">
-                        <span class="filter-icon">🗺️</span>
-                        <span class="filter-label">Tout</span>
+    <div class="lieux-main-layout container">
+        <aside class="lieux-sidebar">
+            <!-- ==== Barre d'outils : toggle + filtres ==== -->
+            <header class="lieux-toolbar">
+                <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
+                    <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
+                        <span class="view-icon">🗂️</span>
+                        <span>Liste</span>
+                    </button>
+                    <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
+                        <span class="view-icon">🗺️</span>
+                        <span>Carte</span>
                     </button>
                 </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- ==== Vue LISTE ==== -->
-    <section class="view-list" id="viewList">
-        <div class="container">
-            <p id="listCount" class="list-count"></p>
-            <div id="cardsGrid" class="cards-grid"></div>
-            <div id="listEmpty" class="list-empty" hidden>
-                Aucun lieu ne correspond à ce filtre.
-            </div>
-        </div>
-    </section>
+                <div class="filters-wrap">
+                    <div class="filters" id="filters">
+                        <button class="filter-btn active" data-category="all">
+                            <span class="filter-icon">🗺️</span>
+                            <span class="filter-label">Tout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+        </aside>
 
-    <!-- ==== Vue CARTE ==== -->
-    <section class="view-map" id="viewMap" hidden>
-        <div id="map"></div>
-        <div class="map-legend">
-            <button class="legend-toggle" id="legendToggle">
-                <span>Légende</span>
-                <span class="toggle-icon">▼</span>
-            </button>
-            <div class="legend-content" id="legendContent">
-                <h3>Catégories</h3>
-                <div id="legendItems"></div>
-            </div>
-        </div>
-    </section>
+        <main class="lieux-content">
+            <!-- ==== Vue LISTE ==== -->
+            <section class="view-list" id="viewList">
+                <p id="listCount" class="list-count"></p>
+                <div id="cardsGrid" class="cards-grid"></div>
+                <div id="listEmpty" class="list-empty" hidden>
+                    Aucun lieu ne correspond à ce filtre.
+                </div>
+            </section>
+
+            <!-- ==== Vue CARTE ==== -->
+            <section class="view-map" id="viewMap" hidden>
+                <div id="map"></div>
+                <div class="map-legend">
+                    <button class="legend-toggle" id="legendToggle">
+                        <span>Légende</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div class="legend-content" id="legendContent">
+                        <h3>Catégories</h3>
+                        <div id="legendItems"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <!-- ==== Lightbox ==== -->
     <div class="lightbox" id="lightbox">
@@ -148,8 +151,9 @@
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
+    <!-- Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-gesture-handling"></script>
 
     <!-- Custom JS -->
     <script type="module" src="lieux.js"></script>
