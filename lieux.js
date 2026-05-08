@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         ({ lieux, categories } = await chargerDonnees());
         createFilters();
         renderList();
+        // Si la carte a été ouverte avant que les données arrivent (race condition mobile),
+        // les marqueurs sont absents — on les ajoute ici.
+        if (mapInitialized && markers.length === 0) {
+            addMarkers();
+            applyFilterOnMap();
+        }
     } catch (err) {
         console.error('Erreur chargement données:', err);
         document.getElementById('cardsGrid').innerHTML =
