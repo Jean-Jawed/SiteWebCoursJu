@@ -1,0 +1,12 @@
+{
+  "name": "cours-ju-plaine",
+  "version": "1.0.0",
+  "description": "Site Web Cours Ju - Plaine",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node build-lieux.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
