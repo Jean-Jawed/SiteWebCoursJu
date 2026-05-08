@@ -3,6 +3,7 @@
 // =====================
 
 import { chargerDonnees } from './data-loader.js';
+import { publicUrlFromPath } from './storage-helpers.js';
 
 // =====================
 // État global
@@ -206,11 +207,12 @@ function cardHTML(lieu) {
            </a>`
         : '';
 
-    const image = lieu.image
-        ? `<img src="${escapeAttr(lieu.image)}"
+    const imageUrl = publicUrlFromPath(lieu.image);
+    const image = imageUrl
+        ? `<img src="${escapeAttr(imageUrl)}"
                 alt="${escapeAttr(lieu.nom)}"
                 class="card-image"
-                data-src="${escapeAttr(lieu.image)}"
+                data-src="${escapeAttr(imageUrl)}"
                 data-caption="${escapeAttr(lieu.nom)}"
                 loading="lazy">`
         : '<div class="card-image card-image-placeholder">📍</div>';
@@ -289,11 +291,12 @@ function popupHTML(lieu) {
         return `<span class="popup-category" style="background-color: ${cat.couleur};">${cat.icon} ${escapeHtml(cat.nom)}</span>`;
     }).join(' ');
 
-    const image = lieu.image
-        ? `<img src="${escapeAttr(lieu.image)}"
+    const imageUrl = publicUrlFromPath(lieu.image);
+    const image = imageUrl
+        ? `<img src="${escapeAttr(imageUrl)}"
                 alt="${escapeAttr(lieu.nom)}"
                 class="popup-image"
-                onclick="openLightbox('${escapeAttr(lieu.image)}', '${escapeAttr(lieu.nom)}')">`
+                onclick="openLightbox('${escapeAttr(imageUrl)}', '${escapeAttr(lieu.nom)}')">`
         : '<div class="popup-image card-image-placeholder">📍</div>';
 
     return `

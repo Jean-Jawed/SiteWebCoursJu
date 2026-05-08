@@ -156,12 +156,34 @@
                     </div>
                 </div>
 
-                <div class="form-row form-row-split">
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="lieuImage">Nom du fichier image</label>
-                        <input type="text" id="lieuImage" placeholder="images/MonLieu.jpg">
-                        <small>Chemin relatif, ex: <code>images/MonLieu.jpg</code></small>
+                        <label>Image</label>
+                        <div class="image-uploader">
+                            <div id="lieuImagePreview" class="image-preview image-preview-empty">
+                                <span class="image-preview-placeholder">📷 Aucune image</span>
+                            </div>
+                            <div class="image-uploader-controls">
+                                <input type="file" id="lieuImageFile" accept="image/*" hidden>
+                                <button type="button" id="lieuImagePickBtn" class="btn btn-secondary">
+                                    📁 Choisir une image…
+                                </button>
+                                <button type="button" id="lieuImageRemoveBtn" class="btn btn-secondary" hidden>
+                                    🗑️ Retirer
+                                </button>
+                            </div>
+                            <div class="form-group image-name-group">
+                                <label for="lieuImage">
+                                    Nom du fichier <small>(éditable, généré automatiquement)</small>
+                                </label>
+                                <input type="text" id="lieuImage" placeholder="Bar_LeChampDeMars.jpg">
+                                <small>Stocké dans <code>images/</code> du bucket Firebase.</small>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="form-row">
                     <div class="form-group">
                         <label for="lieuInstagram">Instagram</label>
                         <input type="text" id="lieuInstagram" placeholder="@mon_lieu">

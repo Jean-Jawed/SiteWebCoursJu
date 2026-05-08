@@ -8,6 +8,9 @@ import {
 import {
     signInWithEmailAndPassword, signOut, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import {
+    publicUrlFromPath, resizeAndUpload, deleteFromStorage
+} from './storage-helpers.js';
 
 // =====================
 // État global
@@ -18,6 +21,11 @@ let currentTab = 'lieux';
 let miniMap = null;
 let miniMapMarker = null;
 let pendingDelete = null;    // {type, id, nom} lors de la confirmation
+let pendingImageFile = null; // File choisi par l'admin, à uploader au submit
+let nomFileEdited = false;   // l'admin a-t-il édité manuellement le nom du fichier ?
+
+// Tous les fichiers vivent sous "images/" dans le bucket
+const STORAGE_DIR = 'images/';
 
 // =====================
 // Références DOM
@@ -263,6 +271,12 @@ function openLieuModal(lieuId) {
     document.getElementById('lieuImage').value = lieu?.image || '';
     document.getElementById('lieuInstagram').value = lieu?.instagram || '';
 
+    // Réinitialiser l'état du picker d'image
+    pendingImageFile = null;
+    nomFileEdited = isEdit && !!lieu?.image; // si on édite un lieu qui a déjà une image, on ne touche pas son nom auto
+    document.getElementById('lieuImageFile').value = '';
+    refreshImagePreview(lieu?.image || '');
+
     // Coordonnées par défaut : centre du quartier
     const defaultLat = 43.29398;
     const defaultLng = 5.3843;
@@ -287,6 +301,117 @@ function openLieuModal(lieuId) {
 
     // Init de la mini-carte après affichage du modal
     setTimeout(() => initMiniMap(lat, lng), 50);
+}
+
+// =====================
+// Modal LIEU : gestion de l'image (preview + upload)
+// =====================
+
+/**
+ * Met à jour la zone "preview" en fonction de :
+ * - pendingImageFile (nouveau fichier choisi mais pas encore uploadé) → preview locale
+ * - sinon le chemin Storage passé → URL publique reconstruite
+ * - sinon placeholder vide
+ */
+function refreshImagePreview(storagePath) {
+    const previewBox = document.getElementById('lieuImagePreview');
+    const removeBtn = document.getElementById('lieuImageRemoveBtn');
+
+    let src = null;
+    if (pendingImageFile) {
+        // Aperçu local du fichier choisi (avant resize/upload)
+        src = URL.createObjectURL(pendingImageFile);
+    } else if (storagePath) {
+        src = publicUrlFromPath(storagePath);
+    }
+
+    if (src) {
+        previewBox.classList.remove('image-preview-empty');
+        previewBox.innerHTML = `<img src="${escapeHtml(src)}" alt="Aperçu">`;
+        removeBtn.hidden = false;
+    } else {
+        previewBox.classList.add('image-preview-empty');
+        previewBox.innerHTML = '<span class="image-preview-placeholder">📷 Aucune image</span>';
+        removeBtn.hidden = true;
+    }
+}
+
+// Bouton "Choisir une image" → ouvre le sélecteur natif
+document.getElementById('lieuImagePickBtn').addEventListener('click', () => {
+    document.getElementById('lieuImageFile').click();
+});
+
+// Fichier choisi : on le mémorise et on rafraîchit la preview + le nom auto
+document.getElementById('lieuImageFile').addEventListener('change', (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+        toast('Ce fichier n\'est pas une image.', 'error');
+        e.target.value = '';
+        return;
+    }
+
+    pendingImageFile = file;
+    // Si l'admin n'a pas édité manuellement le nom, on en propose un automatique
+    if (!nomFileEdited) {
+        document.getElementById('lieuImage').value = computeAutoFileName();
+    }
+    refreshImagePreview(document.getElementById('lieuImage').value);
+});
+
+// Bouton "Retirer" : on annule le fichier et on vide le chemin
+document.getElementById('lieuImageRemoveBtn').addEventListener('click', () => {
+    pendingImageFile = null;
+    document.getElementById('lieuImageFile').value = '';
+    document.getElementById('lieuImage').value = '';
+    nomFileEdited = false;
+    refreshImagePreview('');
+});
+
+// Si l'admin tape dans le champ nom de fichier, on retient qu'il l'a édité
+document.getElementById('lieuImage').addEventListener('input', () => {
+    nomFileEdited = true;
+});
+
+// Le nom auto se base sur la catégorie principale (1ère cochée) + nom du lieu
+// Format demandé : "Bar_Lechampdemars.jpg", accents conservés
+function computeAutoFileName() {
+    const nom = document.getElementById('lieuNom').value.trim();
+    const firstCat = document.querySelector('#lieuCategories input:checked')?.value;
+    const catName = firstCat && categories[firstCat] ? categories[firstCat].nom : 'Lieu';
+
+    const cleanCat = sanitizeFileSegment(catName);
+    const cleanNom = sanitizeFileSegment(nom) || 'sansNom';
+    return `${cleanCat}_${cleanNom}.jpg`;
+}
+
+// Nettoie un segment pour usage dans un nom de fichier :
+// - garde lettres (avec accents), chiffres, tirets, underscores
+// - retire espaces et apostrophes ("Le Champ de Mars" → "LeChampDeMars")
+// - retire toute ponctuation problématique
+function sanitizeFileSegment(str) {
+    if (!str) return '';
+    return str
+        .replace(/['']/g, '')                          // apostrophes
+        .replace(/[\s\-]+/g, ' ')                       // tirets/espaces multiples → 1 espace
+        .split(' ')
+        .filter(Boolean)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))   // PascalCase
+        .join('')
+        .replace(/[^\p{L}\p{N}_]/gu, '');               // garde lettres unicode, chiffres, _
+}
+
+// Quand l'admin change le nom du lieu ou les catégories,
+// si le champ nom de fichier n'a pas été édité manuellement et qu'une image est en attente,
+// on rafraîchit le nom auto.
+document.getElementById('lieuNom').addEventListener('input', maybeRefreshAutoName);
+document.getElementById('lieuCategories').addEventListener('change', maybeRefreshAutoName);
+
+function maybeRefreshAutoName() {
+    if (nomFileEdited) return;
+    if (!pendingImageFile) return; // pas de nouveau fichier → pas de raison de toucher le nom existant
+    document.getElementById('lieuImage').value = computeAutoFileName();
 }
 
 function initMiniMap(lat, lng) {
@@ -364,21 +489,47 @@ lieuForm.addEventListener('submit', async (e) => {
         return;
     }
 
+    // Image : déterminer le nouveau chemin Storage à enregistrer en Firestore
+    const previousImagePath = isEdit ? (lieux.find(l => l.id === id)?.image || '') : '';
+    let imagePath = document.getElementById('lieuImage').value.trim();
+
+    // Si l'admin a saisi un nom sans préfixe, on l'ajoute
+    if (imagePath && !imagePath.startsWith(STORAGE_DIR)) {
+        imagePath = STORAGE_DIR + imagePath;
+    }
+
+    // Si un nouveau fichier a été choisi, il faut un nom non vide
+    if (pendingImageFile && !imagePath) {
+        lieuFormError.hidden = false;
+        lieuFormError.textContent = 'Donne un nom au fichier image.';
+        return;
+    }
+
     const data = {
         nom: document.getElementById('lieuNom').value.trim(),
         categories: selectedCats,
         latitude: lat,
         longitude: lng,
         description: document.getElementById('lieuDescription').value.trim(),
-        image: document.getElementById('lieuImage').value.trim(),
+        image: imagePath,
         instagram: document.getElementById('lieuInstagram').value.trim() || null
     };
 
     const submitBtn = document.getElementById('lieuSubmitBtn');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Enregistrement...';
+    submitBtn.textContent = pendingImageFile ? 'Upload de l\'image…' : 'Enregistrement…';
+
+    let uploadedNewPath = null; // pour rollback en cas d'échec Firestore
 
     try {
+        // 1) Upload du nouveau fichier (resize + upload)
+        if (pendingImageFile) {
+            await resizeAndUpload(pendingImageFile, imagePath);
+            uploadedNewPath = imagePath;
+            submitBtn.textContent = 'Enregistrement…';
+        }
+
+        // 2) Écriture Firestore
         if (isEdit) {
             await updateDoc(doc(db, 'lieux', id), data);
             const idx = lieux.findIndex(l => l.id === id);
@@ -389,12 +540,26 @@ lieuForm.addEventListener('submit', async (e) => {
             lieux.push({ id: ref.id, ...data });
             toast('Lieu ajouté ✓', 'success');
         }
+
+        // 3) Si on a remplacé l'image (ancien chemin différent du nouveau),
+        // ou si on l'a retirée, supprimer l'ancien fichier Storage.
+        if (previousImagePath && previousImagePath !== imagePath) {
+            await deleteFromStorage(previousImagePath);
+        }
+
         renderLieux();
         closeAllModals();
     } catch (err) {
         console.error(err);
         lieuFormError.hidden = false;
         lieuFormError.textContent = 'Erreur : ' + err.message;
+
+        // Rollback : si on a uploadé un fichier mais que Firestore a échoué,
+        // on supprime le fichier orphelin pour ne pas polluer le bucket.
+        // (sauf s'il s'agit d'un overwrite du même chemin que l'ancien — auquel cas on a déjà cassé l'ancien)
+        if (uploadedNewPath && uploadedNewPath !== previousImagePath) {
+            await deleteFromStorage(uploadedNewPath);
+        }
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enregistrer';
@@ -469,7 +634,7 @@ const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
 function confirmDeleteLieu(id) {
     const lieu = lieux.find(l => l.id === id);
     if (!lieu) return;
-    pendingDelete = { type: 'lieu', id, nom: lieu.nom };
+    pendingDelete = { type: 'lieu', id, nom: lieu.nom, imagePath: lieu.image || '' };
     confirmMessage.textContent = `Supprimer le lieu "${lieu.nom}" ? Cette action est irréversible.`;
     showModal(confirmModal);
 }
@@ -495,6 +660,10 @@ confirmDeleteBtn.addEventListener('click', async () => {
             await deleteDoc(doc(db, 'lieux', pendingDelete.id));
             lieux = lieux.filter(l => l.id !== pendingDelete.id);
             renderLieux();
+            // Suppression best-effort de l'image associée
+            if (pendingDelete.imagePath) {
+                await deleteFromStorage(pendingDelete.imagePath);
+            }
             toast('Lieu supprimé ✓', 'success');
         } else if (pendingDelete.type === 'categorie') {
             await deleteDoc(doc(db, 'categories', pendingDelete.id));
