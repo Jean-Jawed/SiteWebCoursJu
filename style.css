@@ -889,11 +889,21 @@ h3 {
 
     .popup-body {
         width: 100%;
-        padding: 1rem;
+        padding: 0.6rem 0.8rem;
     }
 
     .popup-title {
         font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .popup-category {
+        margin-bottom: 0;
+    }
+
+    .popup-description {
+        margin-bottom: 0.4rem;
+        line-height: 1.3;
     }
 }
 
