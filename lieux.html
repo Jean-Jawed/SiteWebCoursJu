@@ -2,61 +2,62 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <title>Les lieux du Cours Julien et de La Plaine à Marseille — Carte interactive</title>
-    <meta name="description"
-        content="Tous les lieux du quartier Cours Julien, La Plaine et Notre-Dame-du-Mont à Marseille : bars, concerts, galeries d'art, restaurants, librairies, cinéma. Carte interactive et liste par catégorie.">
-    <meta name="keywords"
-        content="cours julien lieux, la plaine marseille, bars cours julien, concerts marseille, galeries marseille, restaurants cours julien, sortir marseille 6ème, notre-dame-du-mont">
-    <link rel="canonical" href="https://cours-julien.fr/lieux.html">
+  <!-- SEO -->
+  <title>Les lieux du Cours Julien et de La Plaine à Marseille — Carte interactive</title>
+  <meta name="description"
+    content="Tous les lieux du quartier Cours Julien, La Plaine et Notre-Dame-du-Mont à Marseille : bars, concerts, galeries d'art, restaurants, librairies, cinéma. Carte interactive et liste par catégorie.">
+  <meta name="keywords"
+    content="cours julien lieux, la plaine marseille, bars cours julien, concerts marseille, galeries marseille, restaurants cours julien, sortir marseille 6ème, notre-dame-du-mont">
+  <link rel="canonical" href="https://cours-julien.fr/lieux.html">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cours-julien.fr/lieux.html">
-    <meta property="og:title" content="Tous les lieux du Cours Julien et de La Plaine à Marseille">
-    <meta property="og:description"
-        content="Bars, concerts, galeries, restaurants… Découvre les lieux du quartier sur une carte interactive.">
-    <meta property="og:image" content="https://cours-julien.fr/images/Logo.jpg">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="Cours Ju — Plaine">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cours-julien.fr/lieux.html">
+  <meta property="og:title" content="Tous les lieux du Cours Julien et de La Plaine à Marseille">
+  <meta property="og:description"
+    content="Bars, concerts, galeries, restaurants… Découvre les lieux du quartier sur une carte interactive.">
+  <meta property="og:image" content="https://cours-julien.fr/images/Logo.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Cours Ju — Plaine">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tous les lieux du Cours Julien et de La Plaine à Marseille">
-    <meta name="twitter:description"
-        content="Bars, concerts, galeries, restaurants : les lieux du quartier sur une carte interactive.">
-    <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tous les lieux du Cours Julien et de La Plaine à Marseille">
+  <meta name="twitter:description"
+    content="Bars, concerts, galeries, restaurants : les lieux du quartier sur une carte interactive.">
+  <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css"
+    type="text/css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-YW9E56RSRF');
-    </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-YW9E56RSRF');
+  </script>
 
-    <!-- JSON-LD SEO injecté au build -->
-    <script type="application/ld+json">
+  <!-- JSON-LD SEO injecté au build -->
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -688,947 +689,960 @@
 
 <body class="page-lieux">
 
-    <!-- ==== Navigation ==== -->
-    <nav class="site-nav" id="siteNav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand">Cours Ju — Plaine</a>
-            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
+  <!-- ==== Navigation ==== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Cours Ju — Plaine</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Accueil</a></li>
+        <li><a href="lieux.html" class="nav-link active">Lieux</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- H1 visuellement caché (accessibilité + SEO) -->
+  <h1 class="visually-hidden">Les lieux du quartier Cours Julien et La Plaine à Marseille</h1>
+
+  <div class="lieux-main-layout container">
+    <aside class="lieux-sidebar">
+      <!-- ==== Barre d'outils : toggle + filtres ==== -->
+      <header class="lieux-toolbar">
+        <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
+          <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
+            <span class="view-icon">🗂️</span>
+            <span>Liste</span>
+          </button>
+          <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
+            <span class="view-icon">🗺️</span>
+            <span>Carte</span>
+          </button>
+        </div>
+
+        <div class="filters-wrap">
+          <div class="filters" id="filters">
+            <button class="filter-btn active" data-category="all">
+              <span class="filter-icon">🗺️</span>
+              <span class="filter-label">Tout</span>
             </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Accueil</a></li>
-                <li><a href="lieux.html" class="nav-link active">Lieux</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+          </div>
         </div>
-    </nav>
+      </header>
+    </aside>
 
-    <!-- H1 visuellement caché (accessibilité + SEO) -->
-    <h1 class="visually-hidden">Les lieux du quartier Cours Julien et La Plaine à Marseille</h1>
+    <main class="lieux-content">
+      <!-- ==== Vue LISTE ==== -->
+      <section class="view-list" id="viewList">
+        <p id="listCount" class="list-count">39 lieux</p>
+        <div id="cardsGrid" class="cards-grid">
 
-    <div class="lieux-main-layout container">
-        <aside class="lieux-sidebar">
-            <!-- ==== Barre d'outils : toggle + filtres ==== -->
-            <header class="lieux-toolbar">
-                <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
-                    <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
-                        <span class="view-icon">🗂️</span>
-                        <span>Liste</span>
-                    </button>
-                    <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
-                        <span class="view-icon">🗺️</span>
-                        <span>Carte</span>
-                    </button>
-                </div>
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Agent.jpg?alt=media"
+              alt="Agent Troublant" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Agent.jpg?alt=media"
+              data-caption="Agent Troublant" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Agent Troublant</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#E63946">🎨 Art</span></div>
+              <p class="card-description">Galerie et fanzinerie</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/agent_troublant" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @agent_troublant
+                </a>
+                <button class="card-map-link" data-id="1" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
 
-                <div class="filters-wrap">
-                    <div class="filters" id="filters">
-                        <button class="filter-btn active" data-category="all">
-                            <span class="filter-icon">🗺️</span>
-                            <span class="filter-label">Tout</span>
-                        </button>
-                    </div>
-                </div>
-            </header>
-        </aside>
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Asabiya.jpg?alt=media"
+              alt="Asabiya" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Asabiya.jpg?alt=media"
+              data-caption="Asabiya" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Asabiya</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
+              <p class="card-description">Bar à mezzé</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/asabiya_" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @asabiya_
+                </a>
+                <button class="card-map-link" data-id="3" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
 
-        <main class="lieux-content">
-            <!-- ==== Vue LISTE ==== -->
-            <section class="view-list" id="viewList">
-                <p id="listCount" class="list-count">39 lieux</p>
-                <div id="cardsGrid" class="cards-grid">
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Atelier5.jpg?alt=media"
+              alt="Atelier 5" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Atelier5.jpg?alt=media"
+              data-caption="Atelier 5" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Atelier 5</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#06A77D">🛍️ Commerces</span></div>
+              <p class="card-description">Magasin d&#039;antiquités et curiosités</p>
+              <div class="card-actions">
 
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Agent.jpg?alt=media"
-                alt="Agent Troublant"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Agent.jpg?alt=media"
-                data-caption="Agent Troublant"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Agent Troublant</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#E63946">🎨 Art</span></div>
-                <p class="card-description">Galerie et fanzinerie</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/agent_troublant" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @agent_troublant
-           </a>
-                    <button class="card-map-link" data-id="1" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
+                <button class="card-map-link" data-id="7" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
             </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Asabiya.jpg?alt=media"
-                alt="Asabiya"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Asabiya.jpg?alt=media"
-                data-caption="Asabiya"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Asabiya</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
-                <p class="card-description">Bar à mezzé</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/asabiya_" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @asabiya_
-           </a>
-                    <button class="card-map-link" data-id="3" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Atelier5.jpg?alt=media"
-                alt="Atelier 5"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Atelier5.jpg?alt=media"
-                data-caption="Atelier 5"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Atelier 5</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#06A77D">🛍️ Commerces</span></div>
-                <p class="card-description">Magasin d&#039;antiquités et curiosités</p>
-                <div class="card-actions">
-                    
-                    <button class="card-map-link" data-id="7" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_BabyClub.jpg?alt=media"
-                alt="Baby Club"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_BabyClub.jpg?alt=media"
-                data-caption="Baby Club"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Baby Club</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Club House Techno</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/babyclub.ofc" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @babyclub.ofc
-           </a>
-                    <button class="card-map-link" data-id="24" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Belleile.jpg?alt=media"
-                alt="Belle île en mer"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Belleile.jpg?alt=media"
-                data-caption="Belle île en mer"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Belle île en mer</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
-                <p class="card-description">Restaurant créole de qualité</p>
-                <div class="card-actions">
-                    
-                    <button class="card-map-link" data-id="15" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Cinebar.jpg?alt=media"
-                alt="Ciné Bar"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Cinebar.jpg?alt=media"
-                data-caption="Ciné Bar"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Ciné Bar</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Bar de quartier dansant</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/cinebar.marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @cinebar.marseille
-           </a>
-                    <button class="card-map-link" data-id="31" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Fidele.jpg?alt=media"
-                alt="Fidèle"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Fidele.jpg?alt=media"
-                data-caption="Fidèle"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Fidèle</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
-                <p class="card-description">Restaurant éthiopien</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/fidele_restaurant" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @fidele_restaurant
-           </a>
-                    <button class="card-map-link" data-id="32" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Oeil.jpg?alt=media"
-                alt="Histoire de l&#039;oeil"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Oeil.jpg?alt=media"
-                data-caption="Histoire de l&#039;oeil"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Histoire de l&#039;oeil</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#8E44AD">📚 Livres</span></div>
-                <p class="card-description">Librairie de quartier depuis 2005</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/librairiehistoiredeloeil" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @librairiehistoiredeloeil
-           </a>
-                    <button class="card-map-link" data-id="23" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_IdFix.jpg?alt=media"
-                alt="ID Fixe"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_IdFix.jpg?alt=media"
-                data-caption="ID Fixe"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">ID Fixe</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar à cocktails et terrasse</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/idfixe13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @idfixe13
-           </a>
-                    <button class="card-map-link" data-id="4" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_ArtHache.jpg?alt=media"
-                alt="L&#039;art hâché"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_ArtHache.jpg?alt=media"
-                data-caption="L&#039;art hâché"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">L&#039;art hâché</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Bar de nuit</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/larthache13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @larthache13
-           </a>
-                    <button class="card-map-link" data-id="28" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_CosyCorner.jpg?alt=media"
-                alt="L&#039;Estaminet matinal"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_CosyCorner.jpg?alt=media"
-                data-caption="L&#039;Estaminet matinal"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">L&#039;Estaminet matinal</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar cosy avec terrasse</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/cosycorner_marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @cosycorner_marseille
-           </a>
-                    <button class="card-map-link" data-id="25" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Moulin.jpg?alt=media"
-                alt="L&#039;Hydre aux mille têtes"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Moulin.jpg?alt=media"
-                data-caption="L&#039;Hydre aux mille têtes"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">L&#039;Hydre aux mille têtes</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#8E44AD">📚 Livres</span></div>
-                <p class="card-description">Club et concerts live</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lemoulin_marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lemoulin_marseille
-           </a>
-                    <button class="card-map-link" data-id="22" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Intermediaire.jpg?alt=media"
-                alt="L&#039;Intermediaire Live"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Intermediaire.jpg?alt=media"
-                data-caption="L&#039;Intermediaire Live"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">L&#039;Intermediaire Live</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Salle locale de concerts quotidiens</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/l_intermediaire" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @l_intermediaire
-           </a>
-                    <button class="card-map-link" data-id="8" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Comptoir.jpg?alt=media"
-                alt="La Baguetterie"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Comptoir.jpg?alt=media"
-                data-caption="La Baguetterie"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">La Baguetterie</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
-                <p class="card-description">Bar à bières artisanales</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/comptoirducours" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @comptoirducours
-           </a>
-                    <button class="card-map-link" data-id="38" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_MaisonHantee.jpg?alt=media"
-                alt="La Maison hantée"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_MaisonHantee.jpg?alt=media"
-                data-caption="La Maison hantée"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">La Maison hantée</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Bar à concert mythique et légendaire</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lamaisonhanteeofficiel" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lamaisonhanteeofficiel
-           </a>
-                    <button class="card-map-link" data-id="13" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Cantine.jpg?alt=media"
-                alt="La Murisserie"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Cantine.jpg?alt=media"
-                data-caption="La Murisserie"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">La Murisserie</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#E63946">🎨 Art</span></div>
-                <p class="card-description">Restaurant solidaire et participatif</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/cantinesolidaire13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @cantinesolidaire13
-           </a>
-                    <button class="card-map-link" data-id="34" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VinylParadise.jpg?alt=media"
-                alt="La Pâte à pizza"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VinylParadise.jpg?alt=media"
-                data-caption="La Pâte à pizza"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">La Pâte à pizza</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span></div>
-                <p class="card-description">Disquaire vinyles neufs et occasion</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/vinylparadise13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @vinylparadise13
-           </a>
-                    <button class="card-map-link" data-id="20" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Labonheure.jpg?alt=media"
-                alt="Labo n heure"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Labonheure.jpg?alt=media"
-                data-caption="Labo n heure"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Labo n heure</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar à cocktails de qualité</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/labo_n.h" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @labo_n.h
-           </a>
-                    <button class="card-map-link" data-id="11" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Sandwich.jpg?alt=media"
-                alt="Le Bar de la Plaine"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Sandwich.jpg?alt=media"
-                data-caption="Le Bar de la Plaine"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Bar de la Plaine</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar chaleureux et ouvert dès le matin</p>
-                <div class="card-actions">
-                    
-                    <button class="card-map-link" data-id="17" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Machine.jpg?alt=media"
-                alt="Le Baraki"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Machine.jpg?alt=media"
-                data-caption="Le Baraki"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Baraki</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Salle de concerts rock et électro</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lamachineacoudre" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lamachineacoudre
-           </a>
-                    <button class="card-map-link" data-id="21" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurant_SushiZen.jpg?alt=media"
-                alt="Le Carré Rond"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurant_SushiZen.jpg?alt=media"
-                data-caption="Le Carré Rond"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Carré Rond</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#C0392B">🎭 Théâtre</span></div>
-                <p class="card-description">Restaurant japonais</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/sushizen_marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @sushizen_marseille
-           </a>
-                    <button class="card-map-link" data-id="37" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_BookInBar.jpg?alt=media"
-                alt="Le Comptoir 31"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_BookInBar.jpg?alt=media"
-                data-caption="Le Comptoir 31"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Comptoir 31</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar dynamique</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/bookinbar" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @bookinbar
-           </a>
-                    <button class="card-map-link" data-id="18" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Escale.jpg?alt=media"
-                alt="Le Gouffre"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Escale.jpg?alt=media"
-                data-caption="Le Gouffre"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Gouffre</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Espace de coworking associatif</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lescale_marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lescale_marseille
-           </a>
-                    <button class="card-map-link" data-id="35" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_PizzaCapri.jpg?alt=media"
-                alt="Le Maraichers"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_PizzaCapri.jpg?alt=media"
-                data-caption="Le Maraichers"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Maraichers</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Un bar historique du quartier</p>
-                <div class="card-actions">
-                    
-                    <button class="card-map-link" data-id="16" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Molotov.jpg?alt=media"
-                alt="Le Molotov"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Molotov.jpg?alt=media"
-                data-caption="Le Molotov"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Molotov</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Salle de concerts culte depuis 2012</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lemolotov.marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lemolotov.marseille
-           </a>
-                    <button class="card-map-link" data-id="10" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FJeu_NainJaune.jpg?alt=media"
-                alt="Le Nain Jaune"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FJeu_NainJaune.jpg?alt=media"
-                data-caption="Le Nain Jaune"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Nain Jaune</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#E74C3C">🎲 Jeux</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Club de jeux de société</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lenainjaune_marseille" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lenainjaune_marseille
-           </a>
-                    <button class="card-map-link" data-id="9" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Toursky.jpg?alt=media"
-                alt="Le Nucléaire"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Toursky.jpg?alt=media"
-                data-caption="Le Nucléaire"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Nucléaire</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Théâtre contemporain</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/theatre_toursky" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @theatre_toursky
-           </a>
-                    <button class="card-map-link" data-id="29" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Petit.jpg?alt=media"
-                alt="Le Red Lion"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Petit.jpg?alt=media"
-                data-caption="Le Red Lion"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Red Lion</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Théâtre intimiste et café-théâtre</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/petittheatre13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @petittheatre13
-           </a>
-                    <button class="card-map-link" data-id="30" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Epicerie.jpg?alt=media"
-                alt="Le Vice Versa"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Epicerie.jpg?alt=media"
-                data-caption="Le Vice Versa"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Vice Versa</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
-                <p class="card-description">Épicerie fine et produits locaux</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/epicerie_cours" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @epicerie_cours
-           </a>
-                    <button class="card-map-link" data-id="26" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCin%C3%A9ma_Videodrome.jpg?alt=media"
-                alt="Le Vidéodrome2"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCin%C3%A9ma_Videodrome.jpg?alt=media"
-                data-caption="Le Vidéodrome2"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Le Vidéodrome2</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#2C3E50">🎬 Cinéma</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Cinéma associatif et solidaire</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/videodrome2" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @videodrome2
-           </a>
-                    <button class="card-map-link" data-id="6" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_LedaAtomica.jpg?alt=media"
-                alt="Leda Atomica"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_LedaAtomica.jpg?alt=media"
-                data-caption="Leda Atomica"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Leda Atomica</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Salle de concerts locaux</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/ledaatomicamusique" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @ledaatomicamusique
-           </a>
-                    <button class="card-map-link" data-id="12" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Tacos.jpg?alt=media"
-                alt="Les 9 salopards"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Tacos.jpg?alt=media"
-                data-caption="Les 9 salopards"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Les 9 salopards</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Tacos et kebabs</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/tacos_coursju" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @tacos_coursju
-           </a>
-                    <button class="card-map-link" data-id="36" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
-                alt="Lutherie Mko"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
-                data-caption="Lutherie Mko"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Lutherie Mko</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
-                <p class="card-description">Vinyles collectors et raretés</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/vintagerecords13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @vintagerecords13
-           </a>
-                    <button class="card-map-link" data-id="40" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
-                alt="Music Leader"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
-                data-caption="Music Leader"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Music Leader</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
-                <p class="card-description">Vinyles collectors et raretés</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/vintagerecords13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @vintagerecords13
-           </a>
-                    <button class="card-map-link" data-id="39" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Pulse.jpg?alt=media"
-                alt="Pulse"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Pulse.jpg?alt=media"
-                data-caption="Pulse"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Pulse</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Bar chaleureux</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/lepulsebar_" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @lepulsebar_
-           </a>
-                    <button class="card-map-link" data-id="5" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Maupetit.jpg?alt=media"
-                alt="Soleil House Burger"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Maupetit.jpg?alt=media"
-                data-caption="Soleil House Burger"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Soleil House Burger</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span></div>
-                <p class="card-description">Librairie indépendante</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/maupetit_livres" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @maupetit_livres
-           </a>
-                    <button class="card-map-link" data-id="19" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Soma.jpg?alt=media"
-                alt="Soma"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Soma.jpg?alt=media"
-                data-caption="Soma"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Soma</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#E63946">🎨 Art</span><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
-                <p class="card-description">Lieu d&#039;art et de recherche</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/_______soma__" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @_______soma__
-           </a>
-                    <button class="card-map-link" data-id="2" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FKids_PetitBazar.jpg?alt=media"
-                alt="Studio théâtre"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FKids_PetitBazar.jpg?alt=media"
-                data-caption="Studio théâtre"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Studio théâtre</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#C0392B">🎭 Théâtre</span><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
-                <p class="card-description">Jouets et loisirs créatifs</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/petitbazar13" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @petitbazar13
-           </a>
-                    <button class="card-map-link" data-id="33" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-        <article class="lieu-card">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Zesti.jpg?alt=media"
-                alt="Zesti Taverna"
-                class="card-image"
-                data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Zesti.jpg?alt=media"
-                data-caption="Zesti Taverna"
-                loading="lazy">
-            <div class="card-body">
-                <h3 class="card-title">Zesti Taverna</h3>
-                <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
-                <p class="card-description">Dégustations grecques depuis 2024</p>
-                <div class="card-actions">
-                    <a href="https://instagram.com/zesti.taverna" target="_blank" rel="noopener noreferrer" class="card-instagram">
-             📸 @zesti.taverna
-           </a>
-                    <button class="card-map-link" data-id="14" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
-                    </button>
-                </div>
-            </div>
-        </article>
-    
-                </div>
-                <div id="listEmpty" class="list-empty" hidden>
-                    Aucun lieu ne correspond à ce filtre.
-                </div>
-            </section>
+          </article>
 
-            <!-- ==== Vue CARTE ==== -->
-            <section class="view-map" id="viewMap" hidden>
-                <div id="map"></div>
-            </section>
-        </main>
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_BabyClub.jpg?alt=media"
+              alt="Baby Club" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_BabyClub.jpg?alt=media"
+              data-caption="Baby Club" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Baby Club</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Club House Techno</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/babyclub.ofc" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @babyclub.ofc
+                </a>
+                <button class="card-map-link" data-id="24" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Belleile.jpg?alt=media"
+              alt="Belle île en mer" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Belleile.jpg?alt=media"
+              data-caption="Belle île en mer" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Belle île en mer</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
+              <p class="card-description">Restaurant créole de qualité</p>
+              <div class="card-actions">
+
+                <button class="card-map-link" data-id="15" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Cinebar.jpg?alt=media"
+              alt="Ciné Bar" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Cinebar.jpg?alt=media"
+              data-caption="Ciné Bar" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Ciné Bar</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Bar de quartier dansant</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/cinebar.marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @cinebar.marseille
+                </a>
+                <button class="card-map-link" data-id="31" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Fidele.jpg?alt=media"
+              alt="Fidèle" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Fidele.jpg?alt=media"
+              data-caption="Fidèle" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Fidèle</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
+              <p class="card-description">Restaurant éthiopien</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/fidele_restaurant" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @fidele_restaurant
+                </a>
+                <button class="card-map-link" data-id="32" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Oeil.jpg?alt=media"
+              alt="Histoire de l&#039;oeil" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Oeil.jpg?alt=media"
+              data-caption="Histoire de l&#039;oeil" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Histoire de l&#039;oeil</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#8E44AD">📚 Livres</span></div>
+              <p class="card-description">Librairie de quartier depuis 2005</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/librairiehistoiredeloeil" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @librairiehistoiredeloeil
+                </a>
+                <button class="card-map-link" data-id="23" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_IdFix.jpg?alt=media"
+              alt="ID Fixe" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_IdFix.jpg?alt=media"
+              data-caption="ID Fixe" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">ID Fixe</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar à cocktails et terrasse</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/idfixe13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @idfixe13
+                </a>
+                <button class="card-map-link" data-id="4" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_ArtHache.jpg?alt=media"
+              alt="L&#039;art hâché" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FNuit_ArtHache.jpg?alt=media"
+              data-caption="L&#039;art hâché" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">L&#039;art hâché</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Bar de nuit</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/larthache13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @larthache13
+                </a>
+                <button class="card-map-link" data-id="28" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_CosyCorner.jpg?alt=media"
+              alt="L&#039;Estaminet matinal" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_CosyCorner.jpg?alt=media"
+              data-caption="L&#039;Estaminet matinal" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">L&#039;Estaminet matinal</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#7F8C8D">🌆 Nuit</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar cosy avec terrasse</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/cosycorner_marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @cosycorner_marseille
+                </a>
+                <button class="card-map-link" data-id="25" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Moulin.jpg?alt=media"
+              alt="L&#039;Hydre aux mille têtes" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Moulin.jpg?alt=media"
+              data-caption="L&#039;Hydre aux mille têtes" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">L&#039;Hydre aux mille têtes</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#8E44AD">📚 Livres</span></div>
+              <p class="card-description">Club et concerts live</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lemoulin_marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lemoulin_marseille
+                </a>
+                <button class="card-map-link" data-id="22" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Intermediaire.jpg?alt=media"
+              alt="L&#039;Intermediaire Live" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Intermediaire.jpg?alt=media"
+              data-caption="L&#039;Intermediaire Live" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">L&#039;Intermediaire Live</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Salle locale de concerts quotidiens</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/l_intermediaire" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @l_intermediaire
+                </a>
+                <button class="card-map-link" data-id="8" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Comptoir.jpg?alt=media"
+              alt="La Baguetterie" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Comptoir.jpg?alt=media"
+              data-caption="La Baguetterie" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">La Baguetterie</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
+              <p class="card-description">Bar à bières artisanales</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/comptoirducours" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @comptoirducours
+                </a>
+                <button class="card-map-link" data-id="38" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_MaisonHantee.jpg?alt=media"
+              alt="La Maison hantée" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_MaisonHantee.jpg?alt=media"
+              data-caption="La Maison hantée" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">La Maison hantée</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Bar à concert mythique et légendaire</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lamaisonhanteeofficiel" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lamaisonhanteeofficiel
+                </a>
+                <button class="card-map-link" data-id="13" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Cantine.jpg?alt=media"
+              alt="La Murisserie" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Cantine.jpg?alt=media"
+              data-caption="La Murisserie" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">La Murisserie</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span><span class="card-badge"
+                  style="background:#E63946">🎨 Art</span></div>
+              <p class="card-description">Restaurant solidaire et participatif</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/cantinesolidaire13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @cantinesolidaire13
+                </a>
+                <button class="card-map-link" data-id="34" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VinylParadise.jpg?alt=media"
+              alt="La Pâte à pizza" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VinylParadise.jpg?alt=media"
+              data-caption="La Pâte à pizza" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">La Pâte à pizza</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span></div>
+              <p class="card-description">Disquaire vinyles neufs et occasion</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/vinylparadise13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @vinylparadise13
+                </a>
+                <button class="card-map-link" data-id="20" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Labonheure.jpg?alt=media"
+              alt="Labo n heure" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Labonheure.jpg?alt=media"
+              data-caption="Labo n heure" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Labo n heure</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar à cocktails de qualité</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/labo_n.h" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @labo_n.h
+                </a>
+                <button class="card-map-link" data-id="11" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Sandwich.jpg?alt=media"
+              alt="Le Bar de la Plaine" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Sandwich.jpg?alt=media"
+              data-caption="Le Bar de la Plaine" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Bar de la Plaine</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar chaleureux et ouvert dès le matin</p>
+              <div class="card-actions">
+
+                <button class="card-map-link" data-id="17" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Machine.jpg?alt=media"
+              alt="Le Baraki" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Machine.jpg?alt=media"
+              data-caption="Le Baraki" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Baraki</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Salle de concerts rock et électro</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lamachineacoudre" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lamachineacoudre
+                </a>
+                <button class="card-map-link" data-id="21" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurant_SushiZen.jpg?alt=media"
+              alt="Le Carré Rond" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurant_SushiZen.jpg?alt=media"
+              data-caption="Le Carré Rond" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Carré Rond</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#C0392B">🎭 Théâtre</span></div>
+              <p class="card-description">Restaurant japonais</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/sushizen_marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @sushizen_marseille
+                </a>
+                <button class="card-map-link" data-id="37" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_BookInBar.jpg?alt=media"
+              alt="Le Comptoir 31" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_BookInBar.jpg?alt=media"
+              data-caption="Le Comptoir 31" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Comptoir 31</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar dynamique</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/bookinbar" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @bookinbar
+                </a>
+                <button class="card-map-link" data-id="18" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Escale.jpg?alt=media"
+              alt="Le Gouffre" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSocial_Escale.jpg?alt=media"
+              data-caption="Le Gouffre" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Gouffre</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Espace de coworking associatif</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lescale_marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lescale_marseille
+                </a>
+                <button class="card-map-link" data-id="35" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_PizzaCapri.jpg?alt=media"
+              alt="Le Maraichers" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_PizzaCapri.jpg?alt=media"
+              data-caption="Le Maraichers" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Maraichers</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Un bar historique du quartier</p>
+              <div class="card-actions">
+
+                <button class="card-map-link" data-id="16" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Molotov.jpg?alt=media"
+              alt="Le Molotov" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Molotov.jpg?alt=media"
+              data-caption="Le Molotov" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Molotov</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Salle de concerts culte depuis 2012</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lemolotov.marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lemolotov.marseille
+                </a>
+                <button class="card-map-link" data-id="10" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FJeu_NainJaune.jpg?alt=media"
+              alt="Le Nain Jaune" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FJeu_NainJaune.jpg?alt=media"
+              data-caption="Le Nain Jaune" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Nain Jaune</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#E74C3C">🎲 Jeux</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Club de jeux de société</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lenainjaune_marseille" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lenainjaune_marseille
+                </a>
+                <button class="card-map-link" data-id="9" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Toursky.jpg?alt=media"
+              alt="Le Nucléaire" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Toursky.jpg?alt=media"
+              data-caption="Le Nucléaire" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Nucléaire</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span><span
+                  class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Théâtre contemporain</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/theatre_toursky" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @theatre_toursky
+                </a>
+                <button class="card-map-link" data-id="29" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Petit.jpg?alt=media"
+              alt="Le Red Lion" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FTheatre_Petit.jpg?alt=media"
+              data-caption="Le Red Lion" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Red Lion</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Théâtre intimiste et café-théâtre</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/petittheatre13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @petittheatre13
+                </a>
+                <button class="card-map-link" data-id="30" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Epicerie.jpg?alt=media"
+              alt="Le Vice Versa" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCommerce_Epicerie.jpg?alt=media"
+              data-caption="Le Vice Versa" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Vice Versa</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span><span
+                  class="card-badge" style="background:#7F8C8D">🌆 Nuit</span></div>
+              <p class="card-description">Épicerie fine et produits locaux</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/epicerie_cours" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @epicerie_cours
+                </a>
+                <button class="card-map-link" data-id="26" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCin%C3%A9ma_Videodrome.jpg?alt=media"
+              alt="Le Vidéodrome2" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FCin%C3%A9ma_Videodrome.jpg?alt=media"
+              data-caption="Le Vidéodrome2" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Le Vidéodrome2</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#2C3E50">🎬 Cinéma</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Cinéma associatif et solidaire</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/videodrome2" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @videodrome2
+                </a>
+                <button class="card-map-link" data-id="6" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_LedaAtomica.jpg?alt=media"
+              alt="Leda Atomica" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_LedaAtomica.jpg?alt=media"
+              data-caption="Leda Atomica" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Leda Atomica</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Salle de concerts locaux</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/ledaatomicamusique" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @ledaatomicamusique
+                </a>
+                <button class="card-map-link" data-id="12" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Tacos.jpg?alt=media"
+              alt="Les 9 salopards" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_Tacos.jpg?alt=media"
+              data-caption="Les 9 salopards" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Les 9 salopards</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Tacos et kebabs</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/tacos_coursju" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @tacos_coursju
+                </a>
+                <button class="card-map-link" data-id="36" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
+              alt="Lutherie Mko" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
+              data-caption="Lutherie Mko" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Lutherie Mko</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
+              <p class="card-description">Vinyles collectors et raretés</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/vintagerecords13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @vintagerecords13
+                </a>
+                <button class="card-map-link" data-id="40" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
+              alt="Music Leader" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FMusique_VintageRecords.jpg?alt=media"
+              data-caption="Music Leader" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Music Leader</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#16A085">🎸 Musique</span></div>
+              <p class="card-description">Vinyles collectors et raretés</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/vintagerecords13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @vintagerecords13
+                </a>
+                <button class="card-map-link" data-id="39" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Pulse.jpg?alt=media"
+              alt="Pulse" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Pulse.jpg?alt=media"
+              data-caption="Pulse" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Pulse</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Bar chaleureux</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/lepulsebar_" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @lepulsebar_
+                </a>
+                <button class="card-map-link" data-id="5" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Maupetit.jpg?alt=media"
+              alt="Soleil House Burger" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FLivre_Maupetit.jpg?alt=media"
+              data-caption="Soleil House Burger" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Soleil House Burger</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#F1C40F">🍕 Snacks</span></div>
+              <p class="card-description">Librairie indépendante</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/maupetit_livres" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @maupetit_livres
+                </a>
+                <button class="card-map-link" data-id="19" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Soma.jpg?alt=media"
+              alt="Soma" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FArt_Soma.jpg?alt=media"
+              data-caption="Soma" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Soma</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#E63946">🎨 Art</span><span
+                  class="card-badge" style="background:#F77F00">🍻 Bars</span></div>
+              <p class="card-description">Lieu d&#039;art et de recherche</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/_______soma__" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @_______soma__
+                </a>
+                <button class="card-map-link" data-id="2" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FKids_PetitBazar.jpg?alt=media"
+              alt="Studio théâtre" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FKids_PetitBazar.jpg?alt=media"
+              data-caption="Studio théâtre" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Studio théâtre</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#C0392B">🎭 Théâtre</span><span
+                  class="card-badge" style="background:#9B59B6">🎵 Concerts</span></div>
+              <p class="card-description">Jouets et loisirs créatifs</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/petitbazar13" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @petitbazar13
+                </a>
+                <button class="card-map-link" data-id="33" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="lieu-card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Zesti.jpg?alt=media"
+              alt="Zesti Taverna" class="card-image"
+              data-src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestau_Zesti.jpg?alt=media"
+              data-caption="Zesti Taverna" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Zesti Taverna</h3>
+              <div class="card-badges"><span class="card-badge" style="background:#D35400">🍽️ Restaurants</span></div>
+              <p class="card-description">Dégustations grecques depuis 2024</p>
+              <div class="card-actions">
+                <a href="https://instagram.com/zesti.taverna" target="_blank" rel="noopener noreferrer"
+                  class="card-instagram">
+                  📸 @zesti.taverna
+                </a>
+                <button class="card-map-link" data-id="14" aria-label="Voir sur la carte">
+                  🗺️ Voir sur la carte
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div id="listEmpty" class="list-empty" hidden>
+          Aucun lieu ne correspond à ce filtre.
+        </div>
+      </section>
+
+      <!-- ==== Vue CARTE ==== -->
+      <section class="view-map" id="viewMap" hidden>
+        <div id="map"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==== Lightbox ==== -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img src="" alt="" id="lightboxImage">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
+  </div>
 
-    <!-- ==== Lightbox ==== -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <img src="" alt="" id="lightboxImage">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
+  <!-- ==== Footer ==== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Cours Ju — Plaine. Fait avec ❤️ à Marseille.
+          <a href="admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
+        </p>
+      </div>
     </div>
+  </footer>
 
-    <!-- ==== Footer ==== -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>
-                    &copy; 2025 Cours Ju — Plaine. Fait avec ❤️ à Marseille.
-                    <a href="admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
-                </p>
-            </div>
-        </div>
-    </footer>
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-gesture-handling"></script>
 
-    <!-- Leaflet -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-gesture-handling"></script>
-
-    <!-- Custom JS -->
-    <script type="module" src="lieux.js"></script>
+  <!-- Custom JS -->
+  <script type="module" src="lieux.js"></script>
+  <script
+    src="https://websites-monitoring.vercel.app/tracking.js?siteId=cours-julien&key=280e3472822f4f6a95f61310b65cf8fd0204ea08e8ae424eec5edef940ce9d2e"></script>
 </body>
 
 </html>
