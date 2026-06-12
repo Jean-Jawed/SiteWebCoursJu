@@ -373,6 +373,10 @@ h3 {
     width: 100% !important;
 }
 
+.leaflet-popup-content p {
+    margin: 0;
+}
+
 .popup-content {
     display: flex;
     flex-direction: row;
@@ -901,8 +905,8 @@ h3 {
         margin-bottom: 0;
     }
 
-    .popup-description {
-        margin-bottom: 0.4rem;
+    .leaflet-popup-content p {
+        margin-bottom: 0.3rem;
         line-height: 1.3;
     }
 }
