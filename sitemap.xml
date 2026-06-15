@@ -23,7 +23,14 @@
     <loc>https://cours-julien.fr/contact.html</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://cours-julien.fr/quartier.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

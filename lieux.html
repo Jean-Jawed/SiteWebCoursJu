@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
@@ -699,6 +699,7 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="index.html" class="nav-link">Accueil</a></li>
         <li><a href="lieux.html" class="nav-link active">Lieux</a></li>
+        <li><a href="quartier.html" class="nav-link">Le quartier</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </div>
@@ -707,21 +708,22 @@
   <!-- H1 visuellement caché (accessibilité + SEO) -->
   <h1 class="visually-hidden">Les lieux du quartier Cours Julien et La Plaine à Marseille</h1>
 
+  <!-- ==== Barre vue : toggle Liste / Carte, sticky sous la nav ==== -->
+  <div class="lieux-view-bar" role="tablist" aria-label="Choisir la vue">
+    <button id="viewListBtn" class="lieux-view-btn active" role="tab" aria-selected="true">
+      <span class="view-icon">🗂️</span>
+      <span>Liste</span>
+    </button>
+    <button id="viewMapBtn" class="lieux-view-btn" role="tab" aria-selected="false">
+      <span class="view-icon">🗺️</span>
+      <span>Carte</span>
+    </button>
+  </div>
+
   <div class="lieux-main-layout container">
     <aside class="lieux-sidebar">
-      <!-- ==== Barre d'outils : toggle + filtres ==== -->
+      <!-- ==== Filtres ==== -->
       <header class="lieux-toolbar">
-        <div class="view-toggle" role="tablist" aria-label="Choisir la vue">
-          <button id="viewListBtn" class="view-btn active" role="tab" aria-selected="true">
-            <span class="view-icon">🗂️</span>
-            <span>Liste</span>
-          </button>
-          <button id="viewMapBtn" class="view-btn" role="tab" aria-selected="false">
-            <span class="view-icon">🗺️</span>
-            <span>Carte</span>
-          </button>
-        </div>
-
         <div class="filters-wrap">
           <div class="filters" id="filters">
             <button class="filter-btn active" data-category="all">
@@ -1628,7 +1630,7 @@
     <div class="container">
       <div class="footer-bottom">
         <p>
-          &copy; 2025 Cours Ju — Plaine. Fait avec ❤️ à Marseille.
+          &copy; 2025 Cours Ju — Plaine. Conçu avec ❤️ à Marseille par <a href="https://virgule-studio.fr" target="_blank" rel="noopener noreferrer" class="footer-studio-link">Virgule-Studio</a>.
           <a href="admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
         </p>
       </div>
