@@ -18,6 +18,17 @@ let map = null;
 let markers = [];
 let mapInitialized = false;
 
+// Géolocalisation utilisateur (carte)
+let userMarker = null;
+let userAccuracyCircle = null;
+let locateOnceBtn = null;
+let locateLiveBtn = null;
+let locateBusy = false;
+let pendingLocateMode = null; // 'once' | 'live' | null
+let liveWatching = false;
+let liveFirstFix = false;
+let lastLocationErrorToastAt = 0;
+
 // =====================
 // Initialisation
 // =====================
@@ -75,6 +86,10 @@ function initViewToggle() {
 
 function switchView(view) {
     if (view === currentView) return;
+
+    // Le suivi live consomme le GPS en continu : on le coupe si on quitte la carte
+    if (view !== 'map' && liveWatching) stopLiveTracking();
+
     currentView = view;
 
     const listBtn = document.getElementById('viewListBtn');
@@ -258,6 +273,7 @@ function initMap() {
 
     addMarkers();
     applyFilterOnMap();
+    addLocateControl();
 
     // Firefox/Safari ont besoin d'un invalidateSize après l'affichage
     setTimeout(() => map.invalidateSize(), 100);
@@ -284,12 +300,198 @@ function addMarkers() {
     });
 }
 
+// =====================
+// Géolocalisation : "Me localiser" (one-shot) + "Suivre en direct" (live)
+// =====================
+function addLocateControl() {
+    const LocateControl = L.Control.extend({
+        options: { position: 'topright' },
+        onAdd: function () {
+            const container = L.DomUtil.create('div', 'locate-control');
+            L.DomEvent.disableClickPropagation(container);
+            L.DomEvent.disableScrollPropagation(container);
+
+            locateOnceBtn = L.DomUtil.create('button', 'locate-btn locate-btn-once', container);
+            locateOnceBtn.type = 'button';
+            locateOnceBtn.setAttribute('aria-label', 'Me localiser');
+            locateOnceBtn.innerHTML = '<span class="locate-btn-icon">📍</span><span class="locate-btn-label">Me localiser</span>';
+            L.DomEvent.on(locateOnceBtn, 'click', locateOnce);
+
+            locateLiveBtn = L.DomUtil.create('button', 'locate-btn locate-btn-live', container);
+            locateLiveBtn.type = 'button';
+            locateLiveBtn.setAttribute('aria-label', 'Suivre ma position en direct');
+            locateLiveBtn.innerHTML = '<span class="locate-btn-icon">🧭</span><span class="locate-btn-label">Suivre en direct</span>';
+            L.DomEvent.on(locateLiveBtn, 'click', toggleLiveTracking);
+
+            return container;
+        }
+    });
+
+    map.addControl(new LocateControl());
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+}
+
+function locateOnce() {
+    if (locateBusy || liveWatching) return;
+    locateBusy = true;
+    pendingLocateMode = 'once';
+    locateOnceBtn.classList.add('is-loading');
+    locateOnceBtn.disabled = true;
+    map.locate({ setView: true, maxZoom: 17, enableHighAccuracy: true, timeout: 10000 });
+}
+
+function toggleLiveTracking() {
+    if (liveWatching) {
+        stopLiveTracking();
+        return;
+    }
+    if (locateBusy) return;
+
+    locateBusy = true;
+    liveWatching = true;
+    liveFirstFix = true;
+    pendingLocateMode = 'live';
+    locateLiveBtn.classList.add('is-loading');
+    locateOnceBtn.disabled = true; // évite un conflit avec le watch en cours
+
+    map.locate({ watch: true, enableHighAccuracy: true, setView: false, maxZoom: 17, timeout: 15000 });
+}
+
+function stopLiveTracking() {
+    map.stopLocate();
+    liveWatching = false;
+    liveFirstFix = false;
+    locateBusy = false;
+    pendingLocateMode = null;
+
+    locateLiveBtn.classList.remove('is-loading', 'is-active');
+    locateLiveBtn.querySelector('.locate-btn-icon').textContent = '🧭';
+    locateLiveBtn.querySelector('.locate-btn-label').textContent = 'Suivre en direct';
+    locateOnceBtn.disabled = false;
+
+    const el = userMarker && userMarker.getElement();
+    if (el) el.classList.remove('user-marker-live');
+}
+
+function onLocationFound(e) {
+    updateUserMarker(e.latlng, e.accuracy);
+
+    if (pendingLocateMode === 'once') {
+        locateBusy = false;
+        pendingLocateMode = null;
+        locateOnceBtn.classList.remove('is-loading');
+        locateOnceBtn.disabled = false;
+    } else if (pendingLocateMode === 'live' && liveFirstFix) {
+        liveFirstFix = false;
+        locateBusy = false;
+        locateLiveBtn.classList.remove('is-loading');
+        locateLiveBtn.classList.add('is-active');
+        locateLiveBtn.querySelector('.locate-btn-icon').textContent = '⏹️';
+        locateLiveBtn.querySelector('.locate-btn-label').textContent = 'Arrêter le suivi';
+        map.setView(e.latlng, Math.max(map.getZoom(), 17), { animate: true });
+    }
+}
+
+function onLocationError(e) {
+    const wasOnce = pendingLocateMode === 'once';
+    locateBusy = false;
+
+    if (wasOnce) {
+        pendingLocateMode = null;
+        locateOnceBtn.classList.remove('is-loading');
+        locateOnceBtn.disabled = false;
+    }
+
+    let message;
+    switch (e.code) {
+        case 1: // PERMISSION_DENIED
+            message = "Localisation refusée. Autorise l'accès à ta position dans les réglages de ton navigateur pour utiliser cette fonction.";
+            break;
+        case 2: // POSITION_UNAVAILABLE
+            message = 'Position indisponible pour le moment. Réessaie dans quelques instants.';
+            break;
+        case 3: // TIMEOUT
+            message = 'La localisation a mis trop de temps à répondre. Réessaie.';
+            break;
+        default:
+            message = 'Impossible de te localiser pour le moment.';
+    }
+
+    // Le suivi live persiste tant que possible (le navigateur peut réessayer),
+    // sauf en cas de refus explicite qui ne se résoudra pas tout seul.
+    if (liveWatching && e.code === 1) {
+        stopLiveTracking();
+    }
+
+    showLocationErrorToast(message);
+}
+
+function updateUserMarker(latlng, accuracy) {
+    if (!userMarker) {
+        const icon = L.divIcon({
+            className: 'user-location-marker',
+            html: '<span class="user-location-dot"></span>',
+            iconSize: [22, 22],
+            iconAnchor: [11, 11]
+        });
+        userMarker = L.marker(latlng, { icon, zIndexOffset: 1000, keyboard: false, interactive: false }).addTo(map);
+        userAccuracyCircle = L.circle(latlng, {
+            radius: accuracy,
+            color: '#3b82f6',
+            weight: 1,
+            fillColor: '#3b82f6',
+            fillOpacity: 0.12,
+            interactive: false
+        }).addTo(map);
+    } else {
+        userMarker.setLatLng(latlng);
+        userAccuracyCircle.setLatLng(latlng);
+        userAccuracyCircle.setRadius(accuracy);
+    }
+
+    const el = userMarker.getElement();
+    if (el) el.classList.toggle('user-marker-live', liveWatching);
+}
+
+// =====================
+// Toast (retours géolocalisation)
+// =====================
+let toastTimer = null;
+function showToast(message, type = 'info') {
+    let el = document.getElementById('lieuxToast');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'lieuxToast';
+        el.setAttribute('role', 'status');
+        el.setAttribute('aria-live', 'polite');
+        document.body.appendChild(el);
+    }
+    el.textContent = message;
+    el.className = 'lieux-toast is-visible' + (type ? ' ' + type : '');
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('is-visible'), 4500);
+}
+
+function showLocationErrorToast(message) {
+    const now = Date.now();
+    if (now - lastLocationErrorToastAt < 6000) return; // évite le spam pendant le suivi live
+    lastLocationErrorToastAt = now;
+    showToast(message, 'error');
+}
+
 function popupHTML(lieu) {
     const instagram = lieu.instagram
         ? `<a href="https://instagram.com/${lieu.instagram.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="popup-instagram">
              📸 ${escapeHtml(lieu.instagram)}
            </a>`
         : '';
+
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lieu.latitude},${lieu.longitude}&travelmode=walking`;
+    const directions = `<a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" class="popup-directions">
+             🧭 Itinéraire
+           </a>`;
 
     const badges = (lieu.categories || []).map(cle => {
         const cat = categories[cle];
@@ -314,7 +516,10 @@ function popupHTML(lieu) {
                     ${badges}
                 </div>
                 <p class="popup-description">${escapeHtml(lieu.description || '')}</p>
-                ${instagram}
+                <div class="popup-actions">
+                    ${directions}
+                    ${instagram}
+                </div>
             </div>
         </div>
     `;
@@ -367,6 +572,11 @@ window.closeLightbox = function () {
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') window.closeLightbox();
+});
+
+// Coupe le suivi GPS live si l'utilisateur quitte la page (économie batterie)
+window.addEventListener('pagehide', () => {
+    if (liveWatching) stopLiveTracking();
 });
 
 // =====================

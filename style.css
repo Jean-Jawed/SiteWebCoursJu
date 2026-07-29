@@ -926,6 +926,38 @@ a {
     opacity: 0.75;
 }
 
+.popup-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.popup-directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: opacity 0.15s;
+}
+
+.popup-directions:hover {
+    opacity: 0.85;
+}
+
 /* Marker custom */
 .custom-marker {
     width: 40px;
@@ -943,6 +975,148 @@ a {
 
 .custom-marker:hover {
     transform: scale(1.15);
+}
+
+/* =====================
+   Géolocalisation : contrôle "Me localiser" / "Suivre en direct"
+   ===================== */
+.locate-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px 10px 0 0;
+}
+
+.locate-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    min-height: 44px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.15s, color 0.15s, background 0.15s, opacity 0.15s;
+    white-space: nowrap;
+}
+
+.locate-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.locate-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.locate-btn-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.locate-btn.is-loading .locate-btn-icon {
+    animation: locateSpin 0.9s linear infinite;
+    display: inline-block;
+}
+
+.locate-btn.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+@keyframes locateSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .locate-btn-label {
+        display: none;
+    }
+
+    .locate-btn {
+        padding: 10px;
+        min-width: 44px;
+        justify-content: center;
+    }
+}
+
+/* Marqueur de position utilisateur */
+.user-location-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-location-dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.user-marker-live .user-location-dot {
+    animation: userLocationPulse 1.8s ease-out infinite;
+}
+
+@keyframes userLocationPulse {
+    0% { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 2px 8px rgba(0, 0, 0, 0.5); }
+    70% { box-shadow: 0 0 0 14px rgba(59, 130, 246, 0), 0 2px 8px rgba(0, 0, 0, 0.5); }
+    100% { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0), 0 2px 8px rgba(0, 0, 0, 0.5); }
+}
+
+/* Toast : retours de géolocalisation (permission refusée, position indisponible...) */
+.lieux-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translate(-50%, 12px);
+    max-width: min(90vw, 400px);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 18px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    line-height: 1.5;
+    z-index: 4000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.lieux-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.lieux-toast.error {
+    border-color: #dc3545;
+}
+
+.lieux-toast.success {
+    border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .lieux-toast {
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    }
 }
 
 /* =====================
