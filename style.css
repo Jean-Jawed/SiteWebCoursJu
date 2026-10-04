@@ -2027,3 +2027,356 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =====================
+   PWA : bouton « Installer l'app »
+   ===================== */
+.install-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.install-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.install-btn:focus-visible,
+.pwa-dialog-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.install-btn--small {
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+/* Les CTA restent masqués tant que pwa.js ne les affiche pas */
+.install-section[hidden],
+.footer-install[hidden] {
+    display: none;
+}
+
+/* =====================
+   PWA : bloc d'installation (accueil)
+   ===================== */
+.install-section {
+    padding: 56px 40px;
+    background: var(--bg);
+}
+
+.install-card {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 28px 32px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+}
+
+.install-card-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px var(--border-hover);
+}
+
+.install-card-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.install-card-text .section-eyebrow {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.install-title {
+    font-size: clamp(22px, 3vw, 28px);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.install-card-text p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .install-section {
+        padding: 40px 20px;
+    }
+
+    .install-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 24px 20px;
+    }
+
+    .install-card-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 13px;
+    }
+
+    .install-card .install-btn {
+        width: 100%;
+    }
+}
+
+/* =====================
+   PWA : rappel dans le footer
+   ===================== */
+.footer-install {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 0 20px;
+    margin-bottom: 0;
+}
+
+.footer-install-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px var(--border-hover);
+}
+
+.footer-install-text {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.footer-install-text strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-right: 6px;
+}
+
+@media (max-width: 768px) {
+    .footer-install {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px 14px;
+    }
+
+    .footer-install-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .footer-install-text strong {
+        display: block;
+    }
+
+    .footer-install .install-btn {
+        width: 100%;
+    }
+}
+
+/* =====================
+   PWA : aide à l'installation iOS
+   ===================== */
+.pwa-dialog {
+    margin: auto;
+    padding: 0;
+    width: min(360px, calc(100% - 32px));
+    background: var(--bg2);
+    color: var(--text);
+    border: 1px solid var(--border-hover);
+    border-radius: 6px;
+    box-shadow: 0 20px 60px var(--shadow-hover);
+}
+
+.pwa-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.pwa-dialog-body {
+    padding: 28px 24px 22px;
+    text-align: center;
+}
+
+.pwa-dialog-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
+    margin-bottom: 14px;
+}
+
+.pwa-dialog-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.pwa-dialog-steps {
+    list-style: none;
+    counter-reset: step;
+    text-align: left;
+    margin-bottom: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.pwa-dialog-steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 0 12px 38px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pwa-dialog-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.pwa-dialog-steps strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.pwa-dialog-steps small {
+    display: block;
+    color: var(--text-dim);
+    font-size: 12px;
+}
+
+.pwa-share-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: -3px;
+    color: var(--accent);
+}
+
+.pwa-dialog-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pwa-dialog-close {
+    padding: 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.pwa-dialog-close:hover {
+    color: var(--text);
+}
+
+/* =====================
+   PWA : page hors ligne
+   ===================== */
+.offline-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.offline-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 0 0 1px var(--border-hover);
+}
+
+.offline-title {
+    font-size: clamp(32px, 6vw, 44px);
+    margin-bottom: 14px;
+}
+
+.offline-text {
+    max-width: 420px;
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.offline-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.offline-links a {
+    padding: 8px 14px;
+    border: 1px solid var(--border-hover);
+    border-radius: 2px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.offline-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}

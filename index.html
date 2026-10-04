@@ -30,8 +30,15 @@
         content="Bars, concerts, galeries, restaurants : découvre les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont.">
     <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
 
-    <!-- Favicon (à ajouter si tu n'en as pas déjà) -->
-    <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+    <!-- Favicon et PWA -->
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#0c0c0b">
+    <meta name="apple-mobile-web-app-title" content="Cours Ju">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="pwa.js" defer></script>
 
     <!-- Données structurées Schema.org : TouristAttraction -->
     <script type="application/ld+json">
@@ -156,6 +163,22 @@
         </div>
     </section>
 
+    <!-- ==== Installation de l'app (affiché par pwa.js si installable) ==== -->
+    <section class="install-section" data-pwa-install hidden>
+        <div class="container">
+            <div class="install-card">
+                <img src="icons/icon-192.png" alt="" class="install-card-icon" width="72" height="72">
+                <div class="install-card-text">
+                    <span class="section-eyebrow">Application</span>
+                    <h2 class="install-title">Le quartier dans ta poche</h2>
+                    <p>Installe Cours Ju sur ton écran d'accueil : on l'ouvre en un geste, en plein écran,
+                        et les lieux déjà consultés restent disponibles même sans réseau.</p>
+                </div>
+                <button type="button" class="install-btn" data-pwa-install-btn>Installer l'app</button>
+            </div>
+        </div>
+    </section>
+
     <!-- ==== Événements ==== -->
     <section class="events-section">
         <div class="container">
@@ -201,6 +224,11 @@
                         <a href="contact.html" class="footer-link">Formulaire de contact →</a>
                     </p>
                 </div>
+            </div>
+            <div class="footer-install" data-pwa-install hidden>
+                <img src="icons/icon-192.png" alt="" class="footer-install-icon" width="36" height="36">
+                <p class="footer-install-text"><strong>L'app Cours Ju</strong>Accès rapide depuis ton écran d'accueil, même hors ligne.</p>
+                <button type="button" class="install-btn install-btn--small" data-pwa-install-btn>Installer</button>
             </div>
             <div class="footer-bottom">
                 <p>

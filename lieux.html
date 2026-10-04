@@ -30,8 +30,15 @@
     content="Bars, concerts, galeries, restaurants : les lieux du quartier sur une carte interactive.">
   <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+  <!-- Favicon et PWA -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0c0c0b">
+  <meta name="apple-mobile-web-app-title" content="Cours Ju">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script src="pwa.js" defer></script>
 
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -1628,6 +1635,11 @@
   <!-- ==== Footer ==== -->
   <footer class="main-footer">
     <div class="container">
+      <div class="footer-install" data-pwa-install hidden>
+          <img src="icons/icon-192.png" alt="" class="footer-install-icon" width="36" height="36">
+          <p class="footer-install-text"><strong>L'app Cours Ju</strong>Accès rapide depuis ton écran d'accueil, même hors ligne.</p>
+          <button type="button" class="install-btn install-btn--small" data-pwa-install-btn>Installer</button>
+      </div>
       <div class="footer-bottom">
         <p>
           &copy; 2025 Cours Ju — Plaine. Conçu avec ❤️ à Marseille par <a href="https://virgule-studio.fr" target="_blank" rel="noopener noreferrer" class="footer-studio-link">Virgule-Studio</a>.

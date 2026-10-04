@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors ligne — Cours Ju Plaine</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0c0c0b">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="offline-page">
+        <img src="icons/icon-192.png" alt="" class="offline-icon" width="72" height="72">
+        <span class="section-eyebrow">Hors ligne</span>
+        <h1 class="offline-title">Pas de connexion</h1>
+        <p class="offline-text">
+            Cette page n'est pas encore disponible sans réseau.
+            Les pages que tu as déjà consultées restent accessibles :
+        </p>
+        <nav class="offline-links" aria-label="Pages disponibles">
+            <a href="/">Accueil</a>
+            <a href="/lieux.html">Les lieux</a>
+            <a href="/quartier.html">Le quartier</a>
+        </nav>
+        <button type="button" class="install-btn" onclick="location.reload()">Réessayer</button>
+    </main>
+</body>
+
+</html>

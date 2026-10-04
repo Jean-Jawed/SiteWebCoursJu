@@ -1,0 +1,87 @@
+{
+  "id": "/",
+  "name": "Cours Julien et La Plaine",
+  "short_name": "Cours Ju",
+  "description": "Bars, concerts, galeries, restaurants : tous les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont à Marseille.",
+  "lang": "fr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0b",
+  "theme_color": "#0c0c0b",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "travel",
+    "lifestyle",
+    "entertainment"
+  ],
+  "shortcuts": [
+    {
+      "name": "Les lieux",
+      "short_name": "Lieux",
+      "description": "Tous les lieux du quartier, en liste et sur la carte",
+      "url": "/lieux.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Le quartier",
+      "short_name": "Quartier",
+      "description": "L'histoire du Cours Julien et de La Plaine",
+      "url": "/quartier.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshots/lieux-narrow.jpg",
+      "sizes": "540x1170",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Les lieux du quartier en liste"
+    },
+    {
+      "src": "icons/screenshots/lieux-wide.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Les lieux du quartier en liste"
+    }
+  ]
+}

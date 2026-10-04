@@ -18,7 +18,14 @@
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Cours Ju — Plaine">
 
-    <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#0c0c0b">
+    <meta name="apple-mobile-web-app-title" content="Cours Ju">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="pwa.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -259,6 +266,11 @@
                         <a href="contact.html" class="footer-link">Formulaire de contact →</a>
                     </p>
                 </div>
+            </div>
+            <div class="footer-install" data-pwa-install hidden>
+                <img src="icons/icon-192.png" alt="" class="footer-install-icon" width="36" height="36">
+                <p class="footer-install-text"><strong>L'app Cours Ju</strong>Accès rapide depuis ton écran d'accueil, même hors ligne.</p>
+                <button type="button" class="install-btn install-btn--small" data-pwa-install-btn>Installer</button>
             </div>
             <div class="footer-bottom">
                 <p>
