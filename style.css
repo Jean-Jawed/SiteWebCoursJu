@@ -1823,8 +1823,8 @@ a {
 @media (prefers-reduced-motion: no-preference) {
     .reveal {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .reveal.visible {
@@ -1842,8 +1842,8 @@ a {
 
 .quartier-hero {
     position: relative;
-    height: 70vh;
-    min-height: 480px;
+    height: 55vh;
+    min-height: 420px;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -1869,11 +1869,20 @@ a {
     );
 }
 
+/* Aligné sur le sommaire (ordinateur) ou sur la feuille (écrans moyens) */
 .quartier-hero-content {
     position: relative;
     z-index: 1;
-    padding: 0 40px 48px;
-    max-width: 760px;
+    width: 100%;
+    max-width: 1048px;
+    margin: 0 auto;
+    padding: 0 40px 88px;
+}
+
+@media (max-width: 1100px) {
+    .quartier-hero-content {
+        max-width: 800px;
+    }
 }
 
 .quartier-hero-content .hero-eyebrow {
@@ -1895,38 +1904,157 @@ a {
     color: var(--accent);
 }
 
-/* Corps de la page quartier */
-.quartier-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 40px;
+/* =====================
+   Quartier : lecture longue
+   Texte en Newsreader sur une « feuille » sombre, colonne ~65 signes
+   ===================== */
+.page-quartier {
+    --reading: #d8d3c9;        /* texte courant : 12:1 sur la feuille */
+    --sheet: #141412;
+    --sheet-pad: 64px;
+    --layout-max: 1120px;
 }
 
+/* Progression de lecture, sous la nav */
+.reading-progress {
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    pointer-events: none;
+}
+
+/* Mise en page : sommaire dans la marge + feuille */
+.quartier-layout {
+    position: relative;
+    z-index: 2;
+    max-width: var(--layout-max);
+    margin: -40px auto 0;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: 200px minmax(0, 720px);
+    justify-content: center;
+    gap: 48px;
+    align-items: start;
+}
+
+/* Sommaire */
+.quartier-toc {
+    position: sticky;
+    top: 92px;
+    padding-top: 64px;
+}
+
+.quartier-toc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.quartier-toc ol {
+    list-style: none;
+    border-left: 1px solid var(--border-hover);
+}
+
+.quartier-toc a {
+    display: flex;
+    gap: 10px;
+    margin-left: -1px;
+    padding: 7px 0 7px 14px;
+    border-left: 2px solid transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.quartier-toc a span {
+    flex-shrink: 0;
+    min-width: 16px;
+    color: var(--text-dim);
+}
+
+.quartier-toc a:hover {
+    color: var(--text);
+}
+
+.quartier-toc a[aria-current="true"] {
+    color: var(--text);
+    border-left-color: var(--accent);
+}
+
+.quartier-toc a[aria-current="true"] span {
+    color: var(--accent);
+}
+
+/* Feuille de lecture */
+.quartier-article {
+    min-width: 0;
+    padding: 8px var(--sheet-pad) 24px;
+    background: var(--sheet);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.quartier-article p {
+    font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+    font-optical-sizing: auto;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--reading);
+    margin-bottom: 1.1em;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    text-wrap: pretty;
+    font-variant-numeric: oldstyle-nums;
+}
+
+.quartier-article p:last-child {
+    margin-bottom: 0;
+}
+
+.quartier-article strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.quartier-article em {
+    font-style: italic;
+}
+
+/* Intro : chapeau */
 .quartier-intro {
     padding: 56px 0 48px;
     border-bottom: 1px solid var(--border);
 }
 
-.quartier-intro p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-}
-
-.quartier-intro p:last-child {
-    margin-bottom: 0;
-}
-
-.quartier-intro strong {
+.quartier-article .quartier-lede {
+    font-size: 23px;
+    line-height: 1.5;
     color: var(--text);
-    font-weight: 500;
+    hyphens: manual;
+    -webkit-hyphens: manual;
 }
 
-/* Sections de la page quartier */
+/* Chapitres */
 .quartier-section {
     padding: 56px 0;
     border-bottom: 1px solid var(--border);
+    scroll-margin-top: 72px;
 }
 
 .quartier-section:last-child {
@@ -1934,48 +2062,74 @@ a {
 }
 
 .quartier-section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    display: block;
-    margin-bottom: 10px;
+}
+
+.quartier-section-num {
+    padding-right: 10px;
+    border-right: 1px solid var(--border-hover);
+    color: var(--text-muted);
 }
 
 .quartier-section-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(26px, 4vw, 36px);
+    font-size: clamp(28px, 4vw, 38px);
     font-weight: 700;
+    line-height: 1.02;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 24px;
-    line-height: 1.0;
     text-align: left;
-}
-
-.quartier-section p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--text-muted);
-    margin-bottom: 18px;
-}
-
-.quartier-section p:last-child {
-    margin-bottom: 0;
-}
-
-.quartier-section strong {
     color: var(--text);
-    font-weight: 500;
+    margin-bottom: 28px;
 }
 
-/* Images de la page quartier */
-.quartier-img-block {
-    margin: 32px 0;
+/* Dates dans la marge de la feuille (décoratives) */
+.has-margin-date {
     position: relative;
+}
+
+.quartier-margin-date {
+    position: absolute;
+    top: 0.3em;
+    left: calc(var(--sheet-pad) * -1);
+    width: calc(var(--sheet-pad) - 14px);
+    text-align: right;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--accent);
+}
+
+/* Citations */
+.quartier-pullquote {
+    margin: 40px 0;
+    padding: 2px 0 2px 28px;
+    border-left: 2px solid var(--accent);
+}
+
+.quartier-article .quartier-pullquote p {
+    font-size: 24px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--text);
+    hyphens: manual;
+    -webkit-hyphens: manual;
+}
+
+/* Images : pleine largeur de la feuille */
+.quartier-img-block {
+    margin: 40px calc(var(--sheet-pad) * -1);
 }
 
 .quartier-img-full {
@@ -1983,24 +2137,26 @@ a {
     aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
-    border-radius: 2px;
     filter: grayscale(20%);
 }
 
-.quartier-img-caption {
+.quartier-article .quartier-img-caption {
+    margin: 10px var(--sheet-pad) 0;
+    font-family: 'Barlow Condensed', sans-serif;
     font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 8px;
-    font-style: italic;
-    letter-spacing: 0.02em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-variant-numeric: normal;
 }
 
-/* Grille 2 images */
 .quartier-img-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin: 32px 0;
+    gap: 2px;
+    margin: 40px calc(var(--sheet-pad) * -1);
 }
 
 .quartier-img-grid img {
@@ -2008,60 +2164,145 @@ a {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     display: block;
-    border-radius: 2px;
     filter: grayscale(20%);
 }
 
-/* Bloc citation / mise en avant */
-.quartier-pullquote {
-    border-left: 3px solid var(--accent);
-    padding: 16px 24px;
-    margin: 32px 0;
-    background: var(--bg2);
-    border-radius: 0 3px 3px 0;
+/* Pour aller plus loin */
+.quartier-refs-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
 }
 
-.quartier-pullquote p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--text);
-    font-style: italic;
-    margin: 0;
+.quartier-refs-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
 }
 
-/* Lien externe stylé */
-.quartier-external-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: 1px solid rgba(255,255,255,0.22);
-    border-radius: 2px;
+.quartier-article .quartier-ref-title {
+    font-size: 21px;
+    line-height: 1.35;
     color: var(--text);
-    text-decoration: none;
+    margin-bottom: 4px;
+}
+
+.quartier-article .quartier-ref-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+}
+
+.quartier-ref-link {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.15s;
-    background: rgba(255,255,255,0.04);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(224, 92, 42, 0.4);
+    transition: border-color 0.15s;
 }
 
-.quartier-external-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(224, 92, 42, 0.06);
+.quartier-ref-link::after {
+    content: ' ↗';
+}
+
+.quartier-ref-link:hover {
+    border-bottom-color: var(--accent);
+}
+
+.quartier-toc a:focus-visible,
+.quartier-ref-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Écrans moyens : sommaire au-dessus de la feuille, plus de dates en marge */
+@media (max-width: 1100px) {
+    .quartier-layout {
+        grid-template-columns: minmax(0, 720px);
+        gap: 0;
+    }
+
+    /* Sommaire en rangée compacte au-dessus de la feuille */
+    .quartier-toc {
+        position: static;
+        padding: 0 0 14px;
+    }
+
+    .quartier-toc-title {
+        display: none;
+    }
+
+    .quartier-toc ol {
+        display: flex;
+        gap: 4px 18px;
+        overflow-x: auto;
+        border-left: none;
+        scrollbar-width: none;
+    }
+
+    .quartier-toc ol::-webkit-scrollbar {
+        display: none;
+    }
+
+    .quartier-toc a {
+        gap: 6px;
+        margin-left: 0;
+        padding: 6px 0;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .quartier-toc a[aria-current="true"] {
+        border-bottom-color: var(--accent);
+    }
+
+    .quartier-margin-date {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
-    .quartier-hero-content {
-        padding: 0 20px 36px;
+    .page-quartier {
+        --sheet-pad: 20px;
     }
 
-    .quartier-body {
-        padding: 0 20px;
+    .quartier-layout {
+        margin-top: -24px;
+        padding: 0 0 48px;
+    }
+
+    .quartier-toc {
+        padding: 0 20px 12px;
+    }
+
+    .quartier-hero-content {
+        padding: 0 20px 52px;
+    }
+
+    .quartier-article {
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .quartier-article p {
+        font-size: 18px;
+    }
+
+    .quartier-article .quartier-lede {
+        font-size: 21px;
+    }
+
+    .quartier-article .quartier-pullquote p {
+        font-size: 21px;
     }
 
     .quartier-intro {
@@ -2069,7 +2310,11 @@ a {
     }
 
     .quartier-section {
-        padding: 40px 0;
+        padding: 44px 0;
+    }
+
+    .quartier-pullquote {
+        padding-left: 18px;
     }
 
     .quartier-img-grid {

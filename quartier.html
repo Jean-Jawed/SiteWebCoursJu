@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -62,6 +62,9 @@
         </div>
     </nav>
 
+    <!-- Progression de lecture -->
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
     <!-- ==== Hero ==== -->
     <section class="quartier-hero">
         <img
@@ -78,32 +81,46 @@
         </div>
     </section>
 
-    <!-- ==== Corps ==== -->
-    <div class="quartier-body">
+    <!-- ==== Corps : sommaire + feuille de lecture ==== -->
+    <div class="quartier-layout">
+
+        <nav class="quartier-toc" aria-label="Sommaire">
+            <p class="quartier-toc-title">Sommaire</p>
+            <ol>
+                <li><a href="#origines"><span>01</span>Les origines</a></li>
+                <li><a href="#espace-julien"><span>02</span>L’Espace Julien</a></li>
+                <li><a href="#street-art"><span>03</span>Le street art</a></li>
+                <li><a href="#bataille-plaine"><span>04</span>La bataille de La Plaine</a></li>
+                <li><a href="#aujourdhui"><span>05</span>Aujourd’hui</a></li>
+                <li><a href="#references"><span>→</span>Pour aller plus loin</a></li>
+            </ol>
+        </nav>
+
+        <article class="quartier-article">
 
         <!-- Intro -->
         <div class="quartier-intro reveal">
-            <p>
-                Il y a des quartiers qui existent sur les cartes, et d'autres qui existent dans la mémoire des gens. Le Cours Julien, La Plaine, Notre-Dame-du-Mont — appelons-le comme on veut, il déborde toujours de ses contours officiels. C'est un triangle de rues entre le bas de la Canebière et les pentes du Camas, un périmètre de quelques centaines de mètres où se croisent, depuis des décennies, des vies qui n'auraient pas forcément dû se croiser.
+            <p class="quartier-lede">
+                Il y a des quartiers qui existent sur les cartes, et d’autres qui existent dans la mémoire des gens. Le Cours Julien, La Plaine, Notre-Dame-du-Mont — appelons-le comme on veut, il déborde toujours de ses contours officiels. C’est un triangle de rues entre le bas de la Canebière et les pentes du Camas, un périmètre de quelques centaines de mètres où se croisent, depuis des décennies, des vies qui n’auraient pas forcément dû se croiser.
             </p>
             <p>
-                Quartier populaire d'abord. Quartier de maraîchers, d'artisans, d'immigrés du siècle dernier qui ont planté leurs habitudes dans les cafés et les cours intérieures. Puis quartier de <strong>contre-culture</strong>, dans les années 80 et 90, quand les loyers bon marché et les entrepôts vides ont attiré les artistes, les associations, les fanzines, les soundsystems. Et maintenant — lentement, sûrement — quartier convoité, quartier en train de muer, quartier dont certains habitants regardent les changements avec une inquiétude légitime.
+                Quartier populaire d’abord. Quartier de maraîchers, d’artisans, d’immigrés du siècle dernier qui ont planté leurs habitudes dans les cafés et les cours intérieures. Puis quartier de <strong>contre-culture</strong>, dans les années 80 et 90, quand les loyers bon marché et les entrepôts vides ont attiré les artistes, les associations, les fanzines, les soundsystems. Et maintenant — lentement, sûrement — quartier convoité, quartier en train de muer, quartier dont certains habitants regardent les changements avec une inquiétude légitime.
             </p>
             <p>
-                Cette page n'est pas un guide touristique. C'est une tentative de ne pas oublier d'où ça vient.
+                Cette page n’est pas un guide touristique. C’est une tentative de ne pas oublier d’où ça vient.
             </p>
         </div>
 
         <!-- Section 1 : Les origines -->
-        <section class="quartier-section reveal">
-            <span class="quartier-section-label">Les origines</span>
+        <section class="quartier-section reveal" id="origines">
+            <span class="quartier-section-label"><span class="quartier-section-num">01</span>Les origines</span>
             <h2 class="quartier-section-title">Une friche, des maraîchers,<br>une ville qui pousse</h2>
 
             <p>
-                Le Cours Julien tire son nom d'un ancien marché maraîcher qui s'étendait là où se trouve aujourd'hui l'esplanade. Les jardins potagers ont laissé place, au fil des démolitions et des reconstructions du XIXe et du XXe siècle, à un quartier dense, hétéroclite, construit sans grand plan directeur. C'est peut-être pour ça qu'il a gardé cette texture particulière — des rues qui ne se recoupent pas toujours à angle droit, des immeubles qui semblent avoir été posés là un peu par hasard, des caves qui deviennent des salles de concert.
+                Le Cours Julien tire son nom d’un ancien marché maraîcher qui s’étendait là où se trouve aujourd’hui l’esplanade. Les jardins potagers ont laissé place, au fil des démolitions et des reconstructions du XIXe et du XXe siècle, à un quartier dense, hétéroclite, construit sans grand plan directeur. C’est peut-être pour ça qu’il a gardé cette texture particulière — des rues qui ne se recoupent pas toujours à angle droit, des immeubles qui semblent avoir été posés là un peu par hasard, des caves qui deviennent des salles de concert.
             </p>
             <p>
-                La place Jean-Jaurès — que tout le monde appelle « La Plaine » — a longtemps été le cœur battant du quartier populaire. Marché trois fois par semaine, terrasses qui s'étendent sur le bitume, vieux qui jouent à la pétanque, gamins qui traînent. Une place à l'ancienne, fonctionnelle, usée, vivante précisément parce qu'elle n'était pas belle.
+                La place Jean-Jaurès — que tout le monde appelle « La Plaine » — a longtemps été le cœur battant du quartier populaire. Marché trois fois par semaine, terrasses qui s’étendent sur le bitume, vieux qui jouent à la pétanque, gamins qui traînent. Une place à l’ancienne, fonctionnelle, usée, vivante précisément parce qu’elle n’était pas belle.
             </p>
 
             <div class="quartier-img-block">
@@ -117,26 +134,26 @@
         </section>
 
         <!-- Section 2 : L'Espace Julien -->
-        <section class="quartier-section reveal">
-            <span class="quartier-section-label">1984 — 2023</span>
-            <h2 class="quartier-section-title">L'Espace Julien,<br>quatre décennies de son</h2>
+        <section class="quartier-section reveal" id="espace-julien">
+            <span class="quartier-section-label"><span class="quartier-section-num">02</span>1984 — 2023</span>
+            <h2 class="quartier-section-title">L’Espace Julien,<br>quatre décennies de son</h2>
 
-            <p>
-                En 1984, une ancienne halle maraîchère est reconvertie en salle de spectacles. Ce sera l'<strong>Espace Julien</strong> — une Maison pour tous qui va progressivement devenir l'une des scènes de musiques actuelles les plus importantes du sud de la France. Pas à coups de millions d'euros d'architectes ou de grandes politiques culturelles, mais par la volonté obstinée de gens qui aimaient la musique et le partage.
+            <p class="has-margin-date">
+                <span class="quartier-margin-date" aria-hidden="true">1984</span>En 1984, une ancienne halle maraîchère est reconvertie en salle de spectacles. Ce sera l’<strong>Espace Julien</strong> — une Maison pour tous qui va progressivement devenir l’une des scènes de musiques actuelles les plus importantes du sud de la France. Pas à coups de millions d’euros d’architectes ou de grandes politiques culturelles, mais par la volonté obstinée de gens qui aimaient la musique et le partage.
             </p>
             <p>
-                En quarante ans, la salle a vu passer Chet Baker et Stan Getz dans ses premières années jazz, puis La Mano Negra, Paco de Lucia, Archie Shepp, Arthur H, Zazie, Kid Francescoli. Des légendes et des débutants. Des tournées internationales et des premiers concerts d'artistes locaux qui seraient, quelques années plus tard, dans des Zéniths. L'Espace Julien avait ce don rare : faire coexister les deux sans que ça sonne faux.
+                En quarante ans, la salle a vu passer Chet Baker et Stan Getz dans ses premières années jazz, puis La Mano Negra, Paco de Lucia, Archie Shepp, Arthur H, Zazie, Kid Francescoli. Des légendes et des débutants. Des tournées internationales et des premiers concerts d’artistes locaux qui seraient, quelques années plus tard, dans des Zéniths. L’Espace Julien avait ce don rare : faire coexister les deux sans que ça sonne faux.
             </p>
 
-            <div class="quartier-pullquote">
-                <p>« Une petite salle de quartier qui s'est peu à peu muée en une institution culturelle où de grands artistes des musiques actuelles et de l'humour ont laissé leur empreinte. Une histoire à petite échelle qui porte en elle celle de toute une génération. »</p>
-            </div>
+            <blockquote class="quartier-pullquote">
+                <p>« Une petite salle de quartier qui s’est peu à peu muée en une institution culturelle où de grands artistes des musiques actuelles et de l’humour ont laissé leur empreinte. Une histoire à petite échelle qui porte en elle celle de toute une génération. »</p>
+            </blockquote>
 
-            <p>
-                En 2023, après 39 ans et quelque 8 000 spectacles, l'Espace Julien change de main. L'association <strong>La Responsabilité des Rêves</strong> — née du rapprochement entre Le Makeda, Le Théâtre de l'Œuvre, La Meson et l'Espace Julien — reprend les clés. La salle rouvre le 22 septembre, avec de nouvelles couleurs et la même ambition. L'histoire continue.
+            <p class="has-margin-date">
+                <span class="quartier-margin-date" aria-hidden="true">2023</span>En 2023, après 39 ans et quelque 8 000 spectacles, l’Espace Julien change de main. L’association <strong>La Responsabilité des Rêves</strong> — née du rapprochement entre Le Makeda, Le Théâtre de l’Œuvre, La Meson et l’Espace Julien — reprend les clés. La salle rouvre le 22 septembre, avec de nouvelles couleurs et la même ambition. L’histoire continue.
             </p>
-            <p>
-                En 2024, les éditions Parenthèses publient <em>Espace Julien, une aventure musicale à Marseille</em> (Patrick Coulomb, Marie-Hélène Balivet), un livre qui retrace ces quatre décennies à travers des photos de scène, des affiches, des témoignages d'artistes. Un beau livre sur un lieu improbable qui a changé la vie culturelle d'une ville.
+            <p class="has-margin-date">
+                <span class="quartier-margin-date" aria-hidden="true">2024</span>En 2024, les éditions Parenthèses publient <em>Espace Julien, une aventure musicale à Marseille</em> (Patrick Coulomb, Marie-Hélène Balivet), un livre qui retrace ces quatre décennies à travers des photos de scène, des affiches, des témoignages d’artistes. Un beau livre sur un lieu improbable qui a changé la vie culturelle d’une ville.
             </p>
 
             <div class="quartier-img-grid">
@@ -149,22 +166,18 @@
                     alt="Scène de l'Espace Julien"
                     loading="lazy">
             </div>
-
-            <a href="https://editionsparentheses.com/Espace-Julien" target="_blank" rel="noopener noreferrer" class="quartier-external-link">
-                → Le livre aux éditions Parenthèses
-            </a>
         </section>
 
         <!-- Section 3 : Street art -->
-        <section class="quartier-section reveal">
-            <span class="quartier-section-label">Le mur permanent</span>
-            <h2 class="quartier-section-title">Le street art,<br>ou la ville qui s'écrit elle-même</h2>
+        <section class="quartier-section reveal" id="street-art">
+            <span class="quartier-section-label"><span class="quartier-section-num">03</span>Le mur permanent</span>
+            <h2 class="quartier-section-title">Le street art,<br>ou la ville qui s’écrit elle-même</h2>
 
             <p>
-                Le Cours Julien est depuis les années 90 l'un des hauts lieux du street art à Marseille — et l'un des rares endroits en France où les murs ont été officiellement mis à disposition des artistes sans que ça devienne un musée en plein air aseptisé. Les œuvres changent, se superposent, dialoguent ou s'effacent. Certaines tiennent des années, d'autres sont recouvertes en quelques semaines.
+                Le Cours Julien est depuis les années 90 l’un des hauts lieux du street art à Marseille — et l’un des rares endroits en France où les murs ont été officiellement mis à disposition des artistes sans que ça devienne un musée en plein air aseptisé. Les œuvres changent, se superposent, dialoguent ou s’effacent. Certaines tiennent des années, d’autres sont recouvertes en quelques semaines.
             </p>
             <p>
-                C'est une forme d'écriture collective et éphémère. Les murs du quartier racontent la ville telle que ses habitants la voient.
+                C’est une forme d’écriture collective et éphémère. Les murs du quartier racontent la ville telle que ses habitants la voient.
             </p>
 
             <div class="quartier-img-block">
@@ -178,26 +191,26 @@
         </section>
 
         <!-- Section 4 : La bataille de la Plaine -->
-        <section class="quartier-section reveal">
-            <span class="quartier-section-label">2016 — 2020</span>
+        <section class="quartier-section reveal" id="bataille-plaine">
+            <span class="quartier-section-label"><span class="quartier-section-num">04</span>2016 — 2020</span>
             <h2 class="quartier-section-title">Le mur de béton<br>et la bataille de La Plaine</h2>
 
-            <p>
-                En 2016, la mairie de Marseille annonce un projet de « requalification urbaine » de la place Jean-Jaurès. Requalification — le mot est doux, presque neutre. Ce qu'il recouvre l'est moins : le réaménagement complet d'une place populaire, la modification de son marché, la transformation de ses usages. Une partie des habitants perçoit immédiatement ce que ça signifie concrètement : la disparition programmée de ce qui faisait la vie du quartier, au profit d'un espace plus propre, plus lisse, plus attractif pour une clientèle différente.
+            <p class="has-margin-date">
+                <span class="quartier-margin-date" aria-hidden="true">2016</span>En 2016, la mairie de Marseille annonce un projet de « requalification urbaine » de la place Jean-Jaurès. Requalification — le mot est doux, presque neutre. Ce qu’il recouvre l’est moins : le réaménagement complet d’une place populaire, la modification de son marché, la transformation de ses usages. Une partie des habitants perçoit immédiatement ce que ça signifie concrètement : la disparition programmée de ce qui faisait la vie du quartier, au profit d’un espace plus propre, plus lisse, plus attractif pour une clientèle différente.
             </p>
             <p>
-                Pendant trois ans, le quartier résiste. Des assemblées générales, des occupations, des manifestations, des négociations qui n'aboutissent à rien. Une mobilisation longue, épuisante, portée par des gens qui avaient d'autres choses à faire mais qui tenaient à leur place, à leur marché, à leur façon d'habiter la ville.
+                Pendant trois ans, le quartier résiste. Des assemblées générales, des occupations, des manifestations, des négociations qui n’aboutissent à rien. Une mobilisation longue, épuisante, portée par des gens qui avaient d’autres choses à faire mais qui tenaient à leur place, à leur marché, à leur façon d’habiter la ville.
             </p>
 
-            <div class="quartier-pullquote">
-                <p>« Marseille, février 2019, La Plaine est encerclée par un mur de 2m50 de haut pour assurer le bon déroulé des travaux et enferme le rêve d'un quartier fait par ses habitants. »</p>
-            </div>
+            <blockquote class="quartier-pullquote">
+                <p>« Marseille, février 2019, La Plaine est encerclée par un mur de 2m50 de haut pour assurer le bon déroulé des travaux et enferme le rêve d’un quartier fait par ses habitants. »</p>
+            </blockquote>
 
-            <p>
-                En février 2019, la mairie fait ériger en une nuit un mur de béton de <strong>2m50 de hauteur</strong> tout autour de la place. Une décision sidérante dans sa brutalité — le genre de geste qui dit tout ce qu'il y a à savoir sur la relation entre une institution et ses administrés quand le dialogue a échoué. Le marché est interrompu. La place disparaît derrière le béton. Le quartier vit avec cette cicatrice pendant des mois.
+            <p class="has-margin-date">
+                <span class="quartier-margin-date" aria-hidden="true">2019</span>En février 2019, la mairie fait ériger en une nuit un mur de béton de <strong>2m50 de hauteur</strong> tout autour de la place. Une décision sidérante dans sa brutalité — le genre de geste qui dit tout ce qu’il y a à savoir sur la relation entre une institution et ses administrés quand le dialogue a échoué. Le marché est interrompu. La place disparaît derrière le béton. Le quartier vit avec cette cicatrice pendant des mois.
             </p>
             <p>
-                Cette histoire a été filmée. <em>La Bataille de la Plaine</em>, réalisé par Sandra Ach, Nicolas Burlaud et Thomas Hakenholz pour le collectif Primitivi, est un documentaire tourné entre 2016 et 2020 qui suit cette lutte de l'intérieur. Ce n'est pas seulement un film sur un réaménagement urbain — c'est un film sur la mémoire, sur ce qui se perd quand une ville décide de changer de visage, et sur ce que les gens font pour ne pas laisser disparaître ce qui leur appartient.
+                Cette histoire a été filmée. <em>La Bataille de la Plaine</em>, réalisé par Sandra Ach, Nicolas Burlaud et Thomas Hakenholz pour le collectif Primitivi, est un documentaire tourné entre 2016 et 2020 qui suit cette lutte de l’intérieur. Ce n’est pas seulement un film sur un réaménagement urbain — c’est un film sur la mémoire, sur ce qui se perd quand une ville décide de changer de visage, et sur ce que les gens font pour ne pas laisser disparaître ce qui leur appartient.
             </p>
 
             <div class="quartier-img-block">
@@ -208,25 +221,21 @@
                     loading="lazy">
                 <p class="quartier-img-caption">Le mur de 2m50 autour de la place Jean-Jaurès, février 2019</p>
             </div>
-
-            <a href="https://labataille.primitivi.org/" target="_blank" rel="noopener noreferrer" class="quartier-external-link">
-                → La Bataille de la Plaine — le film
-            </a>
         </section>
 
         <!-- Section 5 : Aujourd'hui -->
-        <section class="quartier-section reveal">
-            <span class="quartier-section-label">Maintenant</span>
+        <section class="quartier-section reveal" id="aujourdhui">
+            <span class="quartier-section-label"><span class="quartier-section-num">05</span>Maintenant</span>
             <h2 class="quartier-section-title">La gentrification,<br>lentement</h2>
 
             <p>
-                La place a rouvert. Les travaux sont finis. Le marché est revenu, mais pas tout à fait le même. Des terrasses neuves, du mobilier urbain récent, un sol refait. Certains disent que c'est mieux. D'autres disent qu'il manque quelque chose — cette rugosité, cet inconfort, cette liberté d'usage qui faisait que la place appartenait à tout le monde parce qu'elle n'était belle pour personne en particulier.
+                La place a rouvert. Les travaux sont finis. Le marché est revenu, mais pas tout à fait le même. Des terrasses neuves, du mobilier urbain récent, un sol refait. Certains disent que c’est mieux. D’autres disent qu’il manque quelque chose — cette rugosité, cet inconfort, cette liberté d’usage qui faisait que la place appartenait à tout le monde parce qu’elle n’était belle pour personne en particulier.
             </p>
             <p>
-                Le processus en cours dans ce quartier n'est pas différent de ce qui se passe dans des dizaines de quartiers populaires en France et en Europe. Les loyers montent. Les commerces de proximité ferment, remplacés par des coffee shops et des restaurants qui ciblent une clientèle différente. Les familles qui étaient là depuis des générations partent, faute de pouvoir payer. De nouveaux habitants arrivent — pas nécessairement mauvais, pas nécessairement conscients de ce qu'ils participent à effacer.
+                Le processus en cours dans ce quartier n’est pas différent de ce qui se passe dans des dizaines de quartiers populaires en France et en Europe. Les loyers montent. Les commerces de proximité ferment, remplacés par des coffee shops et des restaurants qui ciblent une clientèle différente. Les familles qui étaient là depuis des générations partent, faute de pouvoir payer. De nouveaux habitants arrivent — pas nécessairement mauvais, pas nécessairement conscients de ce qu’ils participent à effacer.
             </p>
             <p>
-                C'est la gentrification : un processus structurel, lent, sans méchant clairement identifiable, et pourtant d'une violence sociale réelle. Le Cours Julien n'y échappe pas. Il en est même, pour Marseille, l'un des symboles les plus visibles.
+                C’est la gentrification : un processus structurel, lent, sans méchant clairement identifiable, et pourtant d’une violence sociale réelle. Le Cours Julien n’y échappe pas. Il en est même, pour Marseille, l’un des symboles les plus visibles.
             </p>
 
             <div class="quartier-img-grid">
@@ -241,11 +250,29 @@
             </div>
 
             <p>
-                Ce site recense les lieux du quartier tels qu'ils existent aujourd'hui. Bars, salles de concerts, galeries, librairies, restaurants — des endroits tenus par des gens qui ont choisi d'être là, qui participent à cette vie de quartier, et qui sont eux-mêmes pris dans les mêmes tensions. Ce n'est pas un catalogue figé. C'est un instantané, et il changera.
+                Ce site recense les lieux du quartier tels qu’ils existent aujourd’hui. Bars, salles de concerts, galeries, librairies, restaurants — des endroits tenus par des gens qui ont choisi d’être là, qui participent à cette vie de quartier, et qui sont eux-mêmes pris dans les mêmes tensions. Ce n’est pas un catalogue figé. C’est un instantané, et il changera.
             </p>
         </section>
 
-    </div><!-- fin .quartier-body -->
+        <!-- Pour aller plus loin -->
+        <section class="quartier-section quartier-refs" id="references">
+            <span class="quartier-section-label">Pour aller plus loin</span>
+            <ul class="quartier-refs-list">
+                <li>
+                    <p class="quartier-ref-title"><em>Espace Julien, une aventure musicale à Marseille</em></p>
+                    <p class="quartier-ref-meta">Patrick Coulomb, Marie-Hélène Balivet — éditions Parenthèses, 2024. Livre.</p>
+                    <a href="https://editionsparentheses.com/Espace-Julien" target="_blank" rel="noopener noreferrer" class="quartier-ref-link">editionsparentheses.com</a>
+                </li>
+                <li>
+                    <p class="quartier-ref-title"><em>La Bataille de la Plaine</em></p>
+                    <p class="quartier-ref-meta">Sandra Ach, Nicolas Burlaud, Thomas Hakenholz — collectif Primitivi. Documentaire tourné entre 2016 et 2020.</p>
+                    <a href="https://labataille.primitivi.org/" target="_blank" rel="noopener noreferrer" class="quartier-ref-link">labataille.primitivi.org</a>
+                </li>
+            </ul>
+        </section>
+
+        </article>
+    </div><!-- fin .quartier-layout -->
 
     <!-- ==== Footer ==== -->
     <footer class="main-footer">
@@ -299,6 +326,39 @@
                 });
             });
         }
+
+        // Sommaire : chapitre en cours + barre de progression de lecture
+        const tocLinks = [...document.querySelectorAll('.quartier-toc a')];
+        const chapters = tocLinks.map(a => document.querySelector(a.getAttribute('href')));
+        const article = document.querySelector('.quartier-article');
+        const progress = document.getElementById('readingProgress');
+        let ticking = false;
+
+        function updateReading() {
+            ticking = false;
+            const rect = article.getBoundingClientRect();
+            const total = rect.height - window.innerHeight * 0.6;
+            const ratio = Math.min(1, Math.max(0, -rect.top / total));
+            progress.style.transform = `scaleX(${ratio})`;
+
+            let current = -1;
+            chapters.forEach((el, i) => {
+                if (el && el.getBoundingClientRect().top < window.innerHeight * 0.35) current = i;
+            });
+            tocLinks.forEach((a, i) => {
+                if (i === current) a.setAttribute('aria-current', 'true');
+                else a.removeAttribute('aria-current');
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(updateReading);
+            }
+        }, { passive: true });
+        window.addEventListener('resize', updateReading);
+        updateReading();
 
         // Reveal au scroll
         const reveals = document.querySelectorAll('.reveal');
