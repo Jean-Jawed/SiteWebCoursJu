@@ -1,0 +1,938 @@
+/* =====================================================================
+   mag.css — Gabarit des articles du Mag
+   ---------------------------------------------------------------------
+   Chargé après ../style.css (nav, footer, couleurs du site).
+
+   Pour créer un nouvel article « tournée » :
+   1. Copier mag/bar-cocktails.html, garder la structure :
+      .mag-hero → .mag-intro → section.tour (carte + .tour-stop / .tour-walk)
+      → .mag-outro → .mag-refs
+   2. Chaque étape (.tour-stop) porte sa couleur de néon : style="--neon: #xxxxxx"
+      et son numéro : data-stop="0", "1"…  Entre deux étapes, un .tour-walk data-leg.
+   3. Remplacer le JSON #tourData (coordonnées des étapes + tracés piétons).
+   4. Photos dans images/mag/<article>/ : une « équipe » (.tour-photo--back)
+      et un « détail » (.tour-photo--front) par étape.
+   Sans JavaScript, tout reste lisible : la carte est simplement masquée.
+   ===================================================================== */
+
+.page-mag-article {
+    --reading: #d8d3c9;
+    --neon: var(--accent);
+    --halo: var(--accent);
+    --mag-sheet: #141412;
+}
+
+/* Grain discret sur toute la page */
+.page-mag-article::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =====================
+   Halo lumineux (ordinateur, souris)
+   ===================== */
+.mag-halo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, var(--halo) 0%, transparent 62%);
+    opacity: 0.1;
+    transition: background 0.6s;
+    will-change: transform;
+}
+
+.mag-halo.is-on {
+    display: block;
+}
+
+.page-mag-article main {
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================
+   Surtitres et boutons communs
+   ===================== */
+.mag-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.mag-kicker a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(224, 92, 42, 0.4);
+}
+
+.mag-kicker a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.mag-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 24px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-hover);
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.mag-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.mag-btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.mag-btn--primary:hover {
+    background: var(--accent-hover);
+    color: white;
+}
+
+.mag-btn--ghost {
+    border-color: transparent;
+    color: var(--text-muted);
+}
+
+.mag-btn:focus-visible,
+.mag-scroll-cue:focus-visible,
+.tour-counter a:focus-visible,
+.mag-refs a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* =====================
+   Ouverture
+   ===================== */
+.mag-hero {
+    position: relative;
+    min-height: calc(100vh - 52px);
+    min-height: calc(100svh - 52px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px 40px 120px;
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 85%, rgba(255, 79, 163, 0.16), transparent 70%),
+        radial-gradient(ellipse 50% 45% at 85% 20%, rgba(63, 224, 192, 0.10), transparent 70%),
+        radial-gradient(ellipse 55% 50% at 70% 95%, rgba(255, 179, 64, 0.12), transparent 70%),
+        var(--bg);
+}
+
+.mag-bubbles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.mag-hero-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.mag-title {
+    margin: 22px 0 28px;
+    /* Titre-question sur trois lignes */
+    font-size: clamp(46px, 8.6vw, 116px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    color: var(--text);
+}
+
+.mag-title-line {
+    display: block;
+}
+
+/* « une tournée » : le texte se remplit comme un verre */
+.mag-title-fill {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0.5' stop-color='%23ff4fa3'/%3E%3Cstop offset='1' stop-color='%23e05c2a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 100 Q50 86 100 100 T200 100 T300 100 T400 100 V200 H0Z' fill='url(%23g)'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 400px 200%;
+    background-position-x: 0;
+    background-position-y: 84%;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mag-js .mag-title-fill {
+        background-position-y: 0%;
+        animation:
+            mag-fill 2.6s 0.4s cubic-bezier(0.45, 0, 0.2, 1) forwards,
+            mag-wave 3.2s linear infinite;
+    }
+}
+
+@keyframes mag-fill {
+    to { background-position-y: 84%; }
+}
+
+@keyframes mag-wave {
+    to { background-position-x: 400px; }
+}
+
+.mag-lede strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.mag-lede {
+    max-width: 34em;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(20px, 2.2vw, 24px);
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.mag-meta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    margin-top: 26px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.mag-meta li + li::before {
+    content: '·';
+    margin-right: 22px;
+    color: var(--accent);
+}
+
+.mag-scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.mag-scroll-cue span {
+    font-size: 18px;
+    color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mag-scroll-cue span {
+        animation: mag-bob 1.8s ease-in-out infinite;
+    }
+}
+
+@keyframes mag-bob {
+    50% { transform: translateY(6px); }
+}
+
+/* =====================
+   En bref : réponse directe à la question du titre
+   ===================== */
+.mag-answer {
+    max-width: 680px;
+    margin: 56px auto 0;
+    padding: 24px 28px 22px;
+    background: var(--mag-sheet);
+    border: 1px solid var(--border-hover);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+}
+
+.mag-answer-list {
+    margin: 14px 0 0;
+    padding-left: 22px;
+}
+
+.mag-answer-list li {
+    padding-left: 4px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--reading);
+}
+
+.mag-answer-list li + li {
+    margin-top: 8px;
+}
+
+.mag-answer-list li::marker {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.mag-answer-list a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(224, 92, 42, 0.5);
+}
+
+.mag-answer-list a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.mag-answer-note {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* =====================
+   Introduction
+   ===================== */
+.mag-intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 72px 20px 40px;
+}
+
+.mag-intro p,
+.tour-stop > p:not(.tour-step),
+.mag-outro > p:not(.mag-kicker):not(.mag-share-status) {
+    font-family: 'Newsreader', Georgia, serif;
+    font-optical-sizing: auto;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--reading);
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    text-wrap: pretty;
+}
+
+.mag-intro p + p,
+.tour-stop > p:not(.tour-step) + p {
+    margin-top: 1.1em;
+}
+
+/* =====================
+   La tournée : carte + étapes
+   ===================== */
+.tour {
+    position: relative;
+}
+
+.tour-map-wrap {
+    display: none;
+}
+
+.mag-js .tour-map-wrap {
+    display: block;
+    position: sticky;
+    top: 52px;
+    z-index: 5;
+    height: 36vh;
+    height: 36svh;
+    border-bottom: 1px solid var(--border-hover);
+    background: var(--bg);
+}
+
+.tour-map {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+}
+
+.tour-map .leaflet-control-attribution {
+    background: rgba(12, 12, 11, 0.7);
+    color: var(--text-dim);
+    font-size: 9px;
+}
+
+.tour-map .leaflet-control-attribution a {
+    color: var(--text-muted);
+}
+
+.tour-map-legend {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 14px 9px;
+    background: rgba(12, 12, 11, 0.86);
+    border: 1px solid var(--border-hover);
+    border-left: 3px solid var(--current-neon, var(--accent));
+    border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    transition: border-color 0.4s;
+}
+
+.tour-map-step {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+
+.tour-map-step strong {
+    color: var(--current-neon, var(--accent));
+}
+
+.tour-map-name {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text);
+}
+
+/* Marqueurs numérotés */
+.tour-marker-wrap {
+    background: none;
+    border: none;
+}
+
+.tour-marker {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.tour-marker.is-visited {
+    border-color: var(--neon);
+    color: var(--neon);
+}
+
+.tour-marker.is-active {
+    background: var(--neon);
+    border-color: var(--neon);
+    color: var(--bg);
+    transform: scale(1.18);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--neon) 25%, transparent), 0 0 24px var(--neon);
+}
+
+/* Tracé : pointillés pour tout le trajet, trait lumineux pour la partie parcourue */
+.tour-route-ghost {
+    stroke: rgba(255, 255, 255, 0.35);
+    stroke-width: 2;
+    stroke-dasharray: 2 7;
+    stroke-linecap: round;
+    fill: none;
+}
+
+.tour-route-done {
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.45));
+}
+
+.tour-walker {
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 0 16px white;
+}
+
+/* Étapes */
+.tour-stops {
+    padding: 0 20px;
+}
+
+.tour-stop {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 72px 0 24px;
+    scroll-margin-top: 52px;
+}
+
+.tour-step {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--neon);
+}
+
+/* Le nom en néon : éteint, puis il s'allume en grésillant */
+.neon {
+    margin: 10px 0 30px;
+    font-size: clamp(46px, 7.5vw, 88px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: #fff6ee;
+    text-shadow:
+        0 0 2px #fff,
+        0 0 10px var(--neon),
+        0 0 24px var(--neon),
+        0 0 48px var(--neon),
+        0 0 90px color-mix(in srgb, var(--neon) 60%, transparent);
+}
+
+.mag-js .neon:not(.is-lit) {
+    color: rgba(255, 255, 255, 0.14);
+    text-shadow: none;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--neon) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .neon.is-lit span {
+        display: inline-block;
+        animation: neon-flicker 1.5s linear both;
+    }
+}
+
+@keyframes neon-flicker {
+    0%, 8%, 12%, 26%, 30%, 52%, 56% { opacity: 0.15; }
+    10%, 28%, 54%, 100% { opacity: 1; }
+}
+
+/* Photos superposées : l'équipe, et le verre posé dessus */
+.tour-photos {
+    position: relative;
+    margin: 44px 0 64px;
+    padding-bottom: 12%;
+}
+
+.tour-photo {
+    display: block;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.tour-photo--back {
+    width: 74%;
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.tour-photo--front {
+    position: absolute;
+    right: 0;
+    bottom: 26px;
+    width: 46%;
+    aspect-ratio: 1 / 1;
+    padding: 8px;
+    background: #f3efe7;
+    transform: rotate(4deg);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px color-mix(in srgb, var(--neon) 35%, transparent);
+}
+
+.tour-photos figcaption {
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    max-width: 52%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* Encadré « Au comptoir » */
+.tour-counter {
+    margin-top: 36px;
+    padding: 22px 24px 20px;
+    background: var(--mag-sheet);
+    border: 1px solid var(--border-hover);
+    border-top: 3px solid var(--neon);
+    border-radius: 3px;
+}
+
+.tour-counter h3 {
+    margin-bottom: 14px;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--neon);
+}
+
+.tour-counter dl {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    gap: 10px 16px;
+}
+
+.tour-counter dt {
+    padding-top: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.tour-counter dd {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.tour-counter a {
+    color: var(--neon);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--neon) 45%, transparent);
+}
+
+.tour-counter a:hover {
+    border-bottom-color: var(--neon);
+}
+
+/* Trajet entre deux étapes */
+.tour-walk {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 96px 0 72px 28px;
+    position: relative;
+}
+
+.tour-walk::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 24px;
+    bottom: 24px;
+    border-left: 2px dashed rgba(255, 255, 255, 0.22);
+}
+
+.tour-walk-distance {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.tour-walk-distance span {
+    color: var(--accent);
+}
+
+.tour-walk-text {
+    margin-top: 8px;
+    max-width: 30em;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.55;
+    color: #bdb8ae;
+}
+
+/* Ordinateur : la carte occupe la colonne de droite et reste fixe */
+@media (min-width: 1024px) {
+    .mag-js .tour {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(380px, 44vw);
+    }
+
+    .mag-js .tour-map-wrap {
+        grid-column: 2;
+        grid-row: 1;
+        height: calc(100vh - 52px);
+        border-bottom: none;
+        border-left: 1px solid var(--border-hover);
+    }
+
+    .mag-js .tour-stops {
+        grid-column: 1;
+        grid-row: 1;
+        padding: 0 56px;
+    }
+
+    .tour-map-legend {
+        left: 20px;
+        bottom: 20px;
+    }
+}
+
+/* =====================
+   Fin de tournée
+   ===================== */
+.mag-outro {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 120px 20px 72px;
+    text-align: center;
+}
+
+.mag-outro .mag-kicker {
+    justify-content: center;
+}
+
+.mag-outro-title {
+    margin: 16px 0 22px;
+    font-size: clamp(34px, 5.5vw, 60px);
+    line-height: 0.98;
+    color: var(--text);
+}
+
+.mag-outro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.mag-share-status {
+    min-height: 1.5em;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* =====================
+   Questions fréquentes
+   ===================== */
+.mag-faq {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 20px 32px;
+}
+
+.mag-faq-list {
+    margin-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.mag-faq details {
+    border-bottom: 1px solid var(--border);
+}
+
+.mag-faq summary {
+    position: relative;
+    padding: 16px 32px 16px 0;
+    list-style: none;
+    cursor: pointer;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--text);
+}
+
+.mag-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.mag-faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 4px;
+    top: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    color: var(--accent);
+    transition: transform 0.2s;
+}
+
+.mag-faq details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.mag-faq summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.mag-faq details p {
+    padding: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--reading);
+}
+
+/* =====================
+   Pour aller plus loin
+   ===================== */
+.mag-refs {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 20px 96px;
+}
+
+.mag-refs ul {
+    list-style: none;
+    margin-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.mag-refs li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.mag-ref-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.35;
+    color: var(--text);
+}
+
+.mag-ref-meta {
+    margin: 4px 0 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.mag-refs a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(224, 92, 42, 0.4);
+}
+
+.mag-refs a::after {
+    content: ' ↗';
+}
+
+.mag-moderation {
+    margin-top: 32px;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+/* =====================
+   Mobile
+   ===================== */
+@media (max-width: 768px) {
+    .mag-hero {
+        padding: 56px 20px 110px;
+        align-items: flex-end;
+    }
+
+    .mag-title-fill {
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    .mag-intro {
+        padding-top: 56px;
+    }
+
+    .mag-answer {
+        margin: 40px 20px 0;
+        padding: 20px 18px 18px;
+    }
+
+    .mag-intro p,
+    .tour-stop > p:not(.tour-step) {
+        font-size: 18px;
+    }
+
+    .tour-stop {
+        padding-top: 56px;
+    }
+
+    .tour-photo--back {
+        width: 82%;
+    }
+
+    .tour-photo--front {
+        right: 8px;
+        width: 52%;
+        padding: 6px;
+    }
+
+    .tour-photos figcaption {
+        max-width: 44%;
+    }
+
+    .tour-counter dl {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .tour-counter dd + dt {
+        margin-top: 10px;
+    }
+
+    .tour-walk {
+        padding: 72px 0 56px 26px;
+    }
+
+    /* Légende compacte dans le bandeau de carte */
+    .tour-map-legend {
+        left: 8px;
+        bottom: 8px;
+        padding: 5px 10px 6px;
+    }
+
+    .tour-map-step {
+        font-size: 10px;
+    }
+
+    .tour-map-name {
+        font-size: 14px;
+    }
+
+    .mag-outro {
+        padding-top: 88px;
+    }
+}

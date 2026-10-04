@@ -4,14 +4,14 @@
 // Stratégies :
 //  - Pages HTML, CSS, JS du site : réseau d'abord, cache en secours
 //    (les fichiers n'ont pas de hash : on évite de servir un vieux JS avec un nouveau HTML)
-//  - Icônes, polices, SDK Firebase, Leaflet : cache d'abord
+//  - Icônes, polices, SDK Firebase, Leaflet, GSAP (cdnjs) : cache d'abord
 //  - Photos et tuiles de carte : cache à la consultation, plafonné
 //  - Vidéo, Firestore, analytics, admin : non interceptés
 //
 // Incrémenter CACHE_VERSION quand on modifie PRECACHE ou les stratégies.
 // =====================
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 
 const CACHES = {
     pages: `pages-${CACHE_VERSION}`,
@@ -24,7 +24,7 @@ const MAX_IMAGES = 50;
 const MAX_TILES = 300;
 const NETWORK_TIMEOUT = 4000;
 
-const PRECACHE_PAGES = ['/', '/lieux.html', '/quartier.html', '/contact.html'];
+const PRECACHE_PAGES = ['/', '/lieux.html', '/quartier.html', '/contact.html', '/mag.html'];
 
 const PRECACHE_STATIC = [
     '/offline.html',
@@ -111,6 +111,10 @@ self.addEventListener('fetch', event => {
             if (url.pathname.startsWith('/firebasejs/')) event.respondWith(cacheFirst(req, CACHES.static));
             return;
         case 'fonts.gstatic.com':
+            event.respondWith(cacheFirst(req, CACHES.static));
+            return;
+        case 'cdnjs.cloudflare.com':
+            // URLs versionnées (ex. gsap/3.13.0) : le contenu ne change jamais
             event.respondWith(cacheFirst(req, CACHES.static));
             return;
         case 'fonts.googleapis.com':

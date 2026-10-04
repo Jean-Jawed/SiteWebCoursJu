@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meilleurs bars à cocktails du Cours Julien, Marseille — Le Mag</title>
+    <meta name="description"
+        content="Où boire les meilleurs cocktails au Cours Julien et à La Plaine (Marseille 6e) ? Verre à Cruise, La Soifferie et Labo N°Heure : visite de trois bars à cocktails, à 10 minutes à pied les uns des autres.">
+    <link rel="canonical" href="https://cours-julien.fr/mag/bar-cocktails.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://cours-julien.fr/mag/bar-cocktails.html">
+    <meta property="og:title" content="Où sont les meilleurs cocktails du Cours Julien ?">
+    <meta property="og:description" content="Mixologie : visite des trois meilleurs bars à cocktails du quartier, Verre à Cruise, La Soifferie et Labo N°Heure.">
+    <meta property="og:image" content="https://cours-julien.fr/images/mag/bar-cocktails/couverture.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Cours Ju — Plaine">
+    <meta property="article:published_time" content="2026-10-04">
+    <meta property="article:section" content="Le Mag">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Où sont les meilleurs cocktails du Cours Julien ?">
+    <meta name="twitter:image" content="https://cours-julien.fr/images/mag/bar-cocktails/couverture.jpg">
+
+    <link rel="icon" href="../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <meta name="theme-color" content="#0c0c0b">
+    <meta name="apple-mobile-web-app-title" content="Cours Ju">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="../pwa.js" defer></script>
+
+    <!-- Les animations et la carte ne s'activent que si JavaScript tourne -->
+    <script>document.documentElement.classList.add('mag-js');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="mag.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Où sont les meilleurs cocktails du Cours Julien ?",
+        "alternativeHeadline": "Mixologie : visite des 3 meilleurs bars à cocktails du Cours Julien et de La Plaine",
+        "description": "Où boire les meilleurs cocktails au Cours Julien et à La Plaine (Marseille 6e) ? Verre à Cruise, La Soifferie et Labo N°Heure : visite de trois bars à cocktails, à 10 minutes à pied les uns des autres.",
+        "keywords": "bar à cocktails Marseille, Cours Julien, La Plaine, Marseille 6e, mixologie, mocktails, Verre à Cruise, La Soifferie, Labo N°Heure",
+        "image": "https://cours-julien.fr/images/mag/bar-cocktails/couverture.jpg",
+        "datePublished": "2026-10-04",
+        "inLanguage": "fr-FR",
+        "isPartOf": { "@type": "WebSite", "name": "Cours Ju — Plaine", "url": "https://cours-julien.fr/" },
+        "publisher": { "@type": "Organization", "name": "Cours Ju — Plaine", "url": "https://cours-julien.fr/" },
+        "mainEntityOfPage": "https://cours-julien.fr/mag/bar-cocktails.html",
+        "about": [
+            {
+                "@type": "BarOrPub",
+                "name": "Verre à Cruise",
+                "address": { "@type": "PostalAddress", "streetAddress": "11 cours Julien", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" },
+                "geo": { "@type": "GeoCoordinates", "latitude": 43.2951988, "longitude": 5.3829331 },
+                "sameAs": "https://www.instagram.com/verre_a_cruise/"
+            },
+            {
+                "@type": "BarOrPub",
+                "name": "La Soifferie",
+                "address": { "@type": "PostalAddress", "streetAddress": "8 place Paul-Cézanne", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" },
+                "geo": { "@type": "GeoCoordinates", "latitude": 43.2923508, "longitude": 5.383103 },
+                "sameAs": "https://www.instagram.com/soifferie/"
+            },
+            {
+                "@type": "BarOrPub",
+                "name": "Labo N°Heure",
+                "address": { "@type": "PostalAddress", "streetAddress": "49A rue des Trois-Frères-Barthélémy", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" },
+                "geo": { "@type": "GeoCoordinates", "latitude": 43.2936463, "longitude": 5.3866842 },
+                "sameAs": "https://www.instagram.com/labonheure.mrs/"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Où boire les meilleurs cocktails au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Trois adresses à moins de dix minutes à pied : Verre à Cruise (11, cours Julien), La Soifferie (8, place Paul-Cézanne) et Labo N°Heure (49A, rue des Trois-Frères-Barthélémy), à Marseille 6e."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Où boire un cocktail sans alcool au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Labo N°Heure propose une quinzaine de mocktails maison, préparés uniquement avec des produits frais."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Quel bar à cocktails pour manger au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Verre à Cruise sert, en plus de ses cocktails, une cuisine libanaise en petites assiettes à partager : houmous, falafels, buns au zaatar, chawarma."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Combien de temps faut-il pour faire la tournée à pied ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Environ 10 minutes de marche au total : 385 m entre Verre à Cruise et La Soifferie, puis 329 m jusqu’à Labo N°Heure."
+            }
+        }
+    ]
+}
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YW9E56RSRF');
+    </script>
+</head>
+
+<body class="page-mag-article">
+
+    <!-- ==== Navigation ==== -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">Cours Ju — Plaine</a>
+            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../lieux.html" class="nav-link">Lieux</a></li>
+                <li><a href="../quartier.html" class="nav-link">Le quartier</a></li>
+                <li><a href="../mag.html" class="nav-link active">Le Mag</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Progression de lecture -->
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+    <!-- Halo lumineux qui suit la souris (ordinateur) -->
+    <div class="mag-halo" aria-hidden="true"></div>
+
+    <main>
+        <!-- ==== Ouverture ==== -->
+        <header class="mag-hero">
+            <canvas class="mag-bubbles" aria-hidden="true"></canvas>
+            <div class="mag-hero-inner">
+                <p class="mag-kicker"><a href="../mag.html">Le Mag</a><span aria-hidden="true">·</span>La tournée</p>
+                <h1 class="mag-title">
+                    <span class="mag-title-line">Où sont les meilleurs</span>
+                    <span class="mag-title-line mag-title-fill">cocktails</span>
+                    <span class="mag-title-line">du Cours Julien&#8239;?</span>
+                </h1>
+                <p class="mag-lede">
+                    <strong>Mixologie</strong> · Visite des trois meilleurs bars à cocktails du quartier.
+                    Suivez-nous dans la quête du cocktail rare, de comptoir en comptoir.
+                </p>
+                <ul class="mag-meta">
+                    <li><time datetime="2026-10-04">4 octobre 2026</time></li>
+                    <li>5 min de lecture</li>
+                    <li>3 bars · 710 m à pied</li>
+                </ul>
+            </div>
+            <a class="mag-scroll-cue" href="#tournee">Commencer la tournée <span aria-hidden="true">↓</span></a>
+        </header>
+
+        <!-- ==== En bref : la réponse à la question du titre ==== -->
+        <aside class="mag-answer" aria-labelledby="magAnswerTitle">
+            <p class="mag-kicker" id="magAnswerTitle">En bref</p>
+            <ol class="mag-answer-list">
+                <li><a href="#verre-a-cruise"><strong>Verre à Cruise</strong></a>, 11, cours Julien&#8239;: cocktails aux épices et cuisine libanaise.</li>
+                <li><a href="#la-soifferie"><strong>La Soifferie</strong></a>, 8, place Paul-Cézanne&#8239;: cocktails aux prénoms de grands-mères et grande terrasse.</li>
+                <li><a href="#labo-n-heure"><strong>Labo N°Heure</strong></a>, 49A, rue des Trois-Frères-Barthélémy&#8239;: produits frais, cocktails numérotés, une quinzaine de mocktails.</li>
+            </ol>
+            <p class="mag-answer-note">Trois bars à cocktails du Cours Julien et de La Plaine, Marseille 6e. 710&nbsp;m et une dizaine de minutes à pied du premier au dernier.</p>
+        </aside>
+
+        <!-- ==== Introduction ==== -->
+        <div class="mag-intro">
+            <p>
+                Le quartier a toujours eu ses comptoirs. Depuis quelques années, une nouvelle génération de bars
+                à cocktails s’y est installée&#8239;: sirops faits maison, fruits pressés le jour même, cartes qui
+                racontent quelque chose de ceux qui les composent. On en a choisi trois, à moins de dix minutes
+                à pied les uns des autres.
+            </p>
+            <p>
+                La règle est simple. On commence en bas du cours Julien, on finit vers La Plaine, et entre deux
+                verres, on marche. Les trois adresses sont présentées dans l’ordre de leur ouverture, qui est
+                aussi le plus court chemin de l’une à l’autre.
+            </p>
+        </div>
+
+        <!-- ==== La tournée : carte + étapes ==== -->
+        <section class="tour" id="tournee" aria-label="La tournée, étape par étape">
+
+            <div class="tour-map-wrap" aria-hidden="true">
+                <div class="tour-map" id="tourMap"></div>
+                <p class="tour-map-legend">
+                    <span class="tour-map-step">Étape <strong id="tourStepNum">1</strong>/3</span>
+                    <span class="tour-map-name" id="tourStepName">Verre à Cruise</span>
+                </p>
+            </div>
+
+            <div class="tour-stops">
+
+                <!-- Étape 1 -->
+                <article class="tour-stop" id="verre-a-cruise" data-stop="0" style="--neon: #ff4fa3;">
+                    <p class="tour-step">Étape 1/3 · Bas du cours Julien</p>
+                    <h2 class="neon"><span>Verre à Cruise</span></h2>
+
+                    <p>
+                        Jade et Sami el-Richani sont libanais. Avant Marseille, il y a eu des années de nuit&#8239;:
+                        les bars et les clubs pendant leurs études, quelques grandes adresses de la vie nocturne
+                        libanaise, puis Dubaï. Un jour, le couple décide d’ouvrir son propre lieu en Europe. Il
+                        voyage, compare, et choisit Marseille. Verre à Cruise ouvre en 2021, en bas du cours Julien.
+                    </p>
+                    <p>
+                        Le nom joue sur trois tableaux&#8239;: le verre, évidemment&#8239;; Veracruz, la ville
+                        mexicaine, clin d’œil aux Libanais qu’on croise aux quatre coins du monde&#8239;; et Tom
+                        Cruise, barman jongleur dans le film <em>Cocktail</em>, en 1988.
+                    </p>
+
+                    <figure class="tour-photos">
+                        <img src="../images/mag/bar-cocktails/cruise-equipe.jpg" class="tour-photo tour-photo--back"
+                            alt="Sami et Jade el-Richani derrière le comptoir de Verre à Cruise" width="813" height="1000" loading="lazy">
+                        <img src="../images/mag/bar-cocktails/cruise-cocktails.jpg" class="tour-photo tour-photo--front"
+                            alt="Un plateau de cocktails colorés, garnis de menthe et de fruits de la passion" width="885" height="500" loading="lazy">
+                        <figcaption>Sami et Jade el-Richani · Le plateau du soir</figcaption>
+                    </figure>
+
+                    <p>
+                        La carte compte une trentaine de cocktails, dont une vingtaine de créations maison. Jus et
+                        sirops sont faits sur place, et les épices circulent librement&#8239;: coriandre, thym,
+                        piment fumé, anis, et même un trait de Picon. Le Monte Pistachio marie pistache, eau de
+                        fleur d’oranger et rose. Les cocktails au mezcal sont les plus demandés, dont un servi dans
+                        une boîte qui libère un nuage de fumée à l’ouverture.
+                    </p>
+                    <p>
+                        À côté des verres, une cuisine libanaise en petites assiettes, à partager au fil de la
+                        soirée&#8239;: houmous, chou-fleur grillé, falafels, buns au zaatar, chawarma. C’est toute
+                        l’idée du lieu&#8239;: recevoir comme on reçoit chez soi, à la libanaise.
+                    </p>
+
+                    <aside class="tour-counter" aria-label="Verre à Cruise en bref">
+                        <h3>Au comptoir</h3>
+                        <dl>
+                            <dt>À commander</dt>
+                            <dd>Le Monte Pistachio, ou le mezcal fumé servi dans sa boîte</dd>
+                            <dt>À grignoter</dt>
+                            <dd>Houmous, falafels, buns au zaatar</dd>
+                            <dt>Adresse</dt>
+                            <dd>11, cours Julien</dd>
+                            <dt>Instagram</dt>
+                            <dd><a href="https://www.instagram.com/verre_a_cruise/" target="_blank" rel="noopener noreferrer">@verre_a_cruise</a></dd>
+                        </dl>
+                    </aside>
+                </article>
+
+                <!-- Trajet 1 → 2 -->
+                <div class="tour-walk" data-leg="0">
+                    <p class="tour-walk-distance"><span aria-hidden="true">↓</span> 385 m · 5 min à pied</p>
+                    <p class="tour-walk-text">
+                        On longe le cours Julien sur toute sa longueur, puis quelques mètres de ruelles mènent
+                        à la place Paul-Cézanne.
+                    </p>
+                </div>
+
+                <!-- Étape 2 -->
+                <article class="tour-stop" id="la-soifferie" data-stop="1" style="--neon: #3fe0c0;">
+                    <p class="tour-step">Étape 2/3 · Place Paul-Cézanne</p>
+                    <h2 class="neon"><span>La Soifferie</span></h2>
+
+                    <p>
+                        La Soifferie ouvre à l’été 2021 sur la place Paul-Cézanne. Derrière le comptoir&#8239;:
+                        Antoine, César et Loïc, passés auparavant par la Brasserie Communale, et Flavie à la
+                        mixologie.
+                    </p>
+                    <p>
+                        Ici, la nostalgie est assumée. Papiers peints rétro, meubles chinés en brocante, un décor
+                        qui change avec les saisons&#8239;: on a l’impression d’entrer chez une grand-mère qui
+                        aurait très bon goût en matière de gin.
+                    </p>
+
+                    <figure class="tour-photos">
+                        <img src="../images/mag/bar-cocktails/soifferie-equipe.jpg" class="tour-photo tour-photo--back"
+                            alt="L'équipe de La Soifferie derrière le comptoir, cocktails alignés devant elle" width="1000" height="750" loading="lazy">
+                        <img src="../images/mag/bar-cocktails/soifferie-cocktails.jpg" class="tour-photo tour-photo--front"
+                            alt="Deux cocktails sur une table de terrasse, devant la façade verte de La Soifferie" width="480" height="640" loading="lazy">
+                        <figcaption>L’équipe au comptoir · En terrasse, place Paul-Cézanne</figcaption>
+                    </figure>
+
+                    <p>
+                        Justement&#8239;: les cocktails signature portent les prénoms des grands-mères de l’équipe.
+                        Janine mêle gin et basilic frais, acheté chaque jour&#8239;; Yvonne mise sur la menthe
+                        fraîche. La maison revendique une ligne simple, pas de snobisme, une ambiance de village.
+                    </p>
+                    <p>
+                        Et quand il fait beau, tout se passe dehors&#8239;: la terrasse peut accueillir une centaine
+                        de personnes, avec des bières locales pour qui ne boit pas de cocktail.
+                    </p>
+
+                    <aside class="tour-counter" aria-label="La Soifferie en bref">
+                        <h3>Au comptoir</h3>
+                        <dl>
+                            <dt>À commander</dt>
+                            <dd>Janine (gin, basilic frais) ou Yvonne (menthe fraîche)</dd>
+                            <dt>Sinon</dt>
+                            <dd>Une bière locale, en terrasse</dd>
+                            <dt>Adresse</dt>
+                            <dd>8, place Paul-Cézanne</dd>
+                            <dt>Instagram</dt>
+                            <dd><a href="https://www.instagram.com/soifferie/" target="_blank" rel="noopener noreferrer">@soifferie</a></dd>
+                        </dl>
+                    </aside>
+                </article>
+
+                <!-- Trajet 2 → 3 -->
+                <div class="tour-walk" data-leg="1">
+                    <p class="tour-walk-distance"><span aria-hidden="true">↓</span> 329 m · 4 min à pied</p>
+                    <p class="tour-walk-text">
+                        Cap à l’est, vers La Plaine. Quelques minutes de ruelles, et on arrive rue des
+                        Trois-Frères-Barthélémy.
+                    </p>
+                </div>
+
+                <!-- Étape 3 -->
+                <article class="tour-stop" id="labo-n-heure" data-stop="2" style="--neon: #ffb340;">
+                    <p class="tour-step">Étape 3/3 · Rue des Trois-Frères-Barthélémy</p>
+                    <h2 class="neon"><span>Labo N°Heure</span></h2>
+
+                    <p>
+                        Dernière étape, et plus jeune adresse de la tournée&#8239;: Labo N°Heure a ouvert en avril
+                        2024. Marine et Zak y ont concrétisé un rêve commun, ouvrir leur bar, avec Lison dans
+                        l’équipe.
+                    </p>
+                    <p>
+                        Le lieu se veut un cocon méditerranéen&#8239;: fauteuils en rotin, matières naturelles, une
+                        placette au soleil. Un refuge, pensé pour qu’on s’y sente chez soi.
+                    </p>
+
+                    <figure class="tour-photos">
+                        <img src="../images/mag/bar-cocktails/labo-equipe.jpg" class="tour-photo tour-photo--back"
+                            alt="L'équipe de Labo N°Heure dans le bar, devant les alcôves éclairées" width="800" height="1000" loading="lazy">
+                        <img src="../images/mag/bar-cocktails/labo-cocktail.jpg" class="tour-photo tour-photo--front"
+                            alt="Le cocktail Cosmic Girl, rouge et mousseux, parsemé de pétales de rose" width="406" height="522" loading="lazy">
+                        <figcaption>Zak, Marine et l’équipe · Le Cosmic Girl</figcaption>
+                    </figure>
+
+                    <p>
+                        Le nom dit la méthode. Au labo, on ne travaille qu’avec des produits frais, sans sirop
+                        industriel. Les cocktails sont numérotés, comme des formules, et la carte compte une
+                        quinzaine de mocktails maison, de quoi finir la tournée sans faiblir.
+                    </p>
+                    <p>
+                        Curiosité de la maison&#8239;: une carte d’anisés du monde. Pastis artisanaux, ouzo, raki…
+                        Une façon de rappeler qu’on est à Marseille, et que la Méditerranée a plus d’une rive.
+                    </p>
+
+                    <aside class="tour-counter" aria-label="Labo N°Heure en bref">
+                        <h3>Au comptoir</h3>
+                        <dl>
+                            <dt>À commander</dt>
+                            <dd>Un cocktail numéroté, ou le Cosmic Girl</dd>
+                            <dt>Sans alcool</dt>
+                            <dd>Une quinzaine de mocktails maison</dd>
+                            <dt>Adresse</dt>
+                            <dd>49A, rue des Trois-Frères-Barthélémy</dd>
+                            <dt>Instagram</dt>
+                            <dd><a href="https://www.instagram.com/labonheure.mrs/" target="_blank" rel="noopener noreferrer">@labonheure.mrs</a></dd>
+                        </dl>
+                    </aside>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ==== Fin de tournée ==== -->
+        <section class="mag-outro">
+            <p class="mag-kicker">Fin de tournée</p>
+            <h2 class="mag-outro-title">Trois bars, 710 mètres,<br>trois façons de recevoir</h2>
+            <p>
+                Le quartier compte bien d’autres comptoirs. La carte du site les recense, et le Mag continuera
+                la tournée.
+            </p>
+            <div class="mag-outro-actions">
+                <a href="../lieux.html#carte" class="mag-btn mag-btn--primary" data-track="carte">Tous les lieux sur la carte</a>
+                <button type="button" class="mag-btn" id="magShare">Partager l’article</button>
+                <a href="../mag.html" class="mag-btn mag-btn--ghost">Le Mag</a>
+            </div>
+            <p class="mag-share-status" id="magShareStatus" role="status"></p>
+        </section>
+
+        <!-- ==== Questions fréquentes ==== -->
+        <section class="mag-faq" aria-labelledby="magFaqTitle">
+            <h2 class="mag-kicker" id="magFaqTitle">Questions fréquentes</h2>
+            <div class="mag-faq-list">
+                <details>
+                    <summary>Où boire les meilleurs cocktails au Cours Julien&#8239;?</summary>
+                    <p>Trois adresses à moins de dix minutes à pied&#8239;: Verre à Cruise (11, cours Julien), La Soifferie (8, place Paul-Cézanne) et Labo N°Heure (49A, rue des Trois-Frères-Barthélémy), à Marseille 6e.</p>
+                </details>
+                <details>
+                    <summary>Où boire un cocktail sans alcool au Cours Julien&#8239;?</summary>
+                    <p>Labo N°Heure propose une quinzaine de mocktails maison, préparés uniquement avec des produits frais.</p>
+                </details>
+                <details>
+                    <summary>Quel bar à cocktails pour manger au Cours Julien&#8239;?</summary>
+                    <p>Verre à Cruise sert, en plus de ses cocktails, une cuisine libanaise en petites assiettes à partager&#8239;: houmous, falafels, buns au zaatar, chawarma.</p>
+                </details>
+                <details>
+                    <summary>Combien de temps faut-il pour faire la tournée à pied&#8239;?</summary>
+                    <p>Environ 10 minutes de marche au total&#8239;: 385 m entre Verre à Cruise et La Soifferie, puis 329 m jusqu’à Labo N°Heure.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- ==== Pour aller plus loin ==== -->
+        <section class="mag-refs">
+            <p class="mag-kicker">Pour aller plus loin</p>
+            <ul>
+                <li>
+                    <p class="mag-ref-title"><em>Verre à Cruise, deux Libanais à Marseille et un bar à cocktails</em></p>
+                    <p class="mag-ref-meta">Joséphine Hobeika — <em>L’Orient-Le Jour</em>, 16 août 2024.</p>
+                    <a href="https://www.lorientlejour.com/cuisine-liban-a-table/1423763/-verre-a-cruise-deux-libanais-a-marseille-et-un-bar-a-cocktails.html" target="_blank" rel="noopener noreferrer">lorientlejour.com</a>
+                </li>
+                <li>
+                    <p class="mag-ref-title"><em>La Soifferie, bar nostalgique</em></p>
+                    <p class="mag-ref-meta"><em>Toutma</em>.</p>
+                    <a href="https://toutma.fr/la-soifferie-bar-nostalgique" target="_blank" rel="noopener noreferrer">toutma.fr</a>
+                </li>
+                <li>
+                    <p class="mag-ref-title"><em>Labo N°Heure, l’alchimie du bonheur</em></p>
+                    <p class="mag-ref-meta"><em>Le Grand Pastis</em>.</p>
+                    <a href="https://www.le-grand-pastis.com/labo-noheure-lalchimie-du-bonheur/" target="_blank" rel="noopener noreferrer">le-grand-pastis.com</a>
+                </li>
+            </ul>
+            <p class="mag-moderation">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
+        </section>
+    </main>
+
+    <!-- ==== Footer ==== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cours Ju — Plaine</h3>
+                    <p>Bars, concerts, galeries et vie de quartier, à Marseille dans le 6ᵉ arrondissement.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <p>Ce site recense les lieux du quartier Notre-Dame-du-Mont, également connu sous les noms
+                        de Cours Julien et La Plaine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Une question, un lieu à proposer ?<br>
+                        <a href="../contact.html" class="footer-link">Formulaire de contact →</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-install" data-pwa-install hidden>
+                <img src="../icons/icon-192.png" alt="" class="footer-install-icon" width="36" height="36">
+                <p class="footer-install-text"><strong>L'app Cours Ju</strong>Accès rapide depuis ton écran d'accueil, même hors ligne.</p>
+                <button type="button" class="install-btn install-btn--small" data-pwa-install-btn>Installer</button>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Cours Ju — Plaine. Conçu avec ❤️ à Marseille par <a href="https://virgule-studio.fr" target="_blank" rel="noopener noreferrer" class="footer-studio-link">Virgule-Studio</a>.
+                    <a href="../admin.html" class="footer-admin" title="Administration" aria-label="Administration">🔒</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tracé de la tournée (calculé une fois avec le routage piéton OpenStreetMap) -->
+    <script type="application/json" id="tourData">{"stops":[{"id":"verre-a-cruise","lat":43.2951988,"lng":5.3829331},{"id":"la-soifferie","lat":43.2923508,"lng":5.383103},{"id":"labo-n-heure","lat":43.293646251563324,"lng":5.3866842325335105}],"legs":[{"distance":385,"minutes":5,"path":[[43.295154,5.38277],[43.294758,5.382974],[43.294545,5.383095],[43.294525,5.38314],[43.294494,5.383192],[43.29448,5.383214],[43.294463,5.38323],[43.29444,5.383241],[43.294416,5.383237],[43.294408,5.38327],[43.294384,5.383322],[43.29424,5.383399],[43.294071,5.38346],[43.293417,5.383687],[43.293084,5.383814],[43.292582,5.383985],[43.292557,5.38391],[43.292566,5.383846],[43.292537,5.383706],[43.292535,5.383682],[43.292533,5.38366],[43.292531,5.383638],[43.292484,5.383482],[43.292463,5.383415],[43.292486,5.383388],[43.292451,5.383335],[43.292423,5.383296],[43.292394,5.383252],[43.292365,5.383209],[43.292396,5.383168]]},{"distance":329,"minutes":4,"path":[[43.292396,5.383168],[43.292365,5.383209],[43.292394,5.383252],[43.292423,5.383296],[43.292451,5.383335],[43.292486,5.383388],[43.292463,5.383415],[43.292484,5.383482],[43.292531,5.383638],[43.292533,5.38366],[43.292535,5.383682],[43.292537,5.383706],[43.292566,5.383846],[43.292557,5.38391],[43.292582,5.383985],[43.292592,5.384015],[43.292776,5.38454],[43.293069,5.385357],[43.293098,5.385434],[43.293134,5.385539],[43.293138,5.385546],[43.29314,5.385557],[43.293144,5.385589],[43.293149,5.38563],[43.29316,5.385665],[43.293173,5.385657],[43.293367,5.386212],[43.293404,5.386247],[43.293447,5.38637],[43.293451,5.386383],[43.293464,5.386412],[43.293474,5.386437],[43.293478,5.386448],[43.293535,5.386602],[43.293528,5.386665],[43.293555,5.386743]]}]}</script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="mag.js" defer></script>
+    <script
+        src="https://websites-monitoring.vercel.app/tracking.js?siteId=cours-julien&key=280e3472822f4f6a95f61310b65cf8fd0204ea08e8ae424eec5edef940ce9d2e"></script>
+</body>
+
+</html>

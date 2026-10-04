@@ -109,7 +109,7 @@
             iosDialog.className = 'pwa-dialog';
             iosDialog.setAttribute('aria-labelledby', 'pwaDialogTitle');
             iosDialog.innerHTML = `<div class="pwa-dialog-body">
-                <img src="icons/icon-192.png" alt="" class="pwa-dialog-icon" width="56" height="56">
+                <img src="/icons/icon-192.png" alt="" class="pwa-dialog-icon" width="56" height="56">
                 <h2 class="pwa-dialog-title" id="pwaDialogTitle">Installer Cours Ju</h2>
                 <ol class="pwa-dialog-steps">
                     <li>Touche le bouton <strong>Partager</strong> ${SHARE_ICON}

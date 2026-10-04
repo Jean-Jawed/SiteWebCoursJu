@@ -2923,3 +2923,264 @@ a {
     70%  { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 18px rgba(224, 92, 42, 0); }
     100% { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(224, 92, 42, 0); }
 }
+
+
+/* =====================
+   LE MAG : sommaire et cartes d'articles
+   (les cartes pourront être reprises sur l'accueil)
+   ===================== */
+.mag-index-header {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mag-index-header .section-eyebrow {
+    text-align: left;
+}
+
+.mag-index-title {
+    font-size: clamp(56px, 10vw, 120px);
+    line-height: 0.9;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.mag-index-intro {
+    max-width: 36em;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.55;
+    color: #d8d3c9;
+}
+
+.mag-index-list {
+    padding: 48px 0 96px;
+}
+
+.mag-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.mag-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.mag-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.mag-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.mag-card-media {
+    overflow: hidden;
+    aspect-ratio: 1200 / 630;
+    background: var(--bg3);
+}
+
+.mag-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mag-card:hover .mag-card-media img {
+    transform: scale(1.04);
+}
+
+.mag-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px 24px 24px;
+}
+
+.mag-card-kicker {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.mag-card-title {
+    font-size: 30px;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.mag-card-lede {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #d8d3c9;
+    margin-bottom: 14px;
+}
+
+.mag-card-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.mag-card-cta {
+    margin-top: auto;
+    padding-top: 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.mag-card-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+/* Article vedette : image et texte côte à côte sur grand écran */
+@media (min-width: 900px) {
+    .mag-card--featured {
+        grid-column: 1 / -1;
+    }
+
+    .mag-card--featured .mag-card-link {
+        flex-direction: row;
+    }
+
+    /* L'image garde ses proportions (triptyque de la couverture) */
+    .mag-card--featured .mag-card-media {
+        flex: 0 0 58%;
+        align-self: center;
+    }
+
+    .mag-card--featured .mag-card-body {
+        padding: 36px 40px;
+        justify-content: center;
+    }
+
+    .mag-card--featured .mag-card-title {
+        font-size: clamp(36px, 3.6vw, 48px);
+    }
+
+    .mag-card--featured .mag-card-cta {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mag-index-header {
+        padding: 48px 0 32px;
+    }
+
+    .mag-index-list {
+        padding: 32px 0 64px;
+    }
+}
+
+
+/* =====================
+   Accueil : bandeau vers le Mag
+   ===================== */
+.home-mag {
+    padding: 48px 40px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.home-mag-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.home-mag-text .section-eyebrow {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.home-mag-title {
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.home-mag-desc {
+    max-width: 34em;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #d8d3c9;
+}
+
+.home-mag-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.home-mag-cta:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.home-mag-cta:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .home-mag {
+        padding: 40px 20px;
+    }
+
+    .home-mag-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .home-mag-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}
