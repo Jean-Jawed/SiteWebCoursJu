@@ -715,16 +715,18 @@
   <!-- H1 visuellement caché (accessibilité + SEO) -->
   <h1 class="visually-hidden">Les lieux du quartier Cours Julien et La Plaine à Marseille</h1>
 
-  <!-- ==== Barre vue : toggle Liste / Carte, sticky sous la nav ==== -->
-  <div class="lieux-view-bar" role="tablist" aria-label="Choisir la vue">
-    <button id="viewListBtn" class="lieux-view-btn active" role="tab" aria-selected="true">
-      <span class="view-icon">🗂️</span>
-      <span>Liste</span>
-    </button>
-    <button id="viewMapBtn" class="lieux-view-btn" role="tab" aria-selected="false">
-      <span class="view-icon">🗺️</span>
-      <span>Carte</span>
-    </button>
+  <!-- ==== Barre vue : interrupteur Liste / Carte (ordinateur), sticky sous la nav ==== -->
+  <div class="lieux-view-bar">
+    <div class="view-switch" id="viewSwitch" role="tablist" aria-label="Choisir la vue" data-view="list">
+      <button id="viewListBtn" class="lieux-view-btn active" role="tab" aria-selected="true" aria-controls="viewList">
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+        <span>Liste</span>
+      </button>
+      <button id="viewMapBtn" class="lieux-view-btn" role="tab" aria-selected="false" aria-controls="viewMap" tabindex="-1">
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>
+        <span>Carte</span>
+      </button>
+    </div>
   </div>
 
   <div class="lieux-main-layout container">
@@ -744,7 +746,20 @@
 
     <main class="lieux-content">
       <!-- ==== Vue LISTE ==== -->
-      <section class="view-list" id="viewList">
+      <section class="view-list" id="viewList" role="tabpanel" aria-labelledby="viewListBtn">
+        <!-- ==== Aperçu de la carte : invite à passer en vue Carte ==== -->
+        <button type="button" class="map-teaser" id="mapTeaser" aria-label="Explorer la carte interactive des lieux">
+          <span class="map-teaser-map" id="mapTeaserMap" aria-hidden="true"></span>
+          <span class="map-teaser-overlay">
+            <span class="map-teaser-text">
+              <span class="map-teaser-eyebrow" id="mapTeaserEyebrow">Carte interactive</span>
+              <span class="map-teaser-title" id="mapTeaserTitle">Tous les lieux sur la carte</span>
+            </span>
+            <span class="map-teaser-cta"><span class="map-teaser-cta-label">Explorer la carte</span><span aria-hidden="true">→</span></span>
+          </span>
+          <span class="map-teaser-credits" aria-hidden="true">© OpenStreetMap · CARTO</span>
+        </button>
+
         <p id="listCount" class="list-count">39 lieux</p>
         <div id="cardsGrid" class="cards-grid">
 
@@ -1616,7 +1631,7 @@
       </section>
 
       <!-- ==== Vue CARTE ==== -->
-      <section class="view-map" id="viewMap" hidden>
+      <section class="view-map" id="viewMap" role="tabpanel" aria-labelledby="viewMapBtn" hidden>
         <div id="map"></div>
       </section>
     </main>
@@ -1631,6 +1646,13 @@
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
+
+  <!-- ==== Bouton flottant Liste / Carte (mobile) ==== -->
+  <button type="button" class="view-fab" id="viewFab" aria-controls="viewMap">
+    <span class="view-fab-icon" data-fab-icon="map"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg></span>
+    <span class="view-fab-icon" data-fab-icon="list" hidden><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span>
+    <span class="view-fab-label">Carte</span>
+  </button>
 
   <!-- ==== Footer ==== -->
   <footer class="main-footer">

@@ -55,6 +55,19 @@
       ]
     },
     {
+      "name": "La carte",
+      "short_name": "Carte",
+      "description": "Les lieux du quartier sur la carte interactive",
+      "url": "/lieux.html#carte",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
       "name": "Le quartier",
       "short_name": "Quartier",
       "description": "L'histoire du Cours Julien et de La Plaine",

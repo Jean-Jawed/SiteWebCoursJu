@@ -12,11 +12,28 @@ let lieux = [];
 let categories = {};
 let currentFilter = 'all';
 let currentView = 'list';     // 'list' | 'map'
+let renderedFilter = null;    // filtre affiché par la liste (re-rendu seulement s'il change)
+let savedListScroll = 0;      // position dans la liste, restaurée au retour de la carte
+
+// Fond de carte CARTO (carte principale + aperçu)
+const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_49bf_1_6cd23bb70be548965ad61a75';
+const TILE_OPTIONS = {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+};
+const QUARTIER_CENTER = [43.29398, 5.3843];
 
 // Carte Leaflet (initialisée à la demande)
 let map = null;
 let markers = [];
 let mapInitialized = false;
+
+// Aperçu de carte en haut de la liste
+let teaserMap = null;
+let teaserDots = [];
+
+const FAB_INTRO_KEY = 'lieux-fab-intro-vu';
 
 // Géolocalisation utilisateur (carte)
 let userMarker = null;
@@ -35,17 +52,26 @@ let lastLocationErrorToastAt = 0;
 document.addEventListener('DOMContentLoaded', async () => {
     initNavBurger();
     initViewToggle();
+    initMapTeaser();
+    initViewFab();
+
+    // Lien direct vers la carte (lieux.html#carte, raccourci PWA)
+    if (location.hash === '#carte') switchView('map', { source: 'url', updateHistory: false });
 
     try {
         ({ lieux, categories } = await chargerDonnees());
         createFilters();
         renderList();
+        updateMapTeaser();
         // Si la carte a été ouverte avant que les données arrivent (race condition mobile),
         // les marqueurs sont absents — on les ajoute ici.
         if (mapInitialized && markers.length === 0) {
             addMarkers();
             applyFilterOnMap();
         }
+        // Ouverture directe sur #carte : les filtres viennent de s'afficher
+        // au-dessus de la carte, on la recale sous la nav
+        if (currentView === 'map') scrollToMap();
     } catch (err) {
         console.error('Erreur chargement données:', err);
         document.getElementById('cardsGrid').innerHTML =
@@ -77,51 +103,245 @@ function initNavBurger() {
 }
 
 // =====================
-// Toggle Liste / Carte
+// Vue Liste / Carte : un seul état, trois commandes
+//  - interrupteur sous la nav (ordinateur)
+//  - bouton flottant (mobile)
+//  - aperçu de carte en haut de la liste
 // =====================
 function initViewToggle() {
-    document.getElementById('viewListBtn').addEventListener('click', () => switchView('list'));
-    document.getElementById('viewMapBtn').addEventListener('click', () => switchView('map'));
+    document.getElementById('viewListBtn').addEventListener('click', () => switchView('list', { source: 'switch' }));
+    document.getElementById('viewMapBtn').addEventListener('click', () => switchView('map', { source: 'switch' }));
+
+    // Flèches / Début / Fin : navigation au clavier entre les onglets
+    document.getElementById('viewSwitch').addEventListener('keydown', (e) => {
+        const keys = { ArrowLeft: 'list', Home: 'list', ArrowRight: 'map', End: 'map' };
+        const view = keys[e.key];
+        if (!view) return;
+        e.preventDefault();
+        switchView(view, { source: 'keyboard' });
+        document.getElementById(view === 'map' ? 'viewMapBtn' : 'viewListBtn').focus();
+    });
+
+    // Bouton Retour du navigateur : #carte ⇄ liste
+    history.scrollRestoration = 'manual';
+    window.addEventListener('popstate', () => {
+        switchView(location.hash === '#carte' ? 'map' : 'list', { source: 'history', updateHistory: false });
+    });
 }
 
-function switchView(view) {
+function switchView(view, { source = 'switch', updateHistory = true } = {}) {
     if (view === currentView) return;
 
     // Le suivi live consomme le GPS en continu : on le coupe si on quitte la carte
     if (view !== 'map' && liveWatching) stopLiveTracking();
 
+    const isMap = view === 'map';
+    if (isMap) savedListScroll = window.scrollY;
     currentView = view;
 
-    const listBtn = document.getElementById('viewListBtn');
-    const mapBtn = document.getElementById('viewMapBtn');
-    const listSection = document.getElementById('viewList');
-    const mapSection = document.getElementById('viewMap');
+    document.getElementById('viewSwitch').dataset.view = view;
+    [['viewListBtn', !isMap], ['viewMapBtn', isMap]].forEach(([id, active]) => {
+        const btn = document.getElementById(id);
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', String(active));
+        btn.tabIndex = active ? 0 : -1;
+    });
+    updateViewFab();
 
-    if (view === 'list') {
-        listBtn.classList.add('active');
-        listBtn.setAttribute('aria-selected', 'true');
-        mapBtn.classList.remove('active');
-        mapBtn.setAttribute('aria-selected', 'false');
-        listSection.hidden = false;
-        mapSection.hidden = true;
-    } else {
-        mapBtn.classList.add('active');
-        mapBtn.setAttribute('aria-selected', 'true');
-        listBtn.classList.remove('active');
-        listBtn.setAttribute('aria-selected', 'false');
-        listSection.hidden = true;
-        mapSection.hidden = false;
+    document.getElementById('viewList').hidden = isMap;
+    document.getElementById('viewMap').hidden = !isMap;
 
+    if (isMap) {
         // Init paresseuse de la carte au premier passage
         if (!mapInitialized) {
             initMap();
             mapInitialized = true;
         } else {
-            // Leaflet a besoin qu'on lui signale un changement de taille
-            // car la carte était hidden
+            // Le filtre a pu changer depuis la liste ; et Leaflet a besoin
+            // qu'on lui signale un changement de taille car la carte était hidden
+            applyFilterOnMap();
             setTimeout(() => map.invalidateSize(), 50);
         }
+        scrollToMap();
+    } else {
+        // Le filtre a pu changer pendant qu'on était sur la carte
+        const filterChanged = renderedFilter !== currentFilter;
+        if (filterChanged) renderList();
+        updateMapTeaser();
+        window.scrollTo({ top: filterChanged ? 0 : savedListScroll, behavior: 'instant' });
     }
+
+    if (updateHistory) syncHistory(view);
+    track('lieux_view_switch', { view, source });
+}
+
+// Place le haut de la carte juste sous la nav (et sous l'interrupteur sur ordinateur)
+function scrollToMap() {
+    const section = document.getElementById('viewMap');
+    const nav = document.getElementById('siteNav');
+    const bar = document.querySelector('.lieux-view-bar');
+    const barVisible = bar && getComputedStyle(bar).display !== 'none';
+    const offset = (nav ? nav.offsetHeight : 0) + (barVisible ? bar.offsetHeight + 16 : 0);
+    const top = section.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+}
+
+// La carte a sa propre entrée d'historique (#carte) : « Retour » ramène à la liste
+function syncHistory(view) {
+    if (view === 'map') {
+        if (location.hash !== '#carte') history.pushState({ view: 'map' }, '', '#carte');
+    } else if (location.hash === '#carte') {
+        if (history.state && history.state.view === 'map') history.back();
+        else history.replaceState(null, '', location.pathname + location.search);
+    }
+}
+
+function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params);
+}
+
+// =====================
+// Bouton flottant Liste / Carte (mobile)
+// =====================
+function initViewFab() {
+    const fab = document.getElementById('viewFab');
+    if (!fab) return;
+
+    fab.addEventListener('click', () => {
+        switchView(currentView === 'list' ? 'map' : 'list', { source: 'fab' });
+    });
+
+    // S'efface quand le footer arrive (évite de masquer le CTA « Installer l'app »)
+    const footer = document.querySelector('.main-footer');
+    if (footer && 'IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            fab.classList.toggle('is-away', entry.isIntersecting);
+        }).observe(footer);
+    }
+
+    // Petite impulsion à la toute première visite
+    try {
+        if (!localStorage.getItem(FAB_INTRO_KEY)) {
+            fab.classList.add('is-intro');
+            localStorage.setItem(FAB_INTRO_KEY, '1');
+        }
+    } catch (_) {}
+
+    updateViewFab();
+}
+
+function updateViewFab() {
+    const fab = document.getElementById('viewFab');
+    if (!fab) return;
+    const isMap = currentView === 'map';
+    fab.classList.toggle('is-map', isMap);
+    fab.querySelector('.view-fab-label').textContent = isMap ? 'Liste' : 'Carte';
+    fab.querySelector('[data-fab-icon="map"]').hidden = isMap;
+    fab.querySelector('[data-fab-icon="list"]').hidden = !isMap;
+    fab.setAttribute('aria-label', isMap ? 'Revenir à la liste des lieux' : 'Voir les lieux sur la carte');
+    fab.setAttribute('aria-controls', isMap ? 'viewList' : 'viewMap');
+}
+
+// =====================
+// Aperçu de carte (haut de la liste)
+// =====================
+function initMapTeaser() {
+    const teaser = document.getElementById('mapTeaser');
+    if (!teaser) return;
+    teaser.addEventListener('click', () => switchView('map', { source: 'teaser' }));
+
+    if (typeof L === 'undefined') return; // Leaflet indisponible (hors ligne) : fond uni
+
+    // Carte figée : aucune interaction, tout le bloc est un bouton
+    teaserMap = L.map('mapTeaserMap', {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,
+        zoomSnap: 0.25,
+        fadeAnimation: false
+    }).setView(QUARTIER_CENTER, 15);
+
+    L.tileLayer(TILE_URL, TILE_OPTIONS).addTo(teaserMap);
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitMapTeaser, 200);
+    });
+}
+
+function updateMapTeaser() {
+    const items = filteredLieux();
+    const n = items.length;
+    const cat = currentFilter === 'all' ? null : categories[currentFilter];
+
+    const title = `${n} lieu${n > 1 ? 'x' : ''} à explorer`;
+    document.getElementById('mapTeaserEyebrow').textContent = cat ? `Carte interactive · ${cat.nom}` : 'Carte interactive';
+    document.getElementById('mapTeaserTitle').textContent = title;
+    document.getElementById('mapTeaser').setAttribute('aria-label', `Explorer la carte interactive : ${title}`);
+
+    if (!teaserMap) return;
+
+    teaserDots.forEach(dot => dot.remove());
+    teaserDots = [];
+
+    // Apparition en cascade, d'ouest en est
+    items
+        .filter(lieu => categories[(lieu.categories || [])[0]] && lieu.latitude != null && lieu.longitude != null)
+        .sort((a, b) => a.longitude - b.longitude)
+        .forEach((lieu, i) => {
+            const cat = categories[lieu.categories[0]];
+            const dot = L.circleMarker([lieu.latitude, lieu.longitude], {
+                radius: 5,
+                color: '#0c0c0b',
+                weight: 1.5,
+                fillColor: cat.couleur,
+                fillOpacity: 1,
+                interactive: false,
+                className: 'teaser-dot'
+            }).addTo(teaserMap);
+            const el = dot.getElement();
+            if (el) el.style.animationDelay = `${Math.min(i * 30, 900)}ms`;
+            teaserDots.push(dot);
+        });
+
+    fitMapTeaser();
+}
+
+// Cadre les points en laissant de la place au texte superposé
+function fitMapTeaser() {
+    if (!teaserMap || teaserDots.length === 0) return;
+    const el = document.getElementById('mapTeaserMap');
+    if (!el.clientWidth) return;
+    teaserMap.invalidateSize();
+
+    const narrow = el.clientWidth < 600;
+    teaserMap.fitBounds(coreBounds(teaserDots.map(dot => dot.getLatLng())), {
+        paddingTopLeft: narrow ? [16, 12] : [Math.round(el.clientWidth * 0.36), 18],
+        paddingBottomRight: narrow ? [16, 62] : [Math.round(el.clientWidth * 0.22), 18],
+        maxZoom: 17,
+        animate: false
+    });
+}
+
+// Emprise du cœur du nuage de points : quelques lieux excentrés ne doivent pas
+// forcer un dézoom (la bande est peu haute). Les points écartés restent sur les bords.
+function coreBounds(latlngs) {
+    if (latlngs.length < 8) return L.latLngBounds(latlngs);
+    const pick = (values) => {
+        const sorted = values.slice().sort((a, b) => a - b);
+        const cut = Math.floor(sorted.length * 0.1);
+        return [sorted[cut], sorted[sorted.length - 1 - cut]];
+    };
+    const [south, north] = pick(latlngs.map(p => p.lat));
+    const [west, east] = pick(latlngs.map(p => p.lng));
+    return L.latLngBounds([south, west], [north, east]);
 }
 
 // =====================
@@ -168,6 +388,7 @@ function setFilter(category) {
     // Rafraîchir la vue courante
     if (currentView === 'list') {
         renderList();
+        updateMapTeaser();
     } else {
         applyFilterOnMap();
     }
@@ -187,6 +408,7 @@ function renderList() {
     const count = document.getElementById('listCount');
 
     const items = filteredLieux().sort((a, b) => a.nom.localeCompare(b.nom));
+    renderedFilter = currentFilter;
 
     count.textContent = `${items.length} lieu${items.length > 1 ? 'x' : ''}`;
 
@@ -260,16 +482,9 @@ function cardHTML(lieu) {
 // Vue CARTE : initialisation
 // =====================
 function initMap() {
-    const centerLat = 43.29398;
-    const centerLng = 5.3843;
+    map = L.map('map', { gestureHandling: true }).setView(QUARTIER_CENTER, 16);
 
-    map = L.map('map', { gestureHandling: true }).setView([centerLat, centerLng], 16);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_49bf_1_6cd23bb70be548965ad61a75', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(map);
+    L.tileLayer(TILE_URL, TILE_OPTIONS).addTo(map);
 
     addMarkers();
     applyFilterOnMap();
@@ -536,7 +751,7 @@ function applyFilterOnMap() {
 
 // Appelé depuis le bouton "Voir sur la carte" d'une card
 function goToLieuOnMap(id) {
-    switchView('map');
+    switchView('map', { source: 'card' });
     // petit délai pour laisser la carte se dimensionner
     setTimeout(() => {
         const m = markers.find(x => x.id === id);

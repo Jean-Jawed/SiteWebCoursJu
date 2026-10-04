@@ -1114,8 +1114,9 @@ a {
 }
 
 @media (max-width: 768px) {
+    /* Au-dessus du bouton flottant Liste / Carte */
     .lieux-toast {
-        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(88px + env(safe-area-inset-bottom, 0px));
     }
 }
 
@@ -1313,54 +1314,95 @@ a {
     gap: 12px;
 }
 
-/* Barre sticky Liste / Carte — au-dessus des filtres */
+/* Icônes au trait (interrupteur, bouton flottant) */
+.ui-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Barre sticky Liste / Carte — au-dessus des filtres (ordinateur) */
 .lieux-view-bar {
     position: sticky;
     top: 52px;
     z-index: 90;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
     display: flex;
-    gap: 0;
+    justify-content: center;
+    padding: 10px 20px;
+    background: rgba(12, 12, 11, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Interrupteur à deux positions : la pastille orange glisse sous l'option active */
+.view-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    background: var(--bg2);
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+}
+
+.view-switch::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    background: var(--accent);
+    border-radius: 2px;
+    box-shadow: 0 2px 12px rgba(224, 92, 42, 0.35);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-switch[data-view="map"]::before {
+    transform: translateX(100%);
 }
 
 .lieux-view-btn {
-    flex: 1;
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 14px 20px;
+    min-width: 150px;
+    padding: 9px 24px;
     border: none;
-    border-right: 1px solid var(--border);
+    border-radius: 2px;
     background: transparent;
-    color: var(--text-dim);
+    color: var(--text-muted);
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: color 0.15s, background 0.15s;
-}
-
-.lieux-view-btn:last-child {
-    border-right: none;
+    transition: color 0.2s;
 }
 
 .lieux-view-btn:hover:not(.active) {
-    color: var(--text-muted);
-    background: rgba(255,255,255,0.02);
+    color: var(--text);
 }
 
 .lieux-view-btn.active {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-    background: transparent;
+    color: white;
 }
 
-.view-icon {
-    font-size: 1rem;
+/* Sur mobile, le bouton flottant remplace l'interrupteur */
+@media (max-width: 768px) {
+    .lieux-view-bar {
+        display: none;
+    }
 }
 
 .filters-wrap {
@@ -1573,7 +1615,8 @@ a {
 
 @media (min-width: 992px) {
     .view-map {
-        height: calc(100vh - 120px);
+        /* nav (52) + interrupteur (~65) + marges */
+        height: calc(100vh - 150px);
         border-radius: 4px;
         overflow: hidden;
     }
@@ -1598,8 +1641,11 @@ a {
         grid-template-columns: 1fr;
     }
 
+    /* Carte calée sous la nav : les filtres restent accessibles en remontant */
     .view-map {
-        height: calc(100vh - 57px - 130px);
+        height: calc(100vh - 52px);
+        height: calc(100dvh - 52px);
+        min-height: 420px;
     }
 
     .lieux-toolbar {
@@ -1761,6 +1807,9 @@ a {
    Focus / Accessibilité
    ===================== */
 .filter-btn:focus-visible,
+.lieux-view-btn:focus-visible,
+.map-teaser:focus-visible,
+.view-fab:focus-visible,
 .hero-cta:focus-visible,
 .view-btn:focus-visible,
 .contact-submit:focus-visible {
@@ -2379,4 +2428,253 @@ a {
 .offline-links a:hover {
     border-color: var(--accent);
     color: var(--accent);
+}
+
+
+/* =====================
+   Page LIEUX : aperçu de carte (haut de la liste)
+   ===================== */
+.map-teaser {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: 100%;
+    height: 170px;
+    margin: 0 0 14px;
+    padding: 0;
+    overflow: hidden;
+    background: var(--bg2);
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.map-teaser-map {
+    position: absolute;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-teaser-map.leaflet-container {
+    background: #e9e7e2;
+}
+
+.map-teaser-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 800; /* au-dessus des calques Leaflet */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(90deg,
+        rgba(12, 12, 11, 0.95) 0%,
+        rgba(12, 12, 11, 0.82) 28%,
+        rgba(12, 12, 11, 0.2) 58%,
+        rgba(12, 12, 11, 0) 78%);
+}
+
+.map-teaser-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.map-teaser-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.map-teaser-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.map-teaser-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: 2px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.15s;
+}
+
+.map-teaser:hover .map-teaser-cta {
+    background: var(--accent-hover);
+    transform: translateX(2px);
+}
+
+.map-teaser-credits {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    z-index: 800;
+    padding: 0 4px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 2px;
+    color: rgba(12, 12, 11, 0.6);
+    font-size: 9px;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+/* Points des lieux */
+.teaser-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .map-teaser:hover .map-teaser-map {
+        transform: scale(1.04);
+    }
+
+    .teaser-dot {
+        animation: teaser-dot-in 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+    }
+}
+
+@keyframes teaser-dot-in {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .map-teaser {
+        height: 140px;
+        margin-top: 16px;
+    }
+
+    .map-teaser-overlay {
+        align-items: flex-end;
+        gap: 12px;
+        padding: 14px 16px;
+        background: linear-gradient(0deg,
+            rgba(12, 12, 11, 0.96) 0%,
+            rgba(12, 12, 11, 0.85) 38%,
+            rgba(12, 12, 11, 0.35) 62%,
+            rgba(12, 12, 11, 0) 85%);
+    }
+
+    .map-teaser-eyebrow,
+    .map-teaser-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .map-teaser-title {
+        font-size: 19px;
+    }
+
+    /* Le titre dit déjà « à explorer » : flèche seule */
+    .map-teaser-cta {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .map-teaser-cta-label {
+        display: none;
+    }
+}
+
+/* =====================
+   Page LIEUX : bouton flottant Liste / Carte (mobile)
+   ===================== */
+.view-fab {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .view-fab {
+        position: fixed;
+        left: 50%;
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        z-index: 950;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 26px;
+        background: var(--accent);
+        color: white;
+        border: 1px solid var(--accent);
+        border-radius: 4px;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(224, 92, 42, 0.35);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transform: translateX(-50%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s, background 0.2s, color 0.2s;
+    }
+
+    .view-fab .ui-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .view-fab-icon {
+        display: flex;
+    }
+
+    .view-fab-icon[hidden] {
+        display: none;
+    }
+
+    /* Sur la carte : plus discret pour ne pas gêner la lecture */
+    .view-fab.is-map {
+        background: rgba(22, 22, 20, 0.94);
+        color: var(--text);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .view-fab.is-away {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, 140%);
+    }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .view-fab.is-intro {
+        animation: fab-intro 1.4s ease-out 1s 2;
+    }
+}
+
+@keyframes fab-intro {
+    0%   { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(224, 92, 42, 0.65); }
+    70%  { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 18px rgba(224, 92, 42, 0); }
+    100% { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(224, 92, 42, 0); }
 }
