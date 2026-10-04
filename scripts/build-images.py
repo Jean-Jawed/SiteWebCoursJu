@@ -181,7 +181,7 @@ def build_share():
     big = ImageFont.truetype(str(FONT), 112)
     small = ImageFont.truetype(str(FONT), 30)
     lines = [("COURS JULIEN", CREAM), ("& LA PLAINE", ORANGE)]
-    draw.text((66, 196), "MARSEILLE 6E  ·  N° 01", font=small, fill=ORANGE)
+    draw.text((66, 196), "MARSEILLE 6E  ·  N° 07", font=small, fill=ORANGE)
     y = 238
     for text, color in lines:
         # Léger décalage d'impression orange derrière le texte

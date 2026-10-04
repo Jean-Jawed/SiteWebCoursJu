@@ -1,7 +1,7 @@
 // =====================================================================
 // home.js — Page d'accueil « fanzine »
 // ---------------------------------------------------------------------
-// - Numéro et saison du fanzine (N° 01 — Automne 2026, puis un par saison)
+// - Numéro et saison du fanzine (N° 07 — Automne 2026, puis un par saison)
 // - Couverture : 5 façades tirées au hasard à chaque visite
 // - Frise : façades en boucle, couleur au survol
 // - p. 1 Par envie : compteurs + aperçu d'un lieu de l'envie survolée
@@ -135,7 +135,8 @@ function loadPhoto(url, timeout = 6000) {
 }
 
 // =====================
-// Numéro du fanzine : N° 01 = automne 2026, puis un numéro par saison
+// Numéro du fanzine : N° 07 = automne 2026, puis un numéro par saison
+const NUMERO_AUTOMNE_2026 = 7;
 // =====================
 function initEdition() {
     const now = new Date();
@@ -144,7 +145,7 @@ function initEdition() {
     const startMonth = (8 + index * 3) % 12;
     const year = 2026 + Math.floor((8 + index * 3) / 12);
     const saison = { 8: 'Automne', 11: 'Hiver', 2: 'Printemps', 5: 'Été' }[startMonth];
-    const numero = String(index + 1).padStart(2, '0');
+    const numero = String(index + NUMERO_AUTOMNE_2026).padStart(2, '0');
 
     document.querySelectorAll('[data-edition]').forEach(el => { el.textContent = `N° ${numero} — ${saison} ${year}`; });
     document.querySelectorAll('[data-edition-short]').forEach(el => { el.textContent = `N° ${numero}`; });
