@@ -72,12 +72,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Ouverture directe sur #carte : les filtres viennent de s'afficher
         // au-dessus de la carte, on la recale sous la nav
         if (currentView === 'map') scrollToMap();
+
+        applyUrlParams();
     } catch (err) {
         console.error('Erreur chargement données:', err);
         document.getElementById('cardsGrid').innerHTML =
             '<p class="list-empty">Impossible de charger les lieux. Réessaie plus tard.</p>';
     }
 });
+
+// Liens depuis l'accueil :
+//   lieux.html?filtre=livres  → liste filtrée sur une catégorie
+//   lieux.html?lieu=23        → carte centrée sur un lieu, fiche ouverte
+function applyUrlParams() {
+    const params = new URLSearchParams(location.search);
+    const filtre = params.get('filtre');
+    const lieuId = params.get('lieu');
+
+    if (filtre && categories[filtre]) setFilter(filtre);
+    if (lieuId && lieux.some(l => String(l.id) === lieuId)) goToLieuOnMap(lieuId);
+}
 
 // =====================
 // Menu burger

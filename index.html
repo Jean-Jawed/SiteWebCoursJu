@@ -19,7 +19,7 @@
     <meta property="og:title" content="Cours Julien et La Plaine à Marseille : tous les lieux du quartier">
     <meta property="og:description"
         content="Bars, concerts, galeries, restaurants : découvre les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont sur une carte interactive.">
-    <meta property="og:image" content="https://cours-julien.fr/images/Logo.jpg">
+    <meta property="og:image" content="https://cours-julien.fr/images/web/partage.jpg">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Cours Ju — Plaine">
 
@@ -28,7 +28,7 @@
     <meta name="twitter:title" content="Cours Julien et La Plaine à Marseille : tous les lieux du quartier">
     <meta name="twitter:description"
         content="Bars, concerts, galeries, restaurants : découvre les lieux du Cours Julien, de La Plaine et de Notre-Dame-du-Mont.">
-    <meta name="twitter:image" content="https://cours-julien.fr/images/Logo.jpg">
+    <meta name="twitter:image" content="https://cours-julien.fr/images/web/partage.jpg">
 
     <!-- Favicon et PWA -->
     <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -49,7 +49,7 @@
         "alternateName": ["Cours Ju", "Notre-Dame-du-Mont", "La Plaine"],
         "description": "Quartier culturel et festif de Marseille, connu pour ses bars, concerts, galeries d'art, street art, restaurants et sa vie de nuit. Situé dans le 6ème arrondissement.",
         "url": "https://cours-julien.fr/",
-        "image": "https://cours-julien.fr/images/Logo.jpg",
+        "image": "https://cours-julien.fr/images/web/partage.jpg",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Marseille",
@@ -69,11 +69,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap"
         rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="zine.css">
+
+    <!-- Les animations et les tirages ne s'activent que si JavaScript tourne -->
+    <script>document.documentElement.classList.add('zine-js');</script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9E56RSRF"></script>
@@ -85,7 +89,7 @@
     </script>
 </head>
 
-<body>
+<body class="page-home">
 
     <!-- ==== Navigation ==== -->
     <nav class="site-nav" id="siteNav">
@@ -104,124 +108,246 @@
         </div>
     </nav>
 
-    <!-- ==== Hero ==== -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <video src="videos/coursju.mp4" class="hero-video" autoplay loop muted playsinline
-            poster="images/Hero.png"></video>
-        <div class="hero-video-controls">
-            <button id="volumeBtn" class="volume-btn" title="Activer le son">🔇</button>
-            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="0">
-        </div>
-        <div class="hero-content">
-            <div class="hero-left">
-                <span class="hero-eyebrow">Marseille · 6ème arrondissement</span>
-                <h1 class="hero-title">Cours Julien<br><em>&amp; La Plaine</em></h1>
-            </div>
-            <div class="hero-right">
-                <p class="hero-tagline">Notre-Dame-du-Mont — un quartier qui concentre une grande partie de la vie culturelle et nocturne de Marseille.</p>
-                <a href="lieux.html" class="hero-cta">Découvrir les lieux</a>
-            </div>
-        </div>
-    </section>
+    <main class="zine" id="contenu">
 
-    <!-- ==== Intro éditoriale (SEO) ==== -->
-    <section class="intro-section">
-        <div class="container">
-            <h2 class="section-title">Le quartier Cours Julien - La Plaine</h2>
-            <div class="intro-text">
+        <!-- ==== Couverture (la composition change à chaque visite, voir home.js) ==== -->
+        <header class="zine-cover" id="couverture">
+            <div class="zine-cover-text">
+                <p class="zine-type zine-cover-meta">
+                    <span data-edition>N° 01 — Automne 2026</span> · Gratuit · Marseille 6e
+                </p>
+                <h1 class="zine-cover-title">
+                    <span class="zine-cover-line">Cours Julien</span>
+                    <span class="zine-cover-line zine-cover-amp">&amp; La Plaine</span>
+                </h1>
+                <p class="zine-cover-tagline">Le quartier, raconté par ceux qui y vivent.</p>
+                <div class="zine-cover-actions">
+                    <a href="lieux.html" class="zine-btn zine-btn--primary">Les lieux</a>
+                    <a href="#sommaire" class="zine-link">Au sommaire <span aria-hidden="true">↓</span></a>
+                </div>
+            </div>
+
+            <div class="zine-cover-collage" data-cover>
+                <figure class="zine-scrap" data-pose>
+                    <img src="images/trame/livre-locussolus-480.png" alt="Façade de la librairie Locus Solus" width="480" height="640">
+                </figure>
+                <figure class="zine-scrap" data-pose>
+                    <img src="images/trame/musique-tripsichord-480.png" alt="Façade du disquaire Tripsichord Music" width="480" height="640">
+                </figure>
+                <figure class="zine-scrap" data-pose>
+                    <img src="images/trame/social-maison-480.png" alt="Façade peinte de la Maison pour tous, centre social Julien" width="480" height="640">
+                </figure>
+                <figure class="zine-scrap" data-pose>
+                    <img src="images/trame/livre-memepasmal-480.png" alt="Vitrine des éditions Même pas mal" width="480" height="640">
+                </figure>
+                <figure class="zine-scrap" data-pose>
+                    <img src="images/trame/musique-tangerine-480.png" alt="Entrée peinte du disquaire Tangerine" width="480" height="640">
+                </figure>
+                <span class="zine-stamp zine-cover-stamp" data-edition-short>N° 01</span>
+            </div>
+        </header>
+
+        <!-- ==== Frise : la rue, façade après façade ==== -->
+        <section class="zine-frise" aria-label="La rue, façade après façade">
+            <div class="zine-frise-track" data-frise>
+                <figure class="zine-frise-item"><img src="images/trame/livre-locussolus-480-nuit.png" data-color="images/web/livre-locussolus-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>librairie</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/musique-galette-480-nuit.png" data-color="images/web/musique-galette-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>disquaire</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/social-maison-480-nuit.png" data-color="images/web/social-maison-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>centre social</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/dehors-escalier-480-nuit.png" data-color="images/web/dehors-escalier-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>les escaliers</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/livre-reserve-480-nuit.png" data-color="images/web/livre-reserve-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>librairie BD</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/art-serigraphie-480-nuit.png" data-color="images/web/art-serigraphie-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>atelier de gravure</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/commerce-savonnerie-480-nuit.png" data-color="images/web/commerce-savonnerie-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>savonnerie</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/musique-tangerine-480-nuit.png" data-color="images/web/musique-tangerine-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>disquaire</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/social-croixrouge-480-nuit.png" data-color="images/web/social-croixrouge-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>boutique solidaire</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/jeu-crypte-480-nuit.png" data-color="images/web/jeu-crypte-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>jeux</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/dehors-fontaine-480-nuit.png" data-color="images/web/dehors-fontaine-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>la fontaine</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/livre-memepasmal-480-nuit.png" data-color="images/web/livre-memepasmal-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>fanzines</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/theatre-carrerond-480-nuit.png" data-color="images/web/theatre-carrerond-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>théâtre</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/fringues-brickcity-480-nuit.png" data-color="images/web/fringues-brickcity-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>fringues</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/retau-mamaafrica-480-nuit.png" data-color="images/web/retau-mamaafrica-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>cuisine africaine</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/musique-tripsichord-480-nuit.png" data-color="images/web/musique-tripsichord-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>vinyles</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/social-affiches-480-nuit.png" data-color="images/web/social-affiches-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>affiches de ciné</figcaption></figure>
+                <figure class="zine-frise-item"><img src="images/trame/kids-chaussures-480-nuit.png" data-color="images/web/kids-chaussures-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>pour les gosses</figcaption></figure>
+            </div>
+        </section>
+
+        <!-- ==== Édito + sommaire ==== -->
+        <section class="zine-page zine-spread" id="sommaire">
+            <article class="zine-sheet zine-edito" data-pose style="--r: -1deg;">
+                <p class="zine-type zine-kicker">Édito</p>
+                <h2 class="zine-sheet-title">Le quartier Cours Julien – La Plaine</h2>
                 <p>
                     Entre le <strong>Cours Julien</strong>, <strong>La Plaine</strong> (place Jean-Jaurès) et
                     <strong>Notre-Dame-du-Mont</strong>, le 6ème arrondissement de Marseille concentre une grande
                     partie de la vie culturelle et nocturne de la ville. Galeries d'art, street art, bars à cocktails,
-                    salles de concerts, librairies indépendantes, restaurants, cinéma associatif : le quartier mêle
+                    salles de concerts, librairies indépendantes, restaurants, cinéma associatif&#8239;: le quartier mêle
                     les genres et les publics.
                 </p>
                 <p>
-                    Ce site recense les lieux du quartier. L'objectif : trouver rapidement où aller ce soir,
+                    Ce site recense les lieux du quartier. L'objectif&#8239;: trouver rapidement où aller ce soir,
                     découvrir un nouvel endroit, ou simplement se balader en mode exploration.
                 </p>
+            </article>
+
+            <nav class="zine-sheet zine-toc zine-taped" aria-labelledby="sommaireTitre" data-pose style="--r: 1.2deg;">
+                <h2 class="zine-sheet-title" id="sommaireTitre">Au sommaire</h2>
+                <ol>
+                    <li><a href="#envies"><span class="zine-toc-num">p.&nbsp;1</span><span class="zine-toc-label">Par envie</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#je-vais"><span class="zine-toc-num">p.&nbsp;2</span><span class="zine-toc-label" data-moment-label>Aujourd'hui, je vais…</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#plan"><span class="zine-toc-num">p.&nbsp;3</span><span class="zine-toc-label">Le plan</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#mag"><span class="zine-toc-num">p.&nbsp;4</span><span class="zine-toc-label">Le Mag&#8239;: les meilleurs cocktails</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#quartier"><span class="zine-toc-num">p.&nbsp;5</span><span class="zine-toc-label">Le quartier</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#sortir"><span class="zine-toc-num">p.&nbsp;6</span><span class="zine-toc-label">Sortir ce mois</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                </ol>
+            </nav>
+        </section>
+
+        <!-- ==== p. 1 — Par envie ==== -->
+        <section class="zine-page zine-envies" id="envies" aria-labelledby="enviesTitre">
+            <p class="zine-folio"><span>p. 1</span>Par envie</p>
+            <h2 class="zine-h2" id="enviesTitre">Tu as envie de…</h2>
+
+            <div class="zine-envies-grid">
+                <ul class="zine-envies-list" data-envies>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=livres" data-envie="lire">Lire <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=concerts" data-envie="ecouter">Écouter <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=art" data-envie="voir">Voir <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=commerces" data-envie="chiner">Chiner <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=restaurants" data-envie="manger">Manger <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=bars" data-envie="trinquer">Trinquer <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=nuit" data-envie="danser">Danser <span class="zine-dymo-count"></span></a></li>
+                    <li><a class="zine-dymo" href="lieux.html?filtre=social" data-envie="se-retrouver">Se retrouver <span class="zine-dymo-count"></span></a></li>
+                </ul>
+
+                <a class="zine-polaroid zine-envie-preview" href="lieux.html" data-envie-preview hidden>
+                    <span class="zine-polaroid-photo"><img src="" alt="" data-preview-img></span>
+                    <span class="zine-polaroid-name" data-preview-name></span>
+                    <span class="zine-type zine-polaroid-meta" data-preview-meta></span>
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==== Gros CTA vers la page lieux (remplace la carte) ==== -->
-    <section class="discover-section">
-        <div class="container">
-            <h2 class="section-title">Explorer le quartier</h2>
-            <p class="discover-text">
-                Bars, concerts, galeries, restaurants, cinéma, théâtre, librairies…
-                Une carte interactive et une liste pour découvrir tous les lieux du quartier.
-            </p>
-            <a href="lieux.html" class="discover-cta">
-                <span class="discover-cta-icon">🗺️</span>
-                <span class="discover-cta-text">
-                    <strong>Voir tous les lieux</strong>
-                    <small>Carte et liste</small>
-                </span>
-                <span class="discover-cta-arrow">→</span>
-            </a>
-        </div>
-    </section>
+        <!-- ==== p. 2 — Aujourd'hui / Ce soir, je vais… ==== -->
+        <section class="zine-page zine-jevais" id="je-vais" aria-labelledby="jeVaisTitre">
+            <p class="zine-folio"><span>p. 2</span>Le tirage du jour</p>
+            <h2 class="zine-h2" id="jeVaisTitre" data-moment-title>Aujourd'hui, je vais…</h2>
+            <p class="zine-intro">Trois lieux tirés au sort chaque jour. Pas d'algorithme, pas de classement&#8239;: juste une bonne raison de pousser une porte.</p>
 
-    <!-- ==== Le Mag ==== -->
-    <section class="home-mag">
-        <div class="container">
-            <div class="home-mag-inner">
-                <div class="home-mag-text">
-                    <span class="section-eyebrow">Le Mag</span>
-                    <h2 class="home-mag-title">Le quartier raconté</h2>
-                    <p class="home-mag-desc">
-                        Tournées à pied, portraits, histoires de comptoirs. À la une&#8239;: où sont les meilleurs
-                        cocktails du Cours Julien&#8239;?
+            <div class="zine-polaroids" data-tirage aria-live="polite">
+                <noscript><p class="zine-intro">Active JavaScript pour voir le tirage du jour, ou <a href="lieux.html">parcours tous les lieux</a>.</p></noscript>
+            </div>
+            <button type="button" class="zine-btn zine-btn--ghost" data-reroll hidden>↻ Re-tirer</button>
+        </section>
+
+        <!-- ==== p. 3 — Le plan ==== -->
+        <section class="zine-page zine-plan" id="plan" aria-labelledby="planTitre">
+            <p class="zine-folio"><span>p. 3</span>Le plan</p>
+            <div class="zine-plan-grid">
+                <div class="zine-sheet zine-plan-sheet zine-taped" data-pose style="--r: -0.8deg;">
+                    <div class="zine-plan-drawing" data-plan aria-hidden="true"></div>
+                    <p class="zine-type zine-plan-credit">Plan : © contributeurs OpenStreetMap</p>
+                </div>
+                <div class="zine-plan-text">
+                    <h2 class="zine-h2" id="planTitre">Tout le quartier, à pied</h2>
+                    <dl class="zine-stats">
+                        <div><dt>lieux</dt><dd data-stat="lieux">42</dd></div>
+                        <div><dt>envies</dt><dd data-stat="envies">8</dd></div>
+                        <div><dt>min à pied d'un bout à l'autre</dt><dd data-stat="minutes">11</dd></div>
+                    </dl>
+                    <p class="zine-intro">Chaque point est un lieu. La carte complète permet de filtrer, de se localiser et d'ouvrir chaque fiche.</p>
+                    <a href="lieux.html#carte" class="zine-btn zine-btn--primary">Ouvrir la carte <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==== p. 4 — Le Mag ==== -->
+        <section class="zine-page zine-mag" id="mag" aria-labelledby="magTitre">
+            <p class="zine-folio"><span>p. 4</span>Le Mag</p>
+            <article class="zine-sheet zine-mag-sheet" data-pose style="--r: 0.6deg;">
+                <a href="mag/bar-cocktails.html" class="zine-mag-link">
+                    <span class="zine-mag-photo">
+                        <img src="images/mag/bar-cocktails/couverture.jpg"
+                            alt="Trois cocktails des bars Verre à Cruise, La Soifferie et Labo N°Heure"
+                            width="1200" height="630" loading="lazy">
+                    </span>
+                    <span class="zine-mag-body">
+                        <span class="zine-stamp">À la une</span>
+                        <span class="zine-type zine-kicker">La tournée · Bars à cocktails</span>
+                        <span class="zine-sheet-title" id="magTitre">Où sont les meilleurs cocktails du Cours Julien&#8239;?</span>
+                        <span class="zine-mag-lede">Visite de trois bars à cocktails du quartier, à dix minutes à pied les uns des autres.</span>
+                        <span class="zine-mag-cta">Lire l'article <span aria-hidden="true">→</span></span>
+                    </span>
+                </a>
+            </article>
+            <a href="mag.html" class="zine-link zine-mag-all">Tout le Mag <span aria-hidden="true">→</span></a>
+        </section>
+
+        <!-- ==== p. 5 — Le quartier ==== -->
+        <section class="zine-page zine-quartier" id="quartier" aria-labelledby="quartierTitre">
+            <p class="zine-folio"><span>p. 5</span>Le quartier</p>
+            <div class="zine-quartier-grid">
+                <figure class="zine-scrap zine-quartier-photo" data-pose style="--r: -3deg;">
+                    <img src="images/trame/quartier-mur-480.png" alt="Le mur de béton autour de la place Jean-Jaurès, février 2019" width="531" height="398" loading="lazy">
+                    <figcaption class="zine-type">La Plaine, février 2019</figcaption>
+                </figure>
+                <div class="zine-quartier-text">
+                    <h2 class="zine-quote" id="quartierTitre">Un quartier qui ne finit pas <em>de changer</em></h2>
+                    <p>
+                        Un ancien marché maraîcher, quarante ans de concerts à l'Espace Julien, des murs qui s'écrivent
+                        et se réécrivent, une place défendue par ses habitants. L'histoire du quartier, racontée
+                        sans carte postale.
                     </p>
+                    <a href="quartier.html" class="zine-link">Lire l'histoire du quartier <span aria-hidden="true">→</span></a>
                 </div>
-                <a href="mag.html" class="home-mag-cta">Lire le Mag <span aria-hidden="true">→</span></a>
             </div>
-        </div>
-    </section>
 
-    <!-- ==== Installation de l'app (affiché par pwa.js si installable) ==== -->
-    <section class="install-section" data-pwa-install hidden>
-        <div class="container">
-            <div class="install-card">
-                <img src="icons/icon-192.png" alt="" class="install-card-icon" width="72" height="72">
-                <div class="install-card-text">
-                    <span class="section-eyebrow">Application</span>
-                    <h2 class="install-title">Le quartier dans ta poche</h2>
-                    <p>Installe Cours Ju sur ton écran d'accueil : on l'ouvre en un geste, en plein écran,
-                        et les lieux déjà consultés restent disponibles même sans réseau.</p>
+            <div class="zine-ensemble">
+                <p class="zine-type zine-kicker">Vivre ensemble</p>
+                <p class="zine-ensemble-text">Le quartier, c'est aussi des centres sociaux, des associations et des boutiques solidaires.</p>
+                <div class="zine-ensemble-row">
+                    <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -4deg;">
+                        <img src="images/trame/social-maison-480.png" alt="Façade de la Maison pour tous, centre social Julien" width="480" height="640" loading="lazy">
+                        <figcaption class="zine-type">centre social</figcaption>
+                    </figure>
+                    <figure class="zine-scrap zine-scrap--small" data-pose style="--r: 2deg;">
+                        <img src="images/trame/social-mdh-480.png" alt="Façade de la Maison méditerranéenne des droits de l'Homme" width="480" height="640" loading="lazy">
+                        <figcaption class="zine-type">droits humains</figcaption>
+                    </figure>
+                    <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -1.5deg;">
+                        <img src="images/trame/social-croixrouge-480.png" alt="Façade des ateliers Croix-Rouge, boutique solidaire" width="480" height="640" loading="lazy">
+                        <figcaption class="zine-type">boutique solidaire</figcaption>
+                    </figure>
                 </div>
-                <button type="button" class="install-btn" data-pwa-install-btn>Installer l'app</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==== Événements ==== -->
-    <section class="events-section">
-        <div class="container">
-            <h2 class="section-title">Agendas et événements à Marseille</h2>
-            <div class="events-grid">
-                <a href="https://www.vortexfrommars.org/" target="_blank" rel="noopener noreferrer" class="event-card">
-                    <h3 class="event-title">Le Vortex</h3>
-                    <p class="event-description">Un agenda mensuel qui regroupe les concerts et événements musicaux des
-                        petites salles souterraines de Marseille</p>
+        <!-- ==== p. 6 — Sortir ce mois ==== -->
+        <section class="zine-page zine-sortir" id="sortir" aria-labelledby="sortirTitre">
+            <p class="zine-folio"><span>p. 6</span>Sortir ce mois</p>
+            <h2 class="zine-h2" id="sortirTitre">Les agendas du coin</h2>
+            <div class="zine-flyers">
+                <a href="https://www.vortexfrommars.org/" target="_blank" rel="noopener noreferrer" class="zine-sheet zine-flyer zine-taped" data-pose style="--r: -2deg;">
+                    <span class="zine-flyer-logo"><img src="images/agendas/favicon.png" alt="" width="32" height="32"></span>
+                    <span class="zine-flyer-title">Le Vortex</span>
+                    <span class="zine-flyer-text">L'agenda mensuel des concerts et des soirées des petites salles souterraines de Marseille.</span>
+                    <span class="zine-type zine-flyer-cta">→ l'agenda</span>
                 </a>
-                <a href="https://shotgun.live/fr/cities/aix-marseille" target="_blank" rel="noopener noreferrer"
-                    class="event-card">
-                    <h3 class="event-title">Shotgun</h3>
-                    <p class="event-description">Une plateforme qui devient référence</p>
+                <a href="https://shotgun.live/fr/cities/aix-marseille" target="_blank" rel="noopener noreferrer" class="zine-sheet zine-flyer zine-taped" data-pose style="--r: 1.5deg;">
+                    <span class="zine-flyer-logo"><img src="images/agendas/shotgun.png" alt="" width="48" height="48"></span>
+                    <span class="zine-flyer-title">Shotgun</span>
+                    <span class="zine-flyer-text">Billetterie et agenda des soirées, concerts et festivals autour d'Aix-Marseille.</span>
+                    <span class="zine-type zine-flyer-cta">→ l'agenda</span>
                 </a>
-                <a href="https://tarpin-bien.com/recherche/?recherche=&evenementCheck=1&date=&dateFin=&arrondissementEvenement%5B%5D=13006&montant=0%E2%82%AC+-+500%E2%82%AC&dateLieu="
-                    target="_blank" rel="noopener noreferrer" class="event-card">
-                    <h3 class="event-title">Le TarpinBien</h3>
-                    <p class="event-description">Plateforme bien remplie et locale</p>
+                <a href="https://tarpin-bien.com/recherche/?recherche=&amp;evenementCheck=1&amp;date=&amp;dateFin=&amp;arrondissementEvenement%5B%5D=13006&amp;montant=0%E2%82%AC+-+500%E2%82%AC&amp;dateLieu=" target="_blank" rel="noopener noreferrer" class="zine-sheet zine-flyer zine-taped" data-pose style="--r: -1deg;">
+                    <span class="zine-flyer-logo zine-flyer-logo--wide"><img src="images/agendas/Tarpin.png" alt="" width="134" height="56"></span>
+                    <span class="zine-flyer-title">Le TarpinBien</span>
+                    <span class="zine-flyer-text">Le guide local des sorties, ici filtré sur les événements du 6e arrondissement.</span>
+                    <span class="zine-type zine-flyer-cta">→ l'agenda</span>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-
+    </main>
 
     <!-- ==== Footer ==== -->
     <footer class="main-footer">
@@ -259,6 +385,7 @@
 
     <!-- Custom JS -->
     <script type="module" src="script.js"></script>
+    <script type="module" src="home.js"></script>
     <script
         src="https://websites-monitoring.vercel.app/tracking.js?siteId=cours-julien&key=280e3472822f4f6a95f61310b65cf8fd0204ea08e8ae424eec5edef940ce9d2e"></script>
 </body>

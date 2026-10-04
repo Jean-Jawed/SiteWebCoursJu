@@ -1,0 +1,1107 @@
+/* =====================================================================
+   zine.css — Langage « fanzine » : la table de montage
+   ---------------------------------------------------------------------
+   La table : le noir du site. Le papier : des feuilles claires posées
+   dessus (jamais en pleine largeur). L'encre : noir chaud et orange.
+   Chargé après style.css. Utilisé par l'accueil ; les composants
+   (.zine-sheet, .zine-scrap, .zine-stamp, .zine-dymo, .zine-polaroid…)
+   sont réutilisables ailleurs (Mag).
+   ===================================================================== */
+
+:root {
+    --paper: #ebe5d6;
+    --paper-edge: #d9d1bd;
+    --ink: #1c1a17;
+    --ink-soft: #57524a;
+    --tape: rgba(224, 92, 42, 0.78);
+    --font-type: 'Courier Prime', 'Courier New', monospace;
+    --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* =====================
+   La table
+   ===================== */
+.zine {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(224, 92, 42, 0.07), transparent 70%),
+        var(--bg);
+}
+
+.zine-page {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 96px 40px;
+}
+
+/* =====================
+   Composants
+   ===================== */
+.zine-type {
+    font-family: var(--font-type);
+    letter-spacing: 0.02em;
+}
+
+/* Feuille de papier posée sur la table */
+.zine-sheet {
+    position: relative;
+    background: var(--paper-grain), var(--paper);
+    color: var(--ink);
+    border-radius: 2px;
+    box-shadow:
+        0 1px 0 var(--paper-edge),
+        0 22px 44px rgba(0, 0, 0, 0.55),
+        0 4px 10px rgba(0, 0, 0, 0.35);
+    transform: rotate(var(--r, 0deg));
+}
+
+.zine-sheet-title {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--ink);
+}
+
+/* Bande de scotch en haut */
+.zine-taped::before {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    z-index: 2;
+    width: 110px;
+    height: 28px;
+    background: var(--tape);
+    transform: translateX(-50%) rotate(var(--tape-r, -3deg));
+    clip-path: polygon(2% 8%, 98% 0, 100% 92%, 1% 100%, 3% 50%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Photo découpée et posée (trame imprimée sur papier) */
+.zine-scrap {
+    position: relative;
+    margin: 0;
+    padding: 9px 9px 9px;
+    background: var(--paper-grain), var(--paper);
+    border-radius: 1px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55), 0 3px 8px rgba(0, 0, 0, 0.35);
+    transform: rotate(var(--r, 0deg));
+}
+
+.zine-scrap img {
+    display: block;
+    width: 100%;
+    height: auto;   /* l'attribut height ne doit pas figer la hauteur */
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.zine-scrap figcaption {
+    padding-top: 7px;
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.zine-scrap::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 84px;
+    height: 24px;
+    background: var(--tape);
+    transform: translateX(-50%) rotate(calc(var(--r, 0deg) * -1.5 + 2deg));
+    clip-path: polygon(3% 10%, 97% 0, 100% 90%, 0 100%, 4% 55%);
+}
+
+/* Tampon encré */
+.zine-stamp {
+    display: inline-block;
+    padding: 5px 12px 3px;
+    border: 3px solid var(--accent);
+    border-radius: 3px;
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transform: rotate(-7deg);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+}
+
+/* Étiquette Dymo (lettres en relief sur ruban orange) */
+.zine-dymo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 9px 16px 8px;
+    background: var(--accent);
+    border-radius: 3px;
+    color: #fff6ee;
+    font-family: var(--font-type);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 -1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18), 0 6px 14px rgba(0, 0, 0, 0.45);
+    transform: rotate(var(--r, 0deg));
+    transition: transform 0.2s, background 0.2s;
+}
+
+.zine-dymo-count {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+}
+
+.zine-dymo:hover,
+.zine-dymo:focus-visible,
+.zine-dymo.is-active {
+    background: var(--accent-hover);
+    transform: rotate(0deg) translateY(-2px);
+}
+
+/* Polaroïd : photo couleur dans un cadre de papier */
+.zine-polaroid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 12px 18px;
+    background: var(--paper-grain), var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: rotate(var(--r, 0deg));
+    transition: transform 0.25s;
+}
+
+.zine-polaroid:hover,
+.zine-polaroid:focus-visible {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+.zine-polaroid-photo {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin-bottom: 8px;
+    background: #2a2824;
+}
+
+.zine-polaroid-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.zine-polaroid-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.zine-polaroid-meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+}
+
+.zine-polaroid-text {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
+/* Boutons et liens */
+.zine-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border: 2px solid var(--accent);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.zine-btn--primary {
+    background: var(--accent);
+    color: white;
+}
+
+.zine-btn:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.zine-btn--ghost {
+    border-color: var(--border-hover);
+    color: var(--text);
+}
+
+.zine-link {
+    font-family: var(--font-type);
+    font-size: 16px;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    transition: color 0.15s;
+}
+
+.zine-link:hover {
+    color: var(--accent);
+}
+
+.zine-btn:focus-visible,
+.zine-link:focus-visible,
+.zine-dymo:focus-visible,
+.zine-polaroid:focus-visible,
+.zine-flyer:focus-visible,
+.zine-mag-link:focus-visible,
+.zine-toc a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Titres de pages : folio + grand titre avec décalage d'impression */
+.zine-folio {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    font-family: var(--font-type);
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.zine-folio span {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.zine-folio::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-hover);
+}
+
+.zine-h2 {
+    margin-bottom: 20px;
+    font-size: clamp(42px, 6.4vw, 84px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: var(--text);
+    text-shadow: 3px 2px 0 rgba(224, 92, 42, 0.55);
+}
+
+.zine-intro {
+    max-width: 36em;
+    margin-bottom: 36px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: #d8d3c9;
+}
+
+.zine-intro a {
+    color: var(--accent);
+}
+
+.zine-kicker {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--accent);
+}
+
+/* =====================
+   Couverture
+   ===================== */
+.zine-cover {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: 40px;
+    max-width: 1280px;
+    min-height: calc(100vh - 52px);
+    min-height: calc(100svh - 52px);
+    margin: 0 auto;
+    padding: 48px 40px 72px;
+}
+
+.zine-cover-meta {
+    margin-bottom: 26px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.zine-cover-meta span {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.zine-cover-title {
+    font-size: clamp(54px, 7vw, 120px);
+    line-height: 0.84;
+    letter-spacing: 0;
+    color: var(--text);
+}
+
+.zine-cover-line {
+    display: block;
+    white-space: nowrap;
+    text-shadow: 4px 3px 0 rgba(224, 92, 42, 0.6);
+}
+
+.zine-cover-amp {
+    color: var(--accent);
+    text-shadow: 4px 3px 0 rgba(240, 236, 228, 0.18);
+}
+
+.zine-cover-tagline {
+    max-width: 22em;
+    margin: 28px 0 34px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(20px, 2vw, 25px);
+    font-style: italic;
+    line-height: 1.4;
+    color: #d8d3c9;
+}
+
+.zine-cover-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px 28px;
+}
+
+/* Collage : cinq photos posées, positions fixes, rotations variables */
+.zine-cover-collage {
+    position: relative;
+    aspect-ratio: 1 / 1.02;
+    max-height: 760px;
+}
+
+.zine-cover-collage .zine-scrap {
+    position: absolute;
+    width: var(--w, 40%);
+    left: var(--x, 0);
+    top: var(--y, 0);
+    /* --r-jitter : petite variation tirée par home.js à chaque visite */
+    transform: rotate(calc(var(--r, 0deg) + var(--r-jitter, 0deg)));
+}
+
+.zine-cover-collage .zine-scrap:nth-child(1) { --x: 2%;  --y: 3%;  --w: 34%; --r: -6deg;  z-index: 1; }
+.zine-cover-collage .zine-scrap:nth-child(2) { --x: 52%; --y: 0%;  --w: 33%; --r: 5deg;   z-index: 2; }
+.zine-cover-collage .zine-scrap:nth-child(3) { --x: 27%; --y: 29%; --w: 35%; --r: 1.5deg; z-index: 4; }
+.zine-cover-collage .zine-scrap:nth-child(4) { --x: 64%; --y: 46%; --w: 31%; --r: -4deg;  z-index: 3; }
+.zine-cover-collage .zine-scrap:nth-child(5) { --x: 4%;  --y: 54%; --w: 30%; --r: 7deg;   z-index: 3; }
+
+/* Au survol, la photo reprend ses couleurs */
+.zine-scrap .zine-color {
+    position: absolute;
+    inset: 9px 9px auto 9px;
+    width: calc(100% - 18px);
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.zine-scrap:hover .zine-color {
+    opacity: 1;
+}
+
+.zine-cover-stamp {
+    position: absolute;
+    right: 4%;
+    bottom: 2%;
+    z-index: 6;
+    font-size: clamp(28px, 3.4vw, 44px);
+    padding: 6px 18px 4px;
+    border-width: 4px;
+    transform: rotate(-12deg);
+}
+
+/* =====================
+   Frise : la rue
+   ===================== */
+.zine-frise {
+    position: relative;
+    padding: 28px 0 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.zine-frise-track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    padding: 0 22px;
+}
+
+.zine-frise-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 190px;
+    margin: 0;
+    transform: rotate(var(--r, 0deg));
+}
+
+.zine-frise-item:nth-child(odd) { --r: -1.4deg; }
+.zine-frise-item:nth-child(even) { --r: 1.2deg; margin-top: 14px; }
+
+.zine-frise-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    transition: opacity 0.35s;
+}
+
+.zine-frise-item .zine-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.zine-frise-item:hover .zine-color {
+    opacity: 1;
+}
+
+.zine-frise-item figcaption {
+    padding-top: 8px;
+    font-family: var(--font-type);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* La frise défile seule (JS duplique les photos pour une boucle sans couture) */
+@media (prefers-reduced-motion: no-preference) {
+    .zine-js .zine-frise-track.is-looping {
+        animation: zine-frise 90s linear infinite;
+    }
+
+    .zine-frise:hover .zine-frise-track {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes zine-frise {
+    to { transform: translateX(-50%); }
+}
+
+/* Sans animation : on fait défiler au doigt */
+@media (prefers-reduced-motion: reduce) {
+    .zine-frise {
+        overflow-x: auto;
+    }
+}
+
+html:not(.zine-js) .zine-frise {
+    overflow-x: auto;
+}
+
+/* =====================
+   Édito + sommaire
+   ===================== */
+.zine-spread {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+}
+
+.zine-edito {
+    padding: 40px 44px 44px;
+}
+
+.zine-edito .zine-sheet-title {
+    margin-bottom: 18px;
+}
+
+.zine-edito p {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink);
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+.zine-edito p.zine-kicker {
+    font-family: var(--font-type);
+    font-size: 14px;
+    color: var(--accent);
+    hyphens: manual;
+}
+
+.zine-edito p + p {
+    margin-top: 1em;
+}
+
+.zine-edito strong {
+    font-weight: 600;
+}
+
+.zine-toc {
+    margin-top: 40px;
+    padding: 38px 40px 34px;
+}
+
+.zine-toc .zine-sheet-title {
+    margin-bottom: 20px;
+}
+
+.zine-toc ol {
+    list-style: none;
+}
+
+.zine-toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 0;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.zine-toc-num {
+    flex: 0 0 auto;
+    width: 3.2em;
+    font-family: var(--font-type);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.zine-toc-label {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+.zine-toc-dots {
+    flex: 1;
+    min-width: 20px;
+    border-bottom: 2px dotted var(--ink-soft);
+    transform: translateY(-4px);
+}
+
+.zine-toc a::after {
+    content: '→';
+    font-family: var(--font-type);
+    color: var(--accent);
+}
+
+.zine-toc a:hover .zine-toc-label {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+}
+
+/* =====================
+   p. 1 — Par envie
+   ===================== */
+.zine-envies-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 340px);
+    gap: 56px;
+    align-items: start;
+    margin-top: 28px;
+}
+
+.zine-envies-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 16px;
+}
+
+.zine-envies-list li:nth-child(3n + 1) .zine-dymo { --r: -2deg; }
+.zine-envies-list li:nth-child(3n + 2) .zine-dymo { --r: 1.5deg; }
+.zine-envies-list li:nth-child(3n) .zine-dymo { --r: -0.5deg; }
+
+.zine-envie-preview {
+    --r: 3deg;
+}
+
+.zine-envie-preview[hidden] {
+    display: none;
+}
+
+/* =====================
+   p. 2 — Je vais…
+   ===================== */
+.zine-polaroids {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.zine-polaroids .zine-polaroid:nth-child(1) { --r: -2.5deg; }
+.zine-polaroids .zine-polaroid:nth-child(2) { --r: 1.5deg; margin-top: 24px; }
+.zine-polaroids .zine-polaroid:nth-child(3) { --r: -1deg; }
+
+.zine-polaroid--placeholder .zine-polaroid-photo {
+    background: linear-gradient(110deg, #2a2824 40%, #36332e 50%, #2a2824 60%) 0 0 / 200% 100%;
+    animation: zine-shimmer 1.4s linear infinite;
+}
+
+@keyframes zine-shimmer {
+    to { background-position: -200% 0; }
+}
+
+.zine-polaroid.is-flipping {
+    animation: zine-flip 0.5s ease;
+}
+
+@keyframes zine-flip {
+    0% { transform: rotate(var(--r)) rotateY(0deg); }
+    50% { transform: rotate(var(--r)) rotateY(90deg); }
+    100% { transform: rotate(var(--r)) rotateY(0deg); }
+}
+
+[data-reroll][hidden] {
+    display: none;
+}
+
+/* =====================
+   p. 3 — Le plan
+   ===================== */
+.zine-plan-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 56px;
+    align-items: center;
+}
+
+.zine-plan-sheet {
+    padding: 18px;
+}
+
+.zine-plan-drawing {
+    aspect-ratio: 1000 / 1099;
+    color: var(--ink);
+}
+
+.zine-plan-drawing svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.zine-plan-dot {
+    stroke: var(--paper);
+    stroke-width: 3;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .zine-plan-dot {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: zine-dot 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+        animation-delay: var(--d, 0s);
+    }
+}
+
+@keyframes zine-dot {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.zine-plan-credit {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-align: right;
+}
+
+.zine-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 8px 36px;
+    margin: 8px 0 28px;
+}
+
+.zine-stats div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.zine-stats dd {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(54px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--accent);
+}
+
+.zine-stats dt {
+    min-height: 2.6em;   /* légendes sur 1 ou 2 lignes : chiffres alignés */
+    max-width: 9em;
+    font-family: var(--font-type);
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--text-muted);
+}
+
+/* =====================
+   p. 4 — Le Mag
+   ===================== */
+.zine-mag-sheet {
+    max-width: 960px;   /* le papier reste un objet posé, jamais pleine largeur */
+    padding: 18px;
+}
+
+.zine-mag-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.zine-mag-photo {
+    display: block;
+    overflow: hidden;
+}
+
+.zine-mag-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zine-mag-link:hover .zine-mag-photo img {
+    transform: scale(1.03);
+}
+
+.zine-mag-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 18px 12px 0;
+}
+
+.zine-mag-body .zine-stamp {
+    margin-bottom: 18px;
+}
+
+.zine-mag-body .zine-sheet-title {
+    margin-bottom: 14px;
+}
+
+.zine-mag-lede {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.zine-mag-cta {
+    margin-top: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.zine-mag-all {
+    display: inline-block;
+    margin-top: 36px;
+}
+
+/* =====================
+   p. 5 — Le quartier
+   ===================== */
+.zine-quartier-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 64px;
+    align-items: center;
+}
+
+.zine-quartier-photo img {
+    aspect-ratio: 4 / 3;
+}
+
+.zine-quote {
+    margin-bottom: 22px;
+    font-size: clamp(40px, 5.4vw, 72px);
+    line-height: 0.95;
+    text-align: left;
+    color: var(--text);
+}
+
+.zine-quote em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.zine-quartier-text p {
+    max-width: 32em;
+    margin-bottom: 24px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: #d8d3c9;
+}
+
+.zine-ensemble {
+    margin-top: 88px;
+    padding-top: 36px;
+    border-top: 1px dashed var(--border-hover);
+}
+
+.zine-ensemble-text {
+    max-width: 34em;
+    margin-bottom: 36px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 19px;
+    color: #d8d3c9;
+}
+
+.zine-ensemble-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+.zine-scrap--small {
+    width: 200px;
+}
+
+/* =====================
+   p. 6 — Sortir ce mois
+   ===================== */
+.zine-flyers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    margin-top: 28px;
+}
+
+.zine-flyer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 30px 28px 26px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.25s;
+}
+
+.zine-flyer:hover {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+.zine-flyer-logo {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 6px;
+    background: #0c0c0b;
+    border-radius: 3px;
+    transform: rotate(-4deg);
+}
+
+.zine-flyer-logo img {
+    max-width: 44px;
+    max-height: 44px;
+    image-rendering: auto;
+}
+
+.zine-flyer-logo--wide {
+    width: auto;
+    padding: 6px 10px;
+}
+
+.zine-flyer-logo--wide img {
+    max-width: 120px;
+    max-height: 48px;
+}
+
+.zine-flyer-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.zine-flyer-text {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.zine-flyer-cta {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* =====================
+   Apparition : les objets se posent sur la table
+   ===================== */
+@media (prefers-reduced-motion: no-preference) {
+    .zine-js [data-pose] {
+        opacity: 0;
+        translate: 0 28px;
+        rotate: 5deg;
+        transition: opacity 0.5s ease, translate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1), rotate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1);
+        transition-delay: var(--pose-delay, 0s);
+    }
+
+    .zine-js [data-pose].is-posed {
+        opacity: 1;
+        translate: 0 0;
+        rotate: 0deg;
+    }
+}
+
+/* =====================
+   Écrans moyens
+   ===================== */
+@media (max-width: 1000px) {
+    .zine-cover {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding-top: 36px;
+    }
+
+    /* Le titre d'abord, le collage ensuite */
+    .zine-cover-collage {
+        width: min(100%, 640px);
+        margin: 0 auto;
+    }
+
+    .zine-spread,
+    .zine-plan-grid,
+    .zine-quartier-grid,
+    .zine-envies-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .zine-toc {
+        margin-top: 0;
+    }
+
+    .zine-envie-preview {
+        max-width: 320px;
+    }
+
+    .zine-mag-link {
+        grid-template-columns: 1fr;
+    }
+
+    .zine-mag-body {
+        padding: 0 8px 12px;
+    }
+}
+
+/* =====================
+   Mobile
+   ===================== */
+@media (max-width: 768px) {
+    .zine-page {
+        padding: 72px 20px;
+    }
+
+    .zine-cover {
+        padding: 24px 20px 56px;
+        gap: 28px;
+    }
+
+    .zine-cover-collage .zine-scrap:nth-child(4),
+    .zine-cover-collage .zine-scrap:nth-child(5) {
+        display: none;
+    }
+
+    .zine-cover-collage .zine-scrap:nth-child(1) { --x: 2%;  --y: 4%;  --w: 44%; }
+    .zine-cover-collage .zine-scrap:nth-child(2) { --x: 52%; --y: 0%;  --w: 44%; }
+    .zine-cover-collage .zine-scrap:nth-child(3) { --x: 25%; --y: 36%; --w: 46%; }
+
+    .zine-cover-collage {
+        aspect-ratio: 1 / 1.1;
+    }
+
+    .zine-cover-stamp {
+        bottom: 0;
+        right: 2%;
+    }
+
+    .zine-edito,
+    .zine-toc {
+        padding: 28px 22px;
+    }
+
+    .zine-frise-item {
+        width: 150px;
+    }
+
+    .zine-polaroids,
+    .zine-flyers {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        max-width: 360px;
+    }
+
+    .zine-polaroids .zine-polaroid:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .zine-stats {
+        gap: 8px 22px;
+    }
+
+    .zine-scrap--small {
+        width: calc(50% - 18px);
+    }
+
+    .zine-ensemble {
+        margin-top: 64px;
+    }
+}

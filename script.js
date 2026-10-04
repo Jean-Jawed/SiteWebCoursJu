@@ -1,11 +1,10 @@
 // =====================
 // script.js — Page d'accueil
-// Gère : nav burger mobile + contrôles audio de la vidéo hero
+// Gère : nav burger mobile (le reste de l'accueil est dans home.js)
 // =====================
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavBurger();
-    initVideoControls();
 });
 
 // =====================
@@ -29,41 +28,5 @@ function initNavBurger() {
             burger.classList.remove('open');
             burger.setAttribute('aria-expanded', 'false');
         });
-    });
-}
-
-// =====================
-// Contrôles audio vidéo hero
-// =====================
-function initVideoControls() {
-    const video = document.querySelector('.hero-video');
-    const volumeBtn = document.getElementById('volumeBtn');
-    const volumeSlider = document.getElementById('volumeSlider');
-
-    if (!video || !volumeBtn || !volumeSlider) return;
-
-    volumeBtn.addEventListener('click', () => {
-        if (video.muted) {
-            video.muted = false;
-            video.volume = volumeSlider.value / 100;
-            volumeBtn.textContent = video.volume > 0.5 ? '🔊' : '🔉';
-        } else {
-            video.muted = true;
-            volumeBtn.textContent = '🔇';
-        }
-    });
-
-    volumeSlider.addEventListener('input', (e) => {
-        const volume = e.target.value / 100;
-        video.volume = volume;
-        video.muted = false;
-
-        if (volume === 0) {
-            volumeBtn.textContent = '🔇';
-        } else if (volume > 0.5) {
-            volumeBtn.textContent = '🔊';
-        } else {
-            volumeBtn.textContent = '🔉';
-        }
     });
 }

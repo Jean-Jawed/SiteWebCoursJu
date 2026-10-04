@@ -11,16 +11,18 @@
 // Incrémenter CACHE_VERSION quand on modifie PRECACHE ou les stratégies.
 // =====================
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 
 const CACHES = {
     pages: `pages-${CACHE_VERSION}`,
     static: `static-${CACHE_VERSION}`,
-    images: `images-${CACHE_VERSION}`,
+    images: `images-${CACHE_VERSION}`,     // photos des lieux (Firebase Storage)
+    media: `media-${CACHE_VERSION}`,       // images du site (trames, façades, Mag)
     tiles: `tiles-${CACHE_VERSION}`
 };
 
 const MAX_IMAGES = 50;
+const MAX_MEDIA = 160;
 const MAX_TILES = 300;
 const NETWORK_TIMEOUT = 4000;
 
@@ -31,6 +33,9 @@ const PRECACHE_STATIC = [
     '/style.css',
     '/pwa.js',
     '/script.js',
+    '/home.js',
+    '/zine.css',
+    '/images/plan-quartier.svg',
     '/lieux.js',
     '/contact.js',
     '/data-loader.js',
@@ -97,7 +102,7 @@ self.addEventListener('fetch', event => {
     if (sameOrigin) {
         if (url.pathname.startsWith('/videos/')) return;
         if (url.pathname.startsWith('/images/')) {
-            event.respondWith(cacheFirstLimited(req, CACHES.images, MAX_IMAGES, { cors: true }));
+            event.respondWith(cacheFirstLimited(req, CACHES.media, MAX_MEDIA, { cors: true }));
         } else if (url.pathname.startsWith('/icons/') || url.pathname === '/favicon.ico') {
             event.respondWith(cacheFirst(req, CACHES.static));
         } else {
