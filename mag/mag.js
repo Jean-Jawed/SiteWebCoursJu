@@ -422,7 +422,7 @@
                     track('mag_share', { method: 'native' });
                 } else {
                     await navigator.clipboard.writeText(shareData.url);
-                    if (status) status.textContent = 'Lien copié dans le presse-papiers.';
+                    if (status) status.textContent = window.CJ ? CJ.t('mag.lienCopie') : 'Lien copié dans le presse-papiers.';
                     track('mag_share', { method: 'clipboard' });
                 }
             } catch (_) {

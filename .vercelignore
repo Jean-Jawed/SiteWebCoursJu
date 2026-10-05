@@ -4,3 +4,9 @@ videos/
 scripts/
 docs/
 old/
+# Fichiers de travail de la traduction (seul i18n/ui.js est utilisé par le site)
+i18n/en.json
+i18n/a-traduire.json
+i18n/routes.json
+i18n/traductions_en.py
+i18n/lieux-en.json

@@ -37,7 +37,7 @@ function initContactForm() {
         status.hidden = true;
         status.className = 'contact-status';
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Envoi…';
+        submitBtn.textContent = CJ.t('contact.envoi');
 
         try {
             const data = new FormData(form);
@@ -51,10 +51,10 @@ function initContactForm() {
                 form.reset();
                 status.hidden = false;
                 status.classList.add('success');
-                status.textContent = '✅ Message envoyé, merci ! On te répondra bientôt.';
+                status.textContent = CJ.t('contact.ok');
             } else {
                 const body = await res.json().catch(() => ({}));
-                const msg = body.errors?.map(x => x.message).join(', ') || 'Une erreur est survenue.';
+                const msg = body.errors?.map(x => x.message).join(', ') || CJ.t('contact.erreur');
                 status.hidden = false;
                 status.classList.add('error');
                 status.textContent = '❌ ' + msg;
@@ -62,10 +62,10 @@ function initContactForm() {
         } catch (err) {
             status.hidden = false;
             status.classList.add('error');
-            status.textContent = '❌ Problème réseau, réessaie plus tard.';
+            status.textContent = CJ.t('contact.reseau');
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Envoyer';
+            submitBtn.textContent = CJ.t('contact.envoyer');
         }
     });
 }

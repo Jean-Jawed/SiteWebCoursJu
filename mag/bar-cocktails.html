@@ -31,6 +31,12 @@
     <meta name="theme-color" content="#0c0c0b">
     <meta name="apple-mobile-web-app-title" content="Cours Ju">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="../i18n/ui.js"></script>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/bar-cocktails.html">
+    <link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/best-cocktail-bars-cours-julien.html">
+    <link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/bar-cocktails.html">
+    <!-- /i18n:alternates -->
     <script src="../pwa.js" defer></script>
 
     <!-- Les animations et la carte ne s'activent que si JavaScript tourne -->
@@ -141,6 +147,10 @@
     <nav class="site-nav" id="siteNav">
         <div class="nav-container">
             <a href="../index.html" class="nav-brand">Cours Ju — Plaine</a>
+            <div class="lang-switch" aria-label="Langue">
+                <a href="/mag/bar-cocktails.html" lang="fr" hreflang="fr" data-lang="fr" aria-current="true">FR</a>
+                <a href="/en/mag/best-cocktail-bars-cours-julien.html" lang="en" hreflang="en" data-lang="en">EN</a>
+            </div>
             <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>

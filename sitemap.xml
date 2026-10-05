@@ -1,50 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<!-- Généré par scripts/build-i18n.py : chaque page FR et sa version EN se déclarent mutuellement -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cours-julien.fr/</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/"/>
   </url>
-
+  <url>
+    <loc>https://cours-julien.fr/en/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/"/>
+  </url>
   <url>
     <loc>https://cours-julien.fr/lieux.html</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux.html"/>
   </url>
-
   <url>
-    <loc>https://cours-julien.fr/contact.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://cours-julien.fr/en/places.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux.html"/>
   </url>
-
   <url>
     <loc>https://cours-julien.fr/quartier.html</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/quartier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/neighbourhood.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/quartier.html"/>
   </url>
-
+  <url>
+    <loc>https://cours-julien.fr/en/neighbourhood.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/quartier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/neighbourhood.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/quartier.html"/>
+  </url>
   <url>
     <loc>https://cours-julien.fr/mag.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag.html"/>
   </url>
-
+  <url>
+    <loc>https://cours-julien.fr/en/mag.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag.html"/>
+  </url>
   <url>
     <loc>https://cours-julien.fr/mag/bar-cocktails.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/best-cocktail-bars-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
   </url>
-
+  <url>
+    <loc>https://cours-julien.fr/en/mag/best-cocktail-bars-cours-julien.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/best-cocktail-bars-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/contact.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/contact.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/contact.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/contact.html"/>
+  </url>
 </urlset>

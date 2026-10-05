@@ -3,7 +3,7 @@
 // =====================
 
 import { chargerDonnees } from './data-loader.js';
-import { publicUrlFromPath } from './storage-helpers.js';
+import { lieuPhotoUrl } from './storage-helpers.js';
 
 // =====================
 // État global
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
         console.error('Erreur chargement données:', err);
         document.getElementById('cardsGrid').innerHTML =
-            '<p class="list-empty">Impossible de charger les lieux. Réessaie plus tard.</p>';
+            `<p class="list-empty">${CJ.t('lieux.chargementErreur')}</p>`;
     }
 });
 
@@ -249,10 +249,10 @@ function updateViewFab() {
     if (!fab) return;
     const isMap = currentView === 'map';
     fab.classList.toggle('is-map', isMap);
-    fab.querySelector('.view-fab-label').textContent = isMap ? 'Liste' : 'Carte';
+    fab.querySelector('.view-fab-label').textContent = CJ.t(isMap ? 'lieux.fab.liste' : 'lieux.fab.carte');
     fab.querySelector('[data-fab-icon="map"]').hidden = isMap;
     fab.querySelector('[data-fab-icon="list"]').hidden = !isMap;
-    fab.setAttribute('aria-label', isMap ? 'Revenir à la liste des lieux' : 'Voir les lieux sur la carte');
+    fab.setAttribute('aria-label', CJ.t(isMap ? 'lieux.fab.versListe' : 'lieux.fab.versCarte'));
     fab.setAttribute('aria-controls', isMap ? 'viewList' : 'viewMap');
 }
 
@@ -295,10 +295,12 @@ function updateMapTeaser() {
     const n = items.length;
     const cat = currentFilter === 'all' ? null : categories[currentFilter];
 
-    const title = `${n} lieu${n > 1 ? 'x' : ''} à explorer`;
-    document.getElementById('mapTeaserEyebrow').textContent = cat ? `Carte interactive · ${cat.nom}` : 'Carte interactive';
+    const title = CJ.t('lieux.teaser.titre', { n });
+    document.getElementById('mapTeaserEyebrow').textContent = cat
+        ? CJ.t('lieux.teaser.eyebrowCat', { cat: CJ.catNom(cat) })
+        : CJ.t('lieux.teaser.eyebrow');
     document.getElementById('mapTeaserTitle').textContent = title;
-    document.getElementById('mapTeaser').setAttribute('aria-label', `Explorer la carte interactive : ${title}`);
+    document.getElementById('mapTeaser').setAttribute('aria-label', CJ.t('lieux.teaser.aria', { titre: title }));
 
     if (!teaserMap) return;
 
@@ -368,8 +370,8 @@ function createFilters() {
     const used = new Set();
     lieux.forEach(l => (l.categories || []).forEach(c => used.add(c)));
     const sorted = Array.from(used).sort((a, b) => {
-        const na = categories[a]?.nom || a;
-        const nb = categories[b]?.nom || b;
+        const na = CJ.catNom(categories[a]) || a;
+        const nb = CJ.catNom(categories[b]) || b;
         return na.localeCompare(nb);
     });
 
@@ -381,7 +383,7 @@ function createFilters() {
         btn.dataset.category = cle;
         btn.innerHTML = `
             <span class="filter-icon">${cat.icon}</span>
-            <span class="filter-label">${cat.nom}</span>
+            <span class="filter-label">${escapeHtml(CJ.catNom(cat))}</span>
         `;
         btn.addEventListener('click', () => setFilter(cle));
         container.appendChild(btn);
@@ -424,7 +426,7 @@ function renderList() {
     const items = filteredLieux().sort((a, b) => a.nom.localeCompare(b.nom));
     renderedFilter = currentFilter;
 
-    count.textContent = `${items.length} lieu${items.length > 1 ? 'x' : ''}`;
+    count.textContent = CJ.t('lieux.count', { n: items.length });
 
     if (items.length === 0) {
         grid.innerHTML = '';
@@ -455,7 +457,7 @@ function cardHTML(lieu) {
     const badges = (lieu.categories || []).map(cle => {
         const cat = categories[cle];
         if (!cat) return '';
-        return `<span class="card-badge" style="background:${cat.couleur}">${cat.icon} ${escapeHtml(cat.nom)}</span>`;
+        return `<span class="card-badge" style="background:${cat.couleur}">${cat.icon} ${escapeHtml(CJ.catNom(cat))}</span>`;
     }).join('');
 
     const instagram = lieu.instagram
@@ -464,9 +466,11 @@ function cardHTML(lieu) {
            </a>`
         : '';
 
-    const imageUrl = publicUrlFromPath(lieu.image);
+    // Vignette dans la liste ; photo complète pour l'agrandissement
+    const thumbUrl = lieuPhotoUrl(lieu, 'vignette');
+    const imageUrl = lieuPhotoUrl(lieu, 'photo');
     const image = imageUrl
-        ? `<img src="${escapeAttr(imageUrl)}"
+        ? `<img src="${escapeAttr(thumbUrl)}"
                 alt="${escapeAttr(lieu.nom)}"
                 class="card-image"
                 data-src="${escapeAttr(imageUrl)}"
@@ -480,11 +484,11 @@ function cardHTML(lieu) {
             <div class="card-body">
                 <h3 class="card-title">${escapeHtml(lieu.nom)}</h3>
                 <div class="card-badges">${badges}</div>
-                <p class="card-description">${escapeHtml(lieu.description || '')}</p>
+                <p class="card-description" lang="${CJ.descLang(lieu)}">${escapeHtml(CJ.desc(lieu))}</p>
                 <div class="card-actions">
                     ${instagram}
-                    <button class="card-map-link" data-id="${lieu.id}" aria-label="Voir sur la carte">
-                        🗺️ Voir sur la carte
+                    <button class="card-map-link" data-id="${lieu.id}" aria-label="${CJ.t('lieux.voirCarte')}">
+                        🗺️ ${CJ.t('lieux.voirCarte')}
                     </button>
                 </div>
             </div>
@@ -542,14 +546,14 @@ function addLocateControl() {
 
             locateOnceBtn = L.DomUtil.create('button', 'locate-btn locate-btn-once', container);
             locateOnceBtn.type = 'button';
-            locateOnceBtn.setAttribute('aria-label', 'Me localiser');
-            locateOnceBtn.innerHTML = '<span class="locate-btn-icon">📍</span><span class="locate-btn-label">Me localiser</span>';
+            locateOnceBtn.setAttribute('aria-label', CJ.t('lieux.locate.once'));
+            locateOnceBtn.innerHTML = `<span class="locate-btn-icon">📍</span><span class="locate-btn-label">${CJ.t('lieux.locate.once')}</span>`;
             L.DomEvent.on(locateOnceBtn, 'click', locateOnce);
 
             locateLiveBtn = L.DomUtil.create('button', 'locate-btn locate-btn-live', container);
             locateLiveBtn.type = 'button';
-            locateLiveBtn.setAttribute('aria-label', 'Suivre ma position en direct');
-            locateLiveBtn.innerHTML = '<span class="locate-btn-icon">🧭</span><span class="locate-btn-label">Suivre en direct</span>';
+            locateLiveBtn.setAttribute('aria-label', CJ.t('lieux.locate.liveAria'));
+            locateLiveBtn.innerHTML = `<span class="locate-btn-icon">🧭</span><span class="locate-btn-label">${CJ.t('lieux.locate.live')}</span>`;
             L.DomEvent.on(locateLiveBtn, 'click', toggleLiveTracking);
 
             return container;
@@ -596,7 +600,7 @@ function stopLiveTracking() {
 
     locateLiveBtn.classList.remove('is-loading', 'is-active');
     locateLiveBtn.querySelector('.locate-btn-icon').textContent = '🧭';
-    locateLiveBtn.querySelector('.locate-btn-label').textContent = 'Suivre en direct';
+    locateLiveBtn.querySelector('.locate-btn-label').textContent = CJ.t('lieux.locate.live');
     locateOnceBtn.disabled = false;
 
     const el = userMarker && userMarker.getElement();
@@ -617,7 +621,7 @@ function onLocationFound(e) {
         locateLiveBtn.classList.remove('is-loading');
         locateLiveBtn.classList.add('is-active');
         locateLiveBtn.querySelector('.locate-btn-icon').textContent = '⏹️';
-        locateLiveBtn.querySelector('.locate-btn-label').textContent = 'Arrêter le suivi';
+        locateLiveBtn.querySelector('.locate-btn-label').textContent = CJ.t('lieux.locate.stop');
         map.setView(e.latlng, Math.max(map.getZoom(), 17), { animate: true });
     }
 }
@@ -635,16 +639,16 @@ function onLocationError(e) {
     let message;
     switch (e.code) {
         case 1: // PERMISSION_DENIED
-            message = "Localisation refusée. Autorise l'accès à ta position dans les réglages de ton navigateur pour utiliser cette fonction.";
+            message = CJ.t('lieux.locate.refusee');
             break;
         case 2: // POSITION_UNAVAILABLE
-            message = 'Position indisponible pour le moment. Réessaie dans quelques instants.';
+            message = CJ.t('lieux.locate.indisponible');
             break;
         case 3: // TIMEOUT
-            message = 'La localisation a mis trop de temps à répondre. Réessaie.';
+            message = CJ.t('lieux.locate.delai');
             break;
         default:
-            message = 'Impossible de te localiser pour le moment.';
+            message = CJ.t('lieux.locate.impossible');
     }
 
     // Le suivi live persiste tant que possible (le navigateur peut réessayer),
@@ -719,18 +723,19 @@ function popupHTML(lieu) {
 
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lieu.latitude},${lieu.longitude}&travelmode=walking`;
     const directions = `<a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" class="popup-directions">
-             🧭 Itinéraire
+             🧭 ${CJ.t('lieux.itineraire')}
            </a>`;
 
     const badges = (lieu.categories || []).map(cle => {
         const cat = categories[cle];
         if (!cat) return '';
-        return `<span class="popup-category" style="background-color: ${cat.couleur};">${cat.icon} ${escapeHtml(cat.nom)}</span>`;
+        return `<span class="popup-category" style="background-color: ${cat.couleur};">${cat.icon} ${escapeHtml(CJ.catNom(cat))}</span>`;
     }).join(' ');
 
-    const imageUrl = publicUrlFromPath(lieu.image);
+    const thumbUrl = lieuPhotoUrl(lieu, 'vignette');
+    const imageUrl = lieuPhotoUrl(lieu, 'photo');
     const image = imageUrl
-        ? `<img src="${escapeAttr(imageUrl)}"
+        ? `<img src="${escapeAttr(thumbUrl)}"
                 alt="${escapeAttr(lieu.nom)}"
                 class="popup-image"
                 onclick="openLightbox('${escapeAttr(imageUrl)}', '${escapeAttr(lieu.nom)}')">`
@@ -744,7 +749,7 @@ function popupHTML(lieu) {
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem;">
                     ${badges}
                 </div>
-                <p class="popup-description">${escapeHtml(lieu.description || '')}</p>
+                <p class="popup-description" lang="${CJ.descLang(lieu)}">${escapeHtml(CJ.desc(lieu))}</p>
                 <div class="popup-actions">
                     ${directions}
                     ${instagram}

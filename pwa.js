@@ -103,6 +103,11 @@
 
     let iosDialog = null;
 
+    // Textes de l'aide (i18n/ui.js), avec repli si le module n'est pas chargé
+    function tr(cle, vars) {
+        return window.CJ ? window.CJ.t(cle, vars) : cle;
+    }
+
     function openIosDialog() {
         if (!iosDialog) {
             iosDialog = document.createElement('dialog');
@@ -110,16 +115,15 @@
             iosDialog.setAttribute('aria-labelledby', 'pwaDialogTitle');
             iosDialog.innerHTML = `<div class="pwa-dialog-body">
                 <img src="/icons/icon-192.png" alt="" class="pwa-dialog-icon" width="56" height="56">
-                <h2 class="pwa-dialog-title" id="pwaDialogTitle">Installer Cours Ju</h2>
+                <h2 class="pwa-dialog-title" id="pwaDialogTitle">${tr('pwa.titre')}</h2>
                 <ol class="pwa-dialog-steps">
-                    <li>Touche le bouton <strong>Partager</strong> ${SHARE_ICON}
-                        <small>en bas de Safari, parfois derrière le menu « ⋯ »</small></li>
-                    <li>Choisis <strong>Sur l'écran d'accueil</strong></li>
-                    <li>Confirme avec <strong>Ajouter</strong></li>
+                    <li>${tr('pwa.etape1', { icone: SHARE_ICON })}</li>
+                    <li>${tr('pwa.etape2')}</li>
+                    <li>${tr('pwa.etape3')}</li>
                 </ol>
                 <div class="pwa-dialog-actions">
-                    <button type="button" class="install-btn" data-pwa-done>C'est fait</button>
-                    <button type="button" class="pwa-dialog-close" data-pwa-close>Plus tard</button>
+                    <button type="button" class="install-btn" data-pwa-done>${tr('pwa.fait')}</button>
+                    <button type="button" class="pwa-dialog-close" data-pwa-close>${tr('pwa.plusTard')}</button>
                 </div>
             </div>`;
             document.body.appendChild(iosDialog);

@@ -80,6 +80,9 @@
                 <select id="filterCategory" class="filter-select">
                     <option value="">Toutes les catégories</option>
                 </select>
+                <label class="toolbar-check">
+                    <input type="checkbox" id="filterMissingEn"> Sans description EN
+                </label>
                 <button id="addLieuBtn" class="btn btn-primary">+ Ajouter un lieu</button>
             </div>
 
@@ -92,6 +95,8 @@
                             <th>Nom</th>
                             <th>Catégories</th>
                             <th>Description</th>
+                            <th title="Description anglaise">EN</th>
+                            <th title="Photo">Photo</th>
                             <th>Instagram</th>
                             <th>Actions</th>
                         </tr>
@@ -113,6 +118,7 @@
                         <tr>
                             <th>Clé (id)</th>
                             <th>Nom</th>
+                            <th>Nom EN</th>
                             <th>Icône</th>
                             <th>Couleur</th>
                             <th>Actions</th>
@@ -136,86 +142,91 @@
                 <button class="modal-close" data-close-modal>&times;</button>
             </header>
 
-            <form id="lieuForm" class="modal-body">
+            <form id="lieuForm" class="modal-body" novalidate>
                 <input type="hidden" id="lieuId">
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="lieuNom">Nom *</label>
-                        <input type="text" id="lieuNom" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Catégories * <small>(cocher une ou plusieurs)</small></label>
-                        <div id="lieuCategories" class="checkbox-grid"></div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="lieuDescription">Description</label>
-                        <textarea id="lieuDescription" rows="2"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Image</label>
-                        <div class="image-uploader">
-                            <div id="lieuImagePreview" class="image-preview image-preview-empty">
-                                <span class="image-preview-placeholder">📷 Aucune image</span>
-                            </div>
-                            <div class="image-uploader-controls">
-                                <input type="file" id="lieuImageFile" accept="image/*" hidden>
-                                <button type="button" id="lieuImagePickBtn" class="btn btn-secondary">
-                                    📁 Choisir une image…
-                                </button>
-                                <button type="button" id="lieuImageRemoveBtn" class="btn btn-secondary" hidden>
-                                    🗑️ Retirer
-                                </button>
-                            </div>
-                            <div class="form-group image-name-group">
-                                <label for="lieuImage">
-                                    Nom du fichier <small>(éditable, généré automatiquement)</small>
-                                </label>
-                                <input type="text" id="lieuImage" placeholder="Bar_LeChampDeMars.jpg">
-                                <small>Stocké dans <code>images/</code> du bucket Firebase.</small>
-                            </div>
+                <!-- Infos -->
+                <fieldset class="form-section">
+                    <legend>Infos</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lieuNom">Nom *</label>
+                            <input type="text" id="lieuNom" data-track>
                         </div>
                     </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Catégories * <small>(la première cochée est la catégorie principale)</small></label>
+                            <div id="lieuCategories" class="checkbox-grid" data-track></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lieuInstagram">Instagram</label>
+                            <input type="text" id="lieuInstagram" placeholder="@mon_lieu" data-track>
+                        </div>
+                    </div>
+                </fieldset>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="lieuInstagram">Instagram</label>
-                        <input type="text" id="lieuInstagram" placeholder="@mon_lieu">
+                <!-- Descriptions FR / EN -->
+                <fieldset class="form-section">
+                    <legend>Descriptions</legend>
+                    <div class="form-row form-row-split">
+                        <div class="form-group">
+                            <label for="lieuDescription">🇫🇷 Français</label>
+                            <textarea id="lieuDescription" rows="3" data-track></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="lieuDescriptionEn">🇬🇧 English</label>
+                            <textarea id="lieuDescriptionEn" rows="3" lang="en" data-track></textarea>
+                        </div>
                     </div>
-                </div>
+                    <small class="section-help">Si la version anglaise est vide, le site anglais affichera la description française.</small>
+                </fieldset>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Position sur la carte * <small>(clique pour déplacer le repère)</small></label>
-                        <div id="lieuMiniMap" class="mini-map"></div>
+                <!-- Photo (chargée seulement à l'ouverture du bloc) -->
+                <details class="form-section form-section-toggle" id="lieuPhotoSection">
+                    <summary>Photo <span class="section-status" id="photoStatus"></span></summary>
+                    <div class="image-uploader">
+                        <div id="lieuImagePreview" class="image-preview image-preview-empty">
+                            <span class="image-preview-placeholder">📷 Aucune image</span>
+                        </div>
+                        <div class="image-uploader-controls">
+                            <input type="file" id="lieuImageFile" accept="image/*" hidden>
+                            <button type="button" id="lieuImagePickBtn" class="btn btn-secondary">📁 Changer la photo…</button>
+                            <button type="button" id="lieuImageRemoveBtn" class="btn btn-secondary" hidden>🗑️ Retirer la photo</button>
+                            <button type="button" id="lieuImageUndoBtn" class="btn btn-secondary" hidden>↩ Annuler le changement</button>
+                        </div>
+                        <p class="image-path" id="lieuImagePath"></p>
                     </div>
-                </div>
+                </details>
 
-                <div class="form-row form-row-split">
-                    <div class="form-group">
-                        <label for="lieuLat">Latitude *</label>
-                        <input type="number" id="lieuLat" step="0.000001" required>
+                <!-- Position (carte chargée seulement à l'ouverture du bloc) -->
+                <details class="form-section form-section-toggle" id="lieuPositionSection">
+                    <summary>Position <span class="section-status" id="positionStatus"></span></summary>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Clique sur la carte ou fais glisser le repère</label>
+                            <div id="lieuMiniMap" class="mini-map"></div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lieuLng">Longitude *</label>
-                        <input type="number" id="lieuLng" step="0.000001" required>
+                    <div class="form-row form-row-split">
+                        <div class="form-group">
+                            <label for="lieuLat">Latitude</label>
+                            <input type="number" id="lieuLat" step="0.000001" data-track>
+                        </div>
+                        <div class="form-group">
+                            <label for="lieuLng">Longitude</label>
+                            <input type="number" id="lieuLng" step="0.000001" data-track>
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <div id="lieuFormError" class="form-error" hidden></div>
             </form>
 
             <footer class="modal-footer">
+                <span class="dirty-summary" id="lieuDirtySummary"></span>
                 <button type="button" class="btn btn-secondary" data-close-modal>Annuler</button>
                 <button type="submit" form="lieuForm" id="lieuSubmitBtn" class="btn btn-primary">Enregistrer</button>
             </footer>
@@ -245,8 +256,12 @@
 
                 <div class="form-row form-row-split">
                     <div class="form-group">
-                        <label for="categorieNom">Nom affiché *</label>
+                        <label for="categorieNom">Nom affiché (FR) *</label>
                         <input type="text" id="categorieNom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categorieNomEn">Nom affiché (EN)</label>
+                        <input type="text" id="categorieNomEn" lang="en" placeholder="ex : Books">
                     </div>
                     <div class="form-group">
                         <label for="categorieIcon">Icône (emoji) *</label>

@@ -11,7 +11,7 @@
 // Incrémenter CACHE_VERSION quand on modifie PRECACHE ou les stratégies.
 // =====================
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v5';
 
 const CACHES = {
     pages: `pages-${CACHE_VERSION}`,
@@ -26,10 +26,16 @@ const MAX_MEDIA = 160;
 const MAX_TILES = 300;
 const NETWORK_TIMEOUT = 4000;
 
-const PRECACHE_PAGES = ['/', '/lieux.html', '/quartier.html', '/contact.html', '/mag.html'];
+const PRECACHE_PAGES = [
+    '/', '/lieux.html', '/quartier.html', '/contact.html', '/mag.html',
+    '/en/', '/en/places.html', '/en/neighbourhood.html', '/en/contact.html', '/en/mag.html'
+];
 
 const PRECACHE_STATIC = [
     '/offline.html',
+    '/en/offline.html',
+    '/i18n/ui.js',
+    '/manifest-en.webmanifest',
     '/style.css',
     '/pwa.js',
     '/script.js',
@@ -161,8 +167,9 @@ async function handlePage(req) {
         // Réseau lent : on sert la copie en cache au bout de NETWORK_TIMEOUT
         return await Promise.race([network, timeoutFallback(() => cache.match(key))]);
     } catch (_) {
+        const offline = new URL(req.url).pathname.startsWith('/en/') ? '/en/offline.html' : '/offline.html';
         return (await cache.match(key))
-            || (await caches.match('/offline.html'))
+            || (await caches.match(offline))
             || Response.error();
     }
 }

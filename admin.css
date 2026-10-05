@@ -715,3 +715,129 @@ code {
         padding: 0.6rem 0.5rem;
     }
 }
+
+
+/* =====================
+   Fiche lieu : blocs indépendants
+   ===================== */
+.form-section {
+    border: 1px solid #e3e6ea;
+    border-radius: 8px;
+    padding: 14px 16px 6px;
+    margin-bottom: 14px;
+    background: #fff;
+}
+
+.form-section > legend {
+    padding: 0 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7f8c8d;
+}
+
+/* Blocs repliables (photo, position) : rien n'est chargé tant qu'ils sont fermés */
+.form-section-toggle {
+    padding: 0;
+}
+
+.form-section-toggle > summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7f8c8d;
+    list-style: none;
+}
+
+.form-section-toggle > summary::-webkit-details-marker {
+    display: none;
+}
+
+.form-section-toggle > summary::before {
+    content: '▸';
+    display: inline-block;
+    width: 1em;
+    transition: transform 0.15s;
+}
+
+.form-section-toggle[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+.form-section-toggle[open] > summary {
+    border-bottom: 1px solid #eef0f2;
+}
+
+.form-section-toggle > :not(summary) {
+    margin: 14px 16px 6px;
+}
+
+.section-status {
+    margin-left: 6px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #95a5a6;
+}
+
+.section-help {
+    display: block;
+    margin: -4px 0 10px;
+    color: #7f8c8d;
+}
+
+.image-path {
+    flex-basis: 100%;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    word-break: break-all;
+}
+
+/* Résumé des modifications, à gauche des boutons du pied de la fiche */
+.dirty-summary {
+    margin-right: auto;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.modal-footer .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* =====================
+   Tableau des lieux : complétude
+   ===================== */
+.toolbar-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.admin-table td.status-cell {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.status-ok {
+    color: #27ae60;
+    font-weight: 700;
+}
+
+.status-ok small {
+    color: #e67e22;
+}
+
+.status-missing {
+    color: #e67e22;
+    font-weight: 700;
+}

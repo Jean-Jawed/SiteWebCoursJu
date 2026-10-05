@@ -12,6 +12,10 @@ import {
 const MAX_WIDTH = 1920;
 const JPEG_QUALITY = 0.80;
 
+// Vignettes : version légère des photos pour les listes, polaroïds et l'admin
+export const VIGNETTE_WIDTH = 480;
+export const VIGNETTE_DIR = 'images/vignettes/';
+
 /**
  * Construit l'URL publique de téléchargement d'un fichier dans Storage,
  * sans appel réseau supplémentaire (les règles autorisent la lecture publique).
@@ -29,6 +33,20 @@ export function publicUrlFromPath(path) {
 }
 
 /**
+ * URL de la photo d'un lieu, en privilégiant la vignette quand elle existe
+ * (les lieux créés avant les vignettes n'en ont pas : on retombe sur la photo).
+ *
+ * @param {{image?: string, vignette?: string}} lieu
+ * @param {'vignette'|'photo'} taille
+ * @returns {string|null}
+ */
+export function lieuPhotoUrl(lieu, taille = 'vignette') {
+    if (!lieu) return null;
+    if (taille === 'vignette' && lieu.vignette) return publicUrlFromPath(lieu.vignette);
+    return publicUrlFromPath(lieu.image);
+}
+
+/**
  * Resize une image (File ou Blob) côté navigateur via Canvas.
  * Reproduit le comportement de l'ancien script sharp :
  *   - rotation auto selon EXIF (gérée nativement par createImageBitmap avec imageOrientation)
@@ -36,17 +54,18 @@ export function publicUrlFromPath(path) {
  *   - sortie JPEG qualité 80
  *
  * @param {File|Blob} file
+ * @param {number} [maxWidth] largeur maximale (1920 par défaut)
  * @returns {Promise<Blob>} JPEG resizé
  */
-export async function resizeImage(file) {
+export async function resizeImage(file, maxWidth = MAX_WIDTH) {
     // createImageBitmap respecte l'orientation EXIF avec cette option,
     // ce qui évite que les photos prises en portrait soient affichées couchées.
     const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
 
     let { width, height } = bitmap;
-    if (width > MAX_WIDTH) {
-        const ratio = MAX_WIDTH / width;
-        width = MAX_WIDTH;
+    if (width > maxWidth) {
+        const ratio = maxWidth / width;
+        width = maxWidth;
         height = Math.round(height * ratio);
     }
 
@@ -110,4 +129,25 @@ export async function deleteFromStorage(path) {
 export async function resizeAndUpload(file, path) {
     const resized = await resizeImage(file);
     return uploadToStorage(path, resized);
+}
+
+/**
+ * Envoie une photo et sa vignette. Renvoie les deux chemins.
+ * En cas d'échec de la vignette, la photo déjà envoyée est supprimée.
+ *
+ * @param {File|Blob} file
+ * @param {string} path — ex: "images/Librairie_LocusSolus_20261005-1432.jpg"
+ * @returns {Promise<{image: string, vignette: string}>}
+ */
+export async function uploadPhotoAndVignette(file, path) {
+    const vignettePath = VIGNETTE_DIR + path.split('/').pop();
+    await resizeAndUpload(file, path);
+    try {
+        const small = await resizeImage(file, VIGNETTE_WIDTH);
+        await uploadToStorage(vignettePath, small);
+    } catch (err) {
+        await deleteFromStorage(path);
+        throw err;
+    }
+    return { image: path, vignette: vignettePath };
 }

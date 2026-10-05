@@ -1,0 +1,10 @@
+{
+  "/": "/en/",
+  "/index.html": "/en/",
+  "/lieux.html": "/en/places.html",
+  "/quartier.html": "/en/neighbourhood.html",
+  "/mag.html": "/en/mag.html",
+  "/mag/bar-cocktails.html": "/en/mag/best-cocktail-bars-cours-julien.html",
+  "/contact.html": "/en/contact.html",
+  "/offline.html": "/en/offline.html"
+}

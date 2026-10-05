@@ -1,0 +1,100 @@
+{
+  "id": "/en/",
+  "name": "Cours Julien & La Plaine",
+  "short_name": "Cours Ju",
+  "description": "Bars, live music, galleries, restaurants: every place in Cours Julien, La Plaine and Notre-Dame-du-Mont, Marseille.",
+  "lang": "en-GB",
+  "start_url": "/en/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0b",
+  "theme_color": "#0c0c0b",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "travel",
+    "lifestyle",
+    "entertainment"
+  ],
+  "shortcuts": [
+    {
+      "name": "Places",
+      "short_name": "Places",
+      "description": "Every place in the neighbourhood, as a list and on the map",
+      "url": "/en/places.html",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "The map",
+      "short_name": "Map",
+      "description": "The neighbourhood’s places on the interactive map",
+      "url": "/en/places.html#carte",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "The neighbourhood",
+      "short_name": "Neighbourhood",
+      "description": "The story of Cours Julien and La Plaine",
+      "url": "/en/neighbourhood.html",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshots/lieux-narrow.jpg",
+      "sizes": "540x1170",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Places in the neighbourhood, as a list"
+    },
+    {
+      "src": "/icons/screenshots/lieux-wide.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Places in the neighbourhood, as a list"
+    }
+  ]
+}

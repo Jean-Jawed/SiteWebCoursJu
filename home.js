@@ -12,7 +12,7 @@
 // =====================================================================
 
 import { chargerDonnees } from './data-loader.js';
-import { publicUrlFromPath } from './storage-helpers.js';
+import { lieuPhotoUrl } from './storage-helpers.js';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -35,12 +35,12 @@ const ENVIES = {
 // Tirage du jour : catégories prioritaires selon le moment, puis complément
 const MOMENTS = {
     jour: {
-        titre: "Aujourd'hui, je vais…",
+        titre: CJ.t('home.jour'),
         priorite: ['livres', 'art', 'commerces', 'fringues', 'jeux', 'musique', 'social', 'kids', 'cafés', 'cinéma'],
         complement: ['restaurants', 'snacks', 'théâtre', 'concerts']
     },
     soir: {
-        titre: 'Ce soir, je vais…',
+        titre: CJ.t('home.soir'),
         priorite: ['bars', 'concerts', 'nuit', 'théâtre', 'cinéma'],
         complement: ['restaurants', 'art', 'musique']
     }
@@ -50,21 +50,21 @@ const SOIR_FIN = 5;
 
 // Couverture : façades choisies (trame papier + couleur au survol)
 const COUVERTURE = [
-    ['livre-locussolus', 'Façade de la librairie Locus Solus'],
-    ['musique-tripsichord', 'Façade du disquaire Tripsichord Music'],
-    ['social-maison', 'Façade peinte de la Maison pour tous, centre social Julien'],
-    ['livre-memepasmal', 'Vitrine des éditions Même pas mal'],
-    ['musique-tangerine', 'Entrée peinte du disquaire Tangerine'],
-    ['livre-reserve', 'Façade peinte de la librairie La Réserve à Bulles'],
-    ['musique-galette', 'Devanture orange du disquaire Galette'],
-    ['commerce-savonnerie', 'Enseigne de la Savonnerie marseillaise de la Licorne'],
-    ['jeu-crypte', 'Vitrine de La Crypte du Jeu'],
-    ['theatre-carrerond', 'Entrée du théâtre Le Carré Rond'],
-    ['fringues-brickcity', 'Façade dessinée de la boutique Brick City'],
-    ['social-affiches', 'Vitrine de Cinesud, affiches de cinéma'],
-    ['dehors-escalier', 'Les escaliers du cours Julien et leur terrasse'],
-    ['art-serigraphie', "Vitrine de l'atelier de gravure de Vincent Tavernier"],
-    ['kids-chaussures', "Devanture verte de Savat'à Gosse"]
+    ['livre-locussolus', 'Façade de la librairie Locus Solus', 'Front of the Locus Solus bookshop'],
+    ['musique-tripsichord', 'Façade du disquaire Tripsichord Music', 'Front of the Tripsichord Music record shop'],
+    ['social-maison', 'Façade peinte de la Maison pour tous, centre social Julien', 'Painted front of the Maison pour tous, the Julien community centre'],
+    ['livre-memepasmal', 'Vitrine des éditions Même pas mal', 'Shop window of the Même pas mal publishing house'],
+    ['musique-tangerine', 'Entrée peinte du disquaire Tangerine', 'Painted entrance of the Tangerine record shop'],
+    ['livre-reserve', 'Façade peinte de la librairie La Réserve à Bulles', 'Painted front of the La Réserve à Bulles comic bookshop'],
+    ['musique-galette', 'Devanture orange du disquaire Galette', 'Orange shopfront of the Galette record shop'],
+    ['commerce-savonnerie', 'Enseigne de la Savonnerie marseillaise de la Licorne', 'Sign of the Savonnerie marseillaise de la Licorne soap shop'],
+    ['jeu-crypte', 'Vitrine de La Crypte du Jeu', 'Shop window of La Crypte du Jeu games shop'],
+    ['theatre-carrerond', 'Entrée du théâtre Le Carré Rond', 'Entrance of the Le Carré Rond theatre'],
+    ['fringues-brickcity', 'Façade dessinée de la boutique Brick City', 'Hand-drawn front of the Brick City clothes shop'],
+    ['social-affiches', 'Vitrine de Cinesud, affiches de cinéma', 'Window of Cinesud, a film poster shop'],
+    ['dehors-escalier', 'Les escaliers du cours Julien et leur terrasse', 'The Cours Julien steps and their terrace'],
+    ['art-serigraphie', "Vitrine de l'atelier de gravure de Vincent Tavernier", "Window of Vincent Tavernier's printmaking studio"],
+    ['kids-chaussures', "Devanture verte de Savat'à Gosse", "Green shopfront of Savat'à Gosse, a children's shoe shop"]
 ];
 
 const MIN_PHOTO_WIDTH = 480;
@@ -144,11 +144,15 @@ function initEdition() {
     const index = Math.max(0, Math.floor(months / 3));
     const startMonth = (8 + index * 3) % 12;
     const year = 2026 + Math.floor((8 + index * 3) / 12);
-    const saison = { 8: 'Automne', 11: 'Hiver', 2: 'Printemps', 5: 'Été' }[startMonth];
+    const saison = CJ.t('home.saison.' + { 8: 'automne', 11: 'hiver', 2: 'printemps', 5: 'ete' }[startMonth]);
     const numero = String(index + NUMERO_AUTOMNE_2026).padStart(2, '0');
 
-    document.querySelectorAll('[data-edition]').forEach(el => { el.textContent = `N° ${numero} — ${saison} ${year}`; });
-    document.querySelectorAll('[data-edition-short]').forEach(el => { el.textContent = `N° ${numero}`; });
+    document.querySelectorAll('[data-edition]').forEach(el => {
+        el.textContent = CJ.t('home.edition', { numero, saison, annee: year });
+    });
+    document.querySelectorAll('[data-edition-short]').forEach(el => {
+        el.textContent = CJ.t('home.edition', { numero, saison: '', annee: '' }).replace(/\s*—.*$/, '');
+    });
 }
 
 // =====================
@@ -160,15 +164,15 @@ function initCover() {
 
     const picks = shuffle(COUVERTURE).slice(0, scraps.length);
     scraps.forEach((scrap, i) => {
-        const [name, alt] = picks[i];
+        const [name, altFr, altEn] = picks[i];
         const img = scrap.querySelector('img');
-        img.src = `images/trame/${name}-480.png`;
-        img.alt = alt;
+        img.src = `/images/trame/${name}-480.png`;
+        img.alt = CJ.lang === 'en' ? altEn : altFr;
 
         // Légère variation de l'inclinaison autour de la position prévue
         scrap.style.setProperty('--r-jitter', `${(Math.random() * 4 - 2).toFixed(1)}deg`);
 
-        addColorLayer(scrap, `images/web/${name}-480.webp`);
+        addColorLayer(scrap, `/images/web/${name}-480.webp`);
     });
 }
 
@@ -268,7 +272,7 @@ function initEnvies(lieux, categories) {
         const main = envie.cats
             .filter(c => categories[c])
             .sort((a, b) => lieuxDeCategories(lieux, [b]).length - lieuxDeCategories(lieux, [a]).length)[0];
-        link.href = `lieux.html?filtre=${encodeURIComponent(main)}`;
+        link.href = CJ.url('lieux', `?filtre=${encodeURIComponent(main)}`);
         link.addEventListener('click', () => track('home_envie', { envie: link.dataset.envie }));
 
         const show = () => showPreview(link, items, main);
@@ -286,11 +290,11 @@ function initEnvies(lieux, categories) {
 
         const withPhoto = items.filter(l => l.image);
         const lieu = withPhoto[Math.floor(Math.random() * withPhoto.length)] || items[0];
-        previewImg.src = lieu.image ? publicUrlFromPath(lieu.image) : '';
+        previewImg.src = lieu.image ? lieuPhotoUrl(lieu, 'vignette') : '';
         previewImg.alt = lieu.nom;
         previewName.textContent = lieu.nom;
-        previewMeta.textContent = `${lieu.description || ''} · voir les ${items.length} →`;
-        preview.href = `lieux.html?filtre=${encodeURIComponent(main)}`;
+        previewMeta.textContent = `${CJ.desc(lieu)} · ${CJ.t('home.voirLes', { n: items.length })}`;
+        preview.href = CJ.url('lieux', `?filtre=${encodeURIComponent(main)}`);
         preview.hidden = false;
     }
 
@@ -323,7 +327,7 @@ function initTirage(lieux, categories, moment) {
         const retenus = [];
         for (let i = 0; i < candidats.length && retenus.length < 3; i += 6) {
             const lot = candidats.slice(i, i + 6);
-            const urls = await Promise.all(lot.map(l => loadPhoto(publicUrlFromPath(l.image))));
+            const urls = await Promise.all(lot.map(l => loadPhoto(lieuPhotoUrl(l, 'vignette'))));
             lot.forEach((lieu, k) => { if (urls[k] && retenus.length < 3) retenus.push({ lieu, url: urls[k] }); });
         }
         render(retenus);
@@ -339,17 +343,17 @@ function initTirage(lieux, categories, moment) {
 
     function render(retenus) {
         if (!retenus.length) {
-            container.innerHTML = '<p class="zine-intro">Le tirage n\'a rien donné cette fois. <a href="lieux.html">Parcours tous les lieux</a>.</p>';
+            container.innerHTML = `<p class="zine-intro">${CJ.t('home.tirageVide', { url: CJ.url('lieux') })}</p>`;
             return;
         }
         container.innerHTML = retenus.map(({ lieu, url }) => {
-            const cats = (lieu.categories || []).map(c => categories[c]?.nom || c).join(' · ');
+            const cats = (lieu.categories || []).map(c => CJ.catNom(categories[c]) || c).join(' · ');
             return `
-                <a class="zine-polaroid" href="lieux.html?lieu=${encodeURIComponent(lieu.id)}">
+                <a class="zine-polaroid" href="${CJ.url('lieux', `?lieu=${encodeURIComponent(lieu.id)}`)}">
                     <span class="zine-polaroid-photo"><img src="${escapeHtml(url)}" alt="${escapeHtml(lieu.nom)}" loading="lazy"></span>
                     <span class="zine-polaroid-name">${escapeHtml(lieu.nom)}</span>
                     <span class="zine-type zine-polaroid-meta">${escapeHtml(cats)}</span>
-                    ${lieu.description ? `<span class="zine-polaroid-text">${escapeHtml(lieu.description)}</span>` : ''}
+                    ${CJ.desc(lieu) ? `<span class="zine-polaroid-text" lang="${CJ.descLang(lieu)}">${escapeHtml(CJ.desc(lieu))}</span>` : ''}
                 </a>`;
         }).join('');
         if (tour > 0 && !reduceMotion) {
@@ -378,7 +382,7 @@ async function initPlan(lieux, categories) {
 
     let svg;
     try {
-        const res = await fetch('images/plan-quartier.svg');
+        const res = await fetch('/images/plan-quartier.svg');
         const doc = new DOMParser().parseFromString(await res.text(), 'image/svg+xml');
         svg = doc.documentElement;
     } catch (_) {
@@ -433,7 +437,7 @@ async function init() {
     } catch (err) {
         console.error('Accueil : lieux indisponibles', err);
         const tirage = document.querySelector('[data-tirage]');
-        if (tirage) tirage.innerHTML = '<p class="zine-intro">Les lieux sont momentanément indisponibles. <a href="lieux.html">Réessayer depuis la page Lieux</a>.</p>';
+        if (tirage) tirage.innerHTML = `<p class="zine-intro">${CJ.t('home.indisponible', { url: CJ.url('lieux') })}</p>`;
         return;
     }
 
