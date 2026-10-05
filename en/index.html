@@ -162,7 +162,7 @@
         </header>
 
         <!-- ==== Frise : la rue, façade après façade ==== -->
-        <section class="zine-frise" aria-label="The street, one shopfront after another">
+        <section class="zine-frise" aria-label="The street, one shopfront after another" tabindex="0">
             <div class="zine-frise-track" data-frise>
                 <figure class="zine-frise-item"><img src="/images/trame/livre-locussolus-480-nuit.png" data-color="/images/web/livre-locussolus-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>bookshop</figcaption></figure>
                 <figure class="zine-frise-item"><img src="/images/trame/musique-galette-480-nuit.png" data-color="/images/web/musique-galette-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>record shop</figcaption></figure>
@@ -248,10 +248,12 @@
         <section class="zine-page zine-plan" id="plan" aria-labelledby="planTitre">
             <p class="zine-folio"><span>p. 3</span>The map</p>
             <div class="zine-plan-grid">
-                <div class="zine-sheet zine-plan-sheet zine-taped" data-pose style="--r: -0.8deg;">
-                    <div class="zine-plan-drawing" data-plan aria-hidden="true"></div>
+                <!-- Tout le plan mène à la carte ; le bouton « Open the map » reste le lien accessible -->
+                <a href="/en/places.html#carte" class="zine-sheet zine-plan-sheet zine-taped" data-pose style="--r: -0.8deg;" tabindex="-1" aria-hidden="true">
+                    <div class="zine-plan-drawing" data-plan></div>
+                    <span class="zine-stamp zine-plan-open">Open the map →</span>
                     <p class="zine-type zine-plan-credit">Map: © OpenStreetMap contributors</p>
-                </div>
+                </a>
                 <div class="zine-plan-text">
                     <h2 class="zine-h2" id="planTitre">The whole neighbourhood, on foot</h2>
                     <dl class="zine-stats">
@@ -292,7 +294,7 @@
             <p class="zine-folio"><span>p. 5</span>The neighbourhood</p>
             <div class="zine-quartier-grid">
                 <figure class="zine-scrap zine-quartier-photo" data-pose style="--r: -3deg;">
-                    <img src="/images/trame/quartier-mur-480.png" alt="The concrete wall around place Jean-Jaurès, February 2019" width="531" height="398" loading="lazy">
+                    <img src="/images/trame/quartier-mur-480.png" data-color="/images/web/quartier-mur-480.webp" alt="The concrete wall around place Jean-Jaurès, February 2019" width="531" height="398" loading="lazy">
                     <figcaption class="zine-type">La Plaine, February 2019</figcaption>
                 </figure>
                 <div class="zine-quartier-text">
@@ -307,15 +309,15 @@
                 <p class="zine-ensemble-text">The neighbourhood is also community centres, associations and charity shops.</p>
                 <div class="zine-ensemble-row">
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -4deg;">
-                        <img src="/images/trame/social-maison-480.png" alt="Front of the Maison pour tous, the Julien community centre" width="480" height="640" loading="lazy">
+                        <img src="/images/trame/social-maison-480.png" data-color="/images/web/social-maison-480.webp" alt="Front of the Maison pour tous, the Julien community centre" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">community centre</figcaption>
                     </figure>
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: 2deg;">
-                        <img src="/images/trame/social-mdh-480.png" alt="Front of the Maison méditerranéenne des droits de l&#x27;Homme (human rights centre)" width="480" height="640" loading="lazy">
+                        <img src="/images/trame/social-mdh-480.png" data-color="/images/web/social-mdh-480.webp" alt="Front of the Maison méditerranéenne des droits de l&#x27;Homme (human rights centre)" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">human rights</figcaption>
                     </figure>
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -1.5deg;">
-                        <img src="/images/trame/social-croixrouge-480.png" alt="Front of the Croix-Rouge workshops, a charity shop" width="480" height="640" loading="lazy">
+                        <img src="/images/trame/social-croixrouge-480.png" data-color="/images/web/social-croixrouge-480.webp" alt="Front of the Croix-Rouge workshops, a charity shop" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">charity shop</figcaption>
                     </figure>
                 </div>

@@ -459,7 +459,31 @@
     padding: 28px 0 40px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    overflow: hidden;
+    /* Défilable au doigt, au pavé tactile, à la souris (home.js) et au clavier */
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.zine-frise::-webkit-scrollbar {
+    display: none;
+}
+
+.zine-frise.is-dragging {
+    cursor: grabbing;
+}
+
+.zine-frise:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+.zine-frise img {
+    -webkit-user-drag: none;
 }
 
 .zine-frise-track {
@@ -505,32 +529,6 @@
     font-family: var(--font-type);
     font-size: 13px;
     color: var(--text-muted);
-}
-
-/* La frise défile seule (JS duplique les photos pour une boucle sans couture) */
-@media (prefers-reduced-motion: no-preference) {
-    .zine-js .zine-frise-track.is-looping {
-        animation: zine-frise 90s linear infinite;
-    }
-
-    .zine-frise:hover .zine-frise-track {
-        animation-play-state: paused;
-    }
-}
-
-@keyframes zine-frise {
-    to { transform: translateX(-50%); }
-}
-
-/* Sans animation : on fait défiler au doigt */
-@media (prefers-reduced-motion: reduce) {
-    .zine-frise {
-        overflow-x: auto;
-    }
-}
-
-html:not(.zine-js) .zine-frise {
-    overflow-x: auto;
 }
 
 /* =====================
@@ -709,7 +707,51 @@ html:not(.zine-js) .zine-frise {
 }
 
 .zine-plan-sheet {
+    display: block;
     padding: 18px;
+}
+
+/* Tout le plan est un lien vers la carte */
+a.zine-plan-sheet {
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.zine-plan-sheet:hover {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Reprend la transition d'apparition ([data-pose]) en y ajoutant le survol */
+    .zine-js a.zine-plan-sheet[data-pose] {
+        transition: opacity 0.5s ease, translate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1), rotate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1), transform 0.25s;
+        transition-delay: var(--pose-delay, 0s), var(--pose-delay, 0s), var(--pose-delay, 0s), 0s;
+    }
+}
+
+.zine-plan-open {
+    position: absolute;
+    left: 32px;
+    bottom: 52px;
+    z-index: 3;
+    background: var(--paper);
+    font-size: 20px;
+    white-space: nowrap;
+    transform: rotate(-6deg);
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+/* Sur ordinateur, le tampon apparaît au survol ; au doigt, il reste visible */
+@media (hover: hover) {
+    .zine-plan-open {
+        opacity: 0;
+    }
+
+    a.zine-plan-sheet:hover .zine-plan-open {
+        opacity: 1;
+    }
 }
 
 .zine-plan-drawing {

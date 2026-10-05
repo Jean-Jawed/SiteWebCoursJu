@@ -158,7 +158,7 @@
         </header>
 
         <!-- ==== Frise : la rue, façade après façade ==== -->
-        <section class="zine-frise" aria-label="La rue, façade après façade">
+        <section class="zine-frise" aria-label="La rue, façade après façade" tabindex="0">
             <div class="zine-frise-track" data-frise>
                 <figure class="zine-frise-item"><img src="images/trame/livre-locussolus-480-nuit.png" data-color="images/web/livre-locussolus-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>librairie</figcaption></figure>
                 <figure class="zine-frise-item"><img src="images/trame/musique-galette-480-nuit.png" data-color="images/web/musique-galette-480.webp" alt="" loading="lazy" width="480" height="640"><figcaption>disquaire</figcaption></figure>
@@ -253,10 +253,12 @@
         <section class="zine-page zine-plan" id="plan" aria-labelledby="planTitre">
             <p class="zine-folio"><span>p. 3</span>Le plan</p>
             <div class="zine-plan-grid">
-                <div class="zine-sheet zine-plan-sheet zine-taped" data-pose style="--r: -0.8deg;">
-                    <div class="zine-plan-drawing" data-plan aria-hidden="true"></div>
+                <!-- Tout le plan mène à la carte ; le bouton « Ouvrir la carte » reste le lien accessible -->
+                <a href="lieux.html#carte" class="zine-sheet zine-plan-sheet zine-taped" data-pose style="--r: -0.8deg;" tabindex="-1" aria-hidden="true">
+                    <div class="zine-plan-drawing" data-plan></div>
+                    <span class="zine-stamp zine-plan-open">Ouvrir la carte →</span>
                     <p class="zine-type zine-plan-credit">Plan : © contributeurs OpenStreetMap</p>
-                </div>
+                </a>
                 <div class="zine-plan-text">
                     <h2 class="zine-h2" id="planTitre">Tout le quartier, à pied</h2>
                     <dl class="zine-stats">
@@ -297,7 +299,7 @@
             <p class="zine-folio"><span>p. 5</span>Le quartier</p>
             <div class="zine-quartier-grid">
                 <figure class="zine-scrap zine-quartier-photo" data-pose style="--r: -3deg;">
-                    <img src="images/trame/quartier-mur-480.png" alt="Le mur de béton autour de la place Jean-Jaurès, février 2019" width="531" height="398" loading="lazy">
+                    <img src="images/trame/quartier-mur-480.png" data-color="images/web/quartier-mur-480.webp" alt="Le mur de béton autour de la place Jean-Jaurès, février 2019" width="531" height="398" loading="lazy">
                     <figcaption class="zine-type">La Plaine, février 2019</figcaption>
                 </figure>
                 <div class="zine-quartier-text">
@@ -316,15 +318,15 @@
                 <p class="zine-ensemble-text">Le quartier, c'est aussi des centres sociaux, des associations et des boutiques solidaires.</p>
                 <div class="zine-ensemble-row">
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -4deg;">
-                        <img src="images/trame/social-maison-480.png" alt="Façade de la Maison pour tous, centre social Julien" width="480" height="640" loading="lazy">
+                        <img src="images/trame/social-maison-480.png" data-color="images/web/social-maison-480.webp" alt="Façade de la Maison pour tous, centre social Julien" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">centre social</figcaption>
                     </figure>
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: 2deg;">
-                        <img src="images/trame/social-mdh-480.png" alt="Façade de la Maison méditerranéenne des droits de l'Homme" width="480" height="640" loading="lazy">
+                        <img src="images/trame/social-mdh-480.png" data-color="images/web/social-mdh-480.webp" alt="Façade de la Maison méditerranéenne des droits de l'Homme" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">droits humains</figcaption>
                     </figure>
                     <figure class="zine-scrap zine-scrap--small" data-pose style="--r: -1.5deg;">
-                        <img src="images/trame/social-croixrouge-480.png" alt="Façade des ateliers Croix-Rouge, boutique solidaire" width="480" height="640" loading="lazy">
+                        <img src="images/trame/social-croixrouge-480.png" data-color="images/web/social-croixrouge-480.webp" alt="Façade des ateliers Croix-Rouge, boutique solidaire" width="480" height="640" loading="lazy">
                         <figcaption class="zine-type">boutique solidaire</figcaption>
                     </figure>
                 </div>

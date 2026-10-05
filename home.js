@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------
 // - Numéro et saison du fanzine (N° 07 — Automne 2026, puis un par saison)
 // - Couverture : 5 façades tirées au hasard à chaque visite
-// - Frise : façades en boucle, couleur au survol
+// - Frise : façades en boucle (défilable à la main), couleur au survol
 // - p. 1 Par envie : compteurs + aperçu d'un lieu de l'envie survolée
 // - p. 2 Aujourd'hui / Ce soir, je vais… : tirage du jour + « Re-tirer »
 // - p. 3 Le plan : points des lieux sur le plan stylisé (images/plan-quartier.svg)
@@ -186,11 +186,22 @@ function addColorLayer(container, src) {
     container.addEventListener('pointerenter', () => { if (!color.src) color.src = src; }, { once: true });
 }
 
+// Photos posées dans la page (p. 5) : couleur au survol, comme la couverture
+function initScrapColors() {
+    document.querySelectorAll('.zine-scrap img[data-color]').forEach(img => {
+        addColorLayer(img.parentElement, img.dataset.color);
+    });
+}
+
 // =====================
-// Frise : boucle sans couture
+// Frise : défilement automatique, mais on peut reprendre la main
 // =====================
+const FRISE_VITESSE = 40;      // px par seconde
+const FRISE_REPRISE = 3000;    // ms d'inactivité avant de repartir
+
 function initFrise() {
-    const track = document.querySelector('[data-frise]');
+    const frise = document.querySelector('.zine-frise');
+    const track = frise?.querySelector('[data-frise]');
     if (!track) return;
 
     track.querySelectorAll('.zine-frise-item').forEach(item => {
@@ -198,16 +209,121 @@ function initFrise() {
         addColorLayer(item, img.dataset.color);
     });
 
+    initFriseDrag(frise);
+
     if (reduceMotion) return;
-    // On duplique la rangée : l'animation glisse de -50 % et recommence
-    [...track.children].forEach(item => {
+    // On duplique la rangée : arrivé au bout du premier exemplaire, on revient d'autant
+    const originals = [...track.children];
+    originals.forEach(item => {
         const clone = item.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
         clone.querySelectorAll('.zine-color').forEach(c => c.remove());
         addColorLayer(clone, item.querySelector('img').dataset.color);
         track.appendChild(clone);
     });
-    track.classList.add('is-looping');
+
+    // Largeur d'un exemplaire de la rangée (gouttières comprises)
+    const firstClone = track.children[originals.length];
+    let loop = 0;
+    const measure = () => { loop = firstClone.offsetLeft - originals[0].offsetLeft; };
+    measure();
+    window.addEventListener('resize', measure);
+
+    let pos = frise.scrollLeft;      // position voulue, avec ses fractions de pixel
+    let expected = pos;              // dernière position écrite par nous
+    let hover = false;
+    let press = false;
+    let focus = false;
+    let visible = true;
+    let resumeAt = 0;
+    let last = performance.now();
+
+    const setScroll = x => {
+        pos = x;
+        expected = x;
+        frise.scrollLeft = x;
+    };
+    const pauseThenResume = () => { resumeAt = performance.now() + FRISE_REPRISE; };
+
+    // Survol à la souris
+    frise.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hover = true; });
+    frise.addEventListener('pointerleave', e => {
+        if (e.pointerType !== 'mouse') return;
+        hover = false;
+        pauseThenResume();
+    });
+
+    // Doigt ou bouton appuyé
+    frise.addEventListener('pointerdown', () => { press = true; });
+    const release = () => {
+        if (!press) return;
+        press = false;
+        pauseThenResume();
+    };
+    frise.addEventListener('pointerup', release);
+    frise.addEventListener('pointercancel', release);   // le navigateur prend le relais du défilement tactile
+    window.addEventListener('pointerup', release);
+
+    // Navigation au clavier (pas le focus laissé par un clic)
+    frise.addEventListener('focusin', () => { focus = frise.matches(':focus-visible'); });
+    frise.addEventListener('focusout', () => {
+        if (!focus) return;
+        focus = false;
+        pauseThenResume();
+    });
+
+    // Défilement par l'utilisateur (doigt, pavé tactile, glisser, clavier)
+    frise.addEventListener('scroll', () => {
+        const x = frise.scrollLeft;
+        if (Math.abs(x - expected) <= 1) return;   // c'est notre propre défilement
+        pauseThenResume();
+        if (x >= loop) setScroll(x - loop);
+        else if (x <= 0) setScroll(x + loop);
+        else { pos = x; expected = x; }
+    }, { passive: true });
+
+    // Inutile d'animer hors de l'écran
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }).observe(frise);
+    }
+
+    const tick = now => {
+        const dt = Math.min(now - last, 100) / 1000;
+        last = now;
+        if (visible && loop > 0 && !hover && !press && !focus && now >= resumeAt) {
+            let x = pos + FRISE_VITESSE * dt;
+            if (x >= loop) x -= loop;
+            setScroll(x);
+        }
+        requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+}
+
+// Glisser la frise à la souris (au doigt, le navigateur s'en charge)
+function initFriseDrag(frise) {
+    let lastX = null;
+
+    frise.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        lastX = e.clientX;
+        frise.setPointerCapture(e.pointerId);
+        frise.classList.add('is-dragging');
+    });
+    frise.addEventListener('pointermove', e => {
+        if (lastX === null) return;
+        frise.scrollLeft -= e.clientX - lastX;
+        lastX = e.clientX;
+    });
+    const stop = () => {
+        lastX = null;
+        frise.classList.remove('is-dragging');
+    };
+    frise.addEventListener('pointerup', stop);
+    frise.addEventListener('pointercancel', stop);
+    frise.addEventListener('lostpointercapture', stop);
+    // Firefox ignore -webkit-user-drag : pas d'image « fantôme » au glisser
+    frise.addEventListener('dragstart', e => e.preventDefault());
 }
 
 // =====================
@@ -428,6 +544,7 @@ async function init() {
     initMoment(moment);
     initCover();
     initFrise();
+    initScrapColors();
     initPose();
 
     let lieux = [];
