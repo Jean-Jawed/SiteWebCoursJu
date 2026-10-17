@@ -405,6 +405,82 @@
     gap: 22px 28px;
 }
 
+/* Coupon « L'app Cours Ju » : à découper en pointillés, posé sous les boutons */
+.zine-coupon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px 16px;
+    max-width: 520px;
+    margin-top: 36px;
+    padding: 16px 18px;
+    background: var(--paper-grain), var(--paper);
+    color: var(--ink);
+    border-radius: 2px;
+    outline: 2px dashed rgba(28, 26, 23, 0.45);
+    outline-offset: -8px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.3);
+    transform: rotate(-1.2deg);
+}
+
+.zine-coupon[hidden] {
+    display: none;
+}
+
+.zine-coupon-scissors {
+    position: absolute;
+    top: -3px;
+    left: 26px;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 0 4px;
+}
+
+.zine-coupon-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+}
+
+.zine-coupon-text {
+    flex: 1;
+    font-family: var(--font-type);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+}
+
+.zine-coupon-text strong {
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.zine-coupon-btn {
+    flex: none;
+    padding: 11px 18px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 560px) {
+    .zine-coupon {
+        flex-wrap: wrap;
+    }
+
+    .zine-coupon-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 /* Collage : cinq photos posées, positions fixes, rotations variables */
 .zine-cover-collage {
     position: relative;
