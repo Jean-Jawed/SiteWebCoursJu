@@ -3035,7 +3035,8 @@ a {
 
 .mag-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Deux articles par ligne sur grand écran, un seul sur mobile */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
     gap: 24px;
 }
 

@@ -84,7 +84,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Photo découpée et posée (trame imprimée sur papier) */
+/* Photo découpée et posée sur la page */
 .zine-scrap {
     position: relative;
     margin: 0;
@@ -427,17 +427,18 @@
 .zine-cover-collage .zine-scrap:nth-child(4) { --x: 64%; --y: 46%; --w: 31%; --r: -4deg;  z-index: 3; }
 .zine-cover-collage .zine-scrap:nth-child(5) { --x: 4%;  --y: 54%; --w: 30%; --r: 7deg;   z-index: 3; }
 
-/* Au survol, la photo reprend ses couleurs */
-.zine-scrap .zine-color {
-    position: absolute;
-    inset: 9px 9px auto 9px;
-    width: calc(100% - 18px);
-    opacity: 0;
-    transition: opacity 0.35s;
+/* Au survol, la photo se redresse et se soulève de la table */
+.zine-scrap {
+    transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.5, 1), box-shadow 0.3s;
 }
 
-.zine-scrap:hover .zine-color {
-    opacity: 1;
+.zine-scrap:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.03);
+    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.6), 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.zine-cover-collage .zine-scrap:hover {
+    z-index: 5;
 }
 
 .zine-cover-stamp {
@@ -510,18 +511,15 @@
     height: auto;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    transition: opacity 0.35s;
 }
 
-.zine-frise-item .zine-color {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
+/* Au survol, la façade se redresse */
+.zine-frise-item {
+    transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.5, 1);
 }
 
-.zine-frise-item:hover .zine-color {
-    opacity: 1;
+.zine-frise-item:hover {
+    transform: rotate(0deg) translateY(-6px);
 }
 
 .zine-frise-item figcaption {
@@ -824,16 +822,23 @@ a.zine-plan-sheet:hover {
 /* =====================
    p. 4 — Le Mag
    ===================== */
+/* Deux feuilles posées côte à côte : le dernier article et le précédent */
+.zine-mag-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+    align-items: start;
+}
+
 .zine-mag-sheet {
-    max-width: 960px;   /* le papier reste un objet posé, jamais pleine largeur */
-    padding: 18px;
+    padding: 16px;
 }
 
 .zine-mag-link {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 32px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    height: 100%;
     color: var(--ink);
     text-decoration: none;
 }
@@ -855,14 +860,23 @@ a.zine-plan-sheet:hover {
 }
 
 .zine-mag-body {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 18px 12px 0;
+    padding: 0 10px 8px;
 }
 
+/* Le tampon déborde sur la photo, en haut à droite */
 .zine-mag-body .zine-stamp {
-    margin-bottom: 18px;
+    position: absolute;
+    top: -46px;
+    right: 6px;
+    background: rgba(236, 228, 211, 0.85);
+}
+
+.zine-mag-body .zine-sheet-title {
+    font-size: clamp(26px, 2.6vw, 34px);
 }
 
 .zine-mag-body .zine-sheet-title {
@@ -1041,6 +1055,13 @@ a.zine-plan-sheet:hover {
         translate: 0 0;
         rotate: 0deg;
     }
+
+    /* Photos posées : l'apparition garde ses délais, le survol réagit tout de suite */
+    .zine-js .zine-scrap[data-pose] {
+        transition: opacity 0.5s ease, translate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1), rotate 0.6s cubic-bezier(0.3, 1.3, 0.5, 1),
+            transform 0.3s cubic-bezier(0.3, 1.3, 0.5, 1), box-shadow 0.3s;
+        transition-delay: var(--pose-delay, 0s), var(--pose-delay, 0s), var(--pose-delay, 0s), 0s, 0s;
+    }
 }
 
 /* =====================
@@ -1075,12 +1096,9 @@ a.zine-plan-sheet:hover {
         max-width: 320px;
     }
 
-    .zine-mag-link {
-        grid-template-columns: 1fr;
-    }
-
-    .zine-mag-body {
-        padding: 0 8px 12px;
+    .zine-mag-grid {
+        grid-template-columns: minmax(0, 560px);
+        justify-content: center;
     }
 }
 

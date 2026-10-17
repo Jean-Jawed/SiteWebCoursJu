@@ -4,7 +4,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cours-julien.fr/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/"/>
@@ -13,7 +13,7 @@
   </url>
   <url>
     <loc>https://cours-julien.fr/en/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/"/>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://cours-julien.fr/mag.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag.html"/>
@@ -67,7 +67,7 @@
   </url>
   <url>
     <loc>https://cours-julien.fr/en/mag.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag.html"/>
@@ -91,6 +91,24 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/best-cocktail-bars-cours-julien.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/bar-cocktails.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/mag/salles-concert.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/salles-concert.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/live-music-venues-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/salles-concert.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/mag/live-music-venues-cours-julien.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/salles-concert.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/live-music-venues-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/salles-concert.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/contact.html</loc>

@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------
 // - Numéro et saison du fanzine (N° 07 — Automne 2026, puis un par saison)
 // - Couverture : 5 façades tirées au hasard à chaque visite
-// - Frise : façades en boucle (défilable à la main), couleur au survol
+// - Frise : façades en boucle (défilable à la main)
 // - p. 1 Par envie : compteurs + aperçu d'un lieu de l'envie survolée
 // - p. 2 Aujourd'hui / Ce soir, je vais… : tirage du jour + « Re-tirer »
 // - p. 3 Le plan : points des lieux sur le plan stylisé (images/plan-quartier.svg)
@@ -48,7 +48,7 @@ const MOMENTS = {
 const SOIR_DEBUT = 19; // heure de Marseille
 const SOIR_FIN = 5;
 
-// Couverture : façades choisies (trame papier + couleur au survol)
+// Couverture : façades choisies (photos couleur, tirées au hasard)
 const COUVERTURE = [
     ['livre-locussolus', 'Façade de la librairie Locus Solus', 'Front of the Locus Solus bookshop'],
     ['musique-tripsichord', 'Façade du disquaire Tripsichord Music', 'Front of the Tripsichord Music record shop'],
@@ -166,30 +166,11 @@ function initCover() {
     scraps.forEach((scrap, i) => {
         const [name, altFr, altEn] = picks[i];
         const img = scrap.querySelector('img');
-        img.src = `/images/trame/${name}-480.png`;
+        img.src = `/images/web/${name}-480.webp`;
         img.alt = CJ.lang === 'en' ? altEn : altFr;
 
         // Légère variation de l'inclinaison autour de la position prévue
         scrap.style.setProperty('--r-jitter', `${(Math.random() * 4 - 2).toFixed(1)}deg`);
-
-        addColorLayer(scrap, `/images/web/${name}-480.webp`);
-    });
-}
-
-// Couche couleur révélée au survol, chargée seulement au premier survol
-function addColorLayer(container, src) {
-    const color = document.createElement('img');
-    color.className = 'zine-color';
-    color.alt = '';
-    color.setAttribute('aria-hidden', 'true');
-    container.appendChild(color);
-    container.addEventListener('pointerenter', () => { if (!color.src) color.src = src; }, { once: true });
-}
-
-// Photos posées dans la page (p. 5) : couleur au survol, comme la couverture
-function initScrapColors() {
-    document.querySelectorAll('.zine-scrap img[data-color]').forEach(img => {
-        addColorLayer(img.parentElement, img.dataset.color);
     });
 }
 
@@ -204,11 +185,6 @@ function initFrise() {
     const track = frise?.querySelector('[data-frise]');
     if (!track) return;
 
-    track.querySelectorAll('.zine-frise-item').forEach(item => {
-        const img = item.querySelector('img');
-        addColorLayer(item, img.dataset.color);
-    });
-
     initFriseDrag(frise);
 
     if (reduceMotion) return;
@@ -217,8 +193,6 @@ function initFrise() {
     originals.forEach(item => {
         const clone = item.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
-        clone.querySelectorAll('.zine-color').forEach(c => c.remove());
-        addColorLayer(clone, item.querySelector('img').dataset.color);
         track.appendChild(clone);
     });
 
@@ -544,7 +518,6 @@ async function init() {
     initMoment(moment);
     initCover();
     initFrise();
-    initScrapColors();
     initPose();
 
     let lieux = [];

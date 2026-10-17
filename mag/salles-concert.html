@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Où voir un concert au Cours Julien&#8239;? Les 11 salles du quartier — Le Mag</title>
+    <meta name="description"
+        content="Où voir un concert au Cours Julien et à La Plaine (Marseille 6e) ? Onze salles de la plus petite à la plus grande : Les 9 salopards, Le Gouffre, Leda Atomica, La Voie maltée, Maison hantée, L'Intermédiaire, Brasserie communale, Molotov, Makeda, Café Julien et Espace Julien.">
+    <link rel="canonical" href="https://cours-julien.fr/mag/salles-concert.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://cours-julien.fr/mag/salles-concert.html">
+    <meta property="og:title" content="Où voir un concert au Cours Julien ?">
+    <meta property="og:description"
+        content="Branchés : onze scènes du quartier reliées par un même câble, de la salle de 40 personnes où le groupe joue à deux mètres de vous jusqu'aux 990 places de l'Espace Julien.">
+    <meta property="og:image" content="https://cours-julien.fr/images/mag/salles-concert/couverture.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Cours Ju — Plaine">
+    <meta property="article:published_time" content="2026-10-16">
+    <meta property="article:section" content="Le Mag">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Où voir un concert au Cours Julien ?">
+    <meta name="twitter:image" content="https://cours-julien.fr/images/mag/salles-concert/couverture.jpg">
+
+    <link rel="icon" href="../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <meta name="theme-color" content="#0c0c0b">
+    <meta name="apple-mobile-web-app-title" content="Cours Ju">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="../i18n/ui.js"></script>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/salles-concert.html">
+    <link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/live-music-venues-cours-julien.html">
+    <link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/salles-concert.html">
+    <!-- /i18n:alternates -->
+    <script src="../pwa.js" defer></script>
+
+    <!-- Le câble (tracé par concerts.js) et la carte ne s'activent que si JavaScript tourne -->
+    <script>document.documentElement.classList.add('mag-js');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="mag.css">
+    <link rel="stylesheet" href="concerts.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Où voir un concert au Cours Julien ?",
+        "alternativeHeadline": "Branchés : les 11 salles de concert du Cours Julien et de La Plaine, de la plus petite à la plus grande",
+        "description": "Où voir un concert au Cours Julien et à La Plaine (Marseille 6e) ? Onze salles de la plus petite à la plus grande, des 9 salopards à l'Espace Julien.",
+        "keywords": "concert Marseille, salle de concert Marseille, Cours Julien, La Plaine, Espace Julien, Café Julien, Molotov, Makeda, L'Intermédiaire, Maison hantée, Leda Atomica, Brasserie communale, Les 9 salopards, La Voie maltée, Le Gouffre",
+        "image": "https://cours-julien.fr/images/mag/salles-concert/couverture.jpg",
+        "datePublished": "2026-10-16",
+        "inLanguage": "fr-FR",
+        "isPartOf": { "@type": "WebSite", "name": "Cours Ju — Plaine", "url": "https://cours-julien.fr/" },
+        "publisher": { "@type": "Organization", "name": "Cours Ju — Plaine", "url": "https://cours-julien.fr/" },
+        "mainEntityOfPage": "https://cours-julien.fr/mag/salles-concert.html",
+        "about": [
+            { "@type": "MusicVenue", "name": "Les 9 salopards", "address": { "@type": "PostalAddress", "streetAddress": "2 rue Crudère", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "Le Gouffre", "address": { "@type": "PostalAddress", "streetAddress": "32 rue Estelle", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "Leda Atomica", "address": { "@type": "PostalAddress", "streetAddress": "63 rue Saint-Pierre", "postalCode": "13005", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "BarOrPub", "name": "La Voie maltée", "address": { "@type": "PostalAddress", "streetAddress": "7 rue Crudère", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "BarOrPub", "name": "La Maison hantée", "address": { "@type": "PostalAddress", "streetAddress": "10 rue Vian", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "L'Intermédiaire", "address": { "@type": "PostalAddress", "streetAddress": "63 place Jean-Jaurès", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "BarOrPub", "name": "La Brasserie communale", "address": { "@type": "PostalAddress", "streetAddress": "57 cours Julien", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "Le Molotov", "address": { "@type": "PostalAddress", "streetAddress": "3 place Paul-Cézanne", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "Le Makeda", "maximumAttendeeCapacity": 270, "address": { "@type": "PostalAddress", "streetAddress": "103 rue Ferrari", "postalCode": "13005", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "Le Café Julien", "maximumAttendeeCapacity": 280, "address": { "@type": "PostalAddress", "streetAddress": "39 cours Julien", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } },
+            { "@type": "MusicVenue", "name": "L'Espace Julien", "maximumAttendeeCapacity": 990, "address": { "@type": "PostalAddress", "streetAddress": "39 cours Julien", "postalCode": "13006", "addressLocality": "Marseille", "addressCountry": "FR" } }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Où voir un concert au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Le quartier compte une dizaine de lieux : des lieux associatifs (Les 9 salopards, Le Gouffre, Leda Atomica), des bars avec scène (La Voie maltée, La Maison hantée, L'Intermédiaire, La Brasserie communale) et de vraies salles (Le Molotov, Le Makeda, le Café Julien et l'Espace Julien)."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Quelle est la plus grande salle de concert du Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L'Espace Julien, au 39 cours Julien : 990 places debout, 600 assises. Le Café Julien, dans le même bâtiment, accueille 280 personnes depuis sa réouverture en octobre 2026."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Où écouter du rock ou du métal au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La Maison hantée, 10 rue Vian, est un pub rock et métal depuis plus de trente ans : concerts du blues au métal, billard et baby-foot. L'Intermédiaire, place Jean-Jaurès, programme aussi beaucoup de rock alternatif."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Où voir un concert dans une petite salle au Cours Julien ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Les 9 salopards, 2 rue Crudère, accueillent une quarantaine de personnes. Juste à côté, La Voie maltée, bar à bières au 7 rue Crudère, programme des concerts réguliers pour environ 70 personnes. La Maison hantée, rue Vian, en reçoit une centaine."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Le Café Julien a-t-il rouvert ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, le 2 octobre 2026, après plusieurs mois de travaux. Sa jauge passe de 180 à 280 places, une baie vitrée l'ouvre sur le cours Julien, et il accueille du public en journée le jeudi."
+            }
+        }
+    ]
+}
+    </script>
+
+    <!-- Vercel Web Analytics (sans cookies) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="page-mag-article page-concerts">
+
+    <!-- ==== Navigation ==== -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">Cours Ju — Plaine</a>
+            <div class="lang-switch" aria-label="Langue">
+                <a href="/mag/salles-concert.html" lang="fr" hreflang="fr" data-lang="fr" aria-current="true">FR</a>
+                <a href="/en/mag/live-music-venues-cours-julien.html" lang="en" hreflang="en" data-lang="en">EN</a>
+            </div>
+            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../lieux.html" class="nav-link">Lieux</a></li>
+                <li><a href="../quartier.html" class="nav-link">Le quartier</a></li>
+                <li><a href="../mag.html" class="nav-link active">Le Mag</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+    <!-- Halo lumineux qui suit la souris (ordinateur) -->
+    <div class="mag-halo" aria-hidden="true"></div>
+
+    <main>
+        <!-- ==== Ouverture ==== -->
+        <header class="mag-hero">
+            <div class="mag-hero-inner">
+                <p class="mag-kicker"><a href="../mag.html">Le Mag</a><span aria-hidden="true">·</span>Branchés</p>
+                <h1 class="mag-title">
+                    <span class="mag-title-line">Où voir</span>
+                    <span class="mag-title-line title-accent">un concert</span>
+                    <span class="mag-title-line">au Cours Julien&#8239;?</span>
+                </h1>
+                <p class="mag-lede">
+                    <strong>Branchés</strong> · Onze scènes du quartier, reliées par un même câble, de la plus
+                    petite à la plus grande. Pas un classement&#8239;: onze formats, onze façons d’écouter un
+                    concert.
+                </p>
+                <ul class="mag-meta">
+                    <li><time datetime="2026-10-16">16 octobre 2026</time></li>
+                    <li>8 min de lecture</li>
+                    <li>11 scènes · de 40 à 990 personnes</li>
+                </ul>
+            </div>
+            <a class="mag-scroll-cue" href="#patch">Suivre le câble <span aria-hidden="true">↓</span></a>
+        </header>
+
+        <!-- ==== En bref : la baie de brassage (le sommaire des onze scènes) ==== -->
+        <aside class="patch" id="patch" aria-labelledby="patchTitle">
+            <!-- Aide au choix : allume les bonnes prises, juste en dessous -->
+            <div class="envies" id="envies">
+                <p class="envies-title">Ce soir, j’ai envie…</p>
+                <div class="envies-chips">
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="maison-hantee intermediaire">de rock qui tache</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="neuf-salopards leda-atomica intermediaire cafe-julien">de découvrir des groupes</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="gouffre leda-atomica">d’inattendu</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="voie-maltee brasserie-communale">d’une bonne bière</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="molotov">de reggae</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="makeda">de danser tard</button>
+                    <button type="button" class="envie" aria-pressed="false"
+                        data-targets="espace-julien">d’un gros concert</button>
+                </div>
+                <p class="envies-result" id="enviesResult" role="status"></p>
+            </div>
+
+            <div class="patch-panel">
+                <p class="patch-title" id="patchTitle"><span>Les onze scènes</span><span>De la plus petite à la plus
+                        grande</span></p>
+                <ol class="patch-list">
+                    <li><a href="#neuf-salopards"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">01</span><span class="patch-name">Les 9 salopards</span><span
+                                class="patch-format">La toute petite salle</span></a></li>
+                    <li><a href="#gouffre"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">02</span><span class="patch-name">Le Gouffre</span><span
+                                class="patch-format">L’ovni</span></a></li>
+                    <li><a href="#leda-atomica"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">03</span><span class="patch-name">Leda Atomica</span><span
+                                class="patch-format">Le local</span></a></li>
+                    <li><a href="#voie-maltee"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">04</span><span class="patch-name">La Voie maltée</span><span
+                                class="patch-format">Le bar à bières</span></a></li>
+                    <li><a href="#maison-hantee"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">05</span><span class="patch-name">La Maison hantée</span><span
+                                class="patch-format">Le pub</span></a></li>
+                    <li><a href="#intermediaire"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">06</span><span class="patch-name">L’Intermédiaire</span><span
+                                class="patch-format">La cave</span></a></li>
+                    <li><a href="#brasserie-communale"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">07</span><span class="patch-name">La Brasserie communale</span><span
+                                class="patch-format">La brasserie</span></a></li>
+                    <li><a href="#molotov"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">08</span><span class="patch-name">Le Molotov</span><span
+                                class="patch-format">La salle</span></a></li>
+                    <li><a href="#makeda"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">09</span><span class="patch-name">Le Makeda</span><span
+                                class="patch-format">Le club</span></a></li>
+                    <li><a href="#cafe-julien"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">10</span><span class="patch-name">Le Café Julien</span><span
+                                class="patch-format">Le tremplin</span></a></li>
+                    <li><a href="#espace-julien"><span class="patch-jack" aria-hidden="true"></span><span
+                                class="patch-num">11</span><span class="patch-name">L’Espace Julien</span><span
+                                class="patch-format">La grande salle</span></a></li>
+                </ol>
+                <p class="patch-note">Cours Julien, La Plaine et leurs abords, Marseille 6e. Tout tient dans un rayon
+                    d’un quart d’heure à pied.</p>
+            </div>
+        </aside>
+
+        <!-- ==== Introduction ==== -->
+        <div class="mag-intro">
+            <p>
+                Un vendredi soir au Cours Julien, la musique sort de partout&#8239;: d’un soupirail, d’une porte
+                entrouverte, d’une terrasse où quelqu’un a sorti une guitare. Le quartier compte plus de lieux
+                de concert que n’importe quel autre coin de Marseille, et presque tous tiennent dans un rayon
+                d’un quart d’heure à pied.
+            </p>
+            <p>
+                Pour s’y retrouver, on les a reliés d’un même câble, de la plus petite scène à la plus grande. Ce
+                n’est pas un classement&#8239;: chaque format a ses plaisirs. Au début, on est quarante et le groupe
+                joue à deux mètres de vous. À la fin, on est 990 devant la scène. Entre les deux&#8239;: le bar à
+                bières, le pub, la cave, le club. À vous de choisir où vous brancher.
+            </p>
+        </div>
+
+        <!-- ==== Les onze scènes, reliées par le câble ==== -->
+        <section class="scenes" id="scenes" aria-label="Les onze scènes, de la plus petite à la plus grande">
+
+            <!-- Scène 1 -->
+            <article class="scene" id="neuf-salopards" data-lat="43.2941300" data-lng="5.3837490">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">01</span><span class="scene-format">La toute
+                            petite salle</span><span class="scene-jauge">Une quarantaine de personnes</span></p>
+                    <h2 class="scene-name">Les 9 salopards</h2>
+                    <p class="scene-tags">Lieu associatif · concerts · expos · disques</p>
+                </header>
+
+                <p>
+                    On commence au plus près, dans la petite rue piétonne Crudère, à deux pas de la rue Vian. Les
+                    9 salopards sont un lieu associatif&#8239;: un centre culturel qui mélange
+                    expositions, concerts, vente de disques, de livres et d’artisanat, avec l’envie de faire
+                    connaître la scène artistique marseillaise.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/neuf-salopards-facade.jpg"
+                        alt="La devanture des 9 salopards, rue Crudère : une enseigne peinte, une fresque colorée et des vêtements exposés sur le trottoir"
+                        width="640" height="480" loading="lazy">
+                    <img src="../images/mag/salles-concert/neuf-salopards-concert.jpg"
+                        alt="Un concert aux 9 salopards, sous une lumière bleue, le public debout tout près des musiciens"
+                        width="335" height="597" loading="lazy">
+                    <figcaption>La devanture, rue Crudère · Un concert, à deux mètres de la scène</figcaption>
+                </figure>
+
+                <p>
+                    Une quarantaine de personnes, et le groupe joue à deux mètres de vous&#8239;: impossible de
+                    faire plus petit, et c’est tout l’intérêt. C’est l’une des adresses essentielles des concerts
+                    du quartier, celle où passent les groupes locaux et les scènes alternatives, souvent pour
+                    quelques euros.
+                </p>
+
+                <aside class="fiche" aria-label="Les 9 salopards en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Une quarantaine de personnes</dd>
+                        <dt>Styles</dt>
+                        <dd>Scène locale et alternative</dd>
+                        <dt>Quand</dt>
+                        <dd>Les soirs de concert&#8239;: suivre leur programme</dd>
+                        <dt>Adresse</dt>
+                        <dd>2, rue Crudère</dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">De l’autre côté du cours, rue Estelle&#8239;: on descend dans le Gouffre.</p>
+
+            <!-- Scène 2 -->
+            <article class="scene" id="gouffre" data-lat="43.2931950" data-lng="5.3816290">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">02</span><span class="scene-format">L’ovni</span><span
+                            class="scene-jauge">Toute petite salle, plafond bas</span></p>
+                    <h2 class="scene-name">Le Gouffre</h2>
+                    <p class="scene-tags">Concerts perchés · programmation surprise</p>
+                </header>
+
+                <p>
+                    Au 32 de la rue Estelle, le Gouffre porte bien son nom&#8239;: une salle basse de plafond, où
+                    l’on se serre pour des concerts perchés, de ceux qu’on ne verra nulle part ailleurs. La
+                    programmation est aléatoire, les groupes souvent inconnus, et c’est précisément ce qu’on vient
+                    chercher.
+                </p>
+
+                <p>
+                    Un avertissement, quand même&#8239;: on ne sait jamais trop si le lieu existe encore. Avant d’y
+                    aller, un coup d’œil au compte Instagram @zbeul_corp s’impose. Si la porte est ouverte, vous
+                    aurez une histoire à raconter.
+                </p>
+
+                <aside class="fiche" aria-label="Le Gouffre en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Toute petite salle, plafond bas</dd>
+                        <dt>Styles</dt>
+                        <dd>Concerts perchés, programmation imprévisible</dd>
+                        <dt>Quand</dt>
+                        <dd>Au hasard&#8239;: vérifier avant d’y aller</dd>
+                        <dt>Adresse</dt>
+                        <dd>32, rue Estelle</dd>
+                        <dt>Instagram</dt>
+                        <dd><a href="https://www.instagram.com/zbeul_corp/" target="_blank"
+                                rel="noopener noreferrer">@zbeul_corp</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">On traverse La Plaine jusqu’à la rue Saint-Pierre&#8239;: une petite salle cachée dans un local de musiciens.</p>
+
+            <!-- Scène 3 -->
+            <article class="scene" id="leda-atomica" data-lat="43.2930304" data-lng="5.3897032">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">03</span><span class="scene-format">Le
+                            local</span><span class="scene-jauge">Petite jauge</span></p>
+                    <h2 class="scene-name">Leda Atomica</h2>
+                    <p class="scene-tags">Rock · inclassable · fait maison</p>
+                </header>
+
+                <p>
+                    Le nom vient d’un tableau de Dalí, et il cache l’un des plus vieux groupes de rock de
+                    Marseille. Leda Atomica est né dans les années 1980 autour de Phil Spectrum, puis s’est
+                    transformé en collectif, avec son propre label, LAM. En 2001, la bande ouvre à deux pas de La
+                    Plaine, rue Saint-Pierre, un lieu de travail pour toutes les musiques.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/leda-atomica-scene.jpg"
+                        alt="Un groupe de rock joue sous des lumières vertes dans la petite salle de Leda Atomica, ampli et batterie au fond"
+                        width="680" height="510" loading="lazy">
+                    <img src="../images/mag/salles-concert/leda-atomica-concert.jpg"
+                        alt="La salle basse de Leda Atomica dans la pénombre bleue, un trio sur scène et quelques spectateurs"
+                        width="680" height="510" loading="lazy">
+                    <figcaption>La petite salle, rue Saint-Pierre · Un trio sous les projecteurs bleus</figcaption>
+                </figure>
+
+                <p>
+                    C’est ce qui fait le charme de l’endroit&#8239;: ici, des musiciens reçoivent d’autres
+                    musiciens, et leur public, dans le lieu où ils répètent tous les jours. Salles de répétition,
+                    studio d’enregistrement, petite salle de concert&#8239;: les soirées y sont souvent atypiques,
+                    et c’est exactement pour ça qu’on y va.
+                </p>
+
+                <aside class="fiche" aria-label="Leda Atomica en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Petite salle, dans un local de musiciens</dd>
+                        <dt>Styles</dt>
+                        <dd>Rock, et souvent l’inattendu</dd>
+                        <dt>Quand</dt>
+                        <dd>Les soirs de concert&#8239;: suivre leur programme</dd>
+                        <dt>Adresse</dt>
+                        <dd>63, rue Saint-Pierre (5e)</dd>
+                        <dt>Instagram</dt>
+                        <dd><a href="https://www.instagram.com/ledaatomicamusique/" target="_blank"
+                                rel="noopener noreferrer">@ledaatomicamusique</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Retour rue Crudère, à quelques portes des 9 salopards&#8239;: un bar à bières qui a fait de son fond de salle une scène.</p>
+
+            <!-- Scène 4 -->
+            <article class="scene" id="voie-maltee" data-lat="43.2943230" data-lng="5.3841260">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">04</span><span class="scene-format">Le bar à
+                            bières</span><span class="scene-jauge">Environ 70 personnes</span></p>
+                    <h2 class="scene-name">La Voie maltée</h2>
+                    <p class="scene-tags">Bières · concerts · stand-up</p>
+                </header>
+
+                <p>
+                    Rue Crudère, derrière une devanture couverte de graffitis, La Voie maltée est d’abord un bar à
+                    bières&#8239;: des pressions, des bouteilles, des planches à partager et des tonneaux en guise
+                    de mange-debout. Mais au fond de la salle, deux enceintes encadrent une petite estrade.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/voie-maltee-scene.jpg"
+                        alt="Le coin scène de La Voie maltée : une estrade, deux enceintes sur pied et une guirlande lumineuse"
+                        width="1000" height="500" loading="lazy">
+                    <img src="../images/mag/salles-concert/voie-maltee-facade.jpg"
+                        alt="La devanture de La Voie maltée, rue Crudère, la nuit, entre deux murs graffés"
+                        width="1000" height="500" loading="lazy">
+                    <figcaption>La scène, au fond du bar · La devanture, rue Crudère</figcaption>
+                </figure>
+
+                <p>
+                    Depuis quelques années, le bar tient l’une des programmations de concerts les plus régulières
+                    du quartier. Environ 70 personnes, une ambiance de bar où l’on finit toujours par écouter le
+                    groupe plutôt que la conversation. Et une fois par mois, la scène passe au stand-up.
+                </p>
+
+                <aside class="fiche" aria-label="La Voie maltée en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Environ 70 personnes</dd>
+                        <dt>Styles</dt>
+                        <dd>Concerts réguliers, stand-up une fois par mois</dd>
+                        <dt>Quand</dt>
+                        <dd>Du mardi au samedi, de 17&nbsp;h à 2&nbsp;h</dd>
+                        <dt>Adresse</dt>
+                        <dd>7, rue Crudère</dd>
+                        <dt>Facebook</dt>
+                        <dd><a href="https://www.facebook.com/lavoiemalteemarseille/" target="_blank"
+                                rel="noopener noreferrer">La Voie maltée</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Tout près, rue Vian&#8239;: une scène, un billard, et des guitares qui saturent.</p>
+
+            <!-- Scène 5 -->
+            <article class="scene" id="maison-hantee" data-lat="43.2945474" data-lng="5.3837588">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">05</span><span class="scene-format">Le
+                            pub</span><span class="scene-jauge">Une centaine de personnes</span></p>
+                    <h2 class="scene-name">La Maison hantée</h2>
+                    <p class="scene-tags">Blues · rock’n’roll · métal</p>
+                </header>
+
+                <p>
+                    Rue Vian, une façade rose, deux masques sculptés et une porte en bois qui a l’air de grincer.
+                    La Maison hantée est là depuis plus de trente ans, et elle se présente elle-même comme une
+                    maison de famille «&#8239;hantée par ses souvenirs&#8239;». Dedans&#8239;: un billard, un
+                    baby-foot, des peintures aux murs et une cuisine généreuse, inspirée de celle de la mère du
+                    patron.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/maison-hantee-facade.jpg"
+                        alt="La façade rose de La Maison hantée, rue Vian, avec sa porte en bois et ses masques sculptés"
+                        width="931" height="599" loading="lazy">
+                    <img src="../images/mag/salles-concert/maison-hantee-salle.jpg"
+                        alt="L'intérieur de La Maison hantée : le bar, le billard, le baby-foot et l'escalier"
+                        width="1000" height="613" loading="lazy">
+                    <figcaption>La façade, rue Vian · Le bar, le billard et le baby-foot</figcaption>
+                </figure>
+
+                <p>
+                    Côté musique, c’est un pub rock et métal&#8239;: les concerts vont du blues au métal «&#8239;bien
+                    énervé&#8239;», en passant par le rock’n’roll. Une centaine de personnes, une petite scène, une
+                    petite terrasse. Le genre d’adresse où l’on entre pour une bière et où l’on reste pour le groupe.
+                </p>
+
+                <aside class="fiche" aria-label="La Maison hantée en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Une centaine de personnes</dd>
+                        <dt>Styles</dt>
+                        <dd>Blues, rock’n’roll, métal</dd>
+                        <dt>Quand</dt>
+                        <dd>Du lundi au samedi, de 19&nbsp;h à 2&nbsp;h</dd>
+                        <dt>Adresse</dt>
+                        <dd>10, rue Vian</dd>
+                        <dt>Instagram</dt>
+                        <dd><a href="https://www.instagram.com/lamaisonhanteeofficiel/" target="_blank"
+                                rel="noopener noreferrer">@lamaisonhanteeofficiel</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Cap sur la place Jean-Jaurès, et on descend dans la salle du bas.</p>
+
+            <!-- Scène 6 -->
+            <article class="scene" id="intermediaire" data-lat="43.2939593" data-lng="5.3864972">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">06</span><span class="scene-format">La
+                            cave</span><span class="scene-jauge">Salle intime</span></p>
+                    <h2 class="scene-name">L’Intermédiaire</h2>
+                    <p class="scene-tags">Rock · ska · reggae · chanson</p>
+                </header>
+
+                <p>
+                    Sur la place Jean-Jaurès, L’Intermédiaire a tout du bistrot de quartier&#8239;: un décor coloré,
+                    des bières spéciales, des matchs retransmis. Mais l’essentiel se passe en bas, dans une salle
+                    au plafond bas réservée aux concerts, l’une des meilleures de Marseille pour les groupes
+                    alternatifs.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/intermediaire-concert.jpg"
+                        alt="Un groupe joue devant une salle comble à L'Intermédiaire, sous des lumières violettes"
+                        width="799" height="533" loading="lazy">
+                    <img src="../images/mag/salles-concert/intermediaire-scene.jpg"
+                        alt="Le chanteur au chapeau devant la bannière de L'Intermédiaire, public au premier rang"
+                        width="422" height="448" loading="lazy">
+                    <figcaption>La salle du bas, un soir de concert · Sous la bannière</figcaption>
+                </figure>
+
+                <p>
+                    La programmation ne choisit pas son camp&#8239;: rock, chanson, reggae, ska, musiques
+                    occitanes, électro, DJ sets. Après quelques mois de travaux et un changement de propriétaire,
+                    le lieu a rouvert avec le même principe&#8239;: des concerts presque tous les soirs, et le
+                    groupe à portée de main.
+                </p>
+
+                <aside class="fiche" aria-label="L'Intermédiaire en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Une salle intime, au plafond bas</dd>
+                        <dt>Styles</dt>
+                        <dd>Rock, ska, reggae, chanson, électro</dd>
+                        <dt>Quand</dt>
+                        <dd>Tous les jours, jusqu’à 2&nbsp;h</dd>
+                        <dt>Adresse</dt>
+                        <dd>63, place Jean-Jaurès</dd>
+                        <dt>Instagram</dt>
+                        <dd><a href="https://www.instagram.com/l_intermediaire/" target="_blank"
+                                rel="noopener noreferrer">@l_intermediaire</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Retour sur le cours, au bord de la fontaine&#8239;: de la bière brassée derrière une vitre, et 340&nbsp;m² pour les spectacles.</p>
+
+            <!-- Scène 7 -->
+            <article class="scene" id="brasserie-communale" data-lat="43.2937230" data-lng="5.3836112">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">07</span><span class="scene-format">La
+                            brasserie</span><span class="scene-jauge">340&nbsp;m² d’événements</span></p>
+                    <h2 class="scene-name">La Brasserie communale</h2>
+                    <p class="scene-tags">Microbrasserie · concerts · théâtre</p>
+                </header>
+
+                <p>
+                    Antoine, César et Loïc viennent de l’Équitable Café, un lieu marseillais connu pour sa
+                    programmation culturelle. Avec la Brasserie communale, au bord de la fontaine du cours Julien,
+                    ils ont tout réuni&#8239;: un bar, un restaurant, une salle d’exposition et une microbrasserie,
+                    visible derrière une vitre au fond de la salle.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/brasserie-facade.jpg"
+                        alt="Une foule dense devant l'entrée de La Brasserie communale, en noir et blanc"
+                        width="1000" height="667" loading="lazy">
+                    <img src="../images/mag/salles-concert/brasserie-concert.jpg"
+                        alt="Un spectateur lève les bras devant la scène décorée de La Brasserie communale"
+                        width="1000" height="667" loading="lazy">
+                    <figcaption>Devant l’entrée, un soir d’affluence · Les bras en l’air</figcaption>
+                </figure>
+
+                <p>
+                    Le cœur du lieu, pour ce qui nous occupe, ce sont les 340&nbsp;m² dédiés aux événements&#8239;:
+                    concerts, performances, théâtre, projections, avec scène, son et vidéo. Et une fois le concert
+                    fini, la bière de la maison n’a pas loin à voyager. Le trio a d’ailleurs ouvert ensuite un bar
+                    à cocktails, La Soifferie, qu’on vous a fait visiter dans <a
+                        href="bar-cocktails.html#la-soifferie">notre tournée des cocktails</a>.
+                </p>
+
+                <aside class="fiche" aria-label="La Brasserie communale en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>340&nbsp;m² pour les événements</dd>
+                        <dt>Styles</dt>
+                        <dd>Concerts, performances, théâtre, projections</dd>
+                        <dt>Quand</dt>
+                        <dd>Tous les jours, jusqu’à 1&nbsp;h ou 2&nbsp;h</dd>
+                        <dt>Adresse</dt>
+                        <dd>57, cours Julien</dd>
+                        <dt>Site</dt>
+                        <dd><a href="https://www.brasseriecommunale.fr" target="_blank"
+                                rel="noopener noreferrer">brasseriecommunale.fr</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Place aux salles de concert au sens strict, avec billetterie et balances, à commencer par la place Paul-Cézanne.</p>
+
+            <!-- Scène 8 -->
+            <article class="scene" id="molotov" data-lat="43.2927083" data-lng="5.3831674">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">08</span><span class="scene-format">La
+                            salle</span><span class="scene-jauge">Environ 150&nbsp;m²</span></p>
+                    <h2 class="scene-name">Le Molotov</h2>
+                    <p class="scene-tags">Reggae · rock · soul · électro</p>
+                </header>
+
+                <p>
+                    Place Paul-Cézanne, l’ancien Balthazar est devenu le Molotov en décembre 2012. Environ
+                    150&nbsp;m², une vraie scène, une billetterie, et une programmation qui va du reggae à
+                    l’électro. Pour beaucoup de Marseillais, c’est <em>la</em> salle du quartier, celle où l’on a
+                    vu son premier concert sans parents.
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/molotov-concert.jpg"
+                        alt="Un chanteur en chemise imprimée et casquette, sourire aux lèvres, sur la scène du Molotov"
+                        width="667" height="1000" loading="lazy">
+                    <img src="../images/mag/salles-concert/molotov-scene.jpg"
+                        alt="Rudy Mills chante au micro sur la scène du Molotov, en noir et blanc" width="741"
+                        height="1000" loading="lazy">
+                    <figcaption>Tex, puis Rudy Mills, en live au Molotov en 2022</figcaption>
+                </figure>
+
+                <p>
+                    Le Molotov a failli disparaître&#8239;: en 2016, la préfecture envisage une fermeture
+                    administrative pour nuisances sonores. Une pétition réunit plus de 5&nbsp;000 signatures en
+                    moins de vingt-quatre heures. La salle est toujours là, et elle a même ouvert une petite
+                    sœur, le Dodu, à la Belle de Mai.
+                </p>
+
+                <aside class="fiche" aria-label="Le Molotov en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>Environ 150&nbsp;m², une vraie salle</dd>
+                        <dt>Styles</dt>
+                        <dd>Du reggae à l’électro</dd>
+                        <dt>Quand</dt>
+                        <dd>Les soirs de concert&#8239;: billets en ligne</dd>
+                        <dt>Adresse</dt>
+                        <dd>3, place Paul-Cézanne</dd>
+                        <dt>Site</dt>
+                        <dd><a href="https://lemolotov.com" target="_blank"
+                                rel="noopener noreferrer">lemolotov.com</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Un pas hors du quartier, rue Ferrari&#8239;: 270 places et quatre soirées par semaine.</p>
+
+            <!-- Scène 9 -->
+            <article class="scene" id="makeda" data-lat="43.2932101" data-lng="5.3917578">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">09</span><span class="scene-format">Le
+                            club</span><span class="scene-jauge">270 places</span></p>
+                    <h2 class="scene-name">Le Makeda</h2>
+                    <p class="scene-tags">Rap · électro · rock · boums</p>
+                </header>
+
+                <p>
+                    Pendant des années, le 103 rue Ferrari s’appelait le Poste à Galène. En 2019, une nouvelle
+                    équipe, menée par Francine Ouedraogo Bonnot, le rebaptise Makeda, du nom de la reine de Saba.
+                    Le lieu se veut convivial, citoyen et engagé, avec 270 places et quatre soirées par semaine.
+                </p>
+
+                <figure class="scene-photos scene-photos--solo">
+                    <img src="../images/mag/salles-concert/makeda-concert.jpg"
+                        alt="La scène du Makeda baignée de lumières vertes et bleues, devant une salle pleine"
+                        width="1000" height="563" loading="lazy">
+                    <figcaption>La scène du Makeda, salle pleine</figcaption>
+                </figure>
+
+                <p>
+                    La programmation ne connaît pas de frontière&#8239;: rap, électro, rock, et des soirées qui ont
+                    leurs fidèles. Gâter le coin, dont les recettes vont à une association qui aide les mineurs
+                    étrangers isolés&#8239;; Rasputin, collectif queer et italo-disco&#8239;; et la Boum du samedi,
+                    où l’on reprend au micro les tubes des années 1990 et 2000.
+                </p>
+
+                <aside class="fiche" aria-label="Le Makeda en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>270 places</dd>
+                        <dt>Styles</dt>
+                        <dd>Rap, électro, rock, soirées queer et boums</dd>
+                        <dt>Quand</dt>
+                        <dd>Quatre soirées par semaine</dd>
+                        <dt>Adresse</dt>
+                        <dd>103, rue Ferrari (5e) · métro Baille</dd>
+                        <dt>Site</dt>
+                        <dd><a href="https://lemakeda.com" target="_blank"
+                                rel="noopener noreferrer">lemakeda.com</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Retour au 39 cours Julien, où une salle vient de rouvrir.</p>
+
+            <!-- Scène 10 -->
+            <article class="scene" id="cafe-julien" data-lat="43.2941400" data-lng="5.3832200">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">10</span><span class="scene-format">Le
+                            tremplin</span><span class="scene-jauge">280 places</span></p>
+                    <h2 class="scene-name">Le Café Julien</h2>
+                    <p class="scene-tags">Scène émergente · concerts · DJ sets</p>
+                </header>
+
+                <p>
+                    C’est l’adresse neuve de la liste, ou presque. Le Café Julien, la petite salle de l’Espace
+                    Julien, a rouvert le 2 octobre 2026 après plusieurs mois de travaux. En fusionnant avec le
+                    grand hall du bâtiment, sa jauge passe de 180 à 280 places. Une baie vitrée l’ouvre désormais
+                    sur le cours Julien, l’acoustique a été refaite, et le bar est accessible aux fauteuils
+                    roulants.
+                </p>
+
+                <figure class="scene-photos scene-photos--solo">
+                    <img src="../images/mag/salles-concert/cafe-julien-concert.jpg"
+                        alt="Une foule les bras levés devant la scène, sous la mezzanine bleue de l'Espace Julien"
+                        width="1000" height="563" loading="lazy">
+                    <figcaption>Les bras en l’air, à l’Espace Julien</figcaption>
+                </figure>
+
+                <p>
+                    L’idée, c’est d’être «&#8239;le maillon manquant entre les scènes intimistes et les grandes
+                    salles&#8239;»&#8239;: l’endroit où un groupe qui a rempli L’Intermédiaire peut passer à
+                    l’étape suivante. Et le jeudi, de 10&nbsp;h à 17&nbsp;h, il ouvre en journée&#8239;: expositions,
+                    ateliers, radios locales en direct.
+                </p>
+
+                <aside class="fiche" aria-label="Le Café Julien en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>280 places</dd>
+                        <dt>Styles</dt>
+                        <dd>Scène émergente, concerts, DJ sets</dd>
+                        <dt>Quand</dt>
+                        <dd>Le soir&#8239;; le jeudi aussi en journée</dd>
+                        <dt>Adresse</dt>
+                        <dd>39, cours Julien</dd>
+                        <dt>Site</dt>
+                        <dd><a href="https://espace-julien.com" target="_blank"
+                                rel="noopener noreferrer">espace-julien.com</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+            <p class="liaison">Même adresse, porte d’à côté&#8239;: la grande salle.</p>
+
+            <!-- Scène 11 -->
+            <article class="scene" id="espace-julien" data-lat="43.2943103" data-lng="5.3834346">
+                <span class="prise" aria-hidden="true"></span>
+                <header class="scene-head">
+                    <p class="scene-meta"><span class="scene-num">11</span><span class="scene-format">La grande
+                            salle</span><span class="scene-jauge">990 places</span></p>
+                    <h2 class="scene-name">L’Espace Julien</h2>
+                    <p class="scene-tags">Musiques actuelles · têtes d’affiche · scène locale</p>
+                </header>
+
+                <p>
+                    Depuis trente ans, l’Espace Julien fait vivre le cours au rythme des concerts. C’est la grande
+                    salle du quartier&#8239;: 990 places debout, 600 assises, des artistes venus du monde entier
+                    et des groupes marseillais qui jouent leur plus gros concert. Et pourtant, la maison le
+                    revendique&#8239;: «&#8239;Ici, artistes et public sont tout près.&#8239;»
+                </p>
+
+                <figure class="scene-photos">
+                    <img src="../images/mag/salles-concert/espace-julien-concert.jpg"
+                        alt="Une chanteuse aux cheveux blonds chante au micro sous les projecteurs bleus de l'Espace Julien"
+                        width="563" height="1000" loading="lazy">
+                    <img src="../images/mag/salles-concert/espace-julien-salle.jpg"
+                        alt="La foule devant la scène de l'Espace Julien, sous le plafond peint et coloré de la salle"
+                        width="625" height="463" loading="lazy">
+                    <figcaption>Théa en concert, 2026 · La salle comble, sous son plafond peint</figcaption>
+                </figure>
+
+                <p>
+                    Depuis 2023, la salle est gérée par La Responsabilité des Rêves, une coopérative de quatre
+                    lieux culturels marseillais, parmi lesquels… le Makeda, croisé trois scènes plus haut. Dans le
+                    quartier, la boucle est bouclée&#8239;: les petites scènes font grandir les groupes, les
+                    grandes les accueillent, et tout le monde se retrouve au comptoir après.
+                </p>
+
+                <aside class="fiche" aria-label="L'Espace Julien en bref">
+                    <p class="fiche-title" aria-hidden="true">Fiche technique</p>
+                    <dl>
+                        <dt>Jauge</dt>
+                        <dd>990 places debout, 600 assises</dd>
+                        <dt>Styles</dt>
+                        <dd>Musiques actuelles, têtes d’affiche et scène locale</dd>
+                        <dt>Quand</dt>
+                        <dd>Les soirs de concert&#8239;: billets en ligne</dd>
+                        <dt>Adresse</dt>
+                        <dd>39, cours Julien</dd>
+                        <dt>Site</dt>
+                        <dd><a href="https://espace-julien.com" target="_blank"
+                                rel="noopener noreferrer">espace-julien.com</a></dd>
+                    </dl>
+                </aside>
+            </article>
+
+        </section>
+
+        <!-- ==== La carte ==== -->
+        <section class="son-carte" aria-labelledby="sonCarteTitle">
+            <p class="mag-kicker" id="sonCarteTitle">Les onze scènes sur la carte</p>
+            <p class="son-carte-intro">Les numéros suivent l’ordre de l’article. Un clic sur un point vous ramène à la
+                scène.</p>
+            <div class="son-map" id="sonMap" aria-hidden="true"></div>
+        </section>
+
+        <!-- ==== Fin du câble ==== -->
+        <section class="mag-outro">
+            <p class="mag-kicker">Fin du câble</p>
+            <h2 class="mag-outro-title">Onze scènes, un quartier,<br>et toujours une prise libre</h2>
+            <p>
+                La programmation change toutes les semaines&#8239;: le plus sûr reste de suivre les lieux sur leur
+                site ou leurs réseaux. Et pour l’avant ou l’après-concert, le Mag a déjà fait la tournée des bars à
+                cocktails.
+            </p>
+            <div class="mag-outro-actions">
+                <a href="../lieux.html#carte" class="mag-btn mag-btn--primary" data-track="carte">Tous les lieux sur la
+                    carte</a>
+                <a href="bar-cocktails.html" class="mag-btn" data-track="cocktails">La tournée des cocktails</a>
+                <button type="button" class="mag-btn" id="magShare">Partager l’article</button>
+                <a href="../mag.html" class="mag-btn mag-btn--ghost">Le Mag</a>
+            </div>
+            <p class="mag-share-status" id="magShareStatus" role="status"></p>
+        </section>
+
+        <!-- ==== Questions fréquentes ==== -->
+        <section class="mag-faq" aria-labelledby="magFaqTitle">
+            <h2 class="mag-kicker" id="magFaqTitle">Questions fréquentes</h2>
+            <div class="mag-faq-list">
+                <details>
+                    <summary>Où voir un concert au Cours Julien&#8239;?</summary>
+                    <p>Le quartier compte une dizaine de lieux&#8239;: des lieux associatifs (Les 9 salopards, Le
+                        Gouffre, Leda Atomica), des bars avec scène (La Voie maltée, La Maison hantée,
+                        L’Intermédiaire, La Brasserie communale) et de vraies salles (Le Molotov, Le Makeda, le Café
+                        Julien et l’Espace Julien).</p>
+                </details>
+                <details>
+                    <summary>Quelle est la plus grande salle de concert du Cours Julien&#8239;?</summary>
+                    <p>L’Espace Julien, au 39 cours Julien&#8239;: 990 places debout, 600 assises. Le Café Julien,
+                        dans le même bâtiment, accueille 280 personnes depuis sa réouverture en octobre 2026.</p>
+                </details>
+                <details>
+                    <summary>Où écouter du rock ou du métal au Cours Julien&#8239;?</summary>
+                    <p>La Maison hantée, 10 rue Vian, est un pub rock et métal depuis plus de trente ans&#8239;:
+                        concerts du blues au métal, billard et baby-foot. L’Intermédiaire, place Jean-Jaurès,
+                        programme aussi beaucoup de rock alternatif.</p>
+                </details>
+                <details>
+                    <summary>Où voir un concert dans une petite salle au Cours Julien&#8239;?</summary>
+                    <p>Les 9 salopards, 2 rue Crudère, accueillent une quarantaine de personnes. Juste à côté, La
+                        Voie maltée, bar à bières au 7 rue Crudère, programme des concerts réguliers pour environ 70
+                        personnes. La Maison hantée, rue Vian, en reçoit une centaine.</p>
+                </details>
+                <details>
+                    <summary>Le Café Julien a-t-il rouvert&#8239;?</summary>
+                    <p>Oui, le 2 octobre 2026, après plusieurs mois de travaux. Sa jauge passe de 180 à 280 places,
+                        une baie vitrée l’ouvre sur le cours Julien, et il accueille du public en journée le
+                        jeudi.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- ==== Pour aller plus loin ==== -->
+        <section class="mag-refs">
+            <p class="mag-kicker">Pour aller plus loin</p>
+            <ul>
+                <li>
+                    <p class="mag-ref-title"><em>Le Makeda</em></p>
+                    <p class="mag-ref-meta">Stéphane Durand — <em>Time Out Marseille</em>, 12 mai 2024.</p>
+                    <a href="https://www.timeout.fr/marseille/clubbing/le-makeda" target="_blank"
+                        rel="noopener noreferrer">timeout.fr</a>
+                </li>
+                <li>
+                    <p class="mag-ref-title"><em>Le Café Julien se réinvente pour contrer la fragilité des petites
+                            salles</em></p>
+                    <p class="mag-ref-meta"><em>Presse Agence</em>, octobre 2026.</p>
+                    <a href="https://presseagence.fr/marseille-scene-musicale-le-cafe-julien-se-reinvente-pour-contrer-la-fragilite-des-petites-salles/"
+                        target="_blank" rel="noopener noreferrer">presseagence.fr</a>
+                </li>
+                <li>
+                    <p class="mag-ref-title"><em>Au Cours Julien, la Brasserie communale</em></p>
+                    <p class="mag-ref-meta"><em>Made in Marseille</em>, 23 septembre 2020.</p>
+                    <a href="https://madeinmarseille.net/75595-le-cours-julien-brasserie-communale-biere/"
+                        target="_blank" rel="noopener noreferrer">madeinmarseille.net</a>
+                </li>
+                <li>
+                    <p class="mag-ref-title"><em>Leda Atomica Musique</em></p>
+                    <p class="mag-ref-meta"><em>Fréquence Sud</em>.</p>
+                    <a href="https://www.frequence-sud.fr/loc-279-leda_atomica_musique_marseille_espaces_culturels___salle_de_spectacle.html"
+                        target="_blank" rel="noopener noreferrer">frequence-sud.fr</a>
+                </li>
+            </ul>
+            <p class="mag-credits">Photos&#8239;: Elyn (CC0) et Fred reggaelover (CC BY-SA 4.0), via Wikimedia
+                Commons&#8239;; La Voie maltée / Privateaser, La Maison hantée / Schlouk Map, La Brasserie communale,
+                l’Espace Julien, <em>Time Out</em>&#8239;; Cours Ju — Plaine.</p>
+        </section>
+    </main>
+
+    <!-- ==== Footer ==== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cours Ju — Plaine</h3>
+                    <p>Bars, concerts, galeries et vie de quartier, à Marseille dans le 6ᵉ arrondissement.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <p>Ce site recense les lieux du quartier Notre-Dame-du-Mont, également connu sous les noms
+                        de Cours Julien et La Plaine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Une question, un lieu à proposer ?<br>
+                        <a href="../contact.html" class="footer-link">Formulaire de contact →</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-install" data-pwa-install hidden>
+                <img src="../icons/icon-192.png" alt="" class="footer-install-icon" width="36" height="36">
+                <p class="footer-install-text"><strong>L'app Cours Ju</strong>Accès rapide depuis ton écran d'accueil,
+                    même hors ligne.</p>
+                <button type="button" class="install-btn install-btn--small" data-pwa-install-btn>Installer</button>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Cours Ju — Plaine. Conçu avec ❤️ à Marseille par <a href="https://virgule-studio.fr"
+                        target="_blank" rel="noopener noreferrer" class="footer-studio-link">Virgule-Studio</a>.
+                    <a href="../admin.html" class="footer-admin" title="Administration"
+                        aria-label="Administration">🔒</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="mag.js" defer></script>
+    <script src="concerts.js" defer></script>
+    <script
+        src="https://websites-monitoring.vercel.app/tracking.js?siteId=cours-julien&key=280e3472822f4f6a95f61310b65cf8fd0204ea08e8ae424eec5edef940ce9d2e"></script>
+</body>
+
+</html>
