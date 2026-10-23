@@ -13,6 +13,13 @@ function publicUrlFromPath(path) {
     return `https://firebasestorage.googleapis.com/v0/b/${STORAGE_BUCKET}/o/${encoded}?alt=media`;
 }
 
+// Photos d'un lieu (la première est la principale) ; reprend image/vignette
+// pour les fiches d'avant les photos multiples. Même logique que storage-helpers.js.
+function photosDuLieu(lieu) {
+    if (Array.isArray(lieu.photos)) return lieu.photos.filter(p => p && p.image);
+    return lieu.image ? [{ image: lieu.image, vignette: lieu.vignette || '' }] : [];
+}
+
 function escapeHtml(str) {
     if (str == null) return '';
     return String(str)
@@ -35,6 +42,7 @@ function parseFirestoreValue(value) {
     if (value.integerValue !== undefined) return parseInt(value.integerValue, 10);
     if (value.doubleValue !== undefined) return parseFloat(value.doubleValue);
     if (value.booleanValue !== undefined) return value.booleanValue;
+    if (value.timestampValue !== undefined) return value.timestampValue;
     if (value.arrayValue !== undefined) {
         return (value.arrayValue.values || []).map(parseFirestoreValue);
     }
@@ -86,7 +94,8 @@ async function buildLieux() {
         categories[cat.id] = cat;
     }
 
-    const lieux = lieuxRaw.sort((a, b) => (a.nom || '').localeCompare(b.nom || ''));
+    // Les lieux non publiés (brouillons) ne sont pas mis dans les pages
+    const lieux = lieuxRaw.filter(l => l.publie !== false).sort((a, b) => (a.nom || '').localeCompare(b.nom || ''));
 
     console.log(`Fetched ${lieux.length} lieux and ${categoriesRaw.length} categories.`);
 
@@ -134,8 +143,9 @@ function injectInto(htmlPath, lang, lieux, categories) {
             : '';
 
         // Vignette dans la liste ; photo complète pour l'agrandissement
-        const thumbUrl = publicUrlFromPath(lieu.vignette || lieu.image);
-        const imageUrl = publicUrlFromPath(lieu.image);
+        const principale = photosDuLieu(lieu)[0];
+        const thumbUrl = principale ? publicUrlFromPath(principale.vignette || principale.image) : null;
+        const imageUrl = principale ? publicUrlFromPath(principale.image) : null;
         const image = imageUrl
             ? `<img src="${escapeAttr(thumbUrl)}"\n                alt="${escapeAttr(lieu.nom)}"\n                class="card-image"\n                data-src="${escapeAttr(imageUrl)}"\n                data-caption="${escapeAttr(lieu.nom)}"\n                loading="lazy">`
             : '<div class="card-image card-image-placeholder">📍</div>';
@@ -166,14 +176,19 @@ function injectInto(htmlPath, lang, lieux, categories) {
         "@type": "ItemList",
         "inLanguage": lang === 'en' ? 'en-GB' : 'fr-FR',
         "itemListElement": lieux.map((lieu, index) => {
-            const imageUrl = publicUrlFromPath(lieu.image);
+            const imageUrls = photosDuLieu(lieu).map(p => publicUrlFromPath(p.image));
+            const instagramUrl = lieu.instagram ? `https://instagram.com/${lieu.instagram.replace('@', '')}` : undefined;
             const item = {
                 "@type": "LocalBusiness",
                 "name": lieu.nom,
-                "url": lieu.instagram ? `https://instagram.com/${lieu.instagram.replace('@', '')}` : undefined,
+                "url": lieu.site || instagramUrl,
             };
+            if (lieu.site && instagramUrl) item.sameAs = [instagramUrl];
             if (desc(lieu)) item.description = desc(lieu);
-            if (imageUrl) item.image = imageUrl;
+            if (imageUrls.length) item.image = imageUrls.length > 1 ? imageUrls : imageUrls[0];
+            if (lieu.adresse) item.address = lieu.adresse;
+            if (lieu.telephone) item.telephone = lieu.telephone;
+            if ([1, 2, 3].includes(lieu.prix)) item.priceRange = '€'.repeat(lieu.prix);
             if (lieu.latitude && lieu.longitude) {
                 item.geo = {
                     "@type": "GeoCoordinates",

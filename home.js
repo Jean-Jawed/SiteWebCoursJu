@@ -378,9 +378,9 @@ function initEnvies(lieux, categories) {
         document.querySelectorAll('.zine-dymo.is-active').forEach(el => el.classList.remove('is-active'));
         link.classList.add('is-active');
 
-        const withPhoto = items.filter(l => l.image);
+        const withPhoto = items.filter(l => lieuPhotoUrl(l));
         const lieu = withPhoto[Math.floor(Math.random() * withPhoto.length)] || items[0];
-        previewImg.src = lieu.image ? lieuPhotoUrl(lieu, 'vignette') : '';
+        previewImg.src = lieuPhotoUrl(lieu, 'vignette') || '';
         previewImg.alt = lieu.nom;
         previewName.textContent = lieu.nom;
         previewMeta.textContent = `${CJ.desc(lieu)} · ${CJ.t('home.voirLes', { n: items.length })}`;
@@ -402,7 +402,7 @@ function initTirage(lieux, categories, moment) {
     if (!container) return;
 
     const conf = MOMENTS[moment];
-    const avecPhoto = lieux.filter(l => l.image);
+    const avecPhoto = lieux.filter(l => lieuPhotoUrl(l));
     const prioritaires = lieuxDeCategories(avecPhoto, conf.priorite);
     const complement = lieuxDeCategories(avecPhoto, conf.complement).filter(l => !prioritaires.includes(l));
     let tour = 0;

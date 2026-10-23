@@ -33,17 +33,33 @@ export function publicUrlFromPath(path) {
 }
 
 /**
- * URL de la photo d'un lieu, en privilégiant la vignette quand elle existe
+ * Photos d'un lieu, la première étant la photo principale.
+ * Les fiches d'avant les photos multiples n'ont que image/vignette : on les reprend.
+ *
+ * @param {{photos?: Array<{image: string, vignette?: string}>, image?: string, vignette?: string}} lieu
+ * @returns {Array<{image: string, vignette: string}>}
+ */
+export function photosDuLieu(lieu) {
+    if (!lieu) return [];
+    if (Array.isArray(lieu.photos)) {
+        return lieu.photos.filter(p => p?.image).map(p => ({ image: p.image, vignette: p.vignette || '' }));
+    }
+    return lieu.image ? [{ image: lieu.image, vignette: lieu.vignette || '' }] : [];
+}
+
+/**
+ * URL de la photo principale d'un lieu, en privilégiant la vignette quand elle existe
  * (les lieux créés avant les vignettes n'en ont pas : on retombe sur la photo).
  *
- * @param {{image?: string, vignette?: string}} lieu
+ * @param {object} lieu
  * @param {'vignette'|'photo'} taille
  * @returns {string|null}
  */
 export function lieuPhotoUrl(lieu, taille = 'vignette') {
-    if (!lieu) return null;
-    if (taille === 'vignette' && lieu.vignette) return publicUrlFromPath(lieu.vignette);
-    return publicUrlFromPath(lieu.image);
+    const principale = photosDuLieu(lieu)[0];
+    if (!principale) return null;
+    if (taille === 'vignette' && principale.vignette) return publicUrlFromPath(principale.vignette);
+    return publicUrlFromPath(principale.image);
 }
 
 /**

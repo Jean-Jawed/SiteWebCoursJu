@@ -266,8 +266,14 @@ code {
     min-width: 200px;
 }
 
-.toolbar .btn {
+.toolbar > .btn,
+.toolbar-actions {
     margin-left: auto;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 0.6rem;
 }
 
 .count-info {
@@ -698,8 +704,13 @@ code {
         align-items: stretch;
     }
 
-    .toolbar .btn {
+    .toolbar > .btn,
+    .toolbar-actions {
         margin-left: 0;
+    }
+
+    .toolbar-actions .btn {
+        flex: 1;
     }
 
     .form-row-split {
@@ -840,4 +851,347 @@ code {
 .status-missing {
     color: #e67e22;
     font-weight: 700;
+}
+
+/* Les éléments en display: flex/grid ignoreraient sinon l'attribut hidden */
+[hidden] {
+    display: none !important;
+}
+
+/* Lieu non publié : ligne atténuée */
+.admin-table tr.row-off td:not(:first-child) {
+    opacity: 0.5;
+}
+
+.row-tags {
+    margin-top: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+/* =====================
+   Interrupteur (publication)
+   ===================== */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.switch input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.switch span {
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    background: #ccd1d7;
+    transition: background 0.15s;
+    pointer-events: none;
+}
+
+.switch span::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s;
+}
+
+.switch input:checked + span {
+    background: #27ae60;
+}
+
+.switch input:checked + span::after {
+    transform: translateX(16px);
+}
+
+.switch input:focus-visible + span {
+    outline: 2px solid #ff4500;
+    outline-offset: 2px;
+}
+
+.switch input:disabled + span {
+    opacity: 0.5;
+}
+
+.switch-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.form-row-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* =====================
+   Choix du prix (fiche et édition groupée)
+   ===================== */
+.prix-choix {
+    display: inline-flex;
+    border: 1px solid #d5d8dd;
+    border-radius: 6px;
+    overflow: hidden;
+    align-self: flex-start;
+}
+
+.prix-choix label {
+    position: relative;
+    cursor: pointer;
+}
+
+.prix-choix input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.prix-choix span,
+.prix-choix button {
+    display: block;
+    min-width: 3.2rem;
+    padding: 0.45rem 0.8rem;
+    border: none;
+    border-left: 1px solid #d5d8dd;
+    background: white;
+    color: #2c3e50;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.prix-choix label:first-child span,
+.prix-choix button:first-child {
+    border-left: none;
+}
+
+.prix-choix input:checked + span,
+.prix-choix button.active {
+    background: #ff4500;
+    color: white;
+}
+
+.prix-choix input:focus-visible + span {
+    outline: 2px solid #ff4500;
+    outline-offset: -2px;
+}
+
+.prix-choix-compact button {
+    min-width: 2.8rem;
+    padding: 0.3rem 0.6rem;
+}
+
+/* Champ texte + bouton (slug) */
+.input-with-btn {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.input-with-btn input {
+    flex: 1;
+    min-width: 0;
+}
+
+.input-with-btn .btn-icon {
+    margin-right: 0;
+}
+
+.slug-input {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #d5d8dd;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.85rem;
+    min-width: 220px;
+}
+
+.input-error,
+.form-group input.input-error {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+/* Dates sous le titre de la fiche */
+.modal-dates {
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+.modal-dates:empty {
+    display: none;
+}
+
+/* =====================
+   Photos multiples
+   ===================== */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.photo-grid > .image-preview {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 100px;
+}
+
+.photo-item {
+    position: relative;
+}
+
+.photo-item .image-preview {
+    width: 100%;
+    height: 110px;
+}
+
+.photo-item.photo-new .image-preview {
+    border: 2px solid #ff4500;
+}
+
+.photo-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    background: rgba(44, 62, 80, 0.85);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.photo-badge-new {
+    left: auto;
+    right: 6px;
+    background: #ff4500;
+}
+
+.photo-item figcaption {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.photo-item figcaption button {
+    flex: 1;
+    padding: 2px 0;
+    border: 1px solid #d5d8dd;
+    border-radius: 4px;
+    background: white;
+    color: #2c3e50;
+    font-size: 0.8rem;
+}
+
+.photo-item figcaption button:hover:not(:disabled) {
+    background: #f0f1f3;
+}
+
+.photo-item figcaption button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.photo-item figcaption button[data-photo="retirer"]:hover {
+    background: #fee;
+    color: #c0392b;
+}
+
+/* =====================
+   Édition groupée
+   ===================== */
+.bulk-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    margin: -0.5rem 0 1rem;
+    padding: 0.8rem 1rem;
+    background: #fff7f2;
+    border: 1px solid #ffd2bd;
+    border-radius: 8px;
+}
+
+.bulk-title {
+    font-weight: 700;
+    color: #ff4500;
+}
+
+.bulk-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.bulk-field {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #d5d8dd;
+    border-radius: 16px;
+    background: white;
+    font-size: 0.85rem;
+    color: #2c3e50;
+}
+
+.bulk-field.active {
+    background: #2c3e50;
+    border-color: #2c3e50;
+    color: white;
+}
+
+.bulk-count {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.bulk-bar .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.admin-table .th-center {
+    text-align: center;
+}
+
+.th-check {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.big-check {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.admin-table td.cell-modified {
+    background: #fff3cd;
 }

@@ -71,6 +71,7 @@
         <nav class="admin-tabs">
             <button class="tab-btn active" data-tab="lieux">📍 Lieux</button>
             <button class="tab-btn" data-tab="categories">🏷️ Catégories</button>
+            <button class="tab-btn" data-tab="tags">🔖 Tags</button>
         </nav>
 
         <!-- ===== ONGLET LIEUX ===== -->
@@ -83,24 +84,37 @@
                 <label class="toolbar-check">
                     <input type="checkbox" id="filterMissingEn"> Sans description EN
                 </label>
-                <button id="addLieuBtn" class="btn btn-primary">+ Ajouter un lieu</button>
+                <label class="toolbar-check">
+                    <input type="checkbox" id="filterUnpublished"> Non publiés
+                </label>
+                <div class="toolbar-actions" id="lieuxActions">
+                    <button id="bulkEditBtn" class="btn btn-secondary">✎ Édition groupée</button>
+                    <button id="addLieuBtn" class="btn btn-primary">+ Ajouter un lieu</button>
+                </div>
+            </div>
+
+            <!-- Édition groupée : un champ à la fois, sur tous les lieux affichés -->
+            <div id="bulkBar" class="bulk-bar" hidden>
+                <span class="bulk-title">Édition groupée</span>
+                <div class="bulk-fields">
+                    <button type="button" class="bulk-field" data-bulk-champ="prix">💶 Prix</button>
+                    <button type="button" class="bulk-field" data-bulk-champ="publie">🌐 Publication</button>
+                    <button type="button" class="bulk-field" data-bulk-champ="coupDeCoeur">❤️ Coup de cœur</button>
+                    <button type="button" class="bulk-field" data-bulk-champ="tags">🔖 Tags</button>
+                    <button type="button" class="bulk-field" data-bulk-champ="slug">🔗 Slug</button>
+                </div>
+                <span id="bulkCount" class="bulk-count"></span>
+                <div class="toolbar-actions">
+                    <button type="button" id="bulkCancelBtn" class="btn btn-secondary">Quitter</button>
+                    <button type="button" id="bulkSaveBtn" class="btn btn-primary">Enregistrer</button>
+                </div>
             </div>
 
             <div id="lieuxCount" class="count-info"></div>
 
             <div class="table-wrapper">
                 <table id="lieuxTable" class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Catégories</th>
-                            <th>Description</th>
-                            <th title="Description anglaise">EN</th>
-                            <th title="Photo">Photo</th>
-                            <th>Instagram</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+                    <thead id="lieuxTableHead"></thead>
                     <tbody id="lieuxTableBody"></tbody>
                 </table>
             </div>
@@ -129,6 +143,29 @@
             </div>
         </section>
 
+        <!-- ===== ONGLET TAGS ===== -->
+        <section id="tabTags" class="tab-content">
+            <div class="toolbar">
+                <button id="addTagBtn" class="btn btn-primary">+ Ajouter un tag</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Clé (id)</th>
+                            <th>Nom</th>
+                            <th>Nom EN</th>
+                            <th>Icône</th>
+                            <th>Lieux</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tagsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
     </div>
 
     <!-- =====================================
@@ -138,7 +175,10 @@
         <div class="modal-overlay" data-close-modal></div>
         <div class="modal-content modal-large">
             <header class="modal-header">
-                <h2 id="lieuModalTitle">Ajouter un lieu</h2>
+                <div>
+                    <h2 id="lieuModalTitle">Ajouter un lieu</h2>
+                    <p id="lieuModalDates" class="modal-dates"></p>
+                </div>
                 <button class="modal-close" data-close-modal>&times;</button>
             </header>
 
@@ -156,8 +196,70 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
+                            <label for="lieuSlug">Slug * <small>(adresse de la future page du lieu)</small></label>
+                            <div class="input-with-btn">
+                                <input type="text" id="lieuSlug" placeholder="ex : le-bar-de-la-plaine" spellcheck="false" data-track>
+                                <button type="button" id="lieuSlugRegenBtn" class="btn btn-secondary btn-icon" title="Recalculer à partir du nom">↺</button>
+                            </div>
+                            <small>Minuscules, chiffres et tirets. Évite de le changer une fois la page du lieu en ligne.</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
                             <label>Catégories * <small>(la première cochée est la catégorie principale)</small></label>
                             <div id="lieuCategories" class="checkbox-grid" data-track></div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Publication, prix, tags -->
+                <fieldset class="form-section">
+                    <legend>Publication</legend>
+                    <div class="form-row form-row-inline">
+                        <label class="switch-label">
+                            <span class="switch"><input type="checkbox" id="lieuPublie" data-track><span></span></span>
+                            Publié sur le site
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lieuCoupDeCoeur" data-track> ❤️ Coup de cœur
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prix</label>
+                            <div class="prix-choix">
+                                <label><input type="radio" name="lieuPrix" value=""><span>—</span></label>
+                                <label><input type="radio" name="lieuPrix" value="1"><span>€</span></label>
+                                <label><input type="radio" name="lieuPrix" value="2"><span>€€</span></label>
+                                <label><input type="radio" name="lieuPrix" value="3"><span>€€€</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <div id="lieuTags" class="checkbox-grid" data-track></div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Contact -->
+                <fieldset class="form-section">
+                    <legend>Contact</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lieuAdresse">Adresse</label>
+                            <input type="text" id="lieuAdresse" placeholder="ex : 12 rue des Trois Rois, 13006 Marseille" data-track>
+                        </div>
+                    </div>
+                    <div class="form-row form-row-split">
+                        <div class="form-group">
+                            <label for="lieuSite">Site web</label>
+                            <input type="text" id="lieuSite" placeholder="ex : monlieu.fr" inputmode="url" data-track>
+                        </div>
+                        <div class="form-group">
+                            <label for="lieuTelephone">Téléphone</label>
+                            <input type="text" id="lieuTelephone" placeholder="ex : 04 91 00 00 00" inputmode="tel" data-track>
                         </div>
                     </div>
                     <div class="form-row">
@@ -184,20 +286,32 @@
                     <small class="section-help">Si la version anglaise est vide, le site anglais affichera la description française.</small>
                 </fieldset>
 
-                <!-- Photo (chargée seulement à l'ouverture du bloc) -->
+                <!-- Descriptions longues (pour la future page du lieu) -->
+                <details class="form-section form-section-toggle" id="lieuLongueSection">
+                    <summary>Descriptions longues <span class="section-status" id="longueStatus"></span></summary>
+                    <div class="form-row form-row-split">
+                        <div class="form-group">
+                            <label for="lieuDescriptionLongue">🇫🇷 Français</label>
+                            <textarea id="lieuDescriptionLongue" rows="7" data-track></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="lieuDescriptionLongueEn">🇬🇧 English</label>
+                            <textarea id="lieuDescriptionLongueEn" rows="7" lang="en" data-track></textarea>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Photos (chargées seulement à l'ouverture du bloc) -->
                 <details class="form-section form-section-toggle" id="lieuPhotoSection">
-                    <summary>Photo <span class="section-status" id="photoStatus"></span></summary>
-                    <div class="image-uploader">
-                        <div id="lieuImagePreview" class="image-preview image-preview-empty">
-                            <span class="image-preview-placeholder">📷 Aucune image</span>
-                        </div>
+                    <summary>Photos <span class="section-status" id="photoStatus"></span></summary>
+                    <div>
+                        <div id="lieuPhotos" class="photo-grid"></div>
                         <div class="image-uploader-controls">
-                            <input type="file" id="lieuImageFile" accept="image/*" hidden>
-                            <button type="button" id="lieuImagePickBtn" class="btn btn-secondary">📁 Changer la photo…</button>
-                            <button type="button" id="lieuImageRemoveBtn" class="btn btn-secondary" hidden>🗑️ Retirer la photo</button>
-                            <button type="button" id="lieuImageUndoBtn" class="btn btn-secondary" hidden>↩ Annuler le changement</button>
+                            <input type="file" id="lieuImageFile" accept="image/*" multiple hidden>
+                            <button type="button" id="lieuImagePickBtn" class="btn btn-secondary">📁 Ajouter des photos…</button>
+                            <button type="button" id="lieuImageUndoBtn" class="btn btn-secondary" hidden>↩ Annuler les changements</button>
                         </div>
-                        <p class="image-path" id="lieuImagePath"></p>
+                        <p class="image-path">La première photo est la photo principale (liste, carte, accueil).</p>
                     </div>
                 </details>
 
@@ -269,7 +383,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row" id="categorieCouleurRow">
                     <div class="form-group">
                         <label for="categorieCouleur">Couleur *</label>
                         <input type="color" id="categorieCouleur" required>

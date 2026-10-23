@@ -25,10 +25,10 @@ export async function chargerDonnees() {
         fetchCollection('categories')
     ]);
 
-    const lieux = lieuxSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    }));
+    // Les lieux non publiés (brouillons) restent dans l'admin
+    const lieux = lieuxSnap.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter(lieu => lieu.publie !== false);
 
     const categories = {};
     categoriesSnap.docs.forEach(doc => {
