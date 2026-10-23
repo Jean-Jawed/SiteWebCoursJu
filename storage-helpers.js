@@ -3,7 +3,8 @@
 // Utilisés par lieux.js (lecture) et admin.js (lecture + écriture)
 // =====================
 
-import { storage, STORAGE_BUCKET } from './firebase-config.js';
+import { storage } from './firebase-config.js';
+import { publicUrlFromPath, photosDuLieu } from './lieux-commun.js';
 import {
     ref, uploadBytes, deleteObject
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
@@ -16,36 +17,8 @@ const JPEG_QUALITY = 0.80;
 export const VIGNETTE_WIDTH = 480;
 export const VIGNETTE_DIR = 'images/vignettes/';
 
-/**
- * Construit l'URL publique de téléchargement d'un fichier dans Storage,
- * sans appel réseau supplémentaire (les règles autorisent la lecture publique).
- *
- * Format Firebase :
- *   https://firebasestorage.googleapis.com/v0/b/{bucket}/o/{chemin-encodé}?alt=media
- *
- * @param {string} path — chemin dans le bucket, ex: "images/MonLieu.jpg"
- * @returns {string|null} URL publique, ou null si path est vide
- */
-export function publicUrlFromPath(path) {
-    if (!path) return null;
-    const encoded = encodeURIComponent(path);
-    return `https://firebasestorage.googleapis.com/v0/b/${STORAGE_BUCKET}/o/${encoded}?alt=media`;
-}
-
-/**
- * Photos d'un lieu, la première étant la photo principale.
- * Les fiches d'avant les photos multiples n'ont que image/vignette : on les reprend.
- *
- * @param {{photos?: Array<{image: string, vignette?: string}>, image?: string, vignette?: string}} lieu
- * @returns {Array<{image: string, vignette: string}>}
- */
-export function photosDuLieu(lieu) {
-    if (!lieu) return [];
-    if (Array.isArray(lieu.photos)) {
-        return lieu.photos.filter(p => p?.image).map(p => ({ image: p.image, vignette: p.vignette || '' }));
-    }
-    return lieu.image ? [{ image: lieu.image, vignette: lieu.vignette || '' }] : [];
-}
+// URL publique et liste des photos : partagées avec le build (lieux-commun.js)
+export { publicUrlFromPath, photosDuLieu };
 
 /**
  * URL de la photo principale d'un lieu, en privilégiant la vignette quand elle existe

@@ -134,6 +134,7 @@
                             <th>Nom</th>
                             <th>Nom EN</th>
                             <th>Icône</th>
+                            <th>Famille</th>
                             <th>Couleur</th>
                             <th>Actions</th>
                         </tr>
@@ -380,6 +381,19 @@
                     <div class="form-group">
                         <label for="categorieIcon">Icône (emoji) *</label>
                         <input type="text" id="categorieIcon" required maxlength="4" placeholder="🎨">
+                    </div>
+                </div>
+
+                <div class="form-row" id="categorieFamilleRow">
+                    <div class="form-group">
+                        <label for="categorieFamille">Famille * <small>(couleur et regroupement sur la page Lieux)</small></label>
+                        <select id="categorieFamille">
+                            <option value="manger">Manger</option>
+                            <option value="boire">Boire</option>
+                            <option value="sortir">Sortir</option>
+                            <option value="culture">Culture</option>
+                            <option value="boutiques">Boutiques</option>
+                        </select>
                     </div>
                 </div>
 

@@ -11,7 +11,7 @@
 // Incrémenter CACHE_VERSION quand on modifie PRECACHE ou les stratégies.
 // =====================
 
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 
 const CACHES = {
     pages: `pages-${CACHE_VERSION}`,
@@ -43,6 +43,9 @@ const PRECACHE_STATIC = [
     '/zine.css',
     '/images/plan-quartier.svg',
     '/lieux.js',
+    '/lieux.css',
+    '/lieux-commun.js',
+    '/lieu.js',
     '/contact.js',
     '/data-loader.js',
     '/firebase-config.js',
@@ -58,8 +61,8 @@ const PRECACHE_STATIC = [
     'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap',
     'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
-    'https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css',
-    'https://unpkg.com/leaflet-gesture-handling'
+    'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css',
+    'https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js'
 ];
 
 // =====================

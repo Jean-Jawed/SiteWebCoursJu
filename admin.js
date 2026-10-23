@@ -12,6 +12,7 @@ import {
 import {
     publicUrlFromPath, photosDuLieu, uploadPhotoAndVignette, deleteFromStorage
 } from './storage-helpers.js';
+import { FAMILLES, familleDe } from './lieux-commun.js';
 
 // =====================
 // État global
@@ -603,7 +604,7 @@ function renderReferentiel(type) {
     const entries = triParNom(referentiel(type));
 
     if (entries.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">Aucun ${conf.libelle}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="${conf.couleur ? 7 : 6}" class="empty-state">Aucun ${conf.libelle}</td></tr>`;
         return;
     }
 
@@ -611,12 +612,17 @@ function renderReferentiel(type) {
         const derniereColonne = conf.couleur
             ? `<span class="color-swatch" style="background:${item.couleur}"></span><code>${escapeHtml(item.couleur)}</code>`
             : lieux.filter(l => (l[conf.champLieu] || []).includes(cle)).length;
+        const famille = FAMILLES[familleDe(cle, item)];
+        const colonneFamille = conf.couleur
+            ? `<td><span class="color-swatch" style="background:${famille.couleur}"></span>${escapeHtml(famille.nom)}${item.famille ? '' : ' <small title="Famille par défaut : à confirmer en éditant la catégorie">·</small>'}</td>`
+            : '';
         return `
         <tr>
             <td><code>${escapeHtml(cle)}</code></td>
             <td class="nom-cell">${escapeHtml(item.nom)}</td>
             <td>${item.nom_en ? escapeHtml(item.nom_en) : '<span class="status-missing">—</span>'}</td>
             <td style="font-size: 1.3rem">${escapeHtml(item.icon)}</td>
+            ${colonneFamille}
             <td>${derniereColonne}</td>
             <td class="actions">
                 <button class="btn btn-secondary btn-icon" data-action="edit-${type}" data-id="${cle}">✏️ Éditer</button>
@@ -1248,6 +1254,8 @@ function openReferentielModal(type, cle) {
     $('categorieIcon').value = item?.icon || '';
     $('categorieCouleur').value = item?.couleur || '#ff4500';
     $('categorieCouleurRow').hidden = !conf.couleur;
+    $('categorieFamilleRow').hidden = !conf.couleur;
+    $('categorieFamille').value = conf.couleur ? familleDe(cle, item) : 'manger';
 
     showModal(categorieModal);
 }
@@ -1271,7 +1279,10 @@ categorieForm.addEventListener('submit', async (e) => {
         nom_en: $('categorieNomEn').value.trim(),
         icon: $('categorieIcon').value.trim()
     };
-    if (conf.couleur) data.couleur = $('categorieCouleur').value;
+    if (conf.couleur) {
+        data.couleur = $('categorieCouleur').value;
+        data.famille = $('categorieFamille').value;
+    }
 
     try {
         if (isEdit) {
