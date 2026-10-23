@@ -1,92 +1,50 @@
 [
  {
-  "src": "/images/couverture/art-serigraphie-be10d5c0-600.webp",
-  "src2x": "/images/couverture/art-serigraphie-be10d5c0-1200.webp",
-  "alt": "Vitrine de l'atelier de gravure de Vincent Tavernier",
-  "alt_en": "Window of Vincent Tavernier's printmaking studio"
+  "src": "/images/couverture/1-ab48ea16-600.webp",
+  "src2x": "/images/couverture/1-ab48ea16-1200.webp",
+  "alt": "Une terrasse du quartier, devant une façade couverte de street art",
+  "alt_en": "A neighbourhood terrace, in front of a street-art-covered façade"
  },
  {
-  "src": "/images/couverture/commerce-savonnerie-3f61d99c-600.webp",
-  "src2x": "/images/couverture/commerce-savonnerie-3f61d99c-1200.webp",
-  "alt": "Enseigne de la Savonnerie marseillaise de la Licorne",
-  "alt_en": "Sign of the Savonnerie marseillaise de la Licorne soap shop"
+  "src": "/images/couverture/coursju-streets-night-205eb952-600.webp",
+  "src2x": "/images/couverture/coursju-streets-night-205eb952-1200.webp",
+  "alt": "La foule dans une rue du Cours Julien, devant une grande fresque",
+  "alt_en": "A crowd in a Cours Julien street, in front of a large mural"
  },
  {
-  "src": "/images/couverture/dehors-escalier-fa349d4c-600.webp",
-  "src2x": "/images/couverture/dehors-escalier-fa349d4c-1200.webp",
-  "alt": "Les escaliers du cours Julien et leur terrasse",
-  "alt_en": "The Cours Julien steps and their terrace"
+  "src": "/images/couverture/coursjulien-d48ee2fa-600.webp",
+  "src2x": "/images/couverture/coursjulien-d48ee2fa-1200.webp",
+  "alt": "Les escaliers du cours Julien, peints de toutes les couleurs",
+  "alt_en": "The Cours Julien steps, painted in every colour"
  },
  {
-  "src": "/images/couverture/fringues-brickcity-b13fd74d-600.webp",
-  "src2x": "/images/couverture/fringues-brickcity-b13fd74d-1200.webp",
-  "alt": "Façade dessinée de la boutique Brick City",
-  "alt_en": "Hand-drawn front of the Brick City clothes shop"
+  "src": "/images/couverture/espacejulien-5749b974-600.webp",
+  "src2x": "/images/couverture/espacejulien-5749b974-1200.webp",
+  "alt": "Un concert à l'Espace Julien, sous la grande verrière",
+  "alt_en": "A gig at the Espace Julien, under the great glass ceiling"
  },
  {
-  "src": "/images/couverture/jeu-crypte-f1e71f24-600.webp",
-  "src2x": "/images/couverture/jeu-crypte-f1e71f24-1200.webp",
-  "alt": "Vitrine de La Crypte du Jeu",
-  "alt_en": "Shop window of La Crypte du Jeu games shop"
+  "src": "/images/couverture/memepasmal-b96e1d11-600.webp",
+  "src2x": "/images/couverture/memepasmal-b96e1d11-1200.webp",
+  "alt": "La devanture rouge des éditions Même pas mal : bandes dessinées, fanzines, affiches",
+  "alt_en": "The red shopfront of Même pas mal: comics, fanzines, posters"
  },
  {
-  "src": "/images/couverture/kids-chaussures-4068f6d6-600.webp",
-  "src2x": "/images/couverture/kids-chaussures-4068f6d6-1200.webp",
-  "alt": "Devanture verte de Savat'à Gosse",
-  "alt_en": "Green shopfront of Savat'à Gosse, a children's shoe shop"
+  "src": "/images/couverture/plainedurock-da689572-600.webp",
+  "src2x": "/images/couverture/plainedurock-da689572-1200.webp",
+  "alt": "Un concert en plein air à La Plaine, devant une foule",
+  "alt_en": "An open-air gig in La Plaine, in front of a crowd"
  },
  {
-  "src": "/images/couverture/livre-locussolus-8a7097e7-600.webp",
-  "src2x": "/images/couverture/livre-locussolus-8a7097e7-1200.webp",
-  "alt": "Façade de la librairie Locus Solus",
-  "alt_en": "Front of the Locus Solus bookshop"
+  "src": "/images/couverture/street-art-55251e87-600.webp",
+  "src2x": "/images/couverture/street-art-55251e87-1200.webp",
+  "alt": "Une façade du quartier couverte de fresques, du trottoir aux fenêtres",
+  "alt_en": "A neighbourhood façade covered in murals, from the pavement to the windows"
  },
  {
-  "src": "/images/couverture/livre-memepasmal-47c334dc-600.webp",
-  "src2x": "/images/couverture/livre-memepasmal-47c334dc-1200.webp",
-  "alt": "Vitrine des éditions Même pas mal",
-  "alt_en": "Shop window of the Même pas mal publishing house"
- },
- {
-  "src": "/images/couverture/livre-reserve-cd65fecd-600.webp",
-  "src2x": "/images/couverture/livre-reserve-cd65fecd-1200.webp",
-  "alt": "Façade peinte de la librairie La Réserve à Bulles",
-  "alt_en": "Painted front of the La Réserve à Bulles comic bookshop"
- },
- {
-  "src": "/images/couverture/musique-galette-fb116359-600.webp",
-  "src2x": "/images/couverture/musique-galette-fb116359-1200.webp",
-  "alt": "Devanture orange du disquaire Galette",
-  "alt_en": "Orange shopfront of the Galette record shop"
- },
- {
-  "src": "/images/couverture/musique-tangerine-9622c61c-600.webp",
-  "src2x": "/images/couverture/musique-tangerine-9622c61c-1200.webp",
-  "alt": "Entrée peinte du disquaire Tangerine",
-  "alt_en": "Painted entrance of the Tangerine record shop"
- },
- {
-  "src": "/images/couverture/musique-tripsichord-0f7f35f4-600.webp",
-  "src2x": "/images/couverture/musique-tripsichord-0f7f35f4-1200.webp",
-  "alt": "Façade du disquaire Tripsichord Music",
-  "alt_en": "Front of the Tripsichord Music record shop"
- },
- {
-  "src": "/images/couverture/social-affiches-726a6d3d-600.webp",
-  "src2x": "/images/couverture/social-affiches-726a6d3d-1200.webp",
-  "alt": "Vitrine de Cinesud, affiches de cinéma",
-  "alt_en": "Window of Cinesud, a film poster shop"
- },
- {
-  "src": "/images/couverture/social-maison-e9cf1390-600.webp",
-  "src2x": "/images/couverture/social-maison-e9cf1390-1200.webp",
-  "alt": "Façade peinte de la Maison pour tous, centre social Julien",
-  "alt_en": "Painted front of the Maison pour tous, the Julien community centre"
- },
- {
-  "src": "/images/couverture/theatre-carrerond-162fa66d-600.webp",
-  "src2x": "/images/couverture/theatre-carrerond-162fa66d-1200.webp",
-  "alt": "Entrée du théâtre Le Carré Rond",
-  "alt_en": "Entrance of the Le Carré Rond theatre"
+  "src": "/images/couverture/verreacruise1-842f261d-600.webp",
+  "src2x": "/images/couverture/verreacruise1-842f261d-1200.webp",
+  "alt": "L'équipe du bar à cocktails Verre à Cruise derrière son comptoir",
+  "alt_en": "The team of the Verre à Cruise cocktail bar behind the counter"
  }
 ]

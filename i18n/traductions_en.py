@@ -1540,6 +1540,11 @@ if __name__ == "__main__":
         if cle in dico and dico[cle] != en:
             print("Doublon avec traductions différentes :", cle[:60])
         dico[cle] = en
+    # Légendes de la frise de l'accueil, écrites par scripts/build-couverture.py
+    frise_en = here / "frise_en.json"
+    if frise_en.exists():
+        for fr, en in json.loads(frise_en.read_text(encoding="utf-8")).items():
+            dico.setdefault(norm(fr), en)
     (here / "en.json").write_text(json.dumps(dico, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
 
     # Contrôle : clés qui ne correspondent à aucun texte attendu (coquille probable)
