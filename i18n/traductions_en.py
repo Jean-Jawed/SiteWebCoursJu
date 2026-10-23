@@ -836,6 +836,10 @@ PAIRES = [
     (r'''frequence-sud.fr''', r'''frequence-sud.fr'''),
     (r'''Photos&#8239;: Elyn (CC0) et Fred reggaelover (CC BY-SA 4.0), via Wikimedia Commons&#8239;; La Voie maltée / Privateaser, La Maison hantée / Schlouk Map, La Brasserie communale, l’Espace Julien, <em>Time Out</em>&#8239;; Cours Ju — Plaine.''',
      r'''Photos: Elyn (CC0) and Fred reggaelover (CC BY-SA 4.0), via Wikimedia Commons; La Voie maltée / Privateaser, La Maison hantée / Schlouk Map, La Brasserie communale, the Espace Julien, <em>Time Out</em>; Cours Ju — Plaine.'''),
+    # Liens du Mag vers les fiches des lieux
+    (r'''Plus d'infos''', r'''More info'''),
+    (r'''Sa fiche sur Cours Ju&#8239;→''', r'''Its page on Cours Ju&#8239;→'''),
+
 ]
 
 
