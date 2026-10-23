@@ -2,10 +2,11 @@
 // home.js — Page d'accueil « fanzine »
 // ---------------------------------------------------------------------
 // - Numéro et saison du fanzine (N° 07 — Automne 2026, puis un par saison)
-// - Couverture : 5 façades tirées au hasard à chaque visite
+// - Couverture : 5 photos tirées au hasard à chaque visite (couverture.json,
+//   préparé par scripts/build-couverture.py depuis images/originaux/couverture/)
 // - Frise : façades en boucle (défilable à la main)
 // - p. 1 Par envie : compteurs + aperçu d'un lieu de l'envie survolée
-// - p. 2 Aujourd'hui / Ce soir, je vais… : tirage du jour + « Re-tirer »
+// - p. 2 Coups de cœur : trois à la fois, « D'autres coups de cœur » pour la suite
 // - p. 3 Le plan : points des lieux sur le plan stylisé (images/plan-quartier.svg)
 // - Apparition des objets au défilement
 // Les lieux viennent de Firestore (data-loader.js, avec cache hors ligne).
@@ -13,6 +14,7 @@
 
 import { chargerDonnees } from './data-loader.js';
 import { lieuPhotoUrl } from './storage-helpers.js';
+import { urlFiche } from './lieux-commun.js';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -32,70 +34,13 @@ const ENVIES = {
     'se-retrouver': { cats: ['social', 'kids'] }
 };
 
-// Tirage du jour : catégories prioritaires selon le moment, puis complément
-const MOMENTS = {
-    jour: {
-        titre: CJ.t('home.jour'),
-        priorite: ['livres', 'art', 'commerces', 'fringues', 'jeux', 'musique', 'social', 'kids', 'cafés', 'cinéma'],
-        complement: ['restaurants', 'snacks', 'théâtre', 'concerts']
-    },
-    soir: {
-        titre: CJ.t('home.soir'),
-        priorite: ['bars', 'concerts', 'nuit', 'théâtre', 'cinéma'],
-        complement: ['restaurants', 'art', 'musique']
-    }
-};
-const SOIR_DEBUT = 19; // heure de Marseille
-const SOIR_FIN = 5;
-
-// Couverture : façades choisies (photos couleur, tirées au hasard)
-const COUVERTURE = [
-    ['livre-locussolus', 'Façade de la librairie Locus Solus', 'Front of the Locus Solus bookshop'],
-    ['musique-tripsichord', 'Façade du disquaire Tripsichord Music', 'Front of the Tripsichord Music record shop'],
-    ['social-maison', 'Façade peinte de la Maison pour tous, centre social Julien', 'Painted front of the Maison pour tous, the Julien community centre'],
-    ['livre-memepasmal', 'Vitrine des éditions Même pas mal', 'Shop window of the Même pas mal publishing house'],
-    ['musique-tangerine', 'Entrée peinte du disquaire Tangerine', 'Painted entrance of the Tangerine record shop'],
-    ['livre-reserve', 'Façade peinte de la librairie La Réserve à Bulles', 'Painted front of the La Réserve à Bulles comic bookshop'],
-    ['musique-galette', 'Devanture orange du disquaire Galette', 'Orange shopfront of the Galette record shop'],
-    ['commerce-savonnerie', 'Enseigne de la Savonnerie marseillaise de la Licorne', 'Sign of the Savonnerie marseillaise de la Licorne soap shop'],
-    ['jeu-crypte', 'Vitrine de La Crypte du Jeu', 'Shop window of La Crypte du Jeu games shop'],
-    ['theatre-carrerond', 'Entrée du théâtre Le Carré Rond', 'Entrance of the Le Carré Rond theatre'],
-    ['fringues-brickcity', 'Façade dessinée de la boutique Brick City', 'Hand-drawn front of the Brick City clothes shop'],
-    ['social-affiches', 'Vitrine de Cinesud, affiches de cinéma', 'Window of Cinesud, a film poster shop'],
-    ['dehors-escalier', 'Les escaliers du cours Julien et leur terrasse', 'The Cours Julien steps and their terrace'],
-    ['art-serigraphie', "Vitrine de l'atelier de gravure de Vincent Tavernier", "Window of Vincent Tavernier's printmaking studio"],
-    ['kids-chaussures', "Devanture verte de Savat'à Gosse", "Green shopfront of Savat'à Gosse, a children's shoe shop"]
-];
-
-const MIN_PHOTO_WIDTH = 480;
-
 function track(name, params = {}) {
     if (typeof window.gtag === 'function') window.gtag('event', name, params);
 }
 
 // =====================
-// Utilitaires : hasard reproductible (tirage du jour)
+// Utilitaires
 // =====================
-function hashString(str) {
-    let h = 2166136261;
-    for (let i = 0; i < str.length; i++) {
-        h ^= str.charCodeAt(i);
-        h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-}
-
-function seededRandom(seed) {
-    let a = seed;
-    return () => {
-        a |= 0;
-        a = (a + 0x6D2B79F5) | 0;
-        let t = Math.imul(a ^ (a >>> 15), 1 | a);
-        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-}
-
 function shuffle(list, random = Math.random) {
     const a = list.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -105,33 +50,8 @@ function shuffle(list, random = Math.random) {
     return a;
 }
 
-function parisNow() {
-    const parts = new Intl.DateTimeFormat('fr-FR', {
-        timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hourCycle: 'h23'
-    }).formatToParts(new Date());
-    const get = type => parts.find(p => p.type === type).value;
-    return { date: `${get('year')}-${get('month')}-${get('day')}`, hour: Number(get('hour')) };
-}
-
-function currentMoment() {
-    const { hour } = parisNow();
-    return hour >= SOIR_DEBUT || hour < SOIR_FIN ? 'soir' : 'jour';
-}
-
 function escapeHtml(str) {
     return String(str ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
-}
-
-// Précharge une photo et vérifie sa largeur (les photos trop petites ne vont pas en vitrine)
-function loadPhoto(url, timeout = 6000) {
-    return new Promise(resolve => {
-        if (!url) return resolve(null);
-        const img = new Image();
-        const timer = setTimeout(() => resolve(null), timeout);
-        img.onload = () => { clearTimeout(timer); resolve(img.naturalWidth >= MIN_PHOTO_WIDTH ? url : null); };
-        img.onerror = () => { clearTimeout(timer); resolve(null); };
-        img.src = url;
-    });
 }
 
 // =====================
@@ -158,16 +78,24 @@ function initEdition() {
 // =====================
 // Couverture : composition recomposée à chaque visite
 // =====================
-function initCover() {
+async function initCover() {
     const scraps = [...document.querySelectorAll('[data-cover] .zine-scrap')];
     if (!scraps.length) return;
 
-    const picks = shuffle(COUVERTURE).slice(0, scraps.length);
+    let photos;
+    try {
+        photos = await fetch('/couverture.json').then(r => r.json());
+    } catch (_) {
+        return; // hors ligne : on garde les photos écrites dans la page
+    }
+    const picks = shuffle(photos).slice(0, scraps.length);
     scraps.forEach((scrap, i) => {
-        const [name, altFr, altEn] = picks[i];
+        const photo = picks[i];
         const img = scrap.querySelector('img');
-        img.src = `/images/web/${name}-480.webp`;
-        img.alt = CJ.lang === 'en' ? altEn : altFr;
+        if (!photo || !img) return;
+        img.srcset = `${photo.src} 600w, ${photo.src2x} 1200w`;
+        img.src = photo.src;
+        img.alt = (CJ.lang === 'en' ? photo.alt_en : photo.alt) || '';
 
         // Légère variation de l'inclinaison autour de la position prévue
         scrap.style.setProperty('--r-jitter', `${(Math.random() * 4 - 2).toFixed(1)}deg`);
@@ -326,14 +254,6 @@ function initPose() {
 }
 
 // =====================
-// Moment de la journée
-// =====================
-function initMoment(moment) {
-    const titre = MOMENTS[moment].titre;
-    document.querySelectorAll('[data-moment-title], [data-moment-label]').forEach(el => { el.textContent = titre; });
-}
-
-// =====================
 // p. 1 — Par envie
 // =====================
 function lieuxDeCategories(lieux, cats) {
@@ -394,73 +314,74 @@ function initEnvies(lieux, categories) {
 }
 
 // =====================
-// p. 2 — Tirage du jour
+// p. 2 — Coups de cœur
 // =====================
-function initTirage(lieux, categories, moment) {
-    const container = document.querySelector('[data-tirage]');
-    const reroll = document.querySelector('[data-reroll]');
+const COEURS_PAR_PAGE = 3;
+
+// Lieux qui ont une fiche (liste écrite dans la page par build-lieux.js)
+const FICHES = (() => {
+    try { return new Set(JSON.parse(document.getElementById('lieuxFiches')?.textContent || '[]')); }
+    catch (_) { return new Set(); }
+})();
+
+function lienLieu(lieu) {
+    return lieu.slug && FICHES.has(lieu.slug)
+        ? urlFiche(lieu.slug, CJ.lang)
+        : CJ.url('lieux', `?lieu=${encodeURIComponent(lieu.id)}`);
+}
+
+function renderCoeursAttente() {
+    const container = document.querySelector('[data-coeurs]');
+    if (!container) return;
+    container.innerHTML = Array.from({ length: COEURS_PAR_PAGE }, () => `
+        <div class="zine-polaroid zine-polaroid--placeholder" aria-hidden="true">
+            <span class="zine-polaroid-photo"></span>
+            <span class="zine-polaroid-name">&nbsp;</span>
+        </div>`).join('');
+}
+
+function initCoeurs(lieux, categories) {
+    const container = document.querySelector('[data-coeurs]');
+    const suivants = document.querySelector('[data-coeurs-suivants]');
     if (!container) return;
 
-    const conf = MOMENTS[moment];
-    const avecPhoto = lieux.filter(l => lieuPhotoUrl(l));
-    const prioritaires = lieuxDeCategories(avecPhoto, conf.priorite);
-    const complement = lieuxDeCategories(avecPhoto, conf.complement).filter(l => !prioritaires.includes(l));
-    let tour = 0;
+    // Ordre mélangé à chaque visite, puis on avance trois par trois
+    const coeurs = shuffle(lieux.filter(l => l.coupDeCoeur));
+    let page = 0;
 
-    async function draw() {
-        const { date } = parisNow();
-        const random = seededRandom(hashString(`${date}|${moment}|${tour}`));
-        const candidats = [...shuffle(prioritaires, random), ...shuffle(complement, random)];
-
-        renderPlaceholders();
-        // Photos vérifiées par lots de 6 en parallèle, dans l'ordre du tirage
-        const retenus = [];
-        for (let i = 0; i < candidats.length && retenus.length < 3; i += 6) {
-            const lot = candidats.slice(i, i + 6);
-            const urls = await Promise.all(lot.map(l => loadPhoto(lieuPhotoUrl(l, 'vignette'))));
-            lot.forEach((lieu, k) => { if (urls[k] && retenus.length < 3) retenus.push({ lieu, url: urls[k] }); });
-        }
-        render(retenus);
-    }
-
-    function renderPlaceholders() {
-        container.innerHTML = Array.from({ length: 3 }, () => `
-            <div class="zine-polaroid zine-polaroid--placeholder" aria-hidden="true">
-                <span class="zine-polaroid-photo"></span>
-                <span class="zine-polaroid-name">&nbsp;</span>
-            </div>`).join('');
-    }
-
-    function render(retenus) {
-        if (!retenus.length) {
-            container.innerHTML = `<p class="zine-intro">${CJ.t('home.tirageVide', { url: CJ.url('lieux') })}</p>`;
+    function render() {
+        if (!coeurs.length) {
+            container.innerHTML = `<p class="zine-intro">${CJ.t('home.coeursVide', { url: CJ.url('lieux') })}</p>`;
             return;
         }
-        container.innerHTML = retenus.map(({ lieu, url }) => {
+        const n = Math.min(COEURS_PAR_PAGE, coeurs.length);
+        const lot = Array.from({ length: n }, (_, i) => coeurs[(page * COEURS_PAR_PAGE + i) % coeurs.length]);
+        container.innerHTML = lot.map(lieu => {
             const cats = (lieu.categories || []).map(c => CJ.catNom(categories[c]) || c).join(' · ');
+            const photo = lieuPhotoUrl(lieu, 'vignette');
             return `
-                <a class="zine-polaroid" href="${CJ.url('lieux', `?lieu=${encodeURIComponent(lieu.id)}`)}">
-                    <span class="zine-polaroid-photo"><img src="${escapeHtml(url)}" alt="${escapeHtml(lieu.nom)}" loading="lazy"></span>
+                <a class="zine-polaroid" href="${lienLieu(lieu)}">
+                    <span class="zine-polaroid-photo">${photo ? `<img src="${escapeHtml(photo)}" alt="${escapeHtml(lieu.nom)}" loading="lazy">` : ''}</span>
                     <span class="zine-polaroid-name">${escapeHtml(lieu.nom)}</span>
                     <span class="zine-type zine-polaroid-meta">${escapeHtml(cats)}</span>
                     ${CJ.desc(lieu) ? `<span class="zine-polaroid-text" lang="${CJ.descLang(lieu)}">${escapeHtml(CJ.desc(lieu))}</span>` : ''}
                 </a>`;
         }).join('');
-        if (tour > 0 && !reduceMotion) {
+        if (page > 0 && !reduceMotion) {
             container.querySelectorAll('.zine-polaroid').forEach(p => p.classList.add('is-flipping'));
         }
     }
 
-    if (reroll) {
-        reroll.hidden = prioritaires.length + complement.length <= 3;
-        reroll.addEventListener('click', () => {
-            tour++;
-            track('home_tirage_reroll', { moment, tour });
-            draw();
+    if (suivants) {
+        suivants.hidden = coeurs.length <= COEURS_PAR_PAGE;
+        suivants.addEventListener('click', () => {
+            page++;
+            track('home_coeurs_suivants', { page });
+            render();
         });
     }
 
-    draw();
+    render();
 }
 
 // =====================
@@ -513,10 +434,9 @@ async function initPlan(lieux, categories) {
 // Initialisation
 // =====================
 async function init() {
-    const moment = currentMoment();
     initEdition();
-    initMoment(moment);
     initCover();
+    renderCoeursAttente();
     initFrise();
     initPose();
 
@@ -526,8 +446,8 @@ async function init() {
         ({ lieux, categories } = await chargerDonnees());
     } catch (err) {
         console.error('Accueil : lieux indisponibles', err);
-        const tirage = document.querySelector('[data-tirage]');
-        if (tirage) tirage.innerHTML = `<p class="zine-intro">${CJ.t('home.indisponible', { url: CJ.url('lieux') })}</p>`;
+        const coeurs = document.querySelector('[data-coeurs]');
+        if (coeurs) coeurs.innerHTML = `<p class="zine-intro">${CJ.t('home.indisponible', { url: CJ.url('lieux') })}</p>`;
         return;
     }
 
@@ -535,7 +455,7 @@ async function init() {
     if (stat) stat.textContent = lieux.length;
 
     initEnvies(lieux, categories);
-    initTirage(lieux, categories, moment);
+    initCoeurs(lieux, categories);
     initPlan(lieux, categories);
 }
 

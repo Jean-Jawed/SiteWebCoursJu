@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "node build-lieux.js",
-    "i18n": "python i18n/traductions_en.py && python scripts/build-i18n.py && node build-lieux.js"
+    "i18n": "python i18n/traductions_en.py && python scripts/build-i18n.py && node build-lieux.js",
+    "couverture": "python scripts/build-couverture.py && npm run i18n"
   },
   "author": "",
   "license": "ISC"

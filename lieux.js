@@ -96,20 +96,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Liens depuis l'accueil et l'extérieur :
 //   lieux.html?filtre=livres   → filtré sur une catégorie (et sa famille)
 //   lieux.html?famille=boire   → filtré sur une famille
+//   lieux.html?tag=coeur       → coups de cœur (ou un tag : terrasse, vegetarien…)
 //   lieux.html?lieu=23         → lieu sélectionné sur la carte
 function applyUrlParams() {
     const params = new URLSearchParams(location.search);
     const filtre = params.get('filtre');
     const famille = params.get('famille');
     const lieuId = params.get('lieu');
+    const tag = params.get('tag');
 
+    if (tag && (tag === 'coeur' || tags[tag])) filtres.tags.add(tag);
     if (filtre && categories[filtre]) {
         filtres.famille = familleDe(filtre, categories[filtre]);
         filtres.categorie = filtre;
     } else if (famille && FAMILLES[famille]) {
         filtres.famille = famille;
     }
-    if (filtre || famille) {
+    if (filtre || famille || tag) {
         renderOptions();
         render();
     }

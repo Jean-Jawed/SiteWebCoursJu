@@ -40,6 +40,7 @@ const PRECACHE_STATIC = [
     '/pwa.js',
     '/script.js',
     '/home.js',
+    '/couverture.json',
     '/zine.css',
     '/images/plan-quartier.svg',
     '/lieux.js',

@@ -766,7 +766,13 @@
     100% { transform: rotate(var(--r)) rotateY(0deg); }
 }
 
-[data-reroll][hidden] {
+.zine-coeurs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+[data-coeurs-suivants][hidden] {
     display: none;
 }
 

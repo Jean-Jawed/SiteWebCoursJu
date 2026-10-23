@@ -44,10 +44,8 @@
             'lieux.locate.impossible': 'Impossible de te localiser pour le moment.',
 
             // Accueil
-            'home.jour': "Aujourd'hui, je vais…",
-            'home.soir': 'Ce soir, je vais…',
+            'home.coeursVide': 'Pas encore de coups de cœur. <a href="{url}">Parcours tous les lieux</a>.',
             'home.voirLes': 'voir les {n} →',
-            'home.tirageVide': 'Le tirage n\'a rien donné cette fois. <a href="{url}">Parcours tous les lieux</a>.',
             'home.indisponible': 'Les lieux sont momentanément indisponibles. <a href="{url}">Réessayer depuis la page Lieux</a>.',
             'home.edition': 'N° {numero} — {saison} {annee}',
             'home.saison.automne': 'Automne',
@@ -89,11 +87,8 @@
             'lieux.locate.indisponible': 'Your position is unavailable right now. Please try again in a moment.',
             'lieux.locate.delai': 'Locating you took too long. Please try again.',
             'lieux.locate.impossible': 'We could not find your position right now.',
-
-            'home.jour': 'Today, I’m off to…',
-            'home.soir': 'Tonight, I’m off to…',
+            'home.coeursVide': 'No picks yet. <a href="{url}">Browse all the places</a>.',
             'home.voirLes': 'see all {n} →',
-            'home.tirageVide': 'Nothing came up this time. <a href="{url}">Browse all the places</a>.',
             'home.indisponible': 'Places are temporarily unavailable. <a href="{url}">Try again from the Places page</a>.',
             'home.edition': 'No. {numero} — {saison} {annee}',
             'home.saison.automne': 'Autumn',

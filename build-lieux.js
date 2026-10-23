@@ -105,6 +105,17 @@ async function buildLieux() {
         console.log(`  ${n} fiches → ${DOSSIERS_FICHES[lang].replace(/\\/g, '/')}/`);
     }
 
+    // Accueil : les coups de cœur pointent vers les fiches existantes
+    for (const page of ['index.html', path.join('en', 'index.html')]) {
+        const fichier = path.join(__dirname, page);
+        if (!fs.existsSync(fichier)) continue;
+        const html = fs.readFileSync(fichier, 'utf8').replace(
+            /(<script type="application\/json" id="lieuxFiches">)[\s\S]*?(<\/script>)/,
+            `$1${JSON.stringify(avecFiche.map(l => l.slug))}$2`
+        );
+        fs.writeFileSync(fichier, html, 'utf8');
+    }
+
     ajouterAuSitemap(avecFiche);
 }
 
