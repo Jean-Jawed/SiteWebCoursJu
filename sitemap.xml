@@ -111,6 +111,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/salles-concert.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/mag/grignote.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/grignote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/street-food-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/grignote.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/mag/street-food-cours-julien.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/grignote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/street-food-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/grignote.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/contact.html</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -1108,6 +1120,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/tumulte.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/tumulte.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/tumulte.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/un-mexicain-a-marseille.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/un-mexicain-a-marseille.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/un-mexicain-a-marseille.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/un-mexicain-a-marseille.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/verre-a-cruise.html</loc>
