@@ -22,7 +22,7 @@ export const FAMILLES = {
 
 // Famille par défaut d'une catégorie qui n'a pas encore son champ « famille » (admin)
 const FAMILLE_PAR_CATEGORIE = {
-    restaurants: 'manger', snacks: 'manger',
+    restaurants: 'manger', snacks: 'manger', glaces: 'manger',
     bars: 'boire', 'cafés': 'boire',
     nuit: 'sortir', concerts: 'sortir', jeux: 'sortir',
     art: 'culture', 'cinéma': 'culture', 'théâtre': 'culture', livres: 'culture', social: 'culture',

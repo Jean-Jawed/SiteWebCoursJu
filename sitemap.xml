@@ -140,6 +140,66 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/contact.html"/>
   </url>
+  <url>
+    <loc>https://cours-julien.fr/notre-dame-du-mont.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/notre-dame-du-mont.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/notre-dame-du-mont.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/notre-dame-du-mont.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/notre-dame-du-mont.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/notre-dame-du-mont.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/notre-dame-du-mont.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/notre-dame-du-mont.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/venir.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/venir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/getting-here.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/venir.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/getting-here.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/venir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/getting-here.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/venir.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/mag/street-art.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/street-art.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/street-art-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/street-art.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/mag/street-art-cours-julien.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/street-art.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/street-art-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/street-art.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/mag/fetes-et-evenements.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/fetes-et-evenements.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/events-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/fetes-et-evenements.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/mag/events-cours-julien.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/fetes-et-evenements.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/events-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/fetes-et-evenements.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/mag/dormir.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/where-to-stay-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/dormir.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/mag/where-to-stay-cours-julien.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/mag/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/mag/where-to-stay-cours-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/mag/dormir.html"/>
+  </url>
   <!-- fiches:debut -->
   <url>
     <loc>https://cours-julien.fr/lieux/agent-troublant.html</loc>
@@ -212,6 +272,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/atelier-5.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/au-petit-nice.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/au-petit-nice.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/au-petit-nice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/au-petit-nice.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/au-petit-nice.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/au-petit-nice.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/au-petit-nice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/au-petit-nice.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/aux-demoiselles-du-mont.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/aux-demoiselles-du-mont.html"/>
@@ -282,6 +356,90 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/bibou-beignets.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/bistro-jolisso.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/bistro-jolisso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/bistro-jolisso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/bistro-jolisso.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/bistro-jolisso.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/bistro-jolisso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/bistro-jolisso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/bistro-jolisso.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/brulerie-moka.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/brulerie-moka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/brulerie-moka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/brulerie-moka.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/brulerie-moka.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/brulerie-moka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/brulerie-moka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/brulerie-moka.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/cafe-de-coiffe.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-de-coiffe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-de-coiffe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-de-coiffe.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/cafe-de-coiffe.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-de-coiffe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-de-coiffe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-de-coiffe.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/cafe-la-muse.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-la-muse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/cafe-la-muse.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-la-muse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/caterine.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/caterine.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/caterine.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/caterine.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/caterine.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/caterine.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/caterine.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/caterine.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/chaleur.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/chaleur.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/chaleur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/chaleur.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/chaleur.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/chaleur.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/chaleur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/chaleur.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/cine-bar.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cine-bar.html"/>
@@ -338,6 +496,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/durum.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/ego-glacier.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/ego-glacier.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/ego-glacier.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/ego-glacier.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/fidele.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/fidele.html"/>
@@ -350,6 +522,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/fidele.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/fidele.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/fidele.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/galerie-charivari.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/galerie-charivari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/galerie-charivari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/galerie-charivari.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/galerie-charivari.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/galerie-charivari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/galerie-charivari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/galerie-charivari.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/gerarh.html</loc>
@@ -450,6 +636,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/l-art-hache.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/l-elephant-rose-a-pois-blancs.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/l-elephant-rose-a-pois-blancs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/l-elephant-rose-a-pois-blancs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/l-elephant-rose-a-pois-blancs.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/l-elephant-rose-a-pois-blancs.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/l-elephant-rose-a-pois-blancs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/l-elephant-rose-a-pois-blancs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/l-elephant-rose-a-pois-blancs.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/l-estaminet-matinal.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/l-estaminet-matinal.html"/>
@@ -520,6 +720,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-baguetterie.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/la-brasserie-communale.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-brasserie-communale.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-brasserie-communale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-brasserie-communale.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/la-brasserie-communale.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-brasserie-communale.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-brasserie-communale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-brasserie-communale.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/la-maison-hantee.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-maison-hantee.html"/>
@@ -562,6 +776,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-nena.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/la-passerelle.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-passerelle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-passerelle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-passerelle.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/la-passerelle.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-passerelle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-passerelle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-passerelle.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/la-pate-a-pizza.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-pate-a-pizza.html"/>
@@ -574,6 +802,34 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-pate-a-pizza.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-pate-a-pizza.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-pate-a-pizza.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/la-smala.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-smala.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-smala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-smala.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/la-smala.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-smala.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-smala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-smala.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/la-soifferie.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-soifferie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-soifferie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-soifferie.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/la-soifferie.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/la-soifferie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/la-soifferie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/la-soifferie.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/la-voie-maltee.html</loc>
@@ -632,6 +888,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-baraki.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/le-bistroquet.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-bistroquet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-bistroquet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-bistroquet.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-bistroquet.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-bistroquet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-bistroquet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-bistroquet.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/le-carre-rond.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-carre-rond.html"/>
@@ -644,6 +914,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-carre-rond.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-carre-rond.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-carre-rond.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/le-champ-de-mars.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-champ-de-mars.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-champ-de-mars.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-champ-de-mars.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-champ-de-mars.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-champ-de-mars.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-champ-de-mars.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-champ-de-mars.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/le-faso-safari-lounge.html</loc>
@@ -686,6 +970,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-grand-duc.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-grand-duc.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-grand-duc.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/le-jean-jaures.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-jean-jaures.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-jean-jaures.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-jean-jaures.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-jean-jaures.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-jean-jaures.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-jean-jaures.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-jean-jaures.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/le-magnolia.html</loc>
@@ -800,6 +1098,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-petit-diable.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/le-petit-pernod.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-petit-pernod.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-petit-pernod.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-petit-pernod.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-petit-pernod.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-petit-pernod.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-petit-pernod.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-petit-pernod.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/le-qg.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-qg.html"/>
@@ -840,6 +1152,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-simone.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-simone.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-simone.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/le-traquenard.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-traquenard.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-traquenard.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-traquenard.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-traquenard.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-traquenard.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-traquenard.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-traquenard.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/le-vice-versa.html</loc>
@@ -926,6 +1252,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/mariposas.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/mina.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/mina.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/mina.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/mina.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/mina.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/mina.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/mina.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/mina.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/music-leader.html</loc>
     <lastmod>2026-05-14</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/music-leader.html"/>
@@ -966,6 +1306,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/panpan-zerotti.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/panpan-zerotti.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/panpan-zerotti.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/papamousse.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/papamousse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/papamousse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/papamousse.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/papamousse.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/papamousse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/papamousse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/papamousse.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/prosper.html</loc>
@@ -1134,6 +1488,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/un-mexicain-a-marseille.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/un-mexicain-a-marseille.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/ve-mes-glaces.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/ve-mes-glaces.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/ve-mes-glaces.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/ve-mes-glaces.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/ve-mes-glaces.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/ve-mes-glaces.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/ve-mes-glaces.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/ve-mes-glaces.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/verre-a-cruise.html</loc>

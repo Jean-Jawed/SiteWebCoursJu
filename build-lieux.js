@@ -105,14 +105,15 @@ async function buildLieux() {
         console.log(`  ${n} fiches → ${DOSSIERS_FICHES[lang].replace(/\\/g, '/')}/`);
     }
 
-    // Accueil : les coups de cœur pointent vers les fiches existantes
+    // Accueil : les coups de cœur pointent vers les fiches existantes,
+    // et le compteur de lieux est juste avant même le chargement du JavaScript
     for (const page of ['index.html', path.join('en', 'index.html')]) {
         const fichier = path.join(__dirname, page);
         if (!fs.existsSync(fichier)) continue;
         const html = fs.readFileSync(fichier, 'utf8').replace(
             /(<script type="application\/json" id="lieuxFiches">)[\s\S]*?(<\/script>)/,
             `$1${JSON.stringify(avecFiche.map(l => l.slug))}$2`
-        );
+        ).replace(/(data-stat="lieux">)\d+(<)/, `$1${lieux.length}$2`);
         fs.writeFileSync(fichier, html, 'utf8');
     }
 

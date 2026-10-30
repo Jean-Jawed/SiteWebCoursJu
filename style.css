@@ -807,6 +807,10 @@ a {
     text-decoration: underline;
 }
 
+.footer-section .footer-pratique {
+    margin-top: 10px;
+}
+
 @media (max-width: 768px) {
     .main-footer {
         padding: 36px 20px 20px;

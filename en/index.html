@@ -48,32 +48,104 @@
     <!-- /i18n:alternates -->
     <script src="/pwa.js" defer></script>
 
-    <!-- Données structurées Schema.org : TouristAttraction -->
+    <!-- Données structurées Schema.org : le site, la page et le quartier (relié à Wikidata et Wikipédia) -->
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "TouristAttraction",
-    "name": "Cours Julien et La Plaine",
-    "alternateName": [
-        "Cours Ju",
-        "Notre-Dame-du-Mont",
-        "La Plaine"
-    ],
-    "description": "A cultural, lively neighbourhood of Marseille, known for its bars, live music, art galleries, street art, restaurants and nightlife. In the 6th arrondissement.",
-    "url": "https://cours-julien.fr/en/",
-    "image": "https://cours-julien.fr/images/web/partage.jpg",
-    "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Marseille",
-        "addressRegion": "Provence-Alpes-Côte d'Azur",
-        "postalCode": "13006",
-        "addressCountry": "FR"
-    },
-    "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.29398,
-        "longitude": 5.3843
-    }
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://cours-julien.fr/#website",
+            "url": "https://cours-julien.fr/en/",
+            "name": "Cours Julien – La Plaine – Notre-Dame-du-Mont",
+            "alternateName": "Cours Ju — Plaine",
+            "inLanguage": [
+                "en-GB",
+                "en-GB"
+            ],
+            "description": "The go-to guide to the Cours Julien, La Plaine and Notre-Dame-du-Mont neighbourhoods in Marseille.",
+            "publisher": {
+                "@id": "https://cours-julien.fr/#organization"
+            },
+            "about": {
+                "@id": "https://cours-julien.fr/#quartier"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cours-julien.fr/#webpage",
+            "url": "https://cours-julien.fr/en/",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+                "@id": "https://cours-julien.fr/#website"
+            },
+            "about": {
+                "@id": "https://cours-julien.fr/#quartier"
+            },
+            "primaryImageOfPage": "https://cours-julien.fr/images/web/partage.jpg"
+        },
+        {
+            "@type": [
+                "AdministrativeArea",
+                "TouristDestination"
+            ],
+            "@id": "https://cours-julien.fr/#quartier",
+            "name": "Notre-Dame-du-Mont",
+            "alternateName": [
+                "Cours Julien",
+                "Cours Ju",
+                "La Plaine",
+                "Notre-Dame-du-Mont – Cours Julien"
+            ],
+            "description": "A neighbourhood in Marseille’s 6th arrondissement, named the coolest neighbourhood in the world by Time Out in 2024: street art, bars, live music, galleries.",
+            "sameAs": [
+                "https://www.wikidata.org/wiki/Q3344727",
+                "https://fr.wikipedia.org/wiki/Notre-Dame-du-Mont_(Marseille)",
+                "https://it.wikipedia.org/wiki/Notre-Dame-du-Mont_(Marsiglia)"
+            ],
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 43.29398,
+                "longitude": 5.3843
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Marseille",
+                "postalCode": "13006",
+                "addressCountry": "FR"
+            },
+            "containedInPlace": {
+                "@type": "City",
+                "name": "Marseille",
+                "sameAs": "https://www.wikidata.org/wiki/Q23482"
+            },
+            "containsPlace": [
+                {
+                    "@type": "Place",
+                    "name": "Cours Julien",
+                    "sameAs": [
+                        "https://www.wikidata.org/wiki/Q3001343",
+                        "https://fr.wikipedia.org/wiki/Cours_Julien"
+                    ]
+                },
+                {
+                    "@type": "Place",
+                    "name": "Place Jean-Jaurès",
+                    "alternateName": "La Plaine",
+                    "sameAs": [
+                        "https://www.wikidata.org/wiki/Q3389888",
+                        "https://fr.wikipedia.org/wiki/Place_Jean-Jaur%C3%A8s_(Marseille)"
+                    ]
+                }
+            ]
+        },
+        {
+            "@type": "Organization",
+            "@id": "https://cours-julien.fr/#organization",
+            "name": "Virgule Studio",
+            "url": "https://virgule-studio.fr"
+        }
+    ]
 }
     </script>
 
@@ -116,6 +188,7 @@
                 <li><a href="/en/places.html" class="nav-link">Places</a></li>
                 <li><a href="/en/neighbourhood.html" class="nav-link">The neighbourhood</a></li>
                 <li><a href="/en/mag.html" class="nav-link">Le Mag</a></li>
+                <li><a href="/en/getting-here.html" class="nav-link">Getting here</a></li>
                 <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -196,6 +269,7 @@
                 <p class="zine-type zine-kicker">Editorial</p>
                 <h2 class="zine-sheet-title">The Cours Julien – La Plaine neighbourhood</h2>
                 <p>Between <strong>Cours Julien</strong>, <strong>La Plaine</strong> (place Jean-Jaurès) and <strong>Notre-Dame-du-Mont</strong>, Marseille’s 6th arrondissement is home to a large share of the city’s cultural life and nightlife. Art galleries, street art, cocktail bars, music venues, independent bookshops, restaurants, a community cinema: the neighbourhood mixes genres and crowds.</p>
+                <p>In 2024, <em>Time Out</em> magazine named it the <a href="/en/notre-dame-du-mont.html"><strong>coolest neighbourhood in the world</strong></a>.</p>
                 <p>This site lists the places of the neighbourhood. The aim: quickly find somewhere to go tonight, discover a new spot, or simply wander around and explore.</p>
             </article>
 
@@ -205,7 +279,7 @@
                     <li><a href="#envies"><span class="zine-toc-num">p.&nbsp;1</span><span class="zine-toc-label">By mood</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
                     <li><a href="#coups-de-coeur"><span class="zine-toc-num">p.&nbsp;2</span><span class="zine-toc-label">Our picks</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
                     <li><a href="#plan"><span class="zine-toc-num">p.&nbsp;3</span><span class="zine-toc-label">The map</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
-                    <li><a href="#mag"><span class="zine-toc-num">p.&nbsp;4</span><span class="zine-toc-label">Le Mag: live music and cocktails</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
+                    <li><a href="#mag"><span class="zine-toc-num">p.&nbsp;4</span><span class="zine-toc-label">Le Mag: street art and festivals</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
                     <li><a href="#quartier"><span class="zine-toc-num">p.&nbsp;5</span><span class="zine-toc-label">The neighbourhood</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
                     <li><a href="#sortir"><span class="zine-toc-num">p.&nbsp;6</span><span class="zine-toc-label">Out this month</span><span class="zine-toc-dots" aria-hidden="true"></span></a></li>
                 </ol>
@@ -265,7 +339,7 @@
                 <div class="zine-plan-text">
                     <h2 class="zine-h2" id="planTitre">The whole neighbourhood, on foot</h2>
                     <dl class="zine-stats">
-                        <div><dt>places</dt><dd data-stat="lieux">42</dd></div>
+                        <div><dt>places</dt><dd data-stat="lieux">95</dd></div>
                         <div><dt>moods</dt><dd data-stat="envies">8</dd></div>
                         <div><dt>min on foot from end to end</dt><dd data-stat="minutes">11</dd></div>
                     </dl>
@@ -281,32 +355,33 @@
             <h2 class="visually-hidden" id="magTitre">Le Mag</h2>
             <div class="zine-mag-grid">
                 <article class="zine-sheet zine-mag-sheet" data-pose style="--r: -0.8deg;">
-                    <a href="/en/mag/street-food-cours-julien.html" class="zine-mag-link">
+                    <a href="/en/mag/street-art-cours-julien.html" class="zine-mag-link">
                         <span class="zine-mag-photo">
-                            <img src="/images/mag/grignote/couverture.jpg"
-                                alt="Empanadas, a bánh mì and filled doughnuts, from three of the neighbourhood’s street food spots"
+                            <img src="/images/mag/street-art/couverture.jpg"
+                                alt="The great Cours Julien staircase covered in graffiti"
                                 width="1200" height="630" loading="lazy">
                         </span>
                         <span class="zine-mag-body">
                             <span class="zine-stamp">New</span>
-                            <span class="zine-type zine-kicker">The vending machine · Street food</span>
-                            <span class="zine-sheet-title">Where to grab a bite in Cours Julien?</span>
-                            <span class="zine-mag-lede">Sixteen street food spots, stacked like in a vending machine. Type a code and set off on the snack quest.</span>
+                            <span class="zine-type zine-kicker">The walk · Street art</span>
+                            <span class="zine-sheet-title">Street art in Cours Julien, street by street</span>
+                            <span class="zine-mag-lede">The great staircase, Rue Pastoret, Rue Vian and Invader’s mosaics.</span>
                             <span class="zine-mag-cta">Read the article <span aria-hidden="true">→</span></span>
                         </span>
                     </a>
                 </article>
                 <article class="zine-sheet zine-mag-sheet" data-pose style="--r: 0.7deg;">
-                    <a href="/en/mag/live-music-venues-cours-julien.html" class="zine-mag-link">
+                    <a href="/en/mag/events-cours-julien.html" class="zine-mag-link">
                         <span class="zine-mag-photo">
-                            <img src="/images/mag/salles-concert/couverture.jpg"
-                                alt="A member of the audience raises his arms in front of the stage at La Brasserie communale"
+                            <img src="/images/mag/fetes-et-evenements/couverture.jpg"
+                                alt="The Caramantran burns on La Plaine at the end of the carnival"
                                 width="1200" height="630" loading="lazy">
                         </span>
                         <span class="zine-mag-body">
-                            <span class="zine-type zine-kicker">Plugged in · Live music venues</span>
-                            <span class="zine-sheet-title">Where to see live music in Cours Julien?</span>
-                            <span class="zine-mag-lede">Eleven stages in the neighbourhood, from a 40-capacity room to the 990 places of the Espace Julien.</span>
+                            <span class="zine-stamp">New</span>
+                            <span class="zine-type zine-kicker">The calendar · Festivals</span>
+                            <span class="zine-sheet-title">The neighbourhood all year round</span>
+                            <span class="zine-mag-lede">Carnival, Plaine du Rock, Fête de la Musique, Miss Cagole, Christmas markets: the neighbourhood’s big dates.</span>
                             <span class="zine-mag-cta">Read the article <span aria-hidden="true">→</span></span>
                         </span>
                     </a>
@@ -327,6 +402,8 @@
                     <h2 class="zine-quote" id="quartierTitre">A neighbourhood that never <em>stops changing</em></h2>
                     <p>A former market garden, forty years of gigs at the Espace Julien, walls that are written and rewritten, a square defended by its residents. The neighbourhood’s story, without the postcard.</p>
                     <a href="/en/neighbourhood.html" class="zine-link">Read the neighbourhood’s story <span aria-hidden="true">→</span></a>
+                    <a href="/en/notre-dame-du-mont.html" class="zine-link">The coolest neighbourhood in the world <span aria-hidden="true">→</span></a>
+                    <a href="/en/getting-here.html" class="zine-link">Getting to Cours Ju <span aria-hidden="true">→</span></a>
                 </div>
             </div>
 
@@ -385,6 +462,10 @@
                 <div class="footer-section">
                     <h3>Cours Ju — Plaine</h3>
                     <p>Bars, live music, galleries and neighbourhood life in Marseille’s 6th arrondissement.</p>
+                    <p class="footer-pratique">
+                        <a href="/en/getting-here.html" class="footer-link">Getting to the Cours Ju →</a><br>
+                        <a href="/en/mag/where-to-stay-cours-julien.html" class="footer-link">Where to stay →</a>
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>About</h3>
@@ -409,7 +490,7 @@
     <!-- Custom JS -->
     <script type="module" src="/script.js"></script>
     <!-- Lieux qui ont une fiche (généré par build-lieux.js) -->
-    <script type="application/json" id="lieuxFiches">["agent-troublant","ameri","artless-gallery","asabiya","atelier-5","aux-demoiselles-du-mont","baby-club","banh-mi-24","belle-ile-en-mer","bibou-beignets","cine-bar","comptoir-31","detour","durum","fidele","gerarh","grand-ecart","histoire-de-l-oeil","id-fixe","kazdal","koujina-express","l-art-hache","l-estaminet-matinal","l-hydre-aux-mille-tetes","l-intermediaire-live","l-oiseau-de-nuit","la-baguetterie","la-maison-hantee","la-murisserie","la-nena","la-pate-a-pizza","la-voie-maltee","labo-n-heure","le-bar-de-la-plaine","le-baraki","le-carre-rond","le-faso-safari-lounge","le-gouffre","le-grand-duc","le-magnolia","le-maraichers","le-molotov","le-nain-jaune","le-nucleaire","le-paki","le-penard","le-petit-diable","le-qg","le-red-lion","le-simone","le-vice-versa","le-videodrome2","leda-atomica","les-9-salopards","lutherie-mko","mariposas","music-leader","ocarioca","panpan-zerotti","prosper","prov-oc","pulse","restaurant-palestine-de-gaza","rincon-argentino","soleil-house-burger","soma","tabemashou","taboula-studio","tacos-tacos-tacos","tumulte","un-mexicain-a-marseille","verre-a-cruise","zesti-taverna"]</script>
+    <script type="application/json" id="lieuxFiches">["agent-troublant","ameri","artless-gallery","asabiya","atelier-5","au-petit-nice","aux-demoiselles-du-mont","baby-club","banh-mi-24","belle-ile-en-mer","bibou-beignets","bistro-jolisso","brulerie-moka","cafe-de-coiffe","cafe-la-muse","caterine","chaleur","cine-bar","comptoir-31","detour","durum","ego-glacier","fidele","galerie-charivari","gerarh","grand-ecart","histoire-de-l-oeil","id-fixe","kazdal","koujina-express","l-art-hache","l-elephant-rose-a-pois-blancs","l-estaminet-matinal","l-hydre-aux-mille-tetes","l-intermediaire-live","l-oiseau-de-nuit","la-baguetterie","la-brasserie-communale","la-maison-hantee","la-murisserie","la-nena","la-passerelle","la-pate-a-pizza","la-smala","la-soifferie","la-voie-maltee","labo-n-heure","le-bar-de-la-plaine","le-baraki","le-bistroquet","le-carre-rond","le-champ-de-mars","le-faso-safari-lounge","le-gouffre","le-grand-duc","le-jean-jaures","le-magnolia","le-maraichers","le-molotov","le-nain-jaune","le-nucleaire","le-paki","le-penard","le-petit-diable","le-petit-pernod","le-qg","le-red-lion","le-simone","le-traquenard","le-vice-versa","le-videodrome2","leda-atomica","les-9-salopards","lutherie-mko","mariposas","mina","music-leader","ocarioca","panpan-zerotti","papamousse","prosper","prov-oc","pulse","restaurant-palestine-de-gaza","rincon-argentino","soleil-house-burger","soma","tabemashou","taboula-studio","tacos-tacos-tacos","tumulte","un-mexicain-a-marseille","ve-mes-glaces","verre-a-cruise","zesti-taverna"]</script>
     <script type="module" src="/home.js"></script>
     <script
         src="https://websites-monitoring.vercel.app/tracking.js?siteId=cours-julien&key=280e3472822f4f6a95f61310b65cf8fd0204ea08e8ae424eec5edef940ce9d2e"></script>

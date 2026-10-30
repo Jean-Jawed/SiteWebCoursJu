@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="mag.css">
+    <link rel="stylesheet" href="../fin-article.css">
     <link rel="stylesheet" href="grignote.css">
 
     <script type="application/ld+json">
@@ -154,6 +155,7 @@
                 <li><a href="../lieux.html" class="nav-link">Lieux</a></li>
                 <li><a href="../quartier.html" class="nav-link">Le quartier</a></li>
                 <li><a href="../mag.html" class="nav-link active">Le Mag</a></li>
+                <li><a href="../venir.html" class="nav-link">Venir</a></li>
                 <li><a href="../contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -197,7 +199,6 @@
                 </p>
                 <ul class="mag-meta">
                     <li><time datetime="2026-10-23">23 octobre 2026</time></li>
-                    <li>7 min de lecture</li>
                     <li>16 adresses · presque toutes à petit prix</li>
                 </ul>
             </div>
@@ -1103,10 +1104,7 @@
             </p>
             <div class="mag-outro-actions">
                 <a href="../lieux.html?famille=manger" class="mag-btn mag-btn--primary" data-track="carte">Tous les lieux où manger</a>
-                <a href="bar-cocktails.html" class="mag-btn" data-track="cocktails">La tournée des cocktails</a>
-                <a href="salles-concert.html" class="mag-btn" data-track="concerts">Les salles de concert</a>
                 <button type="button" class="mag-btn" id="magShare">Partager l’article</button>
-                <a href="../mag.html" class="mag-btn mag-btn--ghost">Le Mag</a>
             </div>
             <p class="mag-share-status" id="magShareStatus" role="status"></p>
         </section>
@@ -1134,25 +1132,185 @@
             </div>
         </section>
 
-        <!-- ==== Pour aller plus loin ==== -->
-        <section class="mag-refs">
-            <p class="mag-kicker">Pour aller plus loin</p>
-            <ul>
-                <li>
-                    <p class="mag-ref-title"><em>Bar à empanadas argentin à Notre-Dame-du-Mont</em></p>
-                    <p class="mag-ref-meta"><em>Made in Marseille</em>.</p>
-                    <a href="https://madeinmarseille.net/actualite/marseille/170808-empanadas-bar-argentin-notre-dame-du-mont/"
-                        target="_blank" rel="noopener noreferrer">madeinmarseille.net</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>Bánh Mì 24, bánh mì au Cours Julien</em></p>
-                    <p class="mag-ref-meta"><em>Le Grand Pastis</em>.</p>
-                    <a href="https://www.le-grand-pastis.com/banh-mi24-banh-mi-cours-julien-marseille/"
-                        target="_blank" rel="noopener noreferrer">le-grand-pastis.com</a>
-                </li>
-            </ul>
+        <!-- ==== Sources et crédits ==== -->
+        <section class="mag-refs mag-sources">
+            <p class="mag-credits">Sources&#8239;: <a href="https://madeinmarseille.net/actualite/marseille/170808-empanadas-bar-argentin-notre-dame-du-mont/" target="_blank" rel="noopener noreferrer"><em>Made in Marseille</em></a>, <a href="https://www.le-grand-pastis.com/banh-mi24-banh-mi-cours-julien-marseille/" target="_blank" rel="noopener noreferrer"><em>Le Grand Pastis</em></a>.</p>
             <p class="mag-credits">Photos&#8239;: les comptes Instagram des lieux&#8239;; Cours Ju — Plaine.</p>
         </section>
+
+        <!-- ==== Les lieux et les autres articles (scripts/build-mag.py) ==== -->
+        <!-- mag:fin lieux="banh-mi-24,panpan-zerotti,bibou-beignets,rincon-argentino,durum,le-petit-diable,tacos-tacos-tacos,un-mexicain-a-marseille,le-paki,restaurant-palestine-de-gaza,kazdal,asabiya,koujina-express,la-nena,la-pate-a-pizza,soleil-house-burger" -->
+    <div class="fin-article">
+        <section class="fin-bloc" id="lieux-cites" aria-labelledby="finLieuxTitre">
+            <p class="fin-kicker">Les adresses</p>
+            <h2 class="fin-titre" id="finLieuxTitre">Les lieux de l’article</h2>
+            <div class="fin-lieux">
+                <a class="fin-lieu" href="../lieux/banh-mi-24.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_B%C3%A1nhM%C3%AC24_20261023-151419-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Bánh Mì 24</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>7 rue Pastoret</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/panpan-zerotti.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_PanpanZerotti_20261023-181911-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Panpan Zerotti</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>28 rue Pastoret</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/bibou-beignets.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_BibouBeignets_20261023-182725-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Bibou Beignets</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>15 rue Pastoret</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/rincon-argentino.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_Rinc%C3%B3nArgentino_20261023-151408-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Rincón Argentino</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>25 rue des Bergers</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/durum.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_Durum_20261023-131603-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Durum</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>19 rue Saint-Michel</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/le-petit-diable.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurants_LePetitDiable_20261023-131630-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Restaurants</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Le Petit Diable</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>13 rue Crudère</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/tacos-tacos-tacos.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_TacosTacosTacos_20261023-131538-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Tacos Tacos Tacos</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>28 place Notre-Dame-du-Mont</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/un-mexicain-a-marseille.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://cours-julien.fr/images/web/partage.jpg" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Un Mexicain à Marseille</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>5 place Paul-Cézanne</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/le-paki.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://cours-julien.fr/images/web/partage.jpg" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Restaurants</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Le Paki</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>51 place Jean-Jaurès</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/restaurant-palestine-de-gaza.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FRestaurants_RestaurantPalestineDeGaza_20261023-181901-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Restaurants</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Restaurant Palestine de Gaza</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>82 rue Curiol</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/kazdal.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnacks_Kazdal_20261023-151358-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Kazdal</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>32 rue des Trois-Mages</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/asabiya.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Asabiya.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Asabiya</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/koujina-express.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://cours-julien.fr/images/web/partage.jpg" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Koujina Express</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>5 boulevard Chave</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/la-nena.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_LaNena.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Nena</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>2 place Notre-Dame-du-Mont</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/la-pate-a-pizza.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSnack_pateapizza?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Pâte à pizza</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="../lieux/soleil-house-burger.html" style="--fam:#e3b448">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FSoleilHouseBurger.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Snacks</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Soleil House Burger</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+        <section class="fin-bloc" id="a-lire" aria-labelledby="finMagTitre">
+            <p class="fin-kicker">Le Mag</p>
+            <h2 class="fin-titre" id="finMagTitre">À lire aussi</h2>
+            <div class="fin-mag">
+                <a class="fin-mag-card" href="dormir.html">
+                    <span class="fin-mag-media"><img src="../images/mag/dormir/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">Le guide · Hôtels et auberges</span>
+                    <span class="fin-mag-titre">Où dormir près du Cours Julien&#8239;?</span>
+                </a>
+                <a class="fin-mag-card" href="fetes-et-evenements.html">
+                    <span class="fin-mag-media"><img src="../images/mag/fetes-et-evenements/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">Le calendrier · Fêtes</span>
+                    <span class="fin-mag-titre">Le quartier toute l’année</span>
+                </a>
+                <a class="fin-mag-card" href="salles-concert.html">
+                    <span class="fin-mag-media"><img src="../images/mag/salles-concert/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">Branchés · Salles de concert</span>
+                    <span class="fin-mag-titre">Où voir un concert au Cours Julien&#8239;?</span>
+                </a>
+                <a class="fin-mag-card" href="bar-cocktails.html">
+                    <span class="fin-mag-media"><img src="../images/mag/bar-cocktails/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">La tournée · Bars à cocktails</span>
+                    <span class="fin-mag-titre">Où sont les meilleurs cocktails du Cours Julien&#8239;?</span>
+                </a>
+                <a class="fin-mag-card" href="street-art.html">
+                    <span class="fin-mag-media"><img src="../images/mag/street-art/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">La balade · Street art</span>
+                    <span class="fin-mag-titre">Street art au Cours Julien, rue par rue</span>
+                </a>
+                <a class="fin-mag-card" href="../notre-dame-du-mont.html">
+                    <span class="fin-mag-media"><img src="../images/pages/notre-dame-du-mont/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">Le dossier · Time Out 2024</span>
+                    <span class="fin-mag-titre">Notre-Dame-du-Mont, le quartier le plus cool du monde</span>
+                </a>
+            </div>
+            <p class="fin-tout"><a href="../mag.html">Tout le Mag <span aria-hidden="true">→</span></a></p>
+        </section>
+    </div>
+    <!-- /mag:fin -->
     </main>
 
     <!-- ==== Footer ==== -->
@@ -1162,6 +1320,10 @@
                 <div class="footer-section">
                     <h3>Cours Ju — Plaine</h3>
                     <p>Bars, concerts, galeries et vie de quartier, à Marseille dans le 6ᵉ arrondissement.</p>
+                    <p class="footer-pratique">
+                        <a href="../venir.html" class="footer-link">Venir au Cours Ju →</a><br>
+                        <a href="../mag/dormir.html" class="footer-link">Où dormir →</a>
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>À propos</h3>

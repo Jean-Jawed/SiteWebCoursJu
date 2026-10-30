@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/mag/mag.css">
+    <link rel="stylesheet" href="/fin-article.css">
     <link rel="stylesheet" href="/mag/concerts.css">
 
     <script type="application/ld+json">
@@ -280,6 +281,7 @@
                 <li><a href="/en/places.html" class="nav-link">Places</a></li>
                 <li><a href="/en/neighbourhood.html" class="nav-link">The neighbourhood</a></li>
                 <li><a href="/en/mag.html" class="nav-link active">Le Mag</a></li>
+                <li><a href="/en/getting-here.html" class="nav-link">Getting here</a></li>
                 <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -303,7 +305,6 @@
                 <p class="mag-lede"><strong>Plugged in</strong> · Eleven stages in the neighbourhood, linked by a single cable, from the smallest to the largest. Not a ranking: eleven formats, eleven ways to hear a gig.</p>
                 <ul class="mag-meta">
                     <li><time datetime="2026-10-16">16 October 2026</time></li>
-                    <li>8-minute read</li>
                     <li>11 stages · from 40 to 990 people</li>
                 </ul>
             </div>
@@ -867,9 +868,7 @@
             <p>Line-ups change every week: the safest bet is to follow the venues on their websites or social media. And for before or after the gig, Le Mag has already done the rounds of the cocktail bars.</p>
             <div class="mag-outro-actions">
                 <a href="/en/places.html#carte" class="mag-btn mag-btn--primary" data-track="carte">Every place on the map</a>
-                <a href="/en/mag/best-cocktail-bars-cours-julien.html" class="mag-btn" data-track="cocktails">The cocktail tour</a>
                 <button type="button" class="mag-btn" id="magShare">Share the article</button>
-                <a href="/en/mag.html" class="mag-btn mag-btn--ghost">Le Mag</a>
             </div>
             <p class="mag-share-status" id="magShareStatus" role="status"></p>
         </section>
@@ -901,37 +900,118 @@
             </div>
         </section>
 
-        <!-- ==== Pour aller plus loin ==== -->
-        <section class="mag-refs">
-            <p class="mag-kicker">Further reading</p>
-            <ul>
-                <li>
-                    <p class="mag-ref-title"><em>Le Makeda</em></p>
-                    <p class="mag-ref-meta">Stéphane Durand — <em>Time Out Marseille</em>, 12 May 2024 (in French).</p>
-                    <a href="https://www.timeout.fr/marseille/clubbing/le-makeda" target="_blank"
-                        rel="noopener noreferrer">timeout.fr</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>Le Café Julien se réinvente pour contrer la fragilité des petites salles</em></p>
-                    <p class="mag-ref-meta"><em>Presse Agence</em>, October 2026 (in French).</p>
-                    <a href="https://presseagence.fr/marseille-scene-musicale-le-cafe-julien-se-reinvente-pour-contrer-la-fragilite-des-petites-salles/"
-                        target="_blank" rel="noopener noreferrer">presseagence.fr</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>Au Cours Julien, la Brasserie communale</em></p>
-                    <p class="mag-ref-meta"><em>Made in Marseille</em>, 23 September 2020 (in French).</p>
-                    <a href="https://madeinmarseille.net/75595-le-cours-julien-brasserie-communale-biere/"
-                        target="_blank" rel="noopener noreferrer">madeinmarseille.net</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>Leda Atomica Musique</em></p>
-                    <p class="mag-ref-meta"><em>Fréquence Sud (in French)</em>.</p>
-                    <a href="https://www.frequence-sud.fr/loc-279-leda_atomica_musique_marseille_espaces_culturels___salle_de_spectacle.html"
-                        target="_blank" rel="noopener noreferrer">frequence-sud.fr</a>
-                </li>
-            </ul>
+        <!-- ==== Sources et crédits ==== -->
+        <section class="mag-refs mag-sources">
+            <p class="mag-credits">Sources: <a href="https://www.timeout.fr/marseille/clubbing/le-makeda" target="_blank" rel="noopener noreferrer"><em>Time Out Marseille</em></a>, <a href="https://presseagence.fr/marseille-scene-musicale-le-cafe-julien-se-reinvente-pour-contrer-la-fragilite-des-petites-salles/" target="_blank" rel="noopener noreferrer"><em>Presse Agence</em></a>, <a href="https://madeinmarseille.net/75595-le-cours-julien-brasserie-communale-biere/" target="_blank" rel="noopener noreferrer"><em>Made in Marseille</em></a>, <a href="https://www.frequence-sud.fr/loc-279-leda_atomica_musique_marseille_espaces_culturels___salle_de_spectacle.html" target="_blank" rel="noopener noreferrer"><em>Fréquence Sud</em></a> (in French).</p>
             <p class="mag-credits">Photos: Elyn (CC0) and Fred reggaelover (CC BY-SA 4.0), via Wikimedia Commons; La Voie maltée / Privateaser, La Maison hantée / Schlouk Map, La Brasserie communale, the Espace Julien, <em>Time Out</em>; Cours Ju — Plaine.</p>
         </section>
+
+        <!-- ==== Les lieux et les autres articles (scripts/build-mag.py) ==== -->
+        <!-- mag:fin lieux="la-voie-maltee,les-9-salopards,la-maison-hantee,l-intermediaire-live,la-brasserie-communale,le-molotov,le-gouffre,leda-atomica" -->
+    <div class="fin-article">
+        <section class="fin-bloc" id="lieux-cites" aria-labelledby="finLieuxTitre">
+            <p class="fin-kicker">The addresses</p>
+            <h2 class="fin-titre" id="finLieuxTitre">Places in this article</h2>
+            <div class="fin-lieux">
+                <a class="fin-lieu" href="/en/places/la-voie-maltee.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBars_LaVoieMalt%C3%A9e_20261023-131506-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Voie Maltée</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>7 rue Crudère</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/les-9-salopards.html" style="--fam:#9a86e8">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_9sal.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Concerts</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Les 9 salopards</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/la-maison-hantee.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Maisonhantee.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Maison hantée</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/l-intermediaire-live.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Intermediaire.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>L&#039;Intermediaire Live</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/la-brasserie-communale.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBars_LaBrasserieCommunale_20261030-020343-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Brasserie Communale</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>57 cours Julien</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/le-molotov.html" style="--fam:#9a86e8">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_Molotov.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Concerts</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Le Molotov</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/le-gouffre.html" style="--fam:#9a86e8">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_RueEstelle_Gouffre.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Concerts</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Le Gouffre</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/leda-atomica.html" style="--fam:#9a86e8">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FConcert_LedaAtomica.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Concerts</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Leda Atomica</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+        <section class="fin-bloc" id="a-lire" aria-labelledby="finMagTitre">
+            <p class="fin-kicker">Le Mag</p>
+            <h2 class="fin-titre" id="finMagTitre">Read next</h2>
+            <div class="fin-mag">
+                <a class="fin-mag-card" href="/en/mag/where-to-stay-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/dormir/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The guide · Hotels and hostels</span>
+                    <span class="fin-mag-titre">Where to stay near Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/events-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/fetes-et-evenements/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The calendar · Festivals</span>
+                    <span class="fin-mag-titre">The neighbourhood all year round</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/street-food-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/grignote/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The vending machine · Street food</span>
+                    <span class="fin-mag-titre">Where to grab a bite in Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/best-cocktail-bars-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/bar-cocktails/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The walk · Cocktail bars</span>
+                    <span class="fin-mag-titre">Where are the best cocktails in Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/street-art-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/street-art/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The walk · Street art</span>
+                    <span class="fin-mag-titre">Street art in Cours Julien, street by street</span>
+                </a>
+                <a class="fin-mag-card" href="/en/notre-dame-du-mont.html">
+                    <span class="fin-mag-media"><img src="/images/pages/notre-dame-du-mont/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The feature · Time Out 2024</span>
+                    <span class="fin-mag-titre">Notre-Dame-du-Mont, the coolest neighbourhood in the world</span>
+                </a>
+            </div>
+            <p class="fin-tout"><a href="/en/mag.html">All of Le Mag <span aria-hidden="true">→</span></a></p>
+        </section>
+    </div>
+    <!-- /mag:fin -->
     </main>
 
     <!-- ==== Footer ==== -->
@@ -941,6 +1021,10 @@
                 <div class="footer-section">
                     <h3>Cours Ju — Plaine</h3>
                     <p>Bars, live music, galleries and neighbourhood life in Marseille’s 6th arrondissement.</p>
+                    <p class="footer-pratique">
+                        <a href="/en/getting-here.html" class="footer-link">Getting to the Cours Ju →</a><br>
+                        <a href="/en/mag/where-to-stay-cours-julien.html" class="footer-link">Where to stay →</a>
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>About</h3>

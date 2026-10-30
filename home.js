@@ -28,7 +28,7 @@ const ENVIES = {
     'ecouter':      { cats: ['musique', 'concerts'] },
     'voir':         { cats: ['art', 'cinéma', 'théâtre'] },
     'chiner':       { cats: ['commerces', 'fringues', 'jeux'] },
-    'manger':       { cats: ['restaurants', 'snacks', 'cafés'] },
+    'manger':       { cats: ['restaurants', 'snacks', 'cafés', 'glaces'] },
     'trinquer':     { cats: ['bars'] },
     'danser':       { cats: ['nuit', 'concerts'] },
     'se-retrouver': { cats: ['social', 'kids'] }

@@ -852,6 +852,28 @@
     content: ' ↗';
 }
 
+/* Sources et crédits : une ligne en petit, en fin d'article */
+.mag-sources {
+    padding-bottom: 56px;
+}
+
+.mag-sources .mag-credits {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.mag-sources .mag-credits + .mag-credits {
+    margin-top: 8px;
+}
+
+.mag-sources a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
 .mag-moderation {
     margin-top: 32px;
     font-size: 12px;

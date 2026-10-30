@@ -8,5 +8,10 @@
   "/mag/salles-concert.html": "/en/mag/live-music-venues-cours-julien.html",
   "/mag/grignote.html": "/en/mag/street-food-cours-julien.html",
   "/contact.html": "/en/contact.html",
-  "/offline.html": "/en/offline.html"
+  "/offline.html": "/en/offline.html",
+  "/notre-dame-du-mont.html": "/en/notre-dame-du-mont.html",
+  "/venir.html": "/en/getting-here.html",
+  "/mag/street-art.html": "/en/mag/street-art-cours-julien.html",
+  "/mag/fetes-et-evenements.html": "/en/mag/events-cours-julien.html",
+  "/mag/dormir.html": "/en/mag/where-to-stay-cours-julien.html"
 }

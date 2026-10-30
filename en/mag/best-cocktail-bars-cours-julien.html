@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/mag/mag.css">
+    <link rel="stylesheet" href="/fin-article.css">
 
     <script type="application/ld+json">
 {
@@ -198,6 +199,7 @@
                 <li><a href="/en/places.html" class="nav-link">Places</a></li>
                 <li><a href="/en/neighbourhood.html" class="nav-link">The neighbourhood</a></li>
                 <li><a href="/en/mag.html" class="nav-link active">Le Mag</a></li>
+                <li><a href="/en/getting-here.html" class="nav-link">Getting here</a></li>
                 <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -223,7 +225,6 @@
                 <p class="mag-lede"><strong>Mixology</strong> · A tour of the neighbourhood’s three best cocktail bars. Join us on the hunt for the rare cocktail, from one bar to the next.</p>
                 <ul class="mag-meta">
                     <li><time datetime="2026-10-04">4 October 2026</time></li>
-                    <li>5-minute read</li>
                     <li>3 bars · 710 m on foot</li>
                 </ul>
             </div>
@@ -399,7 +400,6 @@
             <div class="mag-outro-actions">
                 <a href="/en/places.html#carte" class="mag-btn mag-btn--primary" data-track="carte">Every place on the map</a>
                 <button type="button" class="mag-btn" id="magShare">Share the article</button>
-                <a href="/en/mag.html" class="mag-btn mag-btn--ghost">Le Mag</a>
             </div>
             <p class="mag-share-status" id="magShareStatus" role="status"></p>
         </section>
@@ -427,32 +427,83 @@
             </div>
         </section>
 
-        <!-- ==== Pour aller plus loin ==== -->
-        <section class="mag-refs">
-            <p class="mag-kicker">Further reading</p>
-            <ul>
-                <li>
-                    <p class="mag-ref-title"><em>Verre à Cruise, deux Libanais à Marseille et un bar à cocktails</em>
-                    </p>
-                    <p class="mag-ref-meta">Joséphine Hobeika — <em>L’Orient-Le Jour</em>, 16 August 2024.</p>
-                    <a href="https://www.lorientlejour.com/cuisine-liban-a-table/1423763/-verre-a-cruise-deux-libanais-a-marseille-et-un-bar-a-cocktails.html"
-                        target="_blank" rel="noopener noreferrer">lorientlejour.com</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>La Soifferie, bar nostalgique</em></p>
-                    <p class="mag-ref-meta"><em>Toutma</em>.</p>
-                    <a href="https://toutma.fr/la-soifferie-bar-nostalgique" target="_blank"
-                        rel="noopener noreferrer">toutma.fr</a>
-                </li>
-                <li>
-                    <p class="mag-ref-title"><em>Labo N°Heure, l’alchimie du bonheur</em></p>
-                    <p class="mag-ref-meta"><em>Le Grand Pastis</em>.</p>
-                    <a href="https://www.le-grand-pastis.com/labo-noheure-lalchimie-du-bonheur/" target="_blank"
-                        rel="noopener noreferrer">le-grand-pastis.com</a>
-                </li>
-            </ul>
+        <!-- ==== Sources et crédits ==== -->
+        <section class="mag-refs mag-sources">
+            <p class="mag-credits">Sources: <a href="https://www.lorientlejour.com/cuisine-liban-a-table/1423763/-verre-a-cruise-deux-libanais-a-marseille-et-un-bar-a-cocktails.html" target="_blank" rel="noopener noreferrer"><em>L’Orient-Le Jour</em></a>, <a href="https://toutma.fr/la-soifferie-bar-nostalgique" target="_blank" rel="noopener noreferrer"><em>Toutma</em></a>, <a href="https://www.le-grand-pastis.com/labo-noheure-lalchimie-du-bonheur/" target="_blank" rel="noopener noreferrer"><em>Le Grand Pastis</em></a> (in French).</p>
             <p class="mag-moderation">Alcohol abuse is dangerous for your health. Please drink responsibly.</p>
         </section>
+
+        <!-- ==== Les lieux et les autres articles (scripts/build-mag.py) ==== -->
+        <!-- mag:fin lieux="verre-a-cruise,la-soifferie,labo-n-heure" -->
+    <div class="fin-article">
+        <section class="fin-bloc" id="lieux-cites" aria-labelledby="finLieuxTitre">
+            <p class="fin-kicker">The addresses</p>
+            <h2 class="fin-titre" id="finLieuxTitre">Places in this article</h2>
+            <div class="fin-lieux">
+                <a class="fin-lieu" href="/en/places/verre-a-cruise.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBars_Verre%C3%80Cruise_20261023-025146-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Verre à Cruise</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>11 Cours Julien</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/la-soifferie.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBars_LaSoifferie_20261030-020531-1.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>La Soifferie</span>
+                        <span class="fin-lieu-adresse" data-i18n-skip>8 place Paul-Cézanne</span>
+                    </span>
+                </a>
+                <a class="fin-lieu" href="/en/places/labo-n-heure.html" style="--fam:#d98a9a">
+                    <span class="fin-lieu-media"><img src="https://firebasestorage.googleapis.com/v0/b/cours-julien.firebasestorage.app/o/images%2FBar_Labonheure.jpg?alt=media" alt="" loading="lazy" decoding="async"></span>
+                    <span class="fin-lieu-body">
+                        <span class="fin-lieu-cat">Bars</span>
+                        <span class="fin-lieu-nom" data-i18n-skip>Labo n heure</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+        <section class="fin-bloc" id="a-lire" aria-labelledby="finMagTitre">
+            <p class="fin-kicker">Le Mag</p>
+            <h2 class="fin-titre" id="finMagTitre">Read next</h2>
+            <div class="fin-mag">
+                <a class="fin-mag-card" href="/en/mag/where-to-stay-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/dormir/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The guide · Hotels and hostels</span>
+                    <span class="fin-mag-titre">Where to stay near Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/events-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/fetes-et-evenements/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The calendar · Festivals</span>
+                    <span class="fin-mag-titre">The neighbourhood all year round</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/street-food-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/grignote/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The vending machine · Street food</span>
+                    <span class="fin-mag-titre">Where to grab a bite in Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/live-music-venues-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/salles-concert/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">Plugged in · Live music venues</span>
+                    <span class="fin-mag-titre">Where to see live music in Cours Julien?</span>
+                </a>
+                <a class="fin-mag-card" href="/en/mag/street-art-cours-julien.html">
+                    <span class="fin-mag-media"><img src="/images/mag/street-art/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The walk · Street art</span>
+                    <span class="fin-mag-titre">Street art in Cours Julien, street by street</span>
+                </a>
+                <a class="fin-mag-card" href="/en/notre-dame-du-mont.html">
+                    <span class="fin-mag-media"><img src="/images/pages/notre-dame-du-mont/couverture.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
+                    <span class="fin-mag-kicker">The feature · Time Out 2024</span>
+                    <span class="fin-mag-titre">Notre-Dame-du-Mont, the coolest neighbourhood in the world</span>
+                </a>
+            </div>
+            <p class="fin-tout"><a href="/en/mag.html">All of Le Mag <span aria-hidden="true">→</span></a></p>
+        </section>
+    </div>
+    <!-- /mag:fin -->
     </main>
 
     <!-- ==== Footer ==== -->
@@ -462,6 +513,10 @@
                 <div class="footer-section">
                     <h3>Cours Ju — Plaine</h3>
                     <p>Bars, live music, galleries and neighbourhood life in Marseille’s 6th arrondissement.</p>
+                    <p class="footer-pratique">
+                        <a href="/en/getting-here.html" class="footer-link">Getting to the Cours Ju →</a><br>
+                        <a href="/en/mag/where-to-stay-cours-julien.html" class="footer-link">Where to stay →</a>
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>About</h3>
