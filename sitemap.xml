@@ -1140,6 +1140,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-magnolia.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/le-makeda.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-makeda.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-makeda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-makeda.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/le-makeda.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-makeda.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/le-makeda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/le-makeda.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/le-maraichers.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/le-maraichers.html"/>
