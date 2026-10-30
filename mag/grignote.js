@@ -7,7 +7,7 @@
 //   - les envies, qui allument les cases correspondantes ;
 //   - les tampons « J'ai goûté » et le ticket de la quête, gardés dans ce
 //     navigateur (localStorage, rien n'est envoyé) ;
-//   - la carte des dix-huit adresses.
+//   - la carte des vingt adresses.
 // Sans JavaScript, les cases restent de simples liens vers les adresses.
 // =====================================================================
 
@@ -35,7 +35,7 @@
             (r) => `A good start. ${r} slots left to taste.`,
             (r) => `You’re getting into it: ${r} to go.`,
             (r) => r === 1 ? 'Nearly there! Just one slot left.' : `Nearly there! Just ${r} slots left.`,
-            'Quest complete. Eighteen stamps.'
+            'Quest complete. Twenty stamps.'
         ]
     } : {
         accueil: ['Une petite faim ?', 'Tapez un code'],
@@ -54,7 +54,7 @@
             (r) => `Bon début. Encore ${r} cases à goûter.`,
             (r) => `Vous prenez le rythme : plus que ${r}.`,
             (r) => r === 1 ? 'Presque ! Plus qu’une case.' : `Presque ! Plus que ${r} cases.`,
-            'Quête accomplie. Dix-huit tampons.'
+            'Quête accomplie. Vingt tampons.'
         ]
     };
 
@@ -62,7 +62,7 @@
         if (typeof window.gtag === 'function') window.gtag('event', name, { article: 'grignote', ...params });
     }
 
-    // Les dix-huit cases, par code
+    // Les vingt cases, par code
     const CASES = {};
     document.querySelectorAll('.slot').forEach(slot => {
         const code = slot.dataset.code;
