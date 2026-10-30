@@ -7,7 +7,7 @@
 //   - les envies, qui allument les cases correspondantes ;
 //   - les tampons « J'ai goûté » et le ticket de la quête, gardés dans ce
 //     navigateur (localStorage, rien n'est envoyé) ;
-//   - la carte des seize adresses.
+//   - la carte des dix-huit adresses.
 // Sans JavaScript, les cases restent de simples liens vers les adresses.
 // =====================================================================
 
@@ -35,7 +35,7 @@
             (r) => `A good start. ${r} slots left to taste.`,
             (r) => `You’re getting into it: ${r} to go.`,
             (r) => r === 1 ? 'Nearly there! Just one slot left.' : `Nearly there! Just ${r} slots left.`,
-            'Quest complete. Sixteen stamps.'
+            'Quest complete. Eighteen stamps.'
         ]
     } : {
         accueil: ['Une petite faim ?', 'Tapez un code'],
@@ -54,7 +54,7 @@
             (r) => `Bon début. Encore ${r} cases à goûter.`,
             (r) => `Vous prenez le rythme : plus que ${r}.`,
             (r) => r === 1 ? 'Presque ! Plus qu’une case.' : `Presque ! Plus que ${r} cases.`,
-            'Quête accomplie. Seize tampons.'
+            'Quête accomplie. Dix-huit tampons.'
         ]
     };
 
@@ -62,7 +62,7 @@
         if (typeof window.gtag === 'function') window.gtag('event', name, { article: 'grignote', ...params });
     }
 
-    // Les seize cases, par code
+    // Les dix-huit cases, par code
     const CASES = {};
     document.querySelectorAll('.slot').forEach(slot => {
         const code = slot.dataset.code;
@@ -102,7 +102,7 @@
             if (e.ctrlKey || e.metaKey || e.altKey) return;
             if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
             const k = e.key.toUpperCase();
-            if (!/^[A-D1-4]$/.test(k)) return;
+            if (!/^[A-D1-6]$/.test(k)) return;
             const r = document.getElementById('distributeur').getBoundingClientRect();
             if (r.bottom < 0 || r.top > window.innerHeight) return;
             const touche = document.querySelector(`.touche[data-touche="${k}"]`);
