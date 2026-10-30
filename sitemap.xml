@@ -426,6 +426,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-de-coiffe.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/cafe-julien.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-julien.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/cafe-julien.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-julien.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/cafe-la-muse.html</loc>
     <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
@@ -578,6 +592,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/ego-glacier.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/ego-glacier.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/lieux/espace-julien.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/espace-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/espace-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/espace-julien.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/espace-julien.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/espace-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/espace-julien.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/espace-julien.html"/>
   </url>
   <url>
     <loc>https://cours-julien.fr/lieux/fidele.html</loc>
