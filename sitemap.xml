@@ -482,6 +482,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-la-muse.html"/>
   </url>
   <url>
+    <loc>https://cours-julien.fr/lieux/cafe-populaire.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-populaire.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-populaire.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-populaire.html"/>
+  </url>
+  <url>
+    <loc>https://cours-julien.fr/en/places/cafe-populaire.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-populaire.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cours-julien.fr/en/places/cafe-populaire.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cours-julien.fr/lieux/cafe-populaire.html"/>
+  </url>
+  <url>
     <loc>https://cours-julien.fr/lieux/cafe-zitoune.html</loc>
     <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cours-julien.fr/lieux/cafe-zitoune.html"/>
