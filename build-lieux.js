@@ -248,6 +248,12 @@ function ficheHTML(lieu, tous, ctx, nav, footer) {
             </button>`).join('')
         : `<div class="fiche-photo fiche-photo--vide">${icone(famille, 'card-media-icon')}<span>${T.sansPhoto}</span></div>`;
 
+    // Photos au-delà des trois de la galerie : grille de vignettes sous la fiche
+    const autresPhotos = photos.slice(3).map((p, i) => `
+        <button type="button" class="fiche-photo" data-photo="${escapeHtml(publicUrlFromPath(p.image))}" aria-label="${T.agrandir} ${i + 4}">
+            <img src="${escapeHtml(publicUrlFromPath(p.vignette || p.image))}" alt="${escapeHtml(lieu.nom)}" loading="lazy" decoding="async">
+        </button>`).join('');
+
     // Étiquettes : catégorie principale en Dymo, les autres en petit
     const etiquettes = cats.map((c, i) => {
         const f = FAMILLES[familleDuLieu({ categories: [c] }, categories)];
@@ -365,6 +371,12 @@ ${JSON.stringify(jsonLd, null, 2)}
         <a class="btn-plein fiche-itineraire" href="${urlItineraire(lieu)}" target="_blank" rel="noopener noreferrer">${icone('itineraire')}${T.itineraire}</a>` : ''}
       </aside>
     </div>
+
+    ${autresPhotos ? `<section class="fiche-photos">
+      <h2 class="fiche-photos-titre">${T.plusDePhotos}</h2>
+      <div class="fiche-photos-grille">${autresPhotos}
+      </div>
+    </section>` : ''}
 
     ${voisins.length ? `<section class="fiche-voisins">
       <h2 class="fiche-voisins-titre">${T.aDeuxPas}</h2>

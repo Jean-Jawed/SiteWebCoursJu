@@ -1287,6 +1287,33 @@
     padding: 11px 14px 10px;
 }
 
+/* Plus de photos (au-delà des trois de la galerie) */
+.fiche-photos {
+    margin-top: 56px;
+}
+
+.fiche-photos-titre {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.fiche-photos-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+.fiche-photos-grille .fiche-photo {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+}
+
+@media (max-width: 720px) {
+    .fiche-photos-grille {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* À deux pas */
 .fiche-voisins {
     margin-top: 72px;
