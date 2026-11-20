@@ -430,6 +430,16 @@ function ajouterAuSitemap(avecFiche) {
     }
     lignes.push('  <!-- fiches:fin -->');
     xml = xml.replace('</urlset>', `${lignes.join('\n')}\n</urlset>`);
+
+    // Listes et accueil (qui affiche le nombre de lieux) : date de la dernière fiche modifiée
+    const derniere = avecFiche.map(l => (l.modifieLe || '').slice(0, 10)).sort().pop();
+    if (derniere) {
+        for (const page of ['/', '/en/', '/lieux.html', '/en/places.html']) {
+            const loc = (SITE + page).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            xml = xml.replace(new RegExp(`(<loc>${loc}</loc>\\s*<lastmod>)[^<]*(</lastmod>)`),
+                (m, a, b) => (m.slice(a.length, -b.length) < derniere ? a + derniere + b : m));
+        }
+    }
     fs.writeFileSync(fichier, xml, 'utf8');
     console.log(`Sitemap : ${avecFiche.length * 2} fiches.`);
 }
